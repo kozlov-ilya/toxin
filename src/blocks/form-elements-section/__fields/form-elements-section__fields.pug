@@ -1,0 +1,33 @@
+include ../../form-unit/form-unit
+include ../../text-field/text-field
+include ../../masked-text-field/masked-text-field
+include ../../dropdown/dropdown
+
+mixin form-elements-section__fields(options)
+  //- options = {options, mods=["mod1", "mod2", ...]}
+
+  -
+    let unitClassName = 'form-elements-section__fields';
+
+    //- Add modifiers to class name
+    if ( Object.hasOwn(options, 'mods') && options.mods) {
+      //- If modifiers were passed to mixin
+      options.mods.forEach((element) => {
+        unitClassName += ` form-elements-section__fields_${element}`;
+      });
+    }
+
+  div(class=unitClassName)&attributes(attributes)
+    .form-elements-section__row
+      +form-unit({title: 'Text Field', subtitle: 'Default'})
+        +text-field({}).field_size_l(type='email', placeholder='Email')
+      +form-unit({title: 'Text Field', subtitle: 'hover/focus'})
+        +text-field({}).field_size_l.field_always-hovered(
+          type='text',
+          placeholder='Text',
+          value='This is pretty awesome'
+        )
+      +form-unit({title: 'Dropdown'})
+        +dropdown({value: 'Комплектация'})(data-default-value='Комплектация')
+      +form-unit({title: 'masked text field', subtitle: ''})
+        +masked-text-field({}).field_size_l

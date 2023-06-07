@@ -1,0 +1,417 @@
+:root {
+  /* Color palette */
+  --color-dark-shade-100: rgba(31, 32, 65, 1);
+  --color-dark-shade-75: #575871;
+  --color-dark-shade-50: #8f90a0;
+  --color-dark-shade-25: #c7c7cf;
+  --color-dark-shade-5: #f3f4f5;
+  --color-purple: #bc9cff;
+  --color-bluish-purple: #8ba4f9;
+  --color-green: #6fcf97;
+  --color-light-blue: #66d2ea;
+  --color-white: #fff;
+  /* Colors */
+  --text-primary: var(--color-dark-shade-75);
+  --text-secondary: var(--color-dark-shade-50);
+  --heading-primary: var(--color-dark-shade-100);
+  --gradient-bg-primary: linear-gradient(
+    180deg,
+    var(--color-purple) 0%,
+    var(--color-bluish-purple) 100%
+  );
+  --gradient-bg-secondary: var(--color-white);
+  --gradient-bg-additional: linear-gradient(
+    180deg,
+    var(--color-green) 0%,
+    var(--color-light-blue) 100%
+  );
+  --btn-text-primary: var(--color-white);
+  --btn-text-secondary: var(--color-purple);
+  --link-text-primary: var(--color-purple);
+  --link-text-hover: var(--color-dark-shade-50);
+}
+
+:root {
+  /* Typography */
+  --font-fallback: "Montserrat", sans-serif;
+  --font-body: var(--font-fallback);
+  --font-heading: var(--font-fallback);
+  --base-font-size: 100%;
+  --base-line-height: 1.2;
+  --body-line-height: 1.71;
+  --heading-line-height: 1.22;
+  --body-font-size: 0.875rem;
+  --heading-h1-font-size: 1.5rem;
+  --heading-h2-font-size: 1.1875rem;
+  --heading-h3-font-size: 0.75rem;
+  --type-body: 400 var(--body-font-size) / var(--body-line-height)
+    var(--font-body);
+  --type-heading-h1: 700 var(--heading-h1-font-size) /
+    var(--heading-line-height) var(--font-heading);
+  --type-heading-h2: 700 var(--heading-h2-font-size) /
+    var(--heading-line-height) var(--font-heading);
+  --type-heading-h3: 700 var(--heading-h3-font-size) /
+    var(--heading-line-height) var(--font-heading);
+}
+
+/* Convert px to rem */
+@font-face {
+  font-family: "Montserrat";
+  font-weight: 400;
+  src: url(../fonts/Montserrat-Regular.woff2) format(woff2), url(../fonts/Montserrat-Regular.woff) format(woff), url(../fonts/Montserrat-Regular.ttf) format(ttf);
+}
+@font-face {
+  font-family: "Montserrat";
+  font-weight: 700;
+  src: url(../fonts/Montserrat-Bold.woff2) format(woff2), url(../fonts/Montserrat-Bold.woff) format(woff), url(../fonts/Montserrat-Bold.ttf) format(ttf);
+}
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+ul,
+ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Set core root defaults */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  font-family: var(--font-body);
+  font-size: var(--base-font-size);
+  color: var(--color-dark-shade-100);
+}
+
+a {
+  text-decoration: none;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  display: block;
+  max-width: 100%;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+.gui-section {
+  position: relative;
+}
+
+.gui-section__logo {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+}
+
+.layout-container {
+  margin: 0 auto;
+  padding: 0 1rem;
+  max-width: calc(1160px + 2rem);
+}
+
+.color-unit_color_ds100 .color-unit__icon {
+  background: var(--color-dark-shade-100);
+}
+
+.color-unit_color_ds75 .color-unit__icon {
+  background: var(--color-dark-shade-75);
+}
+
+.color-unit_color_ds50 .color-unit__icon {
+  background: var(--color-dark-shade-50);
+}
+
+.color-unit_color_ds25 .color-unit__icon {
+  background: var(--color-dark-shade-25);
+}
+
+.color-unit_color_ds5 .color-unit__icon {
+  background: var(--color-dark-shade-5);
+}
+
+.color-unit_color_purple .color-unit__icon {
+  background: var(--color-purple);
+}
+
+.color-unit_color_green .color-unit__icon {
+  background: var(--color-green);
+}
+
+.color-unit {
+  display: flex;
+  gap: 2.5rem;
+}
+
+.color-unit__icon {
+  width: 70px;
+  height: 70px;
+  border-radius: 6px;
+}
+
+.color-unit__label {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font: var(--type-heading-h2);
+}
+
+.color-unit__subtitle {
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.type-unit_type_body {
+  font: var(--type-body);
+  color: var(--color-dark-shade-75);
+}
+
+.type-unit_type_h1 {
+  font: var(--type-heading-h1);
+}
+
+.type-unit_type_h2 {
+  font: var(--type-heading-h2);
+}
+
+.type-unit_type_h3 {
+  font: var(--type-heading-h3);
+  text-transform: uppercase;
+}
+
+.type-unit {
+  display: flex;
+  gap: 1.875rem;
+}
+
+.type-unit__tag {
+  text-align: right;
+  color: var(--color-dark-shade-25);
+  font-weight: 400;
+  min-width: 40px;
+}
+
+.colors-type-section {
+  padding: 9.0625rem 0;
+}
+
+.colors-type-section__content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.colors-type-section__colors {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.colors-type-section__type {
+  display: flex;
+  flex-direction: column;
+  gap: 3.125rem;
+}
+
+.form-unit {
+  width: fit-content;
+}
+
+.form-unit__label {
+  display: flex;
+  justify-content: space-between;
+  font: var(--type-heading-h3);
+  text-transform: uppercase;
+}
+
+.form-unit__subtitle {
+  color: var(--color-dark-shade-50);
+  font-weight: 400;
+}
+
+.form-unit__content {
+  margin-top: 5px;
+}
+
+.field.field_focused {
+  border: 1px solid var(--color-dark-shade-50);
+}
+
+.field.field_hovered {
+  border: 1px solid var(--color-dark-shade-50);
+}
+
+.field.field_always-hovered {
+  border: 1px solid var(--color-dark-shade-50);
+}
+
+.field_size_l {
+  width: 20rem;
+}
+
+.field_size_m {
+  width: 16.625rem;
+}
+
+.field_size_s {
+  width: 9.375rem;
+}
+
+.field {
+  min-height: 2.75rem;
+  border-radius: 4px;
+  border: 1px solid var(--color-dark-shade-25);
+  outline: none;
+  display: flex;
+  align-items: center;
+  padding: 0 0.9375rem;
+  font: var(--type-body);
+  color: var(--color-dark-shade-75);
+}
+
+.text-field::placeholder {
+  color: var(--color-dark-shade-25);
+}
+
+.counter {
+  display: flex;
+  justify-content: space-between;
+}
+
+.counter__label {
+  font: var(--type-heading-h3);
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+}
+
+.counter__interface {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-width: 92px;
+}
+
+.counter__button {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: transparent;
+  border: 1px solid var(--color-dark-shade-25);
+  position: relative;
+  color: var(--color-dark-shade-50);
+}
+
+.counter__button:hover {
+  cursor: pointer;
+  border: 1px solid var(--color-dark-shade-50);
+}
+
+.counter__button_disabled {
+  border: 1px solid #eaeaed;
+  color: #eaeaed;
+}
+
+.counter__button_disabled:hover {
+  cursor: default;
+  border: 1px solid var(--color-dark-shade-5);
+}
+
+.counter__value {
+  font: var(--type-heading-h3);
+  color: var(--color-dark-shade-100);
+}
+
+:root {
+  --animation-length: 0.15s;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown_opened .dropdown__select {
+  border-radius: 4px 4px 0 0;
+  border: 1px solid var(--color-dark-shade-50);
+  transition: border-radius 0s 0s;
+}
+.dropdown_opened .dropdown__menu {
+  grid-template-rows: 1fr;
+  border-width: 1px;
+  padding: 0.4375rem;
+  padding-left: 0.9375rem;
+  transition: grid-template-rows var(--animation-length) ease-out, padding calc(var(--animation-length));
+}
+
+.dropdown__select {
+  transition: border-radius var(--animation-length) var(--animation-length);
+  cursor: pointer;
+}
+
+.dropdown__menu {
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  background: #fff;
+  border-width: 0px;
+  border-color: var(--color-dark-shade-50);
+  border-style: solid;
+  border-top: 0;
+  border-radius: 0 0 4px 4px;
+  padding: 0rem 0.4375rem 0rem 0.9375rem;
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--animation-length) ease-out, border-width 0s ease-out var(--animation-length), padding calc(var(--animation-length));
+}
+
+.dropdown__menu-content {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4375rem;
+}
+
+.form-elements-section__fields {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.form-elements-section__row {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-elements-section {
+  padding: 8.75rem 0 5rem;
+}

@@ -1,0 +1,17 @@
+mixin type-unit(options)
+  //- options = {tag, text, mods=["mod1", "mod2", ...]}
+
+  -
+    let unitClassName = 'type-unit';
+
+    //- Add modifiers to class name
+    if ( Object.hasOwn(options, 'mods') && options.mods) {
+      //- If modifiers were passed to mixin
+      options.mods.forEach((element) => {
+        unitClassName += ` type-unit_${element}`;
+      });
+    }
+
+  div(class=unitClassName)&attributes(attributes)
+    .type-unit__tag!= options.tag
+    .type-unit__text!= options.text

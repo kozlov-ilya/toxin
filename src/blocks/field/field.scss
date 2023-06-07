@@ -1,0 +1,18 @@
+@use '../../scss/abstracts/functions' as f;
+
+@forward '_focused/field_focused.scss';
+@forward '_hovered/field_hovered.scss';
+@forward '_always-hovered/field_always-hovered.scss';
+@forward './_size/index';
+
+.field {
+  min-height: f.toRem(44);
+  border-radius: 4px;
+  border: 1px solid var(--color-dark-shade-25);
+  outline: none;
+  display: flex;
+  align-items: center;
+  padding: 0 f.toRem(15);
+  font: var(--type-body);
+  color: var(--color-dark-shade-75);
+}

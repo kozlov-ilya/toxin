@@ -1,0 +1,9 @@
+@use '../../scss/abstracts/functions' as f;
+
+@forward '../layout/layout.scss';
+
+@forward './__fields/form-elements-section__fields.scss';
+
+.form-elements-section {
+  padding: f.toRem(140) 0 f.toRem(80);
+}

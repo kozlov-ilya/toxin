@@ -1,0 +1,20 @@
+include ../layout/layout
+include __fields/form-elements-section__fields
+
+mixin form-elements-section(options)
+  //- options = {options, mods=["mod1", "mod2", ...]}
+
+  -
+    let unitClassName = 'form-elements-section';
+
+    //- Add modifiers to class name
+    if ( Object.hasOwn(options, 'mods') && options.mods) {
+      //- If modifiers were passed to mixin
+      options.mods.forEach((element) => {
+        unitClassName += ` form-elements-section_${element}`;
+      });
+    }
+
+  section(class=unitClassName)&attributes(attributes)
+    +layout({})
+      +form-elements-section__fields({})

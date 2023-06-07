@@ -1,0 +1,17 @@
+mixin layout(options)
+  //- options = {options, mods=["mod1", "mod2", ...]}
+
+  -
+    let unitClassName = 'layout';
+
+    //- Add modifiers to class name
+    if ( Object.hasOwn(options, 'mods') && options.mods) {
+      //- If modifiers were passed to mixin
+      options.mods.forEach((element) => {
+        unitClassName += ` layout_${element}`;
+      });
+    }
+
+  div(class=unitClassName)&attributes(attributes)
+    .layout-container
+      block

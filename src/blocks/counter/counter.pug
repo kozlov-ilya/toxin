@@ -1,0 +1,20 @@
+mixin counter(options)
+  //- options = {options, mods=["mod1", "mod2", ...]}
+
+  -
+    let unitClassName = 'counter';
+
+    //- Add modifiers to class name
+    if ( Object.hasOwn(options, 'mods') && options.mods) {
+      //- If modifiers were passed to mixin
+      options.mods.forEach((element) => {
+        unitClassName += ` counter_${element}`;
+      });
+    }
+
+  div(class=unitClassName)&attributes(attributes)
+    .counter__label!= options.label
+    .counter__interface
+      button.counter__button.counter__button_decreasing -
+      .counter__value 0
+      button.counter__button.counter__button_increasing +

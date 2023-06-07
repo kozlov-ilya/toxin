@@ -1,0 +1,58 @@
+@use '../../scss/abstracts/functions' as f;
+
+@forward '../counter/counter.scss';
+
+:root {
+  --animation-length: 0.15s;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown_opened {
+  .dropdown__select {
+    border-radius: 4px 4px 0 0;
+    border: 1px solid var(--color-dark-shade-50);
+    transition: border-radius 0s 0s;
+  }
+
+  .dropdown__menu {
+    grid-template-rows: 1fr;
+    border-width: 1px;
+    padding: f.toRem(7);
+    padding-left: f.toRem(15);
+    transition: grid-template-rows var(--animation-length) ease-out,
+      padding calc(var(--animation-length));
+  }
+}
+
+.dropdown__select {
+  transition: border-radius var(--animation-length) var(--animation-length);
+  cursor: pointer;
+}
+
+.dropdown__menu {
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  background: #fff;
+  border-width: 0px;
+  border-color: var(--color-dark-shade-50);
+  border-style: solid;
+  border-top: 0;
+  border-radius: 0 0 4px 4px;
+  padding: f.toRem(0) f.toRem(7) f.toRem(0) f.toRem(15);
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--animation-length) ease-out,
+    border-width 0s ease-out var(--animation-length),
+    padding calc(var(--animation-length));
+}
+
+.dropdown__menu-content {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: f.toRem(7);
+}

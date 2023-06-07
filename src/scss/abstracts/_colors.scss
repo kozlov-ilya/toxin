@@ -1,0 +1,33 @@
+:root {
+  /* Color palette */
+  --color-dark-shade-100: rgba(31, 32, 65, 1);
+  --color-dark-shade-75: #575871;
+  --color-dark-shade-50: #8f90a0;
+  --color-dark-shade-25: #c7c7cf;
+  --color-dark-shade-5: #f3f4f5;
+  --color-purple: #bc9cff;
+  --color-bluish-purple: #8ba4f9;
+  --color-green: #6fcf97;
+  --color-light-blue: #66d2ea;
+  --color-white: #fff;
+
+  /* Colors */
+  --text-primary: var(--color-dark-shade-75);
+  --text-secondary: var(--color-dark-shade-50);
+  --heading-primary: var(--color-dark-shade-100);
+  --gradient-bg-primary: linear-gradient(
+    180deg,
+    var(--color-purple) 0%,
+    var(--color-bluish-purple) 100%
+  );
+  --gradient-bg-secondary: var(--color-white);
+  --gradient-bg-additional: linear-gradient(
+    180deg,
+    var(--color-green) 0%,
+    var(--color-light-blue) 100%
+  );
+  --btn-text-primary: var(--color-white);
+  --btn-text-secondary: var(--color-purple);
+  --link-text-primary: var(--color-purple);
+  --link-text-hover: var(--color-dark-shade-50);
+}

@@ -1,0 +1,29 @@
+@use '../../scss/abstracts/functions' as f;
+
+@forward '../layout/layout.scss';
+@forward '../color-unit/color-unit.scss';
+@forward '../type-unit/type-unit.scss';
+
+.colors-type-section {
+  padding: f.toRem(145) 0;
+}
+
+.colors-type-section__content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.colors-type-section__col {
+}
+
+.colors-type-section__colors {
+  display: flex;
+  flex-direction: column;
+  gap: f.toRem(20);
+}
+
+.colors-type-section__type {
+  display: flex;
+  flex-direction: column;
+  gap: f.toRem(50);
+}

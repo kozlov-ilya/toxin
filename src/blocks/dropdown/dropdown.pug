@@ -1,0 +1,23 @@
+include ../counter/counter
+
+mixin dropdown(options)
+  //- options = {options, mods=["mod1", "mod2", ...]}
+
+  -
+    let unitClassName = 'dropdown';
+
+    //- Add modifiers to class name
+    if ( Object.hasOwn(options, 'mods') && options.mods) {
+      //- If modifiers were passed to mixin
+      options.mods.forEach((element) => {
+        unitClassName += ` dropdown_${element}`;
+      });
+    }
+
+  div(class=unitClassName)&attributes(attributes)
+    .dropdown__select.field.field_size_l!= options.value
+    .dropdown__menu
+      .dropdown__menu-content
+        +counter({label: 'спальни'})
+        +counter({label: 'кровати'})
+        +counter({label: 'ванные комнаты'})

@@ -1,0 +1,21 @@
+mixin logo(options)
+  //- options = {options, mods=["mod1", "mod2", ...]}
+
+  -
+    let unitClassName = 'logo';
+
+    //- Add modifiers to class name
+    if ( Object.hasOwn(options, 'mods') && options.mods) {
+      //- If modifiers were passed to mixin
+      options.mods.forEach((element) => {
+        unitClassName += ` logo_${element}`;
+      });
+    }
+
+  div(class=unitClassName)&attributes(attributes)
+    img.logo__img(
+      src=require('./assets/logo.svg'),
+      alt='logo',
+      width=48,
+      height=48
+    )

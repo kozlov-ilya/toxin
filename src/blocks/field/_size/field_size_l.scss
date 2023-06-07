@@ -1,0 +1,5 @@
+@use '../../../scss/abstracts/functions' as f;
+
+.field_size_l {
+  width: f.toRem(320);
+}

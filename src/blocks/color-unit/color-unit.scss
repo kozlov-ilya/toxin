@@ -1,0 +1,32 @@
+@use '../../scss/abstracts/functions' as f;
+
+@forward './_color/color-unit_color_ds100.scss';
+@forward './_color/color-unit_color_ds75.scss';
+@forward './_color/color-unit_color_ds50.scss';
+@forward './_color/color-unit_color_ds25.scss';
+@forward './_color/color-unit_color_ds5.scss';
+@forward './_color/color-unit_color_purple.scss';
+@forward './_color/color-unit_color_green.scss';
+
+.color-unit {
+  display: flex;
+  gap: f.toRem(40);
+}
+
+.color-unit__icon {
+  width: 70px;
+  height: 70px;
+  border-radius: 6px;
+}
+
+.color-unit__label {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font: var(--type-heading-h2);
+}
+
+.color-unit__subtitle {
+  font-weight: 400;
+  text-transform: uppercase;
+}

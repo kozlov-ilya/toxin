@@ -1,0 +1,17 @@
+@forward '../../form-unit/form-unit.scss';
+@forward '../../field/field.scss';
+@forward '../../text-field/text-field.scss';
+@forward '../../masked-text-field/masked-text-field.scss';
+@forward '../../dropdown/dropdown.scss';
+
+.form-elements-section__fields {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.form-elements-section__row {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}

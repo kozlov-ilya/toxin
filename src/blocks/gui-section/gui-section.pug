@@ -1,0 +1,19 @@
+include ../logo/logo
+
+mixin gui-section(options)
+  //- options = {options, mods=["mod1", "mod2", ...]}
+
+  -
+    let unitClassName = 'gui-section';
+
+    //- Add modifiers to class name
+    if ( Object.hasOwn(options, 'mods') && options.mods) {
+      //- If modifiers were passed to mixin
+      options.mods.forEach((element) => {
+        unitClassName += ` gui-section_${element}`;
+      });
+    }
+
+  div(class=unitClassName)&attributes(attributes)
+    +logo({}).gui-section__logo
+    block

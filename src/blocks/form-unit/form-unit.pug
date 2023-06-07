@@ -1,0 +1,20 @@
+mixin form-unit(options)
+  //- options = {title, subtitle, mods=["mod1", "mod2", ...]}
+
+  -
+    let unitClassName = 'form-unit';
+
+    //- Add modifiers to class name
+    if ( Object.hasOwn(options, 'mods') && options.mods) {
+      //- If modifiers were passed to mixin
+      options.mods.forEach((element) => {
+        unitClassName += ` form-unit_${element}`;
+      });
+    }
+
+  div(class=unitClassName)&attributes(attributes)
+    .form-unit__label
+      .form-unit__title!= options.title
+      .form-unit__subtitle!= options.subtitle
+    .form-unit__content
+      block

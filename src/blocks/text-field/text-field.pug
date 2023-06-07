@@ -1,0 +1,15 @@
+mixin text-field(options)
+  //- options = {options, mods=["mod1", "mod2", ...]}
+
+  -
+    let unitClassName = 'text-field';
+
+    //- Add modifiers to class name
+    if ( Object.hasOwn(options, 'mods') && options.mods) {
+      //- If modifiers were passed to mixin
+      options.mods.forEach((element) => {
+        unitClassName += ` text-field_${element}`;
+      });
+    }
+
+  input.field(class=unitClassName)&attributes(attributes)

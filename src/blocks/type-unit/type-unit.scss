@@ -1,0 +1,18 @@
+@use '../../scss/abstracts/functions' as f;
+
+@forward './_type/type-unit_type_body.scss';
+@forward './_type/type-unit_type_h1.scss';
+@forward './_type/type-unit_type_h2.scss';
+@forward './_type/type-unit_type_h3.scss';
+
+.type-unit {
+  display: flex;
+  gap: f.toRem(30);
+}
+
+.type-unit__tag {
+  text-align: right;
+  color: var(--color-dark-shade-25);
+  font-weight: 400;
+  min-width: 40px;
+}

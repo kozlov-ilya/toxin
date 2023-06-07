@@ -1,0 +1,19 @@
+mixin color-unit(options)
+  //- options = {title, subtitle, mods=["mod1", "mod2", ...]}
+
+  -
+    let unitClassName = 'color-unit';
+
+    //- Add modifiers to class name
+    if ( Object.hasOwn(options, 'mods') && options.mods) {
+      //- If modifiers were passed to mixin
+      options.mods.forEach((element) => {
+        unitClassName += ` color-unit_${element}`;
+      });
+    }
+
+  div(class=unitClassName)&attributes(attributes)
+    .color-unit__icon
+    .color-unit__label
+      .color-unit__title!= options.title
+      .color-unit__subtitle!= options.subtitle

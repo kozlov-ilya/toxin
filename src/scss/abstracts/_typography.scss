@@ -1,0 +1,27 @@
+:root {
+  /* Typography */
+  --font-fallback: 'Montserrat', sans-serif;
+
+  --font-body: var(--font-fallback);
+  --font-heading: var(--font-fallback);
+
+  --base-font-size: 100%;
+  --base-line-height: 1.2;
+
+  --body-line-height: 1.71;
+  --heading-line-height: 1.22;
+
+  --body-font-size: 0.875rem;
+  --heading-h1-font-size: 1.5rem;
+  --heading-h2-font-size: 1.1875rem;
+  --heading-h3-font-size: 0.75rem;
+
+  --type-body: 400 var(--body-font-size) / var(--body-line-height)
+    var(--font-body);
+  --type-heading-h1: 700 var(--heading-h1-font-size) /
+    var(--heading-line-height) var(--font-heading);
+  --type-heading-h2: 700 var(--heading-h2-font-size) /
+    var(--heading-line-height) var(--font-heading);
+  --type-heading-h3: 700 var(--heading-h3-font-size) /
+    var(--heading-line-height) var(--font-heading);
+}

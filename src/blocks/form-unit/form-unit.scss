@@ -1,0 +1,19 @@
+.form-unit {
+  width: fit-content;
+}
+
+.form-unit__label {
+  display: flex;
+  justify-content: space-between;
+  font: var(--type-heading-h3);
+  text-transform: uppercase;
+}
+
+.form-unit__subtitle {
+  color: var(--color-dark-shade-50);
+  font-weight: 400;
+}
+
+.form-unit__content {
+  margin-top: 5px;
+}

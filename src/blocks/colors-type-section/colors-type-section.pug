@@ -1,0 +1,36 @@
+include ../layout/layout
+include ../color-unit/color-unit
+include ../type-unit/type-unit
+
+mixin colors-type-section(options)
+  //- options = {options, mods=["mod1", "mod2", ...]}
+
+  -
+    let unitClassName = 'colors-type-section';
+
+    //- Add modifiers to class name
+    if ( Object.hasOwn(options, 'mods') && options.mods) {
+      //- If modifiers were passed to mixin
+      options.mods.forEach((element) => {
+        unitClassName += ` colors-type-section_${element}`;
+      });
+    }
+
+  section(class=unitClassName)&attributes(attributes)
+    +layout({})
+      .colors-type-section__content
+        .colors-type-section__col
+          .colors-type-section__colors
+            +color-unit({title:'Dark Shade 100%', subtitle: '#1F2041', mods: ['color_ds100']})
+            +color-unit({title:'Dark Shade 75%', subtitle: '#1F2041', mods: ['color_ds75']})
+            +color-unit({title:'Dark Shade 50%', subtitle: '#1F2041', mods: ['color_ds50']})
+            +color-unit({title:'Dark Shade 25%', subtitle: '#1F2041', mods: ['color_ds25']})
+            +color-unit({title:'Dark Shade 5%', subtitle: '#1F2041', mods: ['color_ds5']})
+            +color-unit({title:'Purple', subtitle: '#BC9CFF', mods: ['color_purple']})
+            +color-unit({title:'Green', subtitle: '#6FCF97', mods: ['color_green']})
+        .colors-type-section__col
+          .colors-type-section__type
+            +type-unit({tag: 'H1', text: 'This one is the sub-section or<br>widget title', mods: ['type_h1']})
+            +type-unit({tag: 'H2', text: 'Next one is the item title inside<br>widgets', mods: ['type_h2']})
+            +type-unit({tag: 'H3', text: 'This is a label or CTA text', mods: ['type_h3']})
+            +type-unit({tag: 'Body', text: 'This is the body text which is used for most<br>of the design, like paragraphs, lists, etc.', mods: ['type_body']})
