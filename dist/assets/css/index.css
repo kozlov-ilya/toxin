@@ -298,7 +298,15 @@ select {
   color: var(--color-dark-shade-75);
 }
 
+.field::placeholder {
+  color: var(--color-dark-shade-25);
+}
+
 .text-field::placeholder {
+  color: var(--color-dark-shade-25);
+}
+
+.masked-text-field::placeholder {
   color: var(--color-dark-shade-25);
 }
 

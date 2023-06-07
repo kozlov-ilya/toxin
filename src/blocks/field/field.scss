@@ -16,3 +16,7 @@
   font: var(--type-body);
   color: var(--color-dark-shade-75);
 }
+
+.field::placeholder {
+  color: var(--color-dark-shade-25);
+}
