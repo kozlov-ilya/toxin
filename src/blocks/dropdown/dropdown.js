@@ -1,7 +1,5 @@
 import '../counter/counter';
 
-const dropdowns = document.querySelectorAll('.dropdown');
-
 function loadDropdownCounters(dropdown) {
   let dropdownCountersMap = new Map();
 
@@ -89,12 +87,19 @@ function handleDropdownCounterButtonsClick(event) {
 }
 
 function handleDropdownSelectClick(event) {
+  const dropdowns = document.querySelectorAll('.dropdown');
   /* Cross-Browser event */
   event = event || window.event;
 
   if (event.target.closest('.dropdown__select')) {
+    /* Dropdown select was clicked */
     let dropdownSelect = event.target;
     let dropdown = dropdownSelect.parentElement;
+    /* Close all dropdowns except clicked */
+    dropdowns.forEach((e) => {
+      if (!e.isEqualNode(dropdown)) e.classList.remove('dropdown_opened');
+    });
+    /* Toggle clicked dropdown */
     dropdown.classList.toggle('dropdown_opened');
     return;
   }
@@ -109,6 +114,8 @@ function handleDropdownSelectClick(event) {
 
 document.addEventListener('click', handleDropdownSelectClick);
 
+const dropdowns = document.querySelectorAll('.dropdown');
+console.log(dropdowns);
 dropdowns.forEach((dropdown) => {
   dropdown.addEventListener('click', handleDropdownCounterButtonsClick);
 });

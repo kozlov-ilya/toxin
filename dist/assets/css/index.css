@@ -360,7 +360,7 @@ select {
 }
 
 :root {
-  --animation-length: 0.15s;
+  --animation-length: 0.1s;
 }
 
 .dropdown {
@@ -390,6 +390,7 @@ select {
   top: 100%;
   width: 100%;
   background: #fff;
+  z-index: 1;
   border-width: 0px;
   border-color: var(--color-dark-shade-50);
   border-style: solid;

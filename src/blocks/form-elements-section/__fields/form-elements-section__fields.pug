@@ -28,6 +28,16 @@ mixin form-elements-section__fields(options)
           value='This is pretty awesome'
         )
       +form-unit({title: 'Dropdown'})
-        +dropdown({value: 'Комплектация'})(data-default-value='Комплектация')
+        +dropdown({value: 'Комплектация', counters: ['спальни', 'кровати', 'ванные комнаты']})(
+          data-default-value='Комплектация'
+        )
+      +form-unit({title: 'Dropdown'})
+        +dropdown({value: 'Сколько гостей', counters: ['взрослые', 'дети', 'младенцы']})(
+          data-default-value='Сколько гостей'
+        )
+      +form-unit({title: 'Dropdown'})
+        +dropdown({value: 'Сколько гостей', counters: ['взрослые', 'дети', 'младенцы']})(
+          data-default-value='Сколько гостей'
+        )
       +form-unit({title: 'masked text field', subtitle: ''})
         +masked-text-field({}).field_size_l(placeholder='ДД.ММ.ГГГГ')

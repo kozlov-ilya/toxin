@@ -18,6 +18,5 @@ mixin dropdown(options)
     .dropdown__select.field.field_size_l!= options.value
     .dropdown__menu
       .dropdown__menu-content
-        +counter({label: 'спальни'})
-        +counter({label: 'кровати'})
-        +counter({label: 'ванные комнаты'})
+        each counter in options.counters
+          +counter({label: counter})
