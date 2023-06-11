@@ -30,6 +30,16 @@ eval("const counters = document.querySelectorAll('.counter');\r\n\r\nfunction ge
 
 /***/ }),
 
+/***/ "./src/blocks/date-dropdown/date-dropdown.js":
+/*!***************************************************!*\
+  !*** ./src/blocks/date-dropdown/date-dropdown.js ***!
+  \***************************************************/
+/***/ (() => {
+
+eval("function handleDropdownSelectClick(event) {\r\n  const dropdowns = document.querySelectorAll('.date-dropdown');\r\n\r\n  if (event.target.closest('.date-dropdown__select')) {\r\n    /* Dropdown select was clicked */\r\n    let dropdownSelect = event.target;\r\n    let dropdown = dropdownSelect.parentElement;\r\n    /* Close all dropdowns except clicked */\r\n    dropdowns.forEach((e) => {\r\n      if (!e.isEqualNode(dropdown)) e.classList.remove('date-dropdown_opened');\r\n    });\r\n    /* Toggle clicked dropdown */\r\n    dropdown.classList.toggle('date-dropdown_opened');\r\n    return;\r\n  }\r\n\r\n  if (!event.target.closest('.date-dropdown__menu')) {\r\n    /* If clicked outside of a dropdown menu - close all dropdowns */\r\n    dropdowns.forEach((e) => {\r\n      e.classList.remove('date-dropdown_opened');\r\n    });\r\n  }\r\n}\r\n\r\ndocument.addEventListener('click', handleDropdownSelectClick);\r\n\n\n//# sourceURL=webpack://template/./src/blocks/date-dropdown/date-dropdown.js?");
+
+/***/ }),
+
 /***/ "./src/blocks/dropdown/dropdown.js":
 /*!*****************************************!*\
   !*** ./src/blocks/dropdown/dropdown.js ***!
@@ -58,7 +68,7 @@ eval("const fields = document.querySelectorAll('.field');\r\n\r\n// Hover handle
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _field_field__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../field/field */ \"./src/blocks/field/field.js\");\n/* harmony import */ var _field_field__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_field_field__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _dropdown_dropdown__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../dropdown/dropdown */ \"./src/blocks/dropdown/dropdown.js\");\n/* harmony import */ var _masked_text_field_masked_text_field__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../masked-text-field/masked-text-field */ \"./src/blocks/masked-text-field/masked-text-field.js\");\n\r\n\r\n\r\n\n\n//# sourceURL=webpack://template/./src/blocks/form-elements-section/__fields/form-elements-section__fields.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _field_field__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../field/field */ \"./src/blocks/field/field.js\");\n/* harmony import */ var _field_field__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_field_field__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _dropdown_dropdown__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../dropdown/dropdown */ \"./src/blocks/dropdown/dropdown.js\");\n/* harmony import */ var _date_dropdown_date_dropdown__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../date-dropdown/date-dropdown */ \"./src/blocks/date-dropdown/date-dropdown.js\");\n/* harmony import */ var _date_dropdown_date_dropdown__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_date_dropdown_date_dropdown__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var _masked_text_field_masked_text_field__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../masked-text-field/masked-text-field */ \"./src/blocks/masked-text-field/masked-text-field.js\");\n\r\n\r\n\r\n\r\n\n\n//# sourceURL=webpack://template/./src/blocks/form-elements-section/__fields/form-elements-section__fields.js?");
 
 /***/ }),
 
