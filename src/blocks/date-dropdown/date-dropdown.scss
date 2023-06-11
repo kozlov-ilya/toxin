@@ -4,16 +4,6 @@
   position: relative;
 }
 
-.date-dropdown_opened {
-  .date-dropdown__select {
-    border: 1px solid var(--color-dark-shade-50);
-  }
-
-  .date-dropdown__select::before {
-    border-color: var(--color-dark-shade-75);
-  }
-}
-
 .date-dropdown__select {
   position: relative;
   cursor: pointer;

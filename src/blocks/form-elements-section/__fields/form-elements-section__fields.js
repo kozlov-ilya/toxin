@@ -1,4 +1,4 @@
 import '../../field/field';
 import '../../dropdown/dropdown';
-import '../../date-dropdown/date-dropdown';
+import '../../date-range-picker/date-range-picker';
 import '../../masked-text-field/masked-text-field';

@@ -1,0 +1,28 @@
+include ../date-dropdown/date-dropdown
+
+mixin date-range-picker(options)
+  //- options = {options, mods=["mod1", "mod2", ...]}
+
+  -
+    let unitClassName = 'date-range-picker';
+
+    //- Add modifiers to class name
+    if ( Object.hasOwn(options, 'mods') && options.mods) {
+      //- If modifiers were passed to mixin
+      options.mods.forEach((element) => {
+        unitClassName += ` date-range-picker_${element}`;
+      });
+    }
+
+  div(class=unitClassName)&attributes(attributes)
+    .date-range-picker__selects
+      +form-unit({title: options.titles[0], subtitle: options.subtitles[0]})
+        +date-dropdown({value: 'ДД.ММ.ГГГГ'}).date-range-picker__date-dropdown(
+          data-default-value='ДД.ММ.ГГГГ'
+        )
+      +form-unit({title: options.titles[1], subtitle: options.subtitles[1]})
+        +date-dropdown({value: 'ДД.ММ.ГГГГ'}).date-range-picker__date-dropdown(
+          data-default-value='ДД.ММ.ГГГГ'
+        )
+    .date-range-picker__popup
+      .date-range-picker__popup-content
