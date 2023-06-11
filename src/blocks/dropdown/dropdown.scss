@@ -17,6 +17,10 @@
     transition: border-radius 0s 0s;
   }
 
+  .dropdown__select::before {
+    border-color: var(--color-dark-shade-75);
+  }
+
   .dropdown__menu {
     grid-template-rows: 1fr;
     border-width: 1px;
@@ -28,8 +32,23 @@
 }
 
 .dropdown__select {
+  position: relative;
   transition: border-radius var(--animation-length) var(--animation-length);
   cursor: pointer;
+}
+
+.dropdown__select::before {
+  content: '';
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border: solid var(--color-dark-shade-50);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  right: 15px;
 }
 
 .dropdown__menu {
