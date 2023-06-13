@@ -1,0 +1,67 @@
+@use '../../scss/abstracts/functions' as f;
+
+.range-calendar {
+  max-width: f.toRem(320);
+  padding: f.toRem(20);
+  border-radius: 4px;
+  border: 1px solid var(--color-dark-shade-25);
+  background: #fff;
+}
+
+.range-calendar__month-switch {
+  display: flex;
+  justify-content: space-between;
+}
+.switch-month-btn {
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+}
+
+.range-calendar__month-year-label {
+  font: var(--type-heading-h2);
+}
+
+.range-calendar__body {
+  font-size: f.toRem(12);
+  margin-top: f.toRem(30);
+}
+
+.range-calendar__days-labels {
+  font-weight: 700;
+  color: var(--color-purple);
+}
+
+.range-calendar__days-row {
+  display: flex;
+}
+
+.range-calendar__day-unit {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.day-unit-btn {
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  border-radius: 50%;
+  color: var(--color-dark-shade-50);
+}
+
+.day-unit-btn:hover {
+  background: var(--gradient-bg-primary);
+  color: #fff;
+  font-weight: 700;
+}
+
+.range-calendar__days-values {
+}
+
+.range-calendar__footer {
+}

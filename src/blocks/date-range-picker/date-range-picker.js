@@ -1,4 +1,5 @@
 import '../date-dropdown/date-dropdown';
+import '../range-calendar/range-calendar';
 
 function handleDatePickerSelectClick(event) {
   const datePickers = document.querySelectorAll('.date-range-picker');

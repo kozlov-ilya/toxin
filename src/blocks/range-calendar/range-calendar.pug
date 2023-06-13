@@ -1,0 +1,58 @@
+mixin range-calendar(options)
+  //- options = {options, mods=["mod1", "mod2", ...]}
+
+  -
+    let unitClassName = 'range-calendar';
+
+    //- Add modifiers to class name
+    if ( Object.hasOwn(options, 'mods') && options.mods) {
+      //- If modifiers were passed to mixin
+      options.mods.forEach((element) => {
+        unitClassName += ` range-calendar_${element}`;
+      });
+    }
+
+    const daysLabels = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'];
+    let daysValues = [];
+    for (let i = 0; i <= 4; i++) {
+      let row = [];
+      for (let j = 1; j <= 7; j++) {
+        let day = i * 7 + j;
+        if (day <= 31) {
+          row.push(day);
+        }
+      }
+      daysValues.push(row);
+    }
+
+  div(class=unitClassName)&attributes(attributes)
+    .range-calendar__header
+      .range-calendar__month-switch
+        button.range-calendar__previous-month-btn.switch-month-btn
+          img.logo__img(
+            src=require('./assets/arrow_back.svg'),
+            alt='back',
+            width=17,
+            height=18
+          )
+        .range-calendar__month-year-label
+          span.range-calendar__month-label= 'Июнь '
+          span.range-calendar__year-label= '2023'
+        button.range-calendar__next-month-btn.switch-month-btn
+          img.logo__img(
+            src=require('./assets/arrow_forward.svg'),
+            alt='forward',
+            width=17,
+            height=18
+          )
+    .range-calendar__body
+      .range-calendar__days-labels
+        .range-calendar__days-row
+          each dayLabel in daysLabels
+            .range-calendar__day-unit= dayLabel
+      .range-calendar__days-values
+        each dayRow in daysValues
+          .range-calendar__days-row
+            each day in dayRow
+              button.range-calendar__day-unit.day-unit-btn= day
+    .range-calendar__footer

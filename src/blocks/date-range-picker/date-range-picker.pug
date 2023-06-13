@@ -1,4 +1,5 @@
 include ../date-dropdown/date-dropdown
+include ../range-calendar/range-calendar
 
 mixin date-range-picker(options)
   //- options = {options, mods=["mod1", "mod2", ...]}
@@ -26,3 +27,4 @@ mixin date-range-picker(options)
         )
     .date-range-picker__popup
       .date-range-picker__popup-content
+        +range-calendar({})

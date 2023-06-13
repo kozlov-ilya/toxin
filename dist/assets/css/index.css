@@ -450,6 +450,67 @@ select {
   right: 15px;
 }
 
+.range-calendar {
+  max-width: 20rem;
+  padding: 1.25rem;
+  border-radius: 4px;
+  border: 1px solid var(--color-dark-shade-25);
+  background: #fff;
+}
+
+.range-calendar__month-switch {
+  display: flex;
+  justify-content: space-between;
+}
+
+.switch-month-btn {
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+}
+
+.range-calendar__month-year-label {
+  font: var(--type-heading-h2);
+}
+
+.range-calendar__body {
+  font-size: 0.75rem;
+  margin-top: 1.875rem;
+}
+
+.range-calendar__days-labels {
+  font-weight: 700;
+  color: var(--color-purple);
+}
+
+.range-calendar__days-row {
+  display: flex;
+}
+
+.range-calendar__day-unit {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.day-unit-btn {
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  border-radius: 50%;
+  color: var(--color-dark-shade-50);
+}
+
+.day-unit-btn:hover {
+  background: var(--gradient-bg-primary);
+  color: #fff;
+  font-weight: 700;
+}
+
 :root {
   --animation-length: 0.1s;
 }
@@ -459,15 +520,25 @@ select {
   display: flex;
   flex-direction: column;
   gap: 0.3125rem;
+  position: relative;
 }
 
 .date-range-picker_opened .date-range-picker__popup {
-  grid-template-rows: 1fr;
-  border-width: 1px;
-  padding: 1.25rem;
-  transition: grid-template-rows var(--animation-length) ease-out, padding var(--animation-length);
+  top: calc(100% + 5px);
+  visibility: visible;
+  animation: fadeIn var(--animation-length);
+  opacity: 100;
+  transition: visibility 0s, top var(--animation-length);
 }
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 100;
+  }
+}
 .date-range-picker__selects {
   width: 100%;
   display: flex;
@@ -475,18 +546,12 @@ select {
 }
 
 .date-range-picker__popup {
-  width: 100%;
-  border: 1px solid var(--color-dark-shade-25);
-  border-radius: 4px;
-  padding: 0rem;
-  border-width: 0px;
-  display: grid;
-  grid-template-rows: 0fr;
-  transition: grid-template-rows var(--animation-length) ease-out, border-width 0s ease-out var(--animation-length), padding calc(var(--animation-length));
-}
-
-.date-range-picker__popup-content {
-  overflow: hidden;
+  position: absolute;
+  top: calc(100% + 15px);
+  z-index: 1;
+  visibility: hidden;
+  opacity: 0;
+  transition: top 0s var(--animation-length);
 }
 
 .form-elements-section__fields {

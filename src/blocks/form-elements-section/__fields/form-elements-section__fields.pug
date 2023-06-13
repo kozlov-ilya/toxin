@@ -3,6 +3,7 @@ include ../../text-field/text-field
 include ../../masked-text-field/masked-text-field
 include ../../dropdown/dropdown
 include ../../date-range-picker/date-range-picker
+include ../../range-calendar/range-calendar
 
 mixin form-elements-section__fields(options)
   //- options = {options, mods=["mod1", "mod2", ...]}
@@ -20,6 +21,7 @@ mixin form-elements-section__fields(options)
 
   div(class=unitClassName)&attributes(attributes)
     .form-elements-section__row
+      +range-calendar({})
       +form-unit({title: 'Text Field', subtitle: 'Default'})
         +text-field({}).field_size_l(type='email', placeholder='Email')
       +form-unit({title: 'Text Field', subtitle: 'hover/focus'})
@@ -36,3 +38,7 @@ mixin form-elements-section__fields(options)
         +masked-text-field({})(placeholder='ДД.ММ.ГГГГ')
 
       +date-range-picker({titles: ['date dropdown', 'date dropdown'], subtitles: ['', '']})
+      +form-unit({title: 'masked text field', subtitle: ''})
+        +masked-text-field({})(placeholder='ДД.ММ.ГГГГ')
+      +form-unit({title: 'masked text field', subtitle: ''})
+        +masked-text-field({})(placeholder='ДД.ММ.ГГГГ')
