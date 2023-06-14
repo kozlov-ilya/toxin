@@ -115,7 +115,6 @@ function handleDropdownSelectClick(event) {
 document.addEventListener('click', handleDropdownSelectClick);
 
 const dropdowns = document.querySelectorAll('.dropdown');
-console.log(dropdowns);
 dropdowns.forEach((dropdown) => {
   dropdown.addEventListener('click', handleDropdownCounterButtonsClick);
 });
