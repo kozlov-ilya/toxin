@@ -23,7 +23,7 @@ mixin range-calendar(options)
       daysValues.push(row);
     }
 
-  div(class=unitClassName)&attributes(attributes)(data-date='')
+  div(class=unitClassName)&attributes(attributes)(data-month='')
     .range-calendar__header
       .range-calendar__month-switch
         button.range-calendar__previous-month-btn.switch-month-btn
@@ -52,5 +52,5 @@ mixin range-calendar(options)
         each dayRow in daysValues
           .range-calendar__days-row
             each day in dayRow
-              button.range-calendar__day-unit.day-unit-btn= day
+              button.range-calendar__day-unit.day-unit-btn(data-date-value)= day
     .range-calendar__footer

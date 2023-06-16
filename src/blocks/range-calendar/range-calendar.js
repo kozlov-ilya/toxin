@@ -19,6 +19,10 @@ moment.updateLocale('ru', {
   ],
 });
 
+function printMomentDate(date) {
+  console.log(date.format('YYYY-MM-DD'));
+}
+
 function updateMonthLabel(calendar, newMonthLabel) {
   const monthLabel = calendar.querySelector('.range-calendar__month-label');
   monthLabel.innerHTML = newMonthLabel;
@@ -38,39 +42,57 @@ function getFirstWeekdayOfMonth(date) {
   return getDateYearAndMonth(date).isoWeekday();
 }
 
+function getFirstDayOfMonth(date) {
+  const momentDate = moment(date);
+  return momentDate.startOf('month');
+}
+
 function getLastDayOfMonth(date) {
   const momentDate = moment(date);
-  return parseInt(momentDate.endOf('month').format('DD'));
+  return momentDate.endOf('month');
 }
 
 function fillDaysPrefix(date, monthDays) {
   const momentDate = moment(date);
-  const firstWeekdayOfCurrentMonth = getFirstWeekdayOfMonth(currentDate);
+  const firstWeekdayOfMonth = getFirstWeekdayOfMonth(date);
   const lastDayOfPreviousMonth = getLastDayOfMonth(
-    momentDate.subtract(1, 'month')
+    momentDate.subtract(1, 'months')
   );
-  for (let i = 1; i < firstWeekdayOfCurrentMonth; i++) {
-    monthDays.array.push(
-      lastDayOfPreviousMonth - (firstWeekdayOfCurrentMonth - 1 - i)
-    );
+  const currentPrefixDay = lastDayOfPreviousMonth.subtract(
+    firstWeekdayOfMonth - 2,
+    'days'
+  );
+  for (let i = 1; i < firstWeekdayOfMonth; i++) {
+    monthDays.push(moment(currentPrefixDay));
+    currentPrefixDay.add(1, 'days');
   }
-  monthDays.prefix = firstWeekdayOfCurrentMonth - 1;
+
   return monthDays;
 }
 
 function fillDaysBody(date, monthDays) {
-  const lastDayOfCurrentMonth = getLastDayOfMonth(date);
-  for (let i = 1; i <= lastDayOfCurrentMonth; i++) {
-    monthDays.array.push(i);
+  const firstDayOfMonth = getFirstDayOfMonth(date);
+  const lastDayOfMonth = getLastDayOfMonth(date);
+  let curDay = firstDayOfMonth;
+  while (curDay < lastDayOfMonth) {
+    monthDays.push(moment(curDay));
+    curDay.add(1, 'days');
   }
-  monthDays.body = lastDayOfCurrentMonth;
   return monthDays;
 }
 
-function fillDaysSuffix(monthDays) {
-  monthDays.suffix = 42 - monthDays.array.length;
-  for (let i = 1; monthDays.array.length < 42; i++) {
-    monthDays.array.push(i);
+function fillDaysSuffix(date, monthDays) {
+  const momentDate = moment(date);
+  const lengthOfSuffix = 42 - monthDays.length;
+  const firstDayOfNextMonth = getFirstDayOfMonth(momentDate.add(1, 'months'));
+  const lastSuffixDay = moment(firstDayOfNextMonth).add(
+    lengthOfSuffix - 1,
+    'days'
+  );
+  const curDay = firstDayOfNextMonth;
+  while (curDay <= lastSuffixDay) {
+    monthDays.push(moment(curDay));
+    curDay.add(1, 'days');
   }
   return monthDays;
 }
@@ -78,23 +100,41 @@ function fillDaysSuffix(monthDays) {
 function fillDays(date, monthDays) {
   monthDays = fillDaysPrefix(date, monthDays);
   monthDays = fillDaysBody(date, monthDays);
-  monthDays = fillDaysSuffix(monthDays);
+  monthDays = fillDaysSuffix(date, monthDays);
   return monthDays;
 }
 
-function updateDays(calendar, date) {
-  let monthDays = { array: [], prefix: 0, body: 0, suffix: 0 };
-  monthDays = fillDays(date, monthDays);
-  const dayBtns = calendar.querySelectorAll('.day-unit-btn');
-  let countDayBtns = 0;
-  dayBtns.forEach((dayBtn) => {
-    dayBtn.innerHTML = monthDays.array[countDayBtns];
-    countDayBtns++;
+function colorDaysUnits(calendar, monthDays) {}
+
+function highlightCurrentDay(calendar) {}
+
+function printMonthDays(monthDays) {
+  monthDays.forEach((monthDay) => {
+    console.log(monthDay.format('YYYY-MM-DD'));
   });
 }
 
-function updateDateAttribute(calendar, value) {
-  calendar.dataset.date = value;
+function getDayNumberFromMomentDate(momentDate) {
+  return momentDate.format('D');
+}
+
+function updateDays(calendar, date) {
+  let monthDays = [];
+  monthDays = fillDays(date, monthDays);
+  const dayUnitBtns = calendar.querySelectorAll('.day-unit-btn');
+  let dayUnitBtnsCount = 0;
+  dayUnitBtns.forEach((dayUnitBtn) => {
+    dayUnitBtn.innerHTML = getDayNumberFromMomentDate(
+      monthDays[dayUnitBtnsCount]
+    );
+    dayUnitBtn.dataset.dateValue =
+      monthDays[dayUnitBtnsCount].format('YYYY-MM-DD');
+    dayUnitBtnsCount++;
+  });
+}
+
+function updateMonthAttribute(calendar, value) {
+  calendar.dataset.month = value;
 }
 
 function updateCalendar(calendar, date) {
@@ -102,7 +142,7 @@ function updateCalendar(calendar, date) {
   updateMonthLabel(calendar, momentDate.format('MMMM') + ' ');
   updateYearLabel(calendar, momentDate.format('YYYY'));
   updateDays(calendar, date);
-  updateDateAttribute(calendar, momentDate.format('YYYY-MM-DD'));
+  // updateMonthAttribute(calendar, momentDate.format('YYYY-MM'));
 }
 
 function subtractMonthsFromDate(date, months) {
@@ -118,13 +158,15 @@ function addMonthsToDate(date, months) {
 function handleSwitchMonthBtnClick(event) {
   const calendar = event.currentTarget;
   if (event.target.closest('.switch-month-btn')) {
-    const currentDate = new Date(Date.parse(calendar.dataset.date));
+    const currentDate = new Date(Date.parse(calendar.dataset.month));
     if (event.target.closest('.range-calendar__previous-month-btn')) {
       const newDate = subtractMonthsFromDate(currentDate, 1);
-      updateDateAttribute(calendar, moment(newDate).format('YYYY-MM-DD'));
+      // updateDateAttribute(calendar, moment(newDate).format('YYYY-MM-DD'));
+      updateCalendar(calendar, newDate);
     } else {
       const newDate = addMonthsToDate(currentDate, 1);
-      updateDateAttribute(calendar, moment(newDate).format('YYYY-MM-DD'));
+      // updateDateAttribute(calendar, moment(newDate).format('YYYY-MM-DD'));
+      updateCalendar(calendar, newDate);
     }
   }
 }
@@ -140,6 +182,6 @@ calendars.forEach((calendar) => {
 });
 
 /* Set event handlers */
-calendars.forEach((calendar) => {
-  calendar.addEventListener('click', handleSwitchMonthBtnClick);
-});
+// calendars.forEach((calendar) => {
+//   calendar.addEventListener('click', handleSwitchMonthBtnClick);
+// });
