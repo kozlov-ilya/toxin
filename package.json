@@ -15,6 +15,7 @@
     "cleave.js": "^1.6.0",
     "css-loader": "^6.7.3",
     "css-to-bem-file-structure": "^0.0.5",
+    "moment": "^2.29.4",
     "pug-plugin": "^4.9.7",
     "sass": "^1.62.0",
     "sass-loader": "^13.2.2",

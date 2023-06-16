@@ -14,18 +14,16 @@ mixin range-calendar(options)
 
     const daysLabels = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'];
     let daysValues = [];
-    for (let i = 0; i <= 4; i++) {
+    for (let i = 0; i <= 5; i++) {
       let row = [];
       for (let j = 1; j <= 7; j++) {
         let day = i * 7 + j;
-        if (day <= 31) {
-          row.push(day);
-        }
+        row.push(day);
       }
       daysValues.push(row);
     }
 
-  div(class=unitClassName)&attributes(attributes)
+  div(class=unitClassName)&attributes(attributes)(data-date='')
     .range-calendar__header
       .range-calendar__month-switch
         button.range-calendar__previous-month-btn.switch-month-btn
@@ -36,8 +34,8 @@ mixin range-calendar(options)
             height=18
           )
         .range-calendar__month-year-label
-          span.range-calendar__month-label= 'Июнь '
-          span.range-calendar__year-label= '2023'
+          span.range-calendar__month-label= ''
+          span.range-calendar__year-label= ''
         button.range-calendar__next-month-btn.switch-month-btn
           img.logo__img(
             src=require('./assets/arrow_forward.svg'),
