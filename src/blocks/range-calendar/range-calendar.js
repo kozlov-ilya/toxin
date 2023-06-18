@@ -19,6 +19,9 @@ moment.updateLocale('ru', {
   ],
 });
 
+/* Variables */
+let isFromDateChosen = false;
+
 function printMomentDate(date) {
   console.log(date.format('YYYY-MM-DD'));
 }
@@ -104,9 +107,26 @@ function fillDays(date, monthDays) {
   return monthDays;
 }
 
-function colorDaysUnits(calendar, monthDays) {}
+function colorDaysUnits(calendar, month) {
+  const dayUnitBtns = calendar.querySelectorAll('.day-unit-btn');
+  dayUnitBtns.forEach((dayUnitBtn) => {
+    dayUnitBtn.classList.remove('day-unit-btn_color_secondary');
+    if (moment(dayUnitBtn.dataset.dateValue).format('YYYY-MM') != month) {
+      dayUnitBtn.classList.add('day-unit-btn_color_secondary');
+    }
+  });
+}
 
-function highlightCurrentDay(calendar) {}
+function highlightCurrentDay(calendar) {
+  const dayUnitBtns = calendar.querySelectorAll('.day-unit-btn');
+  const currentMomentDate = moment().format('YYYY-MM-DD');
+  dayUnitBtns.forEach((dayUnitBtn) => {
+    dayUnitBtn.classList.remove('day-unit-btn_type_today');
+    if (currentMomentDate == dayUnitBtn.dataset.dateValue) {
+      dayUnitBtn.classList.add('day-unit-btn_type_today');
+    }
+  });
+}
 
 function printMonthDays(monthDays) {
   monthDays.forEach((monthDay) => {
@@ -131,6 +151,8 @@ function updateDays(calendar, date) {
       monthDays[dayUnitBtnsCount].format('YYYY-MM-DD');
     dayUnitBtnsCount++;
   });
+  highlightCurrentDay(calendar);
+  colorDaysUnits(calendar, moment(date).format('YYYY-MM'));
 }
 
 function updateMonthAttribute(calendar, value) {
@@ -142,7 +164,7 @@ function updateCalendar(calendar, date) {
   updateMonthLabel(calendar, momentDate.format('MMMM') + ' ');
   updateYearLabel(calendar, momentDate.format('YYYY'));
   updateDays(calendar, date);
-  // updateMonthAttribute(calendar, momentDate.format('YYYY-MM'));
+  updateMonthAttribute(calendar, momentDate.format('YYYY-MM'));
 }
 
 function subtractMonthsFromDate(date, months) {
@@ -161,14 +183,60 @@ function handleSwitchMonthBtnClick(event) {
     const currentDate = new Date(Date.parse(calendar.dataset.month));
     if (event.target.closest('.range-calendar__previous-month-btn')) {
       const newDate = subtractMonthsFromDate(currentDate, 1);
-      // updateDateAttribute(calendar, moment(newDate).format('YYYY-MM-DD'));
       updateCalendar(calendar, newDate);
     } else {
       const newDate = addMonthsToDate(currentDate, 1);
-      // updateDateAttribute(calendar, moment(newDate).format('YYYY-MM-DD'));
       updateCalendar(calendar, newDate);
     }
   }
+}
+
+function colorCalendarRange(calendar) {
+  const dateFrom = calendar.dataset.dateFrom;
+  const dateTo = calendar.dataset.dateTo;
+  const dayUnitBtns = calendar.querySelectorAll('.day-unit-btn');
+  dayUnitBtns.forEach((dayUnitBtn) => {
+    const dateValue = dayUnitBtn.dataset.dateValue;
+    dayUnitBtn.classList.remove('day-unit-btn_clicked');
+    dayUnitBtn.classList.remove('day-unit-btn_range_in');
+    dayUnitBtn.classList.remove('day-unit-btn_range_from');
+    dayUnitBtn.classList.remove('day-unit-btn_range_to');
+    if (dateValue == dateFrom || dateValue == dateTo) {
+      dayUnitBtn.classList.add('day-unit-btn_clicked');
+    }
+    if (dateTo) {
+      if (dateValue > dateFrom && dateValue < dateTo) {
+        dayUnitBtn.classList.add('day-unit-btn_range_in');
+      }
+      switch (dateValue) {
+        case dateFrom:
+          dayUnitBtn.classList.add('day-unit-btn_range_from');
+          break;
+        case dateTo:
+          dayUnitBtn.classList.add('day-unit-btn_range_to');
+          break;
+      }
+    }
+  });
+}
+
+function handleDayUnitBtnClicked(event) {
+  const calendar = event.currentTarget;
+  const dateFrom = calendar.dataset.dateFrom;
+  const dateTo = calendar.dataset.dateTo;
+
+  if (event.target.closest('.day-unit-btn')) {
+    const dayUnitBtn = event.target.closest('.day-unit-btn');
+    const momentDate = dayUnitBtn.dataset.dateValue;
+    if (dateFrom && !dateTo && momentDate > dateFrom) {
+      calendar.dataset.dateTo = momentDate;
+    } else {
+      calendar.dataset.dateTo = '';
+      calendar.dataset.dateFrom = momentDate;
+    }
+  }
+
+  colorCalendarRange(calendar);
 }
 
 /* Initialize calendars with default values */
@@ -182,6 +250,7 @@ calendars.forEach((calendar) => {
 });
 
 /* Set event handlers */
-// calendars.forEach((calendar) => {
-//   calendar.addEventListener('click', handleSwitchMonthBtnClick);
-// });
+calendars.forEach((calendar) => {
+  calendar.addEventListener('click', handleSwitchMonthBtnClick);
+  calendar.addEventListener('click', handleDayUnitBtnClicked);
+});

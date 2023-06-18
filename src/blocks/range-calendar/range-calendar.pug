@@ -23,7 +23,11 @@ mixin range-calendar(options)
       daysValues.push(row);
     }
 
-  div(class=unitClassName)&attributes(attributes)(data-month='')
+  div(class=unitClassName)&attributes(attributes)(
+    data-month='',
+    data-date-from='',
+    data-date-to=''
+  )
     .range-calendar__header
       .range-calendar__month-switch
         button.range-calendar__previous-month-btn.switch-month-btn

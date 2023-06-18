@@ -12,6 +12,7 @@
   display: flex;
   justify-content: space-between;
 }
+
 .switch-month-btn {
   background: transparent;
   border: none;
@@ -36,6 +37,8 @@
 
 .range-calendar__days-row {
   display: flex;
+  border-radius: 20px;
+  overflow: hidden;
 }
 
 .range-calendar__day-unit {
@@ -52,16 +55,60 @@
   border: none;
   border-radius: 50%;
   color: var(--color-dark-shade-50);
-}
-
-.day-unit-btn_color_secondary {
-  color: var(--color-dark-shade-25);
+  position: relative;
+  z-index: 2;
 }
 
 .day-unit-btn:hover {
   background: var(--gradient-bg-primary);
   color: #fff;
   font-weight: 700;
+}
+
+.day-unit-btn_color_secondary {
+  color: var(--color-dark-shade-25);
+}
+
+.day-unit-btn_type_today {
+  background: var(--gradient-bg-additional);
+  color: #fff;
+  font-weight: 700;
+}
+
+.day-unit-btn_clicked {
+  background: var(--gradient-bg-primary);
+  color: #fff;
+  font-weight: 700;
+}
+
+.day-unit-btn_range_from::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--gradient-bg-primary);
+  opacity: 25%;
+  border-radius: 50% 0 0 50%;
+  z-index: 1;
+}
+
+.day-unit-btn_range_to::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--gradient-bg-primary);
+  opacity: 25%;
+  border-radius: 0 50% 50% 0;
+}
+
+.day-unit-btn_range_in::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--gradient-bg-primary);
+  opacity: 25%;
 }
 
 .range-calendar__days-values {
