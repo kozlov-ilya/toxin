@@ -16,11 +16,21 @@
 
 .date-range-picker_opened {
   .date-range-picker__popup {
-    top: calc(100% + 5px);
-    visibility: visible;
-    animation: fadeIn var(--animation-length);
+    display: block;
+    animation: fadeIn var(--animation-length), slideUp var(--animation-length);
     opacity: 100;
-    transition: visibility 0s, top var(--animation-length);
+    top: calc(100% + 5px);
+    // transition: visibility 0s, top var(--animation-length);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    top: calc(100% + 15px);
+  }
+
+  to {
+    top: calc(100% + 5px);
   }
 }
 
@@ -42,9 +52,9 @@
 
 .date-range-picker__popup {
   position: absolute;
-  top: calc(100% + 15px);
+  display: none;
   z-index: 1;
-  visibility: hidden;
   opacity: 0;
+  top: calc(100% + 15px);
   transition: top 0s var(--animation-length);
 }

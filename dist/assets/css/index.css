@@ -539,7 +539,7 @@ select {
   background: var(--gradient-bg-primary);
   opacity: 25%;
   border-radius: 50% 0 0 50%;
-  z-index: 0;
+  z-index: -1;
 }
 
 .day-unit-btn_range_to::before {
@@ -550,6 +550,7 @@ select {
   background: var(--gradient-bg-primary);
   opacity: 25%;
   border-radius: 0 50% 50% 0;
+  z-index: -1;
 }
 
 .day-unit-btn_range_in::before {
@@ -559,6 +560,11 @@ select {
   height: 100%;
   background: var(--gradient-bg-primary);
   opacity: 25%;
+}
+
+.range-calendar__buttons {
+  display: flex;
+  justify-content: space-between;
 }
 
 :root {
@@ -574,13 +580,20 @@ select {
 }
 
 .date-range-picker_opened .date-range-picker__popup {
-  top: calc(100% + 5px);
-  visibility: visible;
-  animation: fadeIn var(--animation-length);
+  display: block;
+  animation: fadeIn var(--animation-length), slideUp var(--animation-length);
   opacity: 100;
-  transition: visibility 0s, top var(--animation-length);
+  top: calc(100% + 5px);
 }
 
+@keyframes slideUp {
+  from {
+    top: calc(100% + 15px);
+  }
+  to {
+    top: calc(100% + 5px);
+  }
+}
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -597,10 +610,10 @@ select {
 
 .date-range-picker__popup {
   position: absolute;
-  top: calc(100% + 15px);
+  display: none;
   z-index: 1;
-  visibility: hidden;
   opacity: 0;
+  top: calc(100% + 15px);
   transition: top 0s var(--animation-length);
 }
 

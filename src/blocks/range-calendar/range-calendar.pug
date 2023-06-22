@@ -58,3 +58,6 @@ mixin range-calendar(options)
             each day in dayRow
               button.range-calendar__day-unit.day-unit-btn(data-date-value)= day
     .range-calendar__footer
+      .range-calendar__buttons
+        button.range-calendar__clear-button= 'очистить'
+        button.range-calendar__submit-button= 'применить'

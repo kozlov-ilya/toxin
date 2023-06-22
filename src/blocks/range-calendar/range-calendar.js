@@ -20,12 +20,10 @@ moment.updateLocale('ru', {
 });
 
 /* Variables */
-let isFromDateChosen = false;
+const currentDate = new Date();
+const defaultDate = currentDate;
 
-function printMomentDate(date) {
-  console.log(date.format('YYYY-MM-DD'));
-}
-
+/* Functions */
 function updateMonthLabel(calendar, newMonthLabel) {
   const monthLabel = calendar.querySelector('.range-calendar__month-label');
   monthLabel.innerHTML = newMonthLabel;
@@ -128,12 +126,6 @@ function highlightCurrentDay(calendar) {
   });
 }
 
-function printMonthDays(monthDays) {
-  monthDays.forEach((monthDay) => {
-    console.log(monthDay.format('YYYY-MM-DD'));
-  });
-}
-
 function getDayNumberFromMomentDate(momentDate) {
   return momentDate.format('D');
 }
@@ -177,20 +169,6 @@ function addMonthsToDate(date, months) {
   return date;
 }
 
-function handleSwitchMonthBtnClick(event) {
-  const calendar = event.currentTarget;
-  if (event.target.closest('.switch-month-btn')) {
-    const currentDate = new Date(Date.parse(calendar.dataset.month));
-    if (event.target.closest('.range-calendar__previous-month-btn')) {
-      const newDate = subtractMonthsFromDate(currentDate, 1);
-      updateCalendar(calendar, newDate);
-    } else {
-      const newDate = addMonthsToDate(currentDate, 1);
-      updateCalendar(calendar, newDate);
-    }
-  }
-}
-
 function colorCalendarRange(calendar) {
   const dateFrom = calendar.dataset.dateFrom;
   const dateTo = calendar.dataset.dateTo;
@@ -220,6 +198,33 @@ function colorCalendarRange(calendar) {
   });
 }
 
+function resetCalendar(calendar) {
+  calendar.dataset.dateFrom = '';
+  calendar.dataset.dateTo = '';
+  const dayUnitBtns = calendar.querySelectorAll('.day-unit-btn');
+  dayUnitBtns.forEach((dayUnitBtn) => {
+    dayUnitBtn.classList.remove('day-unit-btn_clicked');
+    dayUnitBtn.classList.remove('day-unit-btn_range_in');
+    dayUnitBtn.classList.remove('day-unit-btn_range_from');
+    dayUnitBtn.classList.remove('day-unit-btn_range_to');
+  });
+}
+
+/* Handlers */
+function handleSwitchMonthBtnClick(event) {
+  const calendar = event.currentTarget;
+  if (event.target.closest('.switch-month-btn')) {
+    const currentDate = new Date(Date.parse(calendar.dataset.month));
+    if (event.target.closest('.range-calendar__previous-month-btn')) {
+      const newDate = subtractMonthsFromDate(currentDate, 1);
+      updateCalendar(calendar, newDate);
+    } else {
+      const newDate = addMonthsToDate(currentDate, 1);
+      updateCalendar(calendar, newDate);
+    }
+  }
+}
+
 function handleDayUnitBtnClicked(event) {
   const calendar = event.currentTarget;
   const dateFrom = calendar.dataset.dateFrom;
@@ -239,11 +244,15 @@ function handleDayUnitBtnClicked(event) {
   colorCalendarRange(calendar);
 }
 
+function handleClearButtonClicked(event) {
+  const calendar = event.currentTarget;
+  if (event.target.closest('.range-calendar__clear-button')) {
+    resetCalendar(calendar);
+  }
+}
+
 /* Initialize calendars with default values */
 const calendars = document.querySelectorAll('.range-calendar');
-
-const currentDate = new Date();
-const defaultDate = currentDate;
 
 calendars.forEach((calendar) => {
   updateCalendar(calendar, defaultDate);
@@ -253,4 +262,5 @@ calendars.forEach((calendar) => {
 calendars.forEach((calendar) => {
   calendar.addEventListener('click', handleSwitchMonthBtnClick);
   calendar.addEventListener('click', handleDayUnitBtnClicked);
+  calendar.addEventListener('click', handleClearButtonClicked);
 });

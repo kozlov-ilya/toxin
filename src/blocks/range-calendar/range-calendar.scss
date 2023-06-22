@@ -89,7 +89,7 @@
   background: var(--gradient-bg-primary);
   opacity: 25%;
   border-radius: 50% 0 0 50%;
-  z-index: 1;
+  z-index: -1;
 }
 
 .day-unit-btn_range_to::before {
@@ -100,6 +100,7 @@
   background: var(--gradient-bg-primary);
   opacity: 25%;
   border-radius: 0 50% 50% 0;
+  z-index: -1;
 }
 
 .day-unit-btn_range_in::before {
@@ -111,8 +112,10 @@
   opacity: 25%;
 }
 
-.range-calendar__days-values {
+.range-calendar__footer {
 }
 
-.range-calendar__footer {
+.range-calendar__buttons {
+  display: flex;
+  justify-content: space-between;
 }
