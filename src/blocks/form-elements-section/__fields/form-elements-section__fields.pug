@@ -4,6 +4,7 @@ include ../../masked-text-field/masked-text-field
 include ../../dropdown/dropdown
 include ../../date-range-picker/date-range-picker
 include ../../filter-date-dropdown/filter-date-dropdown
+include ../../subscription-text-field/subscription-text-field
 
 mixin form-elements-section__fields(options)
   //- options = {options, mods=["mod1", "mod2", ...]}
@@ -41,3 +42,5 @@ mixin form-elements-section__fields(options)
       +form-unit({title: 'filter date dropdown', subtitle: ''})
         +filter-date-dropdown({})
     .form-elements-section__row
+      +form-unit({title: 'subscription text field', subtitle: ''})
+        +subscription-text-field({inputType: 'text', inputPlaceholder: 'Email'})

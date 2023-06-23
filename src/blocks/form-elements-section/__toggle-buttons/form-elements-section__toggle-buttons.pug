@@ -1,0 +1,15 @@
+mixin form-elements-section__toggle-buttons(options)
+  //- options = {options, mods=["mod1", "mod2", ...]}
+
+  -
+    let unitClassName = 'form-elements-section__toggle-buttons';
+
+    //- Add modifiers to class name
+    if ( Object.hasOwn(options, 'mods') && options.mods) {
+      //- If modifiers were passed to mixin
+      options.mods.forEach((element) => {
+        unitClassName += ` form-elements-section__toggle-buttons_${element}`;
+      });
+    }
+
+  div(class=unitClassName)&attributes(attributes)

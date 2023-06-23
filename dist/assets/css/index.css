@@ -657,6 +657,25 @@ select {
   transition: top 0s var(--animation-length);
 }
 
+.subscription-text-field {
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.subscription-text-field::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 44px;
+  height: 44px;
+  background-image: url(../img/arrow_forward.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+}
+
 .form-elements-section__fields {
   display: flex;
   flex-direction: column;
@@ -671,4 +690,8 @@ select {
 
 .form-elements-section {
   padding: 8.75rem 0 5rem;
+}
+
+.form-elements-section__content {
+  display: grid;
 }

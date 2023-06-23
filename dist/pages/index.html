@@ -102,285 +102,301 @@
       <section class="form-elements-section">
         <div class="layout">
           <div class="layout-container">
-            <div class="form-elements-section__fields">
-              <div class="form-elements-section__row">
-                <div class="form-unit">
-                  <div class="form-unit__label">
-                    <div class="form-unit__title">Text Field</div>
-                    <div class="form-unit__subtitle">Default</div>
-                  </div>
-                  <div class="form-unit__content"><input class="field text-field field_size_l" type="email"
-                      placeholder="Email"></div>
-                </div>
-                <div class="form-unit">
-                  <div class="form-unit__label">
-                    <div class="form-unit__title">Text Field</div>
-                    <div class="form-unit__subtitle">hover/focus</div>
-                  </div>
-                  <div class="form-unit__content"><input class="field text-field field_size_l field_always-hovered"
-                      type="text" placeholder="Text" value="This is pretty awesome"></div>
-                </div>
-                <div class="form-unit">
-                  <div class="form-unit__label">
-                    <div class="form-unit__title">Dropdown</div>
-                    <div class="form-unit__subtitle"></div>
-                  </div>
-                  <div class="form-unit__content">
-                    <div class="dropdown" data-default-value="Комплектация">
-                      <div class="dropdown__select field field_size_l">Комплектация</div>
-                      <div class="dropdown__menu">
-                        <div class="dropdown__menu-content">
-                          <div class="counter">
-                            <div class="counter__label">спальни</div>
-                            <div class="counter__interface"><button
-                                class="counter__button counter__button_decreasing">-</button>
-                              <div class="counter__value">0</div><button
-                                class="counter__button counter__button_increasing">+</button>
-                            </div>
-                          </div>
-                          <div class="counter">
-                            <div class="counter__label">кровати</div>
-                            <div class="counter__interface"><button
-                                class="counter__button counter__button_decreasing">-</button>
-                              <div class="counter__value">0</div><button
-                                class="counter__button counter__button_increasing">+</button>
-                            </div>
-                          </div>
-                          <div class="counter">
-                            <div class="counter__label">ванные комнаты</div>
-                            <div class="counter__interface"><button
-                                class="counter__button counter__button_decreasing">-</button>
-                              <div class="counter__value">0</div><button
-                                class="counter__button counter__button_increasing">+</button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+            <div class="form-elements-section__content">
+              <div class="form-elements-section__fields">
+                <div class="form-elements-section__row">
+                  <div class="form-unit">
+                    <div class="form-unit__label">
+                      <div class="form-unit__title">Text Field</div>
+                      <div class="form-unit__subtitle">Default</div>
                     </div>
+                    <div class="form-unit__content"><input class="field text-field field_size_l" type="email"
+                        placeholder="Email"></div>
                   </div>
-                </div>
-                <div class="form-unit">
-                  <div class="form-unit__label">
-                    <div class="form-unit__title">masked text field</div>
-                    <div class="form-unit__subtitle"></div>
-                  </div>
-                  <div class="form-unit__content"><input class="field field_size_l masked-text-field"
-                      placeholder="ДД.ММ.ГГГГ"></div>
-                </div>
-              </div>
-              <div class="form-elements-section__row">
-                <div class="date-range-picker">
-                  <div class="date-range-picker__selects">
-                    <div class="form-unit">
-                      <div class="form-unit__label">
-                        <div class="form-unit__title">Date dropdown</div>
-                        <div class="form-unit__subtitle"></div>
-                      </div>
-                      <div class="form-unit__content">
-                        <div
-                          class="date-dropdown date-range-picker__date-dropdown date-range-picker__date-dropdown-from"
-                          data-default-value="ДД.ММ.ГГГГ">
-                          <div class="date-dropdown__select field field_size_s">ДД.ММ.ГГГГ</div>
-                        </div>
-                      </div>
+                  <div class="form-unit">
+                    <div class="form-unit__label">
+                      <div class="form-unit__title">Text Field</div>
+                      <div class="form-unit__subtitle">hover/focus</div>
                     </div>
-                    <div class="form-unit">
-                      <div class="form-unit__label">
-                        <div class="form-unit__title">Date dropdown</div>
-                        <div class="form-unit__subtitle"></div>
-                      </div>
-                      <div class="form-unit__content">
-                        <div class="date-dropdown date-range-picker__date-dropdown date-range-picker__date-dropdown-to"
-                          data-default-value="ДД.ММ.ГГГГ">
-                          <div class="date-dropdown__select field field_size_s">ДД.ММ.ГГГГ</div>
-                        </div>
-                      </div>
+                    <div class="form-unit__content"><input class="field text-field field_size_l field_always-hovered"
+                        type="text" placeholder="Text" value="This is pretty awesome"></div>
+                  </div>
+                  <div class="form-unit">
+                    <div class="form-unit__label">
+                      <div class="form-unit__title">Dropdown</div>
+                      <div class="form-unit__subtitle"></div>
                     </div>
-                  </div>
-                  <div class="date-range-picker__popup">
-                    <div class="range-calendar" data-month="" data-date-from="" data-date-to="">
-                      <div class="range-calendar__header">
-                        <div class="range-calendar__month-switch"><button
-                            class="range-calendar__previous-month-btn switch-month-btn"><img class="logo__img"
-                              src="../assets/img/arrow_back.svg" alt="back" width="17" height="18"></button>
-                          <div class="range-calendar__month-year-label"><span
-                              class="range-calendar__month-label"></span><span
-                              class="range-calendar__year-label"></span></div><button
-                            class="range-calendar__next-month-btn switch-month-btn"><img class="logo__img"
-                              src="../assets/img/arrow_forward.svg" alt="forward" width="17" height="18"></button>
-                        </div>
-                      </div>
-                      <div class="range-calendar__body">
-                        <div class="range-calendar__days-labels">
-                          <div class="range-calendar__days-row">
-                            <div class="range-calendar__day-unit">Пн</div>
-                            <div class="range-calendar__day-unit">Вт</div>
-                            <div class="range-calendar__day-unit">Ср</div>
-                            <div class="range-calendar__day-unit">Чт</div>
-                            <div class="range-calendar__day-unit">Пт</div>
-                            <div class="range-calendar__day-unit">Сб</div>
-                            <div class="range-calendar__day-unit">Вс</div>
-                          </div>
-                        </div>
-                        <div class="range-calendar__days-values">
-                          <div class="range-calendar__days-row"><button class="range-calendar__day-unit day-unit-btn"
-                              data-date-value>1</button><button class="range-calendar__day-unit day-unit-btn"
-                              data-date-value>2</button><button class="range-calendar__day-unit day-unit-btn"
-                              data-date-value>3</button><button class="range-calendar__day-unit day-unit-btn"
-                              data-date-value>4</button><button class="range-calendar__day-unit day-unit-btn"
-                              data-date-value>5</button><button class="range-calendar__day-unit day-unit-btn"
-                              data-date-value>6</button><button class="range-calendar__day-unit day-unit-btn"
-                              data-date-value>7</button></div>
-                          <div class="range-calendar__days-row"><button class="range-calendar__day-unit day-unit-btn"
-                              data-date-value>8</button><button class="range-calendar__day-unit day-unit-btn"
-                              data-date-value>9</button><button class="range-calendar__day-unit day-unit-btn"
-                              data-date-value>10</button><button class="range-calendar__day-unit day-unit-btn"
-                              data-date-value>11</button><button class="range-calendar__day-unit day-unit-btn"
-                              data-date-value>12</button><button class="range-calendar__day-unit day-unit-btn"
-                              data-date-value>13</button><button class="range-calendar__day-unit day-unit-btn"
-                              data-date-value>14</button></div>
-                          <div class="range-calendar__days-row"><button class="range-calendar__day-unit day-unit-btn"
-                              data-date-value>15</button><button class="range-calendar__day-unit day-unit-btn"
-                              data-date-value>16</button><button class="range-calendar__day-unit day-unit-btn"
-                              data-date-value>17</button><button class="range-calendar__day-unit day-unit-btn"
-                              data-date-value>18</button><button class="range-calendar__day-unit day-unit-btn"
-                              data-date-value>19</button><button class="range-calendar__day-unit day-unit-btn"
-                              data-date-value>20</button><button class="range-calendar__day-unit day-unit-btn"
-                              data-date-value>21</button></div>
-                          <div class="range-calendar__days-row"><button class="range-calendar__day-unit day-unit-btn"
-                              data-date-value>22</button><button class="range-calendar__day-unit day-unit-btn"
-                              data-date-value>23</button><button class="range-calendar__day-unit day-unit-btn"
-                              data-date-value>24</button><button class="range-calendar__day-unit day-unit-btn"
-                              data-date-value>25</button><button class="range-calendar__day-unit day-unit-btn"
-                              data-date-value>26</button><button class="range-calendar__day-unit day-unit-btn"
-                              data-date-value>27</button><button class="range-calendar__day-unit day-unit-btn"
-                              data-date-value>28</button></div>
-                          <div class="range-calendar__days-row"><button class="range-calendar__day-unit day-unit-btn"
-                              data-date-value>29</button><button class="range-calendar__day-unit day-unit-btn"
-                              data-date-value>30</button><button class="range-calendar__day-unit day-unit-btn"
-                              data-date-value>31</button><button class="range-calendar__day-unit day-unit-btn"
-                              data-date-value>32</button><button class="range-calendar__day-unit day-unit-btn"
-                              data-date-value>33</button><button class="range-calendar__day-unit day-unit-btn"
-                              data-date-value>34</button><button class="range-calendar__day-unit day-unit-btn"
-                              data-date-value>35</button></div>
-                          <div class="range-calendar__days-row"><button class="range-calendar__day-unit day-unit-btn"
-                              data-date-value>36</button><button class="range-calendar__day-unit day-unit-btn"
-                              data-date-value>37</button><button class="range-calendar__day-unit day-unit-btn"
-                              data-date-value>38</button><button class="range-calendar__day-unit day-unit-btn"
-                              data-date-value>39</button><button class="range-calendar__day-unit day-unit-btn"
-                              data-date-value>40</button><button class="range-calendar__day-unit day-unit-btn"
-                              data-date-value>41</button><button class="range-calendar__day-unit day-unit-btn"
-                              data-date-value>42</button></div>
-                        </div>
-                      </div>
-                      <div class="range-calendar__footer">
-                        <div class="range-calendar__buttons"><button
-                            class="range-calendar__clear-button">очистить</button><button
-                            class="range-calendar__submit-button">применить</button></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="form-elements-section__row">
-                <div class="form-unit">
-                  <div class="form-unit__label">
-                    <div class="form-unit__title">filter date dropdown</div>
-                    <div class="form-unit__subtitle"></div>
-                  </div>
-                  <div class="form-unit__content">
-                    <div class="filter-date-dropdown">
-                      <div class="date-dropdown filter-date-dropdown__date-dropdown" data-default-value="ДД.ММ - ДД.ММ">
-                        <div class="date-dropdown__select field field_size_m">ДД.ММ - ДД.ММ</div>
-                      </div>
-                      <div class="filter-date-dropdown__popup">
-                        <div class="range-calendar" data-month="" data-date-from="" data-date-to="">
-                          <div class="range-calendar__header">
-                            <div class="range-calendar__month-switch"><button
-                                class="range-calendar__previous-month-btn switch-month-btn"><img class="logo__img"
-                                  src="../assets/img/arrow_back.svg" alt="back" width="17" height="18"></button>
-                              <div class="range-calendar__month-year-label"><span
-                                  class="range-calendar__month-label"></span><span
-                                  class="range-calendar__year-label"></span></div><button
-                                class="range-calendar__next-month-btn switch-month-btn"><img class="logo__img"
-                                  src="../assets/img/arrow_forward.svg" alt="forward" width="17" height="18"></button>
-                            </div>
-                          </div>
-                          <div class="range-calendar__body">
-                            <div class="range-calendar__days-labels">
-                              <div class="range-calendar__days-row">
-                                <div class="range-calendar__day-unit">Пн</div>
-                                <div class="range-calendar__day-unit">Вт</div>
-                                <div class="range-calendar__day-unit">Ср</div>
-                                <div class="range-calendar__day-unit">Чт</div>
-                                <div class="range-calendar__day-unit">Пт</div>
-                                <div class="range-calendar__day-unit">Сб</div>
-                                <div class="range-calendar__day-unit">Вс</div>
+                    <div class="form-unit__content">
+                      <div class="dropdown" data-default-value="Комплектация">
+                        <div class="dropdown__select field field_size_l">Комплектация</div>
+                        <div class="dropdown__menu">
+                          <div class="dropdown__menu-content">
+                            <div class="counter">
+                              <div class="counter__label">спальни</div>
+                              <div class="counter__interface"><button
+                                  class="counter__button counter__button_decreasing">-</button>
+                                <div class="counter__value">0</div><button
+                                  class="counter__button counter__button_increasing">+</button>
                               </div>
                             </div>
-                            <div class="range-calendar__days-values">
-                              <div class="range-calendar__days-row"><button
-                                  class="range-calendar__day-unit day-unit-btn" data-date-value>1</button><button
-                                  class="range-calendar__day-unit day-unit-btn" data-date-value>2</button><button
-                                  class="range-calendar__day-unit day-unit-btn" data-date-value>3</button><button
-                                  class="range-calendar__day-unit day-unit-btn" data-date-value>4</button><button
-                                  class="range-calendar__day-unit day-unit-btn" data-date-value>5</button><button
-                                  class="range-calendar__day-unit day-unit-btn" data-date-value>6</button><button
-                                  class="range-calendar__day-unit day-unit-btn" data-date-value>7</button></div>
-                              <div class="range-calendar__days-row"><button
-                                  class="range-calendar__day-unit day-unit-btn" data-date-value>8</button><button
-                                  class="range-calendar__day-unit day-unit-btn" data-date-value>9</button><button
-                                  class="range-calendar__day-unit day-unit-btn" data-date-value>10</button><button
-                                  class="range-calendar__day-unit day-unit-btn" data-date-value>11</button><button
-                                  class="range-calendar__day-unit day-unit-btn" data-date-value>12</button><button
-                                  class="range-calendar__day-unit day-unit-btn" data-date-value>13</button><button
-                                  class="range-calendar__day-unit day-unit-btn" data-date-value>14</button></div>
-                              <div class="range-calendar__days-row"><button
-                                  class="range-calendar__day-unit day-unit-btn" data-date-value>15</button><button
-                                  class="range-calendar__day-unit day-unit-btn" data-date-value>16</button><button
-                                  class="range-calendar__day-unit day-unit-btn" data-date-value>17</button><button
-                                  class="range-calendar__day-unit day-unit-btn" data-date-value>18</button><button
-                                  class="range-calendar__day-unit day-unit-btn" data-date-value>19</button><button
-                                  class="range-calendar__day-unit day-unit-btn" data-date-value>20</button><button
-                                  class="range-calendar__day-unit day-unit-btn" data-date-value>21</button></div>
-                              <div class="range-calendar__days-row"><button
-                                  class="range-calendar__day-unit day-unit-btn" data-date-value>22</button><button
-                                  class="range-calendar__day-unit day-unit-btn" data-date-value>23</button><button
-                                  class="range-calendar__day-unit day-unit-btn" data-date-value>24</button><button
-                                  class="range-calendar__day-unit day-unit-btn" data-date-value>25</button><button
-                                  class="range-calendar__day-unit day-unit-btn" data-date-value>26</button><button
-                                  class="range-calendar__day-unit day-unit-btn" data-date-value>27</button><button
-                                  class="range-calendar__day-unit day-unit-btn" data-date-value>28</button></div>
-                              <div class="range-calendar__days-row"><button
-                                  class="range-calendar__day-unit day-unit-btn" data-date-value>29</button><button
-                                  class="range-calendar__day-unit day-unit-btn" data-date-value>30</button><button
-                                  class="range-calendar__day-unit day-unit-btn" data-date-value>31</button><button
-                                  class="range-calendar__day-unit day-unit-btn" data-date-value>32</button><button
-                                  class="range-calendar__day-unit day-unit-btn" data-date-value>33</button><button
-                                  class="range-calendar__day-unit day-unit-btn" data-date-value>34</button><button
-                                  class="range-calendar__day-unit day-unit-btn" data-date-value>35</button></div>
-                              <div class="range-calendar__days-row"><button
-                                  class="range-calendar__day-unit day-unit-btn" data-date-value>36</button><button
-                                  class="range-calendar__day-unit day-unit-btn" data-date-value>37</button><button
-                                  class="range-calendar__day-unit day-unit-btn" data-date-value>38</button><button
-                                  class="range-calendar__day-unit day-unit-btn" data-date-value>39</button><button
-                                  class="range-calendar__day-unit day-unit-btn" data-date-value>40</button><button
-                                  class="range-calendar__day-unit day-unit-btn" data-date-value>41</button><button
-                                  class="range-calendar__day-unit day-unit-btn" data-date-value>42</button></div>
+                            <div class="counter">
+                              <div class="counter__label">кровати</div>
+                              <div class="counter__interface"><button
+                                  class="counter__button counter__button_decreasing">-</button>
+                                <div class="counter__value">0</div><button
+                                  class="counter__button counter__button_increasing">+</button>
+                              </div>
+                            </div>
+                            <div class="counter">
+                              <div class="counter__label">ванные комнаты</div>
+                              <div class="counter__interface"><button
+                                  class="counter__button counter__button_decreasing">-</button>
+                                <div class="counter__value">0</div><button
+                                  class="counter__button counter__button_increasing">+</button>
+                              </div>
                             </div>
                           </div>
-                          <div class="range-calendar__footer">
-                            <div class="range-calendar__buttons"><button
-                                class="range-calendar__clear-button">очистить</button><button
-                                class="range-calendar__submit-button">применить</button></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-unit">
+                    <div class="form-unit__label">
+                      <div class="form-unit__title">masked text field</div>
+                      <div class="form-unit__subtitle"></div>
+                    </div>
+                    <div class="form-unit__content"><input class="field field_size_l masked-text-field"
+                        placeholder="ДД.ММ.ГГГГ"></div>
+                  </div>
+                </div>
+                <div class="form-elements-section__row">
+                  <div class="date-range-picker">
+                    <div class="date-range-picker__selects">
+                      <div class="form-unit">
+                        <div class="form-unit__label">
+                          <div class="form-unit__title">Date dropdown</div>
+                          <div class="form-unit__subtitle"></div>
+                        </div>
+                        <div class="form-unit__content">
+                          <div
+                            class="date-dropdown date-range-picker__date-dropdown date-range-picker__date-dropdown-from"
+                            data-default-value="ДД.ММ.ГГГГ">
+                            <div class="date-dropdown__select field field_size_s">ДД.ММ.ГГГГ</div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-unit">
+                        <div class="form-unit__label">
+                          <div class="form-unit__title">Date dropdown</div>
+                          <div class="form-unit__subtitle"></div>
+                        </div>
+                        <div class="form-unit__content">
+                          <div
+                            class="date-dropdown date-range-picker__date-dropdown date-range-picker__date-dropdown-to"
+                            data-default-value="ДД.ММ.ГГГГ">
+                            <div class="date-dropdown__select field field_size_s">ДД.ММ.ГГГГ</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="date-range-picker__popup">
+                      <div class="range-calendar" data-month="" data-date-from="" data-date-to="">
+                        <div class="range-calendar__header">
+                          <div class="range-calendar__month-switch"><button
+                              class="range-calendar__previous-month-btn switch-month-btn"><img class="logo__img"
+                                src="../assets/img/arrow_back.svg" alt="back" width="17" height="18"></button>
+                            <div class="range-calendar__month-year-label"><span
+                                class="range-calendar__month-label"></span><span
+                                class="range-calendar__year-label"></span></div><button
+                              class="range-calendar__next-month-btn switch-month-btn"><img class="logo__img"
+                                src="../assets/img/arrow_forward.svg" alt="forward" width="17" height="18"></button>
+                          </div>
+                        </div>
+                        <div class="range-calendar__body">
+                          <div class="range-calendar__days-labels">
+                            <div class="range-calendar__days-row">
+                              <div class="range-calendar__day-unit">Пн</div>
+                              <div class="range-calendar__day-unit">Вт</div>
+                              <div class="range-calendar__day-unit">Ср</div>
+                              <div class="range-calendar__day-unit">Чт</div>
+                              <div class="range-calendar__day-unit">Пт</div>
+                              <div class="range-calendar__day-unit">Сб</div>
+                              <div class="range-calendar__day-unit">Вс</div>
+                            </div>
+                          </div>
+                          <div class="range-calendar__days-values">
+                            <div class="range-calendar__days-row"><button class="range-calendar__day-unit day-unit-btn"
+                                data-date-value>1</button><button class="range-calendar__day-unit day-unit-btn"
+                                data-date-value>2</button><button class="range-calendar__day-unit day-unit-btn"
+                                data-date-value>3</button><button class="range-calendar__day-unit day-unit-btn"
+                                data-date-value>4</button><button class="range-calendar__day-unit day-unit-btn"
+                                data-date-value>5</button><button class="range-calendar__day-unit day-unit-btn"
+                                data-date-value>6</button><button class="range-calendar__day-unit day-unit-btn"
+                                data-date-value>7</button></div>
+                            <div class="range-calendar__days-row"><button class="range-calendar__day-unit day-unit-btn"
+                                data-date-value>8</button><button class="range-calendar__day-unit day-unit-btn"
+                                data-date-value>9</button><button class="range-calendar__day-unit day-unit-btn"
+                                data-date-value>10</button><button class="range-calendar__day-unit day-unit-btn"
+                                data-date-value>11</button><button class="range-calendar__day-unit day-unit-btn"
+                                data-date-value>12</button><button class="range-calendar__day-unit day-unit-btn"
+                                data-date-value>13</button><button class="range-calendar__day-unit day-unit-btn"
+                                data-date-value>14</button></div>
+                            <div class="range-calendar__days-row"><button class="range-calendar__day-unit day-unit-btn"
+                                data-date-value>15</button><button class="range-calendar__day-unit day-unit-btn"
+                                data-date-value>16</button><button class="range-calendar__day-unit day-unit-btn"
+                                data-date-value>17</button><button class="range-calendar__day-unit day-unit-btn"
+                                data-date-value>18</button><button class="range-calendar__day-unit day-unit-btn"
+                                data-date-value>19</button><button class="range-calendar__day-unit day-unit-btn"
+                                data-date-value>20</button><button class="range-calendar__day-unit day-unit-btn"
+                                data-date-value>21</button></div>
+                            <div class="range-calendar__days-row"><button class="range-calendar__day-unit day-unit-btn"
+                                data-date-value>22</button><button class="range-calendar__day-unit day-unit-btn"
+                                data-date-value>23</button><button class="range-calendar__day-unit day-unit-btn"
+                                data-date-value>24</button><button class="range-calendar__day-unit day-unit-btn"
+                                data-date-value>25</button><button class="range-calendar__day-unit day-unit-btn"
+                                data-date-value>26</button><button class="range-calendar__day-unit day-unit-btn"
+                                data-date-value>27</button><button class="range-calendar__day-unit day-unit-btn"
+                                data-date-value>28</button></div>
+                            <div class="range-calendar__days-row"><button class="range-calendar__day-unit day-unit-btn"
+                                data-date-value>29</button><button class="range-calendar__day-unit day-unit-btn"
+                                data-date-value>30</button><button class="range-calendar__day-unit day-unit-btn"
+                                data-date-value>31</button><button class="range-calendar__day-unit day-unit-btn"
+                                data-date-value>32</button><button class="range-calendar__day-unit day-unit-btn"
+                                data-date-value>33</button><button class="range-calendar__day-unit day-unit-btn"
+                                data-date-value>34</button><button class="range-calendar__day-unit day-unit-btn"
+                                data-date-value>35</button></div>
+                            <div class="range-calendar__days-row"><button class="range-calendar__day-unit day-unit-btn"
+                                data-date-value>36</button><button class="range-calendar__day-unit day-unit-btn"
+                                data-date-value>37</button><button class="range-calendar__day-unit day-unit-btn"
+                                data-date-value>38</button><button class="range-calendar__day-unit day-unit-btn"
+                                data-date-value>39</button><button class="range-calendar__day-unit day-unit-btn"
+                                data-date-value>40</button><button class="range-calendar__day-unit day-unit-btn"
+                                data-date-value>41</button><button class="range-calendar__day-unit day-unit-btn"
+                                data-date-value>42</button></div>
+                          </div>
+                        </div>
+                        <div class="range-calendar__footer">
+                          <div class="range-calendar__buttons"><button
+                              class="range-calendar__clear-button">очистить</button><button
+                              class="range-calendar__submit-button">применить</button></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-elements-section__row">
+                  <div class="form-unit">
+                    <div class="form-unit__label">
+                      <div class="form-unit__title">filter date dropdown</div>
+                      <div class="form-unit__subtitle"></div>
+                    </div>
+                    <div class="form-unit__content">
+                      <div class="filter-date-dropdown">
+                        <div class="date-dropdown filter-date-dropdown__date-dropdown"
+                          data-default-value="ДД.ММ - ДД.ММ">
+                          <div class="date-dropdown__select field field_size_m">ДД.ММ - ДД.ММ</div>
+                        </div>
+                        <div class="filter-date-dropdown__popup">
+                          <div class="range-calendar" data-month="" data-date-from="" data-date-to="">
+                            <div class="range-calendar__header">
+                              <div class="range-calendar__month-switch"><button
+                                  class="range-calendar__previous-month-btn switch-month-btn"><img class="logo__img"
+                                    src="../assets/img/arrow_back.svg" alt="back" width="17" height="18"></button>
+                                <div class="range-calendar__month-year-label"><span
+                                    class="range-calendar__month-label"></span><span
+                                    class="range-calendar__year-label"></span></div><button
+                                  class="range-calendar__next-month-btn switch-month-btn"><img class="logo__img"
+                                    src="../assets/img/arrow_forward.svg" alt="forward" width="17" height="18"></button>
+                              </div>
+                            </div>
+                            <div class="range-calendar__body">
+                              <div class="range-calendar__days-labels">
+                                <div class="range-calendar__days-row">
+                                  <div class="range-calendar__day-unit">Пн</div>
+                                  <div class="range-calendar__day-unit">Вт</div>
+                                  <div class="range-calendar__day-unit">Ср</div>
+                                  <div class="range-calendar__day-unit">Чт</div>
+                                  <div class="range-calendar__day-unit">Пт</div>
+                                  <div class="range-calendar__day-unit">Сб</div>
+                                  <div class="range-calendar__day-unit">Вс</div>
+                                </div>
+                              </div>
+                              <div class="range-calendar__days-values">
+                                <div class="range-calendar__days-row"><button
+                                    class="range-calendar__day-unit day-unit-btn" data-date-value>1</button><button
+                                    class="range-calendar__day-unit day-unit-btn" data-date-value>2</button><button
+                                    class="range-calendar__day-unit day-unit-btn" data-date-value>3</button><button
+                                    class="range-calendar__day-unit day-unit-btn" data-date-value>4</button><button
+                                    class="range-calendar__day-unit day-unit-btn" data-date-value>5</button><button
+                                    class="range-calendar__day-unit day-unit-btn" data-date-value>6</button><button
+                                    class="range-calendar__day-unit day-unit-btn" data-date-value>7</button></div>
+                                <div class="range-calendar__days-row"><button
+                                    class="range-calendar__day-unit day-unit-btn" data-date-value>8</button><button
+                                    class="range-calendar__day-unit day-unit-btn" data-date-value>9</button><button
+                                    class="range-calendar__day-unit day-unit-btn" data-date-value>10</button><button
+                                    class="range-calendar__day-unit day-unit-btn" data-date-value>11</button><button
+                                    class="range-calendar__day-unit day-unit-btn" data-date-value>12</button><button
+                                    class="range-calendar__day-unit day-unit-btn" data-date-value>13</button><button
+                                    class="range-calendar__day-unit day-unit-btn" data-date-value>14</button></div>
+                                <div class="range-calendar__days-row"><button
+                                    class="range-calendar__day-unit day-unit-btn" data-date-value>15</button><button
+                                    class="range-calendar__day-unit day-unit-btn" data-date-value>16</button><button
+                                    class="range-calendar__day-unit day-unit-btn" data-date-value>17</button><button
+                                    class="range-calendar__day-unit day-unit-btn" data-date-value>18</button><button
+                                    class="range-calendar__day-unit day-unit-btn" data-date-value>19</button><button
+                                    class="range-calendar__day-unit day-unit-btn" data-date-value>20</button><button
+                                    class="range-calendar__day-unit day-unit-btn" data-date-value>21</button></div>
+                                <div class="range-calendar__days-row"><button
+                                    class="range-calendar__day-unit day-unit-btn" data-date-value>22</button><button
+                                    class="range-calendar__day-unit day-unit-btn" data-date-value>23</button><button
+                                    class="range-calendar__day-unit day-unit-btn" data-date-value>24</button><button
+                                    class="range-calendar__day-unit day-unit-btn" data-date-value>25</button><button
+                                    class="range-calendar__day-unit day-unit-btn" data-date-value>26</button><button
+                                    class="range-calendar__day-unit day-unit-btn" data-date-value>27</button><button
+                                    class="range-calendar__day-unit day-unit-btn" data-date-value>28</button></div>
+                                <div class="range-calendar__days-row"><button
+                                    class="range-calendar__day-unit day-unit-btn" data-date-value>29</button><button
+                                    class="range-calendar__day-unit day-unit-btn" data-date-value>30</button><button
+                                    class="range-calendar__day-unit day-unit-btn" data-date-value>31</button><button
+                                    class="range-calendar__day-unit day-unit-btn" data-date-value>32</button><button
+                                    class="range-calendar__day-unit day-unit-btn" data-date-value>33</button><button
+                                    class="range-calendar__day-unit day-unit-btn" data-date-value>34</button><button
+                                    class="range-calendar__day-unit day-unit-btn" data-date-value>35</button></div>
+                                <div class="range-calendar__days-row"><button
+                                    class="range-calendar__day-unit day-unit-btn" data-date-value>36</button><button
+                                    class="range-calendar__day-unit day-unit-btn" data-date-value>37</button><button
+                                    class="range-calendar__day-unit day-unit-btn" data-date-value>38</button><button
+                                    class="range-calendar__day-unit day-unit-btn" data-date-value>39</button><button
+                                    class="range-calendar__day-unit day-unit-btn" data-date-value>40</button><button
+                                    class="range-calendar__day-unit day-unit-btn" data-date-value>41</button><button
+                                    class="range-calendar__day-unit day-unit-btn" data-date-value>42</button></div>
+                              </div>
+                            </div>
+                            <div class="range-calendar__footer">
+                              <div class="range-calendar__buttons"><button
+                                  class="range-calendar__clear-button">очистить</button><button
+                                  class="range-calendar__submit-button">применить</button></div>
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
+                <div class="form-elements-section__row">
+                  <div class="form-unit">
+                    <div class="form-unit__label">
+                      <div class="form-unit__title">subscription text field</div>
+                      <div class="form-unit__subtitle"></div>
+                    </div>
+                    <div class="form-unit__content">
+                      <div class="subscription-text-field"><input class="field field_size_m" type="text"
+                          placeholder="Email"></div>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div class="form-elements-section__row"></div>
+              <div class="form-elements-section__toggle-buttons"></div>
             </div>
           </div>
         </div>
