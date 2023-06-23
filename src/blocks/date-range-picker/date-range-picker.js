@@ -51,8 +51,7 @@ function updateDatePickerDropdowns(datePicker) {
 /* Handlers */
 function handleDatePickerSelectClick(event) {
   const datePickers = document.querySelectorAll('.date-range-picker');
-
-  if (event.target.closest('.date-dropdown')) {
+  if (event.target.closest('.date-range-picker__date-dropdown')) {
     let datePicker = event.target.closest('.date-range-picker');
 
     /* Hide others date picker's poups */

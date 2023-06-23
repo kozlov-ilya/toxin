@@ -18,13 +18,12 @@ mixin date-range-picker(options)
   div(class=unitClassName)&attributes(attributes)
     .date-range-picker__selects
       +form-unit({title: options.titles[0], subtitle: options.subtitles[0]})
-        +date-dropdown({value: 'ДД.ММ.ГГГГ'}).date-range-picker__date-dropdown-from(
+        +date-dropdown({value: 'ДД.ММ.ГГГГ', selectClass: 'field_size_s'}).date-range-picker__date-dropdown.date-range-picker__date-dropdown-from(
           data-default-value='ДД.ММ.ГГГГ'
         )
       +form-unit({title: options.titles[1], subtitle: options.subtitles[1]})
-        +date-dropdown({value: 'ДД.ММ.ГГГГ'}).date-range-picker__date-dropdown-to(
+        +date-dropdown({value: 'ДД.ММ.ГГГГ', selectClass: 'field_size_s'}).date-range-picker__date-dropdown.date-range-picker__date-dropdown-to(
           data-default-value='ДД.ММ.ГГГГ'
         )
     .date-range-picker__popup
-      .date-range-picker__popup-content
-        +range-calendar({})
+      +range-calendar({})
