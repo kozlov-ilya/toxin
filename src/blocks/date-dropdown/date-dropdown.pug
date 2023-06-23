@@ -13,4 +13,4 @@ mixin date-dropdown(options)
     }
 
   div(class=unitClassName)&attributes(attributes)
-    .date-dropdown__select.field.field_size_s!= options.value
+    .date-dropdown__select.field(class=options.selectClass)!= options.value

@@ -3,7 +3,7 @@ include ../../text-field/text-field
 include ../../masked-text-field/masked-text-field
 include ../../dropdown/dropdown
 include ../../date-range-picker/date-range-picker
-include ../../range-calendar/range-calendar
+include ../../filter-date-dropdown/filter-date-dropdown
 
 mixin form-elements-section__fields(options)
   //- options = {options, mods=["mod1", "mod2", ...]}
@@ -36,3 +36,5 @@ mixin form-elements-section__fields(options)
       +form-unit({title: 'masked text field', subtitle: ''})
         +masked-text-field({})(placeholder='ДД.ММ.ГГГГ')
       +date-range-picker({titles: ['Date dropdown', 'Date dropdown'], subtitles: ['', '']})
+      +form-unit({title: 'filter date dropdown', subtitle: ''})
+        +filter-date-dropdown({})

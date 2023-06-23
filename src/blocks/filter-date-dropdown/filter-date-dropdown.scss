@@ -1,0 +1,49 @@
+@use '../../scss/abstracts/functions' as f;
+@forward '../date-dropdown/date-dropdown.scss';
+@forward '../range-calendar/range-calendar.scss';
+
+:root {
+  --animation-length: 0.1s;
+}
+
+.filter-date-dropdown {
+  position: relative;
+}
+
+.filter-date-dropdown_opened {
+  .filter-date-dropdown__popup {
+    display: block;
+    animation: fadeIn var(--animation-length), slideUp var(--animation-length);
+    opacity: 100;
+    top: calc(100% + 5px);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    top: calc(100% + 15px);
+  }
+
+  to {
+    top: calc(100% + 5px);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 100;
+  }
+}
+
+.filter-date-dropdown__popup {
+  position: absolute;
+  display: none;
+  z-index: 1;
+  opacity: 0;
+  top: calc(100% + 15px);
+  transition: top 0s var(--animation-length);
+}

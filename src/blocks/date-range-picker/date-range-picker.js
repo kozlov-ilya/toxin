@@ -80,14 +80,14 @@ function handleDatePickerCalendarDayUnitBtnClick(event) {
   }
 }
 
-function handleDatePickerClaendarClearBtnClick(event) {
+function handleDatePickerCalendarClearBtnClick(event) {
   const datePicker = event.currentTarget;
   if (event.target.closest('.range-calendar__clear-button')) {
     resetDateDropdowns(datePicker);
   }
 }
 
-function handleDatePickerClaendarSubmitBtnClick(event) {
+function handleDatePickerCalendarSubmitBtnClick(event) {
   const datePicker = event.currentTarget;
   if (event.target.closest('.range-calendar__submit-button')) {
     datePicker.classList.remove('date-range-picker_opened');
@@ -100,6 +100,6 @@ document.addEventListener('click', handleDatePickerSelectClick);
 const datePickers = document.querySelectorAll('.date-range-picker');
 datePickers.forEach((datePicker) => {
   datePicker.addEventListener('click', handleDatePickerCalendarDayUnitBtnClick);
-  datePicker.addEventListener('click', handleDatePickerClaendarClearBtnClick);
-  datePicker.addEventListener('click', handleDatePickerClaendarSubmitBtnClick);
+  datePicker.addEventListener('click', handleDatePickerCalendarClearBtnClick);
+  datePicker.addEventListener('click', handleDatePickerCalendarSubmitBtnClick);
 });

@@ -1,0 +1,23 @@
+include ../date-dropdown/date-dropdown
+include ../range-calendar/range-calendar
+
+mixin filter-date-dropdown(options)
+  //- options = {options, mods=["mod1", "mod2", ...]}
+
+  -
+    let unitClassName = 'filter-date-dropdown';
+
+    //- Add modifiers to class name
+    if ( Object.hasOwn(options, 'mods') && options.mods) {
+      //- If modifiers were passed to mixin
+      options.mods.forEach((element) => {
+        unitClassName += ` filter-date-dropdown_${element}`;
+      });
+    }
+
+  div(class=unitClassName)&attributes(attributes)
+    +date-dropdown({value: 'ДД.ММ - ДД.ММ', selectClass: 'field_size_m'}).filter-date-dropdown__date-dropdown(
+      data-default-value='ДД.ММ - ДД.ММ'
+    )
+    .filter-date-dropdown__popup
+      +range-calendar({})
