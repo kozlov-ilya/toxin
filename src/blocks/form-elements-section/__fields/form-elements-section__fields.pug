@@ -35,6 +35,9 @@ mixin form-elements-section__fields(options)
         )
       +form-unit({title: 'masked text field', subtitle: ''})
         +masked-text-field({})(placeholder='ДД.ММ.ГГГГ')
+    .form-elements-section__row
       +date-range-picker({titles: ['Date dropdown', 'Date dropdown'], subtitles: ['', '']})
+    .form-elements-section__row
       +form-unit({title: 'filter date dropdown', subtitle: ''})
         +filter-date-dropdown({})
+    .form-elements-section__row
