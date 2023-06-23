@@ -1,0 +1,18 @@
+.subscription-text-field {
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.subscription-text-field::before {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 44px;
+  height: 44px;
+  background-image: url(./assets/arrow_forward.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+}

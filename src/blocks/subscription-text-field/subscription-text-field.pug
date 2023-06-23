@@ -1,0 +1,19 @@
+mixin subscription-text-field(options)
+  //- options = {options, mods=["mod1", "mod2", ...]}
+
+  -
+    let unitClassName = 'subscription-text-field';
+
+    //- Add modifiers to class name
+    if ( Object.hasOwn(options, 'mods') && options.mods) {
+      //- If modifiers were passed to mixin
+      options.mods.forEach((element) => {
+        unitClassName += ` subscription-text-field_${element}`;
+      });
+    }
+
+  div(class=unitClassName)&attributes(attributes)
+    input.field.field_size_m(
+      type=options.inputType,
+      placeholder=options.inputPlaceholder
+    )
