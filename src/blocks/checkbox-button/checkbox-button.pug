@@ -1,0 +1,17 @@
+mixin checkbox-button(options)
+  //- options = {options, mods=["mod1", "mod2", ...]}
+
+  -
+    let unitClassName = 'checkbox-button';
+
+    //- Add modifiers to class name
+    if ( Object.hasOwn(options, 'mods') && options.mods) {
+      //- If modifiers were passed to mixin
+      options.mods.forEach((element) => {
+        unitClassName += ` checkbox-button_${element}`;
+      });
+    }
+
+  label(class=unitClassName)&attributes(attributes)
+    input.checkbox-button__input(type='checkbox', checked=options.isChecked)
+    | #{ options.label }

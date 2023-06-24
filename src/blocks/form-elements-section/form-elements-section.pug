@@ -1,6 +1,6 @@
 include ../layout/layout
 include __fields/form-elements-section__fields
-include __toggle-buttons/form-elements-section__toggle-buttons
+include __buttons/form-elements-section__buttons
 
 mixin form-elements-section(options)
   //- options = {options, mods=["mod1", "mod2", ...]}
@@ -20,4 +20,4 @@ mixin form-elements-section(options)
     +layout({})
       .form-elements-section__content
         +form-elements-section__fields({})
-        +form-elements-section__toggle-buttons({})
+        +form-elements-section__buttons({})

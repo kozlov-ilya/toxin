@@ -1,0 +1,22 @@
+mixin radio-button(options)
+  //- options = {options, mods=["mod1", "mod2", ...]}
+
+  -
+    let unitClassName = 'radio-button';
+
+    //- Add modifiers to class name
+    if ( Object.hasOwn(options, 'mods') && options.mods) {
+      //- If modifiers were passed to mixin
+      options.mods.forEach((element) => {
+        unitClassName += ` radio-button_${element}`;
+      });
+    }
+
+  label(class=unitClassName)&attributes(attributes)
+    input.radio-button__input(
+      type='radio',
+      name=options.name,
+      value=options.value,
+      checked=options.isChecked
+    )
+    span= options.label

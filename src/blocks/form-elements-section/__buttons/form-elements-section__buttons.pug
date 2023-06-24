@@ -1,0 +1,29 @@
+include ../../form-unit/form-unit
+include ../../checkbox-button/checkbox-button
+include ../../radio-button/radio-button
+
+mixin form-elements-section__buttons(options)
+  //- options = {options, mods=["mod1", "mod2", ...]}
+
+  -
+    let unitClassName = 'form-elements-section__buttons';
+
+    //- Add modifiers to class name
+    if ( Object.hasOwn(options, 'mods') && options.mods) {
+      //- If modifiers were passed to mixin
+      options.mods.forEach((element) => {
+        unitClassName += ` form-elements-section__buttons_${element}`;
+      });
+    }
+
+  div(class=unitClassName)&attributes(attributes)
+    .form-elements-section__toggle-buttons
+      +form-unit({title:'Checkbox Buttons', subtitle:''})
+        .form-elements-section__checkbox-buttons
+          +checkbox-button({label: 'Можно курить'})
+          +checkbox-button({label: 'Можно с питомцами', isChecked: true})
+          +checkbox-button({label: 'Можно пригласить гостей (до 10 человек)', isChecked: true})
+      +form-unit({title:'Radio Buttons', subtitle:''})
+        .form-elements-section__radio-buttons
+          +radio-button({label: 'Мужчина', name: 'gender', value: 'male', isChecked: true})
+          +radio-button({label: 'Женщина', name: 'gender', value: 'female'}) 

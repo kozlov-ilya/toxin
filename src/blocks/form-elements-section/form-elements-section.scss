@@ -2,7 +2,7 @@
 
 @forward '../layout/layout.scss';
 @forward './__fields/form-elements-section__fields.scss';
-@forward './__toggle-buttons/form-elements-section__toggle-buttons.scss';
+@forward './__buttons/form-elements-section__buttons.scss';
 
 .form-elements-section {
   padding: f.toRem(140) 0 f.toRem(80);
@@ -10,4 +10,6 @@
 
 .form-elements-section__content {
   display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: f.toRem(126);
 }
