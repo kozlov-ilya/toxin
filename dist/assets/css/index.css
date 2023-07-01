@@ -772,6 +772,8 @@ select {
   border-radius: 50%;
   display: grid;
   place-content: center;
+  margin: 0;
+  transform: translateY(0.125rem);
 }
 
 .radio-button__input:hover {
@@ -808,6 +810,69 @@ select {
     transform: scale(1);
   }
 }
+:root {
+  --toggle-width: 40px;
+}
+
+.toggle {
+  font: var(--type-body);
+  color: var(--color-dark-shade-50);
+  display: grid;
+  grid-template-columns: var(--toggle-width) auto;
+  gap: 0.625rem;
+  cursor: pointer;
+}
+
+.toggle:hover {
+  color: var(--color-dark-shade-75);
+}
+
+.toggle__input {
+  appearance: none;
+  cursor: pointer;
+  background-color: #fff;
+  border: 1px solid var(--color-dark-shade-25);
+  width: var(--toggle-width);
+  height: 1.25rem;
+  border-radius: 10px;
+  display: grid;
+  place-content: center;
+  margin: 0;
+  transform: translateY(0.125rem);
+  position: relative;
+}
+
+.toggle__input:hover {
+  border: 1px solid var(--color-dark-shade-50);
+}
+
+.toggle__input:checked {
+  border: 1px solid var(--color-purple);
+}
+
+.toggle__input:checked + span {
+  color: var(--color-dark-shade-75);
+}
+
+.toggle__input::before {
+  content: "";
+  background: var(--color-dark-shade-25);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  transform: translateX(-10px);
+  transition: transform 0.05s ease-in-out;
+}
+
+.toggle__input:checked::before {
+  background: var(--gradient-bg-primary);
+  transform: translateX(10px);
+  transition: transform 0.05s ease-in-out;
+}
+
 .form-elements-section__toggle-buttons {
   display: flex;
   flex-direction: column;
@@ -825,6 +890,13 @@ select {
   padding-top: 10px;
   display: flex;
   gap: 20px;
+}
+
+.form-elements-section__toggles {
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 }
 
 .form-elements-section {

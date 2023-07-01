@@ -1,6 +1,7 @@
 include ../../form-unit/form-unit
 include ../../checkbox-button/checkbox-button
 include ../../radio-button/radio-button
+include ../../toggle/toggle
 
 mixin form-elements-section__buttons(options)
   //- options = {options, mods=["mod1", "mod2", ...]}
@@ -27,3 +28,7 @@ mixin form-elements-section__buttons(options)
         .form-elements-section__radio-buttons
           +radio-button({label: 'Мужчина', name: 'gender', value: 'male', isChecked: true})
           +radio-button({label: 'Женщина', name: 'gender', value: 'female'}) 
+      +form-unit({title:'Toggle', subtitle:''})
+        .form-elements-section__toggles
+          +toggle({label: 'Получать спецпредложения', name: '', value: '', isChecked: true})
+          +toggle({label: 'Получать спецпредложения', name: '', value: ''})

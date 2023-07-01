@@ -1,65 +1,64 @@
 @use '../../scss/abstracts/functions' as f;
 
-.radio-button {
+:root {
+  --toggle-width: 40px;
+}
+
+.toggle {
   font: var(--type-body);
   color: var(--color-dark-shade-50);
   display: grid;
-  grid-template-columns: f.toRem(20) auto;
+  grid-template-columns: var(--toggle-width) auto;
   gap: f.toRem(10);
   cursor: pointer;
-  max-width: 225px;
 }
 
-.radio-button:hover {
+.toggle:hover {
   color: var(--color-dark-shade-75);
 }
 
-.radio-button__input {
+.toggle__input {
   appearance: none;
   cursor: pointer;
   background-color: #fff;
   border: 1px solid var(--color-dark-shade-25);
-  width: f.toRem(20);
+  width: var(--toggle-width);
   height: f.toRem(20);
-  border-radius: 50%;
+  border-radius: 10px;
   display: grid;
   place-content: center;
   margin: 0;
   transform: translateY(f.toRem(2));
+  position: relative;
 }
 
-.radio-button__input:hover {
+.toggle__input:hover {
   border: 1px solid var(--color-dark-shade-50);
 }
 
-.radio-button__input:checked {
+.toggle__input:checked {
   border: 1px solid var(--color-purple);
 }
 
-.radio-button__input:checked + span {
+.toggle__input:checked + span {
   color: var(--color-dark-shade-75);
 }
 
-.radio-button__input::before {
+.toggle__input::before {
   content: '';
-  background: var(--gradient-bg-primary);
+  background: var(--color-dark-shade-25);
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  transform: scale(0);
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  transform: translateX(-10px);
+  transition: transform 0.05s ease-in-out;
 }
 
-.radio-button__input:checked::before {
-  transform: scale(1);
-  animation: radioScaleIn 0.05s ease-in-out;
-}
-
-@keyframes radioScaleIn {
-  from {
-    transform: scale(0);
-  }
-
-  to {
-    transform: scale(1);
-  }
+.toggle__input:checked::before {
+  background: var(--gradient-bg-primary);
+  transform: translateX(10px);
+  transition: transform 0.05s ease-in-out;
 }

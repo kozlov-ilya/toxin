@@ -1,0 +1,22 @@
+mixin toggle(options)
+  //- options = {options, mods=["mod1", "mod2", ...]}
+
+  -
+    let unitClassName = 'toggle';
+
+    //- Add modifiers to class name
+    if ( Object.hasOwn(options, 'mods') && options.mods) {
+      //- If modifiers were passed to mixin
+      options.mods.forEach((element) => {
+        unitClassName += ` toggle_${element}`;  
+      });
+    }
+
+  label(class=unitClassName)&attributes(attributes)
+    input.toggle__input(
+      type='checkbox',
+      name=options.name,
+      value=options.value,
+      checked=options.isChecked
+    )
+    span= options.label

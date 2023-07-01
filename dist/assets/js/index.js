@@ -1470,7 +1470,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var mome
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _field_field__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../field/field */ \"./src/blocks/field/field.js\");\n/* harmony import */ var _field_field__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_field_field__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _checkbox_button_checkbox_button__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../checkbox-button/checkbox-button */ \"./src/blocks/checkbox-button/checkbox-button.js\");\n/* harmony import */ var _checkbox_button_checkbox_button__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_checkbox_button_checkbox_button__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _radio_button_radio_button__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../radio-button/radio-button */ \"./src/blocks/radio-button/radio-button.js\");\n/* harmony import */ var _radio_button_radio_button__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_radio_button_radio_button__WEBPACK_IMPORTED_MODULE_2__);\n\r\n\r\n\r\n\n\n//# sourceURL=webpack://template/./src/blocks/form-elements-section/__buttons/form-elements-section__buttons.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _field_field__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../field/field */ \"./src/blocks/field/field.js\");\n/* harmony import */ var _field_field__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_field_field__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _checkbox_button_checkbox_button__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../checkbox-button/checkbox-button */ \"./src/blocks/checkbox-button/checkbox-button.js\");\n/* harmony import */ var _checkbox_button_checkbox_button__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_checkbox_button_checkbox_button__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _radio_button_radio_button__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../radio-button/radio-button */ \"./src/blocks/radio-button/radio-button.js\");\n/* harmony import */ var _radio_button_radio_button__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_radio_button_radio_button__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var _toggle_toggle__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../toggle/toggle */ \"./src/blocks/toggle/toggle.js\");\n/* harmony import */ var _toggle_toggle__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_toggle_toggle__WEBPACK_IMPORTED_MODULE_3__);\n\r\n\r\n\r\n\r\n\n\n//# sourceURL=webpack://template/./src/blocks/form-elements-section/__buttons/form-elements-section__buttons.js?");
 
 /***/ }),
 
@@ -1535,6 +1535,16 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var mome
 /***/ (() => {
 
 eval("\n\n//# sourceURL=webpack://template/./src/blocks/subscription-text-field/subscription-text-field.js?");
+
+/***/ }),
+
+/***/ "./src/blocks/toggle/toggle.js":
+/*!*************************************!*\
+  !*** ./src/blocks/toggle/toggle.js ***!
+  \*************************************/
+/***/ (() => {
+
+eval("\n\n//# sourceURL=webpack://template/./src/blocks/toggle/toggle.js?");
 
 /***/ }),
 
