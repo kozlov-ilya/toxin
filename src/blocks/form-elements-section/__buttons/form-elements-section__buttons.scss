@@ -2,6 +2,8 @@
 @forward '../../checkbox-button/checkbox-button.scss';
 @forward '../../radio-button/radio-button.scss';
 @forward '../../toggle/toggle.scss';
+@forward '../../like-button/like-button.scss';
+@forward '../../rate-button/rate-button.scss';
 
 .form-elements-section__toggle-buttons {
   display: flex;
@@ -22,9 +24,22 @@
   gap: 20px;
 }
 
-.form-elements-section__toggles {
+.form-elements-section__toggle {
   padding-top: 10px;
   display: flex;
   flex-direction: column;
   gap: 14px;
+}
+
+.form-elements-section__like-button {
+  padding-top: 10px;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.form-elements-section__rate-button {
+  padding-top: 10px;
+  display: flex;
+  gap: 20px;
 }

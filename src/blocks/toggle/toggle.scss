@@ -6,15 +6,11 @@
 
 .toggle {
   font: var(--type-body);
-  color: var(--color-dark-shade-50);
+  color: var(--color-dark-shade-75);
   display: grid;
   grid-template-columns: var(--toggle-width) auto;
   gap: f.toRem(10);
   cursor: pointer;
-}
-
-.toggle:hover {
-  color: var(--color-dark-shade-75);
 }
 
 .toggle__input {
@@ -38,10 +34,6 @@
 
 .toggle__input:checked {
   border: 1px solid var(--color-purple);
-}
-
-.toggle__input:checked + span {
-  color: var(--color-dark-shade-75);
 }
 
 .toggle__input::before {

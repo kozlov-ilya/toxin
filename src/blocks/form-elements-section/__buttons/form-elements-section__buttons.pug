@@ -2,6 +2,8 @@ include ../../form-unit/form-unit
 include ../../checkbox-button/checkbox-button
 include ../../radio-button/radio-button
 include ../../toggle/toggle
+include ../../like-button/like-button
+include ../../rate-button/rate-button
 
 mixin form-elements-section__buttons(options)
   //- options = {options, mods=["mod1", "mod2", ...]}
@@ -29,6 +31,14 @@ mixin form-elements-section__buttons(options)
           +radio-button({label: 'Мужчина', name: 'gender', value: 'male', isChecked: true})
           +radio-button({label: 'Женщина', name: 'gender', value: 'female'}) 
       +form-unit({title:'Toggle', subtitle:''})
-        .form-elements-section__toggles
+        .form-elements-section__toggle
           +toggle({label: 'Получать спецпредложения', name: '', value: '', isChecked: true})
           +toggle({label: 'Получать спецпредложения', name: '', value: ''})
+      +form-unit({title:'Like button', subtitle:''})
+        .form-elements-section__like-button
+          +like-button({defaultValue: 2})
+          +like-button({defaultValue: 12, mods: ['checked']})
+      +form-unit({title:'rate button', subtitle:''})
+        .form-elements-section__rate-button
+          +rate-button({})(data-value=4)
+          +rate-button({})(data-value=5)

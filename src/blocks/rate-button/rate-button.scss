@@ -1,0 +1,18 @@
+.rate-button {
+  display: flex;
+  gap: 4px;
+}
+
+.rate-button__star {
+  cursor: pointer;
+}
+
+.rate-button__star_checked {
+  .rate-button__star-bg {
+    fill: url(#paint0_linear_18447_192);
+  }
+}
+
+.rate-button__star-border {
+  fill: url(#paint0_linear_18447_192);
+}
