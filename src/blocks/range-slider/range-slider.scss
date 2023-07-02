@@ -1,0 +1,37 @@
+@forward '../form-unit/form-unit.scss';
+
+.range-slider__slider {
+  margin-top: 20px;
+}
+
+.slider {
+  min-width: 266px;
+  position: relative;
+}
+
+.slider-thumb {
+  width: 12px;
+  height: 12px;
+  background: var(--gradient-bg-additional);
+  border: 2px solid #fff;
+  border-radius: 50%;
+  position: absolute;
+  top: -50%;
+  cursor: pointer;
+}
+
+.slider__thumb_min {
+  left: 10%;
+}
+
+.slider__thumb_max {
+  right: 10%;
+}
+
+.slider__track {
+  min-height: 6px;
+  width: 100%;
+  border: 1px solid var(--color-dark-shade-25);
+  border-radius: 3px;
+  position: relative;
+}

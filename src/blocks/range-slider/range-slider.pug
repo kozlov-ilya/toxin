@@ -1,0 +1,23 @@
+include ../form-unit/form-unit
+
+mixin range-slider(options)
+  //- options = {options, mods=["mod1", "mod2", ...]}
+
+  -
+    let unitClassName = 'range-slider';
+
+    //- Add modifiers to class name
+    if ( Object.hasOwn(options, 'mods') && options.mods) {
+      //- If modifiers were passed to mixin
+      options.mods.forEach((element) => {
+        unitClassName += ` range-slider_${element}`;
+      });
+    }
+
+  +form-unit({title: options.title, subtitle: options.subtitle})(
+    class=unitClassName
+  )&attributes(attributes)
+    .range-slider__slider.slider
+      .slider__track
+      .slider__thumb_min.slider-thumb
+      .slider__thumb_max.slider-thumb
