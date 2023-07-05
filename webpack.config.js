@@ -4,7 +4,7 @@ const PugPlugin = require('pug-plugin');
 module.exports = {
   output: {
     clean: true,
-    path: path.join(__dirname, 'dist/'),
+    path: path.join(__dirname, 'dist'),
   },
 
   entry: {
@@ -54,4 +54,4 @@ module.exports = {
       },
     ],
   },
-};
+}

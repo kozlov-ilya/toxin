@@ -21,6 +21,8 @@ mixin form-elements-section__buttons(options)
     }
 
   div(class=unitClassName)&attributes(attributes)
+    .form-elements-section__click-buttons 
+      +range-slider({title: 'range slider', subtitle:''})
     .form-elements-section__toggle-buttons
       +form-unit({title:'Checkbox Buttons', subtitle:''})
         .form-elements-section__checkbox-buttons
@@ -43,5 +45,4 @@ mixin form-elements-section__buttons(options)
         .form-elements-section__rate-button
           +rate-button({})(data-value=4)
           +rate-button({})(data-value=5)
-    .form-elements-section__click-buttons
-      +range-slider({title: 'range slider', subtitle:''})
+
