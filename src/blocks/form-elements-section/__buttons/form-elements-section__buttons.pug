@@ -5,6 +5,7 @@ include ../../toggle/toggle
 include ../../like-button/like-button
 include ../../rate-button/rate-button
 include ../../range-slider/range-slider
+include ../../button/button
 
 mixin form-elements-section__buttons(options)
   //- options = {options, mods=["mod1", "mod2", ...]}
@@ -21,9 +22,7 @@ mixin form-elements-section__buttons(options)
     }
 
   div(class=unitClassName)&attributes(attributes)
-    .form-elements-section__click-buttons 
-      +range-slider({title: 'range slider', subtitle:''})
-    .form-elements-section__toggle-buttons
+    .form-elements-section__buttons-column
       +form-unit({title:'Checkbox Buttons', subtitle:''})
         .form-elements-section__checkbox-buttons
           +checkbox-button({label: 'Можно курить'})
@@ -45,4 +44,13 @@ mixin form-elements-section__buttons(options)
         .form-elements-section__rate-button
           +rate-button({})(data-value=4)
           +rate-button({})(data-value=5)
-
+    .form-elements-section__buttons-column
+      +range-slider({title: 'range slider', subtitle:''})
+      +form-unit({title: 'buttons', subtitle: ''})
+        .form-elements-section__click-buttons
+          .form-elements-section__click-buttons-row
+            +button({text: 'Click me'}).button_type_cta.button_bg_filled.button_cta-secondary
+            +button({text: 'Click me'}).button_type_cta.button_bg_filled.button_cta-secondary
+          .form-elements-section__click-buttons-row
+            +button({text: 'Click me'}).button_type_cta.button_bg_ghost.button_cta-secondary
+            +button({text: 'Click me'}).button_type_cta.button_bg_ghost.button_cta-secondary

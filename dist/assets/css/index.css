@@ -971,13 +971,73 @@ select {
   border-radius: 3px;
 }
 
+.button_bg_filled {
+  color: #fff;
+  border: none;
+}
+
+.button_bg_filled:hover {
+  opacity: 0.5;
+}
+
+.button_bg_ghost {
+  color: var(--color-purple);
+  border: none;
+  overflow: hidden;
+}
+
+.button_bg_ghost::before {
+  content: "";
+  position: absolute;
+  background-color: #fff;
+  inset: 0;
+  margin: auto;
+  width: calc(100% - 4px);
+  height: calc(100% - 4px);
+  border-radius: 22.5px;
+  z-index: 10;
+}
+
+.button_bg_ghost:hover::after {
+  content: "";
+  position: absolute;
+  background-color: #fff;
+  inset: 0;
+  margin: auto;
+  width: 100%;
+  height: 100%;
+  border-radius: 22.5px;
+  z-index: 5;
+  opacity: 0.5;
+}
+
+.button_type_cta {
+  padding: 15px 20px;
+  border-radius: 22.5px;
+  background: var(--gradient-bg-primary);
+}
+
+.button {
+  font: var(--type-heading-h3);
+  text-transform: uppercase;
+  appearance: none;
+  cursor: pointer;
+  position: relative;
+}
+
+.button__text {
+  position: relative;
+  z-index: 10000;
+  opacity: 1;
+}
+
 .form-elements-section__buttons {
   display: flex;
   justify-content: space-between;
   gap: 20px;
 }
 
-.form-elements-section__toggle-buttons {
+.form-elements-section__buttons-column {
   display: flex;
   flex-direction: column;
   gap: 40px;
@@ -1012,6 +1072,15 @@ select {
 
 .form-elements-section__rate-button {
   padding-top: 10px;
+  display: flex;
+  gap: 20px;
+}
+
+.form-elements-section__click-buttons {
+  padding-top: 10px;
+}
+
+.form-elements-section__click-buttons-row {
   display: flex;
   gap: 20px;
 }

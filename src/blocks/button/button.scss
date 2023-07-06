@@ -1,0 +1,18 @@
+@forward './_bg/index.scss';
+@forward './_type/index.scss';
+@forward './button_cta-primary.scss';
+@forward './button_cta-secondary.scss';
+
+.button {
+  font: var(--type-heading-h3);
+  text-transform: uppercase;
+  appearance: none;
+  cursor: pointer;
+  position: relative;
+}
+
+.button__text {
+  position: relative;
+  z-index: 10000;
+  opacity: 1;
+}

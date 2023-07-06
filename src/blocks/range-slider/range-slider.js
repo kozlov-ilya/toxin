@@ -160,4 +160,8 @@ rangeSliders.forEach((rangeSlider) => {
   drawTrackRange(slider);
   updateRangeLabel(rangeSlider);
   rangeSlider.addEventListener('mousedown', handleThumbMousedown);
+
+  slider.ondragstart = function () {
+    return false;
+  };
 });

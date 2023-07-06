@@ -5,6 +5,7 @@
 @forward '../../like-button/like-button.scss';
 @forward '../../rate-button/rate-button.scss';
 @forward '../../range-slider/range-slider';
+@forward '../../button/button.scss';
 
 .form-elements-section__buttons {
   display: flex;
@@ -12,7 +13,7 @@
   gap: 20px;
 }
 
-.form-elements-section__toggle-buttons {
+.form-elements-section__buttons-column {
   display: flex;
   flex-direction: column;
   gap: 40px;
@@ -47,6 +48,15 @@
 
 .form-elements-section__rate-button {
   padding-top: 10px;
+  display: flex;
+  gap: 20px;
+}
+
+.form-elements-section__click-buttons {
+  padding-top: 10px;
+}
+
+.form-elements-section__click-buttons-row {
   display: flex;
   gap: 20px;
 }
