@@ -920,6 +920,10 @@ select {
   fill: url(#paint0_linear_18447_192);
 }
 
+:root {
+  --range-slider-track-border-width: 1px;
+}
+
 .range-slider__slider {
   margin-top: 20px;
 }
@@ -940,12 +944,31 @@ select {
   cursor: pointer;
 }
 
+.slider__thumb-min {
+  z-index: 100;
+}
+
+.slider__thumb-max {
+  z-index: 1000;
+}
+
 .slider__track {
   min-height: 6px;
   width: 100%;
-  border: 1px solid var(--color-dark-shade-25);
+  border: var(--range-slider-track-border-width) solid var(--color-dark-shade-25);
   border-radius: 3px;
   position: relative;
+}
+
+.slider__track-range {
+  width: 30%;
+  height: calc(100% + var(--range-slider-track-border-width) * 2);
+  background: var(--gradient-bg-additional);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  border-radius: 3px;
 }
 
 .form-elements-section__buttons {

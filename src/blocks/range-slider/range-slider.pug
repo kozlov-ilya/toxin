@@ -17,7 +17,8 @@ mixin range-slider(options)
   +form-unit({title: options.title, subtitle: options.subtitle})(
     class=unitClassName
   )&attributes(attributes)
-    .range-slider__slider.slider(data-min-value=0, data-max-value=20000)
+    .range-slider__slider.slider(data-min-value=0, data-max-value=15000)
       .slider__track
+        .slider__track-range
       .slider__thumb-min.slider-thumb(data-value=5000)
-      .slider__thumb-max.slider-thumb(data-value=20000)
+      .slider__thumb-max.slider-thumb(data-value=10000)
