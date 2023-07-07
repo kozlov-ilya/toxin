@@ -1,0 +1,51 @@
+.pagination {
+}
+
+.pagination__interface {
+  display: flex;
+}
+
+.pagination__page-links {
+  display: flex;
+}
+
+.pagination__page-link {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font: var(--type-heading-h3);
+  font-weight: normal;
+  color: var(--color-dark-shade-50);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+.pagination__page-link_current {
+  background: var(--gradient-bg-primary);
+  color: #fff;
+  font-weight: 700;
+}
+
+.pagination__next-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  position: relative;
+  background: var(--gradient-bg-additional);
+}
+
+.pagination__next-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  background-image: url(./assets/cta-primary-arrow-forward.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+}
+
+.pagination__label {
+  font: var(--type-body);
+}

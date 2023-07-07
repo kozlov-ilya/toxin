@@ -6,6 +6,7 @@ include ../../like-button/like-button
 include ../../rate-button/rate-button
 include ../../range-slider/range-slider
 include ../../button/button
+include ../../pagination/pagination
 
 mixin form-elements-section__buttons(options)
   //- options = {options, mods=["mod1", "mod2", ...]}
@@ -59,3 +60,5 @@ mixin form-elements-section__buttons(options)
             +button({text: 'Click me'}).button_type_text
           .form-elements-section__click-buttons-row
             +button({text: 'перейти к оплате'}).button_type_cta.button_bg_filled.button_cta-primary
+      +form-unit({title: 'pagination', subtitle: ''})
+        +pagination({})

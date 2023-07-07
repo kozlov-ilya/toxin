@@ -1,0 +1,19 @@
+mixin pagination(options)
+  //- options = {options, mods=["mod1", "mod2", ...]}
+
+  -
+    let unitClassName = 'pagination';
+
+    //- Add modifiers to class name
+    if ( Object.hasOwn(options, 'mods') && options.mods) {
+      //- If modifiers were passed to mixin
+      options.mods.forEach((element) => {
+        unitClassName += ` pagination_${element}`;
+      });
+    }
+
+  div(class=unitClassName)&attributes(attributes)
+    .pagination__interface
+      ul.pagination__page-links(data-current-page=1)
+      .pagination__next-btn
+    .pagination__label
