@@ -1396,7 +1396,7 @@ eval("/* module decorator */ module = __webpack_require__.nmd(module);\n//! mome
   \*************************************/
 /***/ (() => {
 
-eval("\n\n//# sourceURL=webpack://template/./src/blocks/button/button.js?");
+eval("\r\n\n\n//# sourceURL=webpack://template/./src/blocks/button/button.js?");
 
 /***/ }),
 

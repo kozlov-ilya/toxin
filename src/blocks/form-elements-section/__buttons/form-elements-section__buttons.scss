@@ -54,6 +54,9 @@
 
 .form-elements-section__click-buttons {
   padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 }
 
 .form-elements-section__click-buttons-row {

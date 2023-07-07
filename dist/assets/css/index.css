@@ -1017,6 +1017,32 @@ select {
   background: var(--gradient-bg-primary);
 }
 
+.button_type_text {
+  color: var(--color-purple);
+}
+
+.button_type_text:hover {
+  color: var(--color-dark-shade-50);
+}
+
+.button_cta-primary {
+  width: 20rem;
+  text-align: center;
+}
+
+.button_cta-primary::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 44px;
+  height: 44px;
+  background-image: url(../img/cta-primary-arrow-forward.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+}
+
 .button {
   font: var(--type-heading-h3);
   text-transform: uppercase;
@@ -1078,6 +1104,9 @@ select {
 
 .form-elements-section__click-buttons {
   padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 }
 
 .form-elements-section__click-buttons-row {

@@ -50,7 +50,12 @@ mixin form-elements-section__buttons(options)
         .form-elements-section__click-buttons
           .form-elements-section__click-buttons-row
             +button({text: 'Click me'}).button_type_cta.button_bg_filled.button_cta-secondary
-            +button({text: 'Click me'}).button_type_cta.button_bg_filled.button_cta-secondary
+            +button({text: 'Click me'}).button_type_cta.button_bg_filled.button_cta-secondary.button_hovered
           .form-elements-section__click-buttons-row
             +button({text: 'Click me'}).button_type_cta.button_bg_ghost.button_cta-secondary
-            +button({text: 'Click me'}).button_type_cta.button_bg_ghost.button_cta-secondary
+            +button({text: 'Click me'}).button_type_cta.button_bg_ghost.button_cta-secondary.button_ghost-hovered
+          .form-elements-section__click-buttons-row
+            +button({text: 'Click me'}).button_type_text
+            +button({text: 'Click me'}).button_type_text
+          .form-elements-section__click-buttons-row
+            +button({text: 'перейти к оплате'}).button_type_cta.button_bg_filled.button_cta-primary
