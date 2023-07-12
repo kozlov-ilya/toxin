@@ -20,41 +20,108 @@ function fillPageLinkList(pageLinkList, pageLinkArray) {
   });
 }
 
-function pushPrevPageLink(pageLinkArray, currentPage) {
-  if (currentPage > 2) {
-    return pageLinkArray.push(currentPage - 1);
+function updatePageLinkList(pageLinkList, pageLinkArray) {
+  pageLinkList.textContent = '';
+  fillPageLinkList(pageLinkList, pageLinkArray);
+}
+
+function getCurrentPage(pageLinkList) {
+  return parseInt(pageLinkList.dataset.currentPage);
+}
+
+function addPageLinkNeighbour(pageLinkArray, currentPage, neighbourStep) {
+  const prevLink = pageLinkArray.slice(-1)[0];
+  const neighbourLink = currentPage + neighbourStep;
+  if (
+    neighbourLink != prevLink &&
+    neighbourLink > 1 &&
+    neighbourLink < TOTAL_PAGE_NUMBER
+  ) {
+    pageLinkArray.push(neighbourLink);
   }
   return pageLinkArray;
 }
 
-/* 
-  2/15
-  [1, 2, 3, ..., 15]
+function addPageLinkWithNeighbours(
+  pageLinkArray,
+  currentPage,
+  neighboursCount
+) {
+  for (let i = -neighboursCount; i <= neighboursCount; i++) {
+    pageLinkArray = addPageLinkNeighbour(pageLinkArray, currentPage, i);
+  }
+  return pageLinkArray;
+}
 
-  3/15
-  [1, 2, 3, 4, ..., 15]
+function addPageLinkArrayStart(pageLinkArray, currentPage) {
+  pageLinkArray.push(1);
+  if (currentPage > 3) pageLinkArray.push('...');
+  return pageLinkArray;
+}
 
-  4/15
-  [1, ..., 3, 4, 5, ..., 15]
-
-  13/15
-  [1, ..., 12, 13, 14, 15]
-
-  14/15
-  [1, ..., 13, 14, 15]
-  */
-function addNextPageLinkToArray(pageLinkArray, currentLink) {
-  const prevLink = pageLinkArray.slice(-1)[0];
+function addPageLinkArrayEnd(pageLinkArray, currentPage) {
+  if (currentPage <= TOTAL_PAGE_NUMBER - 3) pageLinkArray.push('...');
+  pageLinkArray.push(15);
+  return pageLinkArray;
 }
 
 function fillPageLinkArray(pageLinkList) {
-  const currentPage = pageLinkList.dataset.currentPage;
+  const currentPage = getCurrentPage(pageLinkList);
+
   let pageLinkArray = [];
-  pageLinkArray.push(1);
+  pageLinkArray = addPageLinkArrayStart(pageLinkArray, currentPage);
+  if (currentPage == 1 || currentPage == TOTAL_PAGE_NUMBER) {
+    pageLinkArray = addPageLinkWithNeighbours(pageLinkArray, currentPage, 2);
+  } else {
+    pageLinkArray = addPageLinkWithNeighbours(pageLinkArray, currentPage, 1);
+  }
+  pageLinkArray = addPageLinkArrayEnd(pageLinkArray, currentPage);
+  return pageLinkArray;
+}
+
+function highlightCurrentPage(pageLinkList) {
+  const pageLinks = pageLinkList.querySelectorAll('.pagination__page-link');
+  const currentPage = getCurrentPage(pageLinkList);
+  pageLinks.forEach((pageLink) => {
+    pageLink.classList.remove('pagination__page-link_current');
+    if (pageLink.dataset.page == currentPage) {
+      pageLink.classList.add('pagination__page-link_current');
+    }
+  });
+}
+
+function handlePageLinkClick(event) {
+  if (event.target.closest('.pagination__page-link')) {
+    const pagination = event.currentTarget;
+    const pageLinkList = pagination.querySelector('.pagination__page-links');
+    const pageLink = event.target.closest('.pagination__page-link');
+    if (pageLink.dataset.page != '...') {
+      pageLinkList.dataset.currentPage = pageLink.dataset.page;
+      const pageLinkArray = fillPageLinkArray(pageLinkList);
+      updatePageLinkList(pageLinkList, pageLinkArray);
+      highlightCurrentPage(pageLinkList);
+    }
+  }
+}
+
+function handleNextBtnClick(event) {
+  if (event.target.closest('.pagination__next-btn')) {
+    const pagination = event.currentTarget;
+    const pageLinkList = pagination.querySelector('.pagination__page-links');
+    const currentPage = getCurrentPage(pageLinkList);
+    if (currentPage != TOTAL_PAGE_NUMBER)
+      pageLinkList.dataset.currentPage = currentPage + 1;
+    const pageLinkArray = fillPageLinkArray(pageLinkList);
+    updatePageLinkList(pageLinkList, pageLinkArray);
+    highlightCurrentPage(pageLinkList);
+  }
 }
 
 paginations.forEach((pagination) => {
   const pageLinkList = pagination.querySelector('.pagination__page-links');
-  let pageLinkArray = [1, 2, 3, 4, '...', 15];
-  fillPageLinkList(pageLinkList, pageLinkArray);
+  const pageLinkArray = fillPageLinkArray(pageLinkList);
+  updatePageLinkList(pageLinkList, pageLinkArray);
+  highlightCurrentPage(pageLinkList);
+  pagination.addEventListener('click', handlePageLinkClick);
+  pagination.addEventListener('click', handleNextBtnClick);
 });
