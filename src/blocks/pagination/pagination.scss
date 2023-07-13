@@ -1,4 +1,7 @@
 .pagination {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .pagination__interface {
@@ -48,4 +51,5 @@
 
 .pagination__label {
   font: var(--type-body);
+  color: var(--color-dark-shade-75);
 }

@@ -1,5 +1,7 @@
-const TOTAL_PAGE_NUMBER = 15;
-
+const ITEMS_PER_PAGE = 12;
+const TOTAL_ITEMS_COUNT = 150;
+const TOTAL_PAGE_NUMBER = Math.ceil(TOTAL_ITEMS_COUNT / ITEMS_PER_PAGE);
+console.log(TOTAL_PAGE_NUMBER);
 const paginations = document.querySelectorAll('.pagination');
 
 function createPageLink(pageLinkText) {
@@ -61,7 +63,7 @@ function addPageLinkArrayStart(pageLinkArray, currentPage) {
 
 function addPageLinkArrayEnd(pageLinkArray, currentPage) {
   if (currentPage <= TOTAL_PAGE_NUMBER - 3) pageLinkArray.push('...');
-  pageLinkArray.push(15);
+  pageLinkArray.push(TOTAL_PAGE_NUMBER);
   return pageLinkArray;
 }
 
@@ -90,6 +92,22 @@ function highlightCurrentPage(pageLinkList) {
   });
 }
 
+function updatePaginationLabel(pagination) {
+  const pageLinkList = pagination.querySelector('.pagination__page-links');
+  const currentPage = getCurrentPage(pageLinkList);
+  const label = pagination.querySelector('.pagination__label');
+  const firstItemOnPage = ITEMS_PER_PAGE * (currentPage - 1) + 1;
+  const lastItemOnPage =
+    ITEMS_PER_PAGE * currentPage > TOTAL_ITEMS_COUNT
+      ? TOTAL_ITEMS_COUNT
+      : ITEMS_PER_PAGE * currentPage;
+  const totalItemsCount =
+    TOTAL_ITEMS_COUNT > 100
+      ? Math.floor(TOTAL_ITEMS_COUNT / 100) * 100 + '+'
+      : TOTAL_ITEMS_COUNT;
+  label.innerHTML = `${firstItemOnPage} – ${lastItemOnPage} из ${totalItemsCount} вариантов аренды`;
+}
+
 function handlePageLinkClick(event) {
   if (event.target.closest('.pagination__page-link')) {
     const pagination = event.currentTarget;
@@ -100,6 +118,7 @@ function handlePageLinkClick(event) {
       const pageLinkArray = fillPageLinkArray(pageLinkList);
       updatePageLinkList(pageLinkList, pageLinkArray);
       highlightCurrentPage(pageLinkList);
+      updatePaginationLabel(pagination);
     }
   }
 }
@@ -114,6 +133,7 @@ function handleNextBtnClick(event) {
     const pageLinkArray = fillPageLinkArray(pageLinkList);
     updatePageLinkList(pageLinkList, pageLinkArray);
     highlightCurrentPage(pageLinkList);
+    updatePaginationLabel(pagination);
   }
 }
 
@@ -122,6 +142,7 @@ paginations.forEach((pagination) => {
   const pageLinkArray = fillPageLinkArray(pageLinkList);
   updatePageLinkList(pageLinkList, pageLinkArray);
   highlightCurrentPage(pageLinkList);
+  updatePaginationLabel(pagination);
   pagination.addEventListener('click', handlePageLinkClick);
   pagination.addEventListener('click', handleNextBtnClick);
 });
