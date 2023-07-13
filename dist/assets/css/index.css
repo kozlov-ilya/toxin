@@ -562,6 +562,10 @@ select {
   opacity: 25%;
 }
 
+.range-calendar__footer {
+  margin-top: 20px;
+}
+
 .range-calendar__buttons {
   display: flex;
   justify-content: space-between;

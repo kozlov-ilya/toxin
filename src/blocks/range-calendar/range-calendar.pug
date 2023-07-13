@@ -1,3 +1,5 @@
+include ../button/button
+
 mixin range-calendar(options)
   //- options = {options, mods=["mod1", "mod2", ...]}
 
@@ -59,5 +61,5 @@ mixin range-calendar(options)
               button.range-calendar__day-unit.day-unit-btn(data-date-value)= day
     .range-calendar__footer
       .range-calendar__buttons
-        button.range-calendar__clear-button= 'очистить'
-        button.range-calendar__submit-button= 'применить'
+        +button({text:'очистить'}).range-calendar__clear-button.button_type_text
+        +button({text: 'применить'}).range-calendar__submit-button.button_type_text
