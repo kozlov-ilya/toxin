@@ -3,13 +3,20 @@
 @forward '../layout/layout.scss';
 @forward './__fields/form-elements-section__fields.scss';
 @forward './__buttons/form-elements-section__buttons.scss';
+@forward './__dropdowns/form-elements-section__dropdowns.scss';
 
 .form-elements-section {
   padding: f.toRem(140) 0 f.toRem(80);
 }
 
 .form-elements-section__content {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.form-elements-section__row {
   display: grid;
-  grid-template-columns: auto 1fr;
-  grid-column-gap: f.toRem(126);
+  grid-template-columns: 320px 1fr;
+  column-gap: 125px;
 }

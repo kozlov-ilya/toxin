@@ -1,11 +1,24 @@
 const counters = document.querySelectorAll('.counter');
 
-function getValue(counter) {
-  return parseInt(counter.querySelector('.counter__value').textContent);
+export function getValue(counter) {
+  return parseInt(counter.dataset.value);
 }
 
-function setValue(counter, newValue) {
-  counter.querySelector('.counter__value').textContent = newValue;
+export function getLabel(counter) {
+  return counter.querySelector('.counter__label').textContent;
+}
+
+function updateValueView(counter) {
+  counter.querySelector('.counter__value').textContent = counter.dataset.value;
+}
+
+export function setValue(counter, newValue) {
+  counter.dataset.value = newValue;
+  updateValueView(counter);
+}
+
+export function setLabel(counter, newLabel) {
+  counter.querySelector('.counter__label').textContent = newLabel;
 }
 
 function increaseValue(counter) {
@@ -43,8 +56,12 @@ function updateAbilityToDecreaseValue(counter) {
   }
 }
 
+export function resetCounter(counter) {
+  setValue(counter, 0);
+  updateAbilityToDecreaseValue(counter);
+}
+
 function handleButtonClick(event) {
-  event = event || window.event;
   const counter = event.target.closest('.counter');
   if (event.target.closest('.counter__button_decreasing')) {
     decreaseValue(counter);
@@ -58,6 +75,7 @@ function handleButtonClick(event) {
 counters.forEach((counter) => {
   let buttons = counter.querySelectorAll('.counter__button');
 
+  updateValueView(counter);
   updateAbilityToDecreaseValue(counter);
 
   buttons.forEach((button) => {

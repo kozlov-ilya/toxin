@@ -310,57 +310,8 @@ select {
   color: var(--color-dark-shade-25);
 }
 
-.counter {
-  display: flex;
-  justify-content: space-between;
-}
-
-.counter__label {
-  font: var(--type-heading-h3);
-  text-transform: uppercase;
-  display: flex;
-  align-items: center;
-}
-
-.counter__interface {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  min-width: 92px;
-}
-
-.counter__button {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background: transparent;
-  border: 1px solid var(--color-dark-shade-25);
-  position: relative;
-  color: var(--color-dark-shade-50);
-}
-
-.counter__button:hover {
-  cursor: pointer;
-  border: 1px solid var(--color-dark-shade-50);
-}
-
-.counter__button_disabled {
-  border: 1px solid #eaeaed;
-  color: #eaeaed;
-}
-
-.counter__button_disabled:hover {
-  cursor: default;
-  border: 1px solid var(--color-dark-shade-5);
-}
-
-.counter__value {
-  font: var(--type-heading-h3);
-  color: var(--color-dark-shade-100);
-}
-
 :root {
-  --animation-length: 0.1s;
+  --dropdown-slide-animation-length: 0.1s;
 }
 
 .dropdown {
@@ -380,12 +331,12 @@ select {
   border-width: 1px;
   padding: 0.4375rem;
   padding-left: 0.9375rem;
-  transition: grid-template-rows var(--animation-length) ease-out, padding calc(var(--animation-length));
+  transition: grid-template-rows var(--dropdown-slide-animation-length) ease-out, padding calc(var(--dropdown-slide-animation-length));
 }
 
 .dropdown__select {
   position: relative;
-  transition: border-radius var(--animation-length) var(--animation-length);
+  transition: border-radius var(--dropdown-slide-animation-length) var(--dropdown-slide-animation-length);
   cursor: pointer;
 }
 
@@ -417,14 +368,15 @@ select {
   padding: 0rem 0.4375rem 0rem 0.9375rem;
   display: grid;
   grid-template-rows: 0fr;
-  transition: grid-template-rows var(--animation-length) ease-out, border-width 0s ease-out var(--animation-length), padding calc(var(--animation-length));
+  transition: grid-template-rows var(--dropdown-slide-animation-length) ease-out, border-width 0s ease-out var(--dropdown-slide-animation-length), padding calc(var(--dropdown-slide-animation-length));
 }
 
 .dropdown__menu-content {
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  gap: 0.4375rem;
+}
+
+.dropdown__menu-content > *:not(:first-child) {
+  margin-top: 7px;
 }
 
 .date-dropdown {
@@ -686,7 +638,7 @@ select {
   gap: 40px;
 }
 
-.form-elements-section__row {
+.form-elements-section__fields-row {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -1120,7 +1072,6 @@ select {
 .form-elements-section__buttons {
   display: flex;
   justify-content: space-between;
-  gap: 20px;
 }
 
 .form-elements-section__buttons-column {
@@ -1174,12 +1125,77 @@ select {
   gap: 20px;
 }
 
+.counter {
+  display: flex;
+  justify-content: space-between;
+}
+
+.counter__label {
+  font: var(--type-heading-h3);
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+}
+
+.counter__interface {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-width: 92px;
+}
+
+.counter__button {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: transparent;
+  border: 1px solid var(--color-dark-shade-25);
+  position: relative;
+  color: var(--color-dark-shade-50);
+}
+
+.counter__button:hover {
+  cursor: pointer;
+  border: 1px solid var(--color-dark-shade-50);
+}
+
+.counter__button_disabled {
+  border: 1px solid #eaeaed;
+  color: #eaeaed;
+}
+
+.counter__button_disabled:hover {
+  cursor: default;
+  border: 1px solid #eaeaed;
+}
+
+.counter__value {
+  font: var(--type-heading-h3);
+  color: var(--color-dark-shade-100);
+}
+
+.dropdown-guests__btns.dropdown-guests__btns {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.dropdown-guests__clear-btn_hidden {
+  visibility: hidden;
+}
+
 .form-elements-section {
   padding: 8.75rem 0 5rem;
 }
 
 .form-elements-section__content {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.form-elements-section__row {
   display: grid;
-  grid-template-columns: auto 1fr;
-  grid-column-gap: 7.875rem;
+  grid-template-columns: 320px 1fr;
+  column-gap: 125px;
 }

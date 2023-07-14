@@ -1,0 +1,15 @@
+@use '../../scss/abstracts/functions' as f;
+
+@forward '../dropdown/dropdown.scss';
+@forward '../counter/counter.scss';
+@forward '../button/button.scss';
+
+.dropdown-guests__btns.dropdown-guests__btns {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.dropdown-guests__clear-btn_hidden {
+  visibility: hidden;
+}

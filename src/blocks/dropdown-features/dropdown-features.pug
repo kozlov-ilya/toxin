@@ -1,0 +1,25 @@
+include ../dropdown/dropdown
+include ../counter/counter
+
+mixin dropdown-features(options)
+  //- options = {options, mods=["mod1", "mod2", ...]}
+
+  -
+    let unitClassName = 'dropdown-features';
+
+    //- Add modifiers to class name
+    if ( Object.hasOwn(options, 'mods') && options.mods) {
+      //- If modifiers were passed to mixin
+      options.mods.forEach((element) => {
+        unitClassName += ` dropdown-features_${element}`;
+      });
+    }
+
+  +dropdown({value: options.value, selectSize: 'm'})(
+    class=unitClassName,
+    data-default-value=options.value
+  )
+    each counter in options.counters
+      +counter({label: counter.label, defaultValue: counter.defaultValue})(
+        data-word-forms=counter.wordForms
+      )

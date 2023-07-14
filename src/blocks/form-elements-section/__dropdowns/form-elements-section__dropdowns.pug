@@ -1,0 +1,25 @@
+include ../../form-unit/form-unit
+include ../../dropdown/dropdown
+include ../../dropdown-guests/dropdown-guests
+include ../../dropdown-features/dropdown-features
+
+mixin form-elements-section__dropdowns(options)
+  -
+    let unitClassName = 'form-elements-section__dropdowns';
+
+    //- Add modifiers to class name
+    if ( Object.hasOwn(options, 'mods') && options.mods) {
+      //- If modifiers were passed to mixin
+      options.mods.forEach((element) => {
+        unitClassName += ` form-elements-section__dropdowns_${element}`;
+      });
+    }
+
+  div(class=unitClassName)&attributes(attributes)
+    .form-elements-section__row
+      .form-elements-section__column
+        +form-unit({title: 'dropdown', subtitle:'default'})
+          +dropdown-features({value: 'Комплектация', counters: [{label: 'спальни', defaultValue: 2, wordForms: 'спальня,спальни,спален'}, {label: 'кровати', defaultValue: 2, wordForms: 'кровать,кровати,кроватей'}, {label: 'ванные комнаты', defaultValue: 0, wordForms: 'ванная комната,ванные комнаты,ванных комнат'}]})
+      .form-elements-section__column
+        +form-unit({title: 'dropdown'})
+          +dropdown-guests({value: 'Сколько гостей', counters: [ {label: 'взрослые', defaultValue: 0}, {label: 'дети', defaultValue: 0}, {label: 'младенцы', defaultValue: 0}]})

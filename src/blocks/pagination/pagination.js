@@ -1,7 +1,6 @@
 const ITEMS_PER_PAGE = 12;
 const TOTAL_ITEMS_COUNT = 150;
 const TOTAL_PAGE_NUMBER = Math.ceil(TOTAL_ITEMS_COUNT / ITEMS_PER_PAGE);
-console.log(TOTAL_PAGE_NUMBER);
 const paginations = document.querySelectorAll('.pagination');
 
 function createPageLink(pageLinkText) {

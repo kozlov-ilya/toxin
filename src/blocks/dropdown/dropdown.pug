@@ -15,8 +15,7 @@ mixin dropdown(options)
     }
 
   div(class=unitClassName)&attributes(attributes)
-    .dropdown__select.field.field_size_l!= options.value
+    .dropdown__select.field(class=`field_size_${options.selectSize}`)!= options.value
     .dropdown__menu
       .dropdown__menu-content
-        each counter in options.counters
-          +counter({label: counter})
+        block

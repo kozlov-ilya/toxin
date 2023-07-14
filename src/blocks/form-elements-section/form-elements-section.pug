@@ -1,6 +1,8 @@
 include ../layout/layout
+include ../form-unit/form-unit
 include __fields/form-elements-section__fields
 include __buttons/form-elements-section__buttons
+include __dropdowns/form-elements-section__dropdowns
 
 mixin form-elements-section(options)
   //- options = {options, mods=["mod1", "mod2", ...]}
@@ -19,5 +21,9 @@ mixin form-elements-section(options)
   section(class=unitClassName)&attributes(attributes)
     +layout({})
       .form-elements-section__content
-        +form-elements-section__fields({})
-        +form-elements-section__buttons({})
+        .form-elements-section__row
+          .form-elements-section__column
+            +form-elements-section__fields({})
+          .form-elements-section__column
+            +form-elements-section__buttons({})
+        +form-elements-section__dropdowns({})

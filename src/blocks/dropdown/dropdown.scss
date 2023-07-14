@@ -1,9 +1,7 @@
 @use '../../scss/abstracts/functions' as f;
 
-@forward '../counter/counter.scss';
-
 :root {
-  --animation-length: 0.1s;
+  --dropdown-slide-animation-length: 0.1s;
 }
 
 .dropdown {
@@ -26,14 +24,16 @@
     border-width: 1px;
     padding: f.toRem(7);
     padding-left: f.toRem(15);
-    transition: grid-template-rows var(--animation-length) ease-out,
-      padding calc(var(--animation-length));
+    transition: grid-template-rows var(--dropdown-slide-animation-length)
+        ease-out,
+      padding calc(var(--dropdown-slide-animation-length));
   }
 }
 
 .dropdown__select {
   position: relative;
-  transition: border-radius var(--animation-length) var(--animation-length);
+  transition: border-radius var(--dropdown-slide-animation-length)
+    var(--dropdown-slide-animation-length);
   cursor: pointer;
 }
 
@@ -65,14 +65,15 @@
   padding: f.toRem(0) f.toRem(7) f.toRem(0) f.toRem(15);
   display: grid;
   grid-template-rows: 0fr;
-  transition: grid-template-rows var(--animation-length) ease-out,
-    border-width 0s ease-out var(--animation-length),
-    padding calc(var(--animation-length));
+  transition: grid-template-rows var(--dropdown-slide-animation-length) ease-out,
+    border-width 0s ease-out var(--dropdown-slide-animation-length),
+    padding calc(var(--dropdown-slide-animation-length));
 }
 
 .dropdown__menu-content {
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  gap: f.toRem(7);
+}
+
+.dropdown__menu-content > *:not(:first-child) {
+  margin-top: 7px;
 }

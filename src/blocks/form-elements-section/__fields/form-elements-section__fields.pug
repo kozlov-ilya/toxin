@@ -21,7 +21,7 @@ mixin form-elements-section__fields(options)
     }
 
   div(class=unitClassName)&attributes(attributes)
-    .form-elements-section__row
+    .form-elements-section__fields-row
       +form-unit({title: 'Text Field', subtitle: 'Default'})
         +text-field({}).field_size_l(type='email', placeholder='Email')
       +form-unit({title: 'Text Field', subtitle: 'hover/focus'})
@@ -36,11 +36,11 @@ mixin form-elements-section__fields(options)
         )
       +form-unit({title: 'masked text field', subtitle: ''})
         +masked-text-field({})(placeholder='ДД.ММ.ГГГГ')
-    .form-elements-section__row
+    .form-elements-section__fields-fields-row
       +date-range-picker({titles: ['Date dropdown', 'Date dropdown'], subtitles: ['', '']})
-    .form-elements-section__row
+    .form-elements-section__fields-row
       +form-unit({title: 'filter date dropdown', subtitle: ''})
         +filter-date-dropdown({})
-    .form-elements-section__row
+    .form-elements-section__fields-row
       +form-unit({title: 'subscription text field', subtitle: ''})
         +subscription-text-field({inputType: 'text', inputPlaceholder: 'Email'})
