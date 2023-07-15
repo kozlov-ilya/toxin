@@ -1546,7 +1546,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _fie
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _expandable_checkbox_list_expandable_checkbox_list__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../expandable-checkbox-list/expandable-checkbox-list */ \"./src/blocks/expandable-checkbox-list/expandable-checkbox-list.js\");\n/* harmony import */ var _expandable_checkbox_list_expandable_checkbox_list__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_expandable_checkbox_list_expandable_checkbox_list__WEBPACK_IMPORTED_MODULE_0__);\n\r\n\n\n//# sourceURL=webpack://template/./src/blocks/form-elements-section/__lists/form-elements-section__lists.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _expandable_checkbox_list_expandable_checkbox_list__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../expandable-checkbox-list/expandable-checkbox-list */ \"./src/blocks/expandable-checkbox-list/expandable-checkbox-list.js\");\n/* harmony import */ var _expandable_checkbox_list_expandable_checkbox_list__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_expandable_checkbox_list_expandable_checkbox_list__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _rich_checkbox_button_rich_checkbox_button__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../rich-checkbox-button/rich-checkbox-button */ \"./src/blocks/rich-checkbox-button/rich-checkbox-button.js\");\n/* harmony import */ var _rich_checkbox_button_rich_checkbox_button__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_rich_checkbox_button_rich_checkbox_button__WEBPACK_IMPORTED_MODULE_1__);\n\r\n\r\n\n\n//# sourceURL=webpack://template/./src/blocks/form-elements-section/__lists/form-elements-section__lists.js?");
 
 /***/ }),
 
@@ -1630,6 +1630,16 @@ eval("const rangeSliders = document.querySelectorAll('.range-slider');\r\n\r\nfu
 /***/ (() => {
 
 eval("const rateButtons = document.querySelectorAll('.rate-button');\r\n\r\n/* Reset all stars to unchecked */\r\nfunction resetRateButtonView(rateButton) {\r\n  const stars = rateButton.querySelectorAll('.rate-button__star');\r\n  stars.forEach((star) => {\r\n    star.classList.remove('rate-button__star_checked');\r\n  });\r\n}\r\n\r\n/* Update all stars according to value attribute */\r\nfunction updateRateButtonView(rateButton) {\r\n  const value = rateButton.dataset.value;\r\n  const stars = rateButton.querySelectorAll('.rate-button__star');\r\n\r\n  for (let i = 0; i < value; i++) {\r\n    stars[i].classList.add('rate-button__star_checked');\r\n  }\r\n}\r\n\r\nfunction getStarValue(rateButton, star) {\r\n  const stars = rateButton.querySelectorAll('.rate-button__star');\r\n  for (let starCount = 0; starCount < stars.length; starCount++) {\r\n    let currentStar = stars[starCount];\r\n    if (currentStar.isSameNode(star)) {\r\n      starCount++;\r\n      return starCount;\r\n    }\r\n  }\r\n}\r\n\r\nfunction updateRateButtonValueAttribute(rateButton, value) {\r\n  rateButton.dataset.value = value;\r\n}\r\n\r\nfunction handleRateButtonStarClick(event) {\r\n  const rateButton = event.currentTarget;\r\n  if (event.target.closest('.rate-button__star')) {\r\n    const rateButtonStar = event.target.closest('.rate-button__star');\r\n    const starValue = getStarValue(rateButton, rateButtonStar);\r\n    updateRateButtonValueAttribute(rateButton, starValue);\r\n    resetRateButtonView(rateButton);\r\n    updateRateButtonView(rateButton);\r\n  }\r\n}\r\n\r\nrateButtons.forEach((rateButton) => {\r\n  rateButton.addEventListener('click', handleRateButtonStarClick);\r\n  resetRateButtonView(rateButton);\r\n  updateRateButtonView(rateButton);\r\n});\r\n\n\n//# sourceURL=webpack://template/./src/blocks/rate-button/rate-button.js?");
+
+/***/ }),
+
+/***/ "./src/blocks/rich-checkbox-button/rich-checkbox-button.js":
+/*!*****************************************************************!*\
+  !*** ./src/blocks/rich-checkbox-button/rich-checkbox-button.js ***!
+  \*****************************************************************/
+/***/ (() => {
+
+eval("\n\n//# sourceURL=webpack://template/./src/blocks/rich-checkbox-button/rich-checkbox-button.js?");
 
 /***/ }),
 

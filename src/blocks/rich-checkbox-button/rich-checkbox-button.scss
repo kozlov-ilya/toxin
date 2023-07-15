@@ -1,0 +1,74 @@
+@use '../../scss/abstracts/functions' as f;
+
+.rich-checkbox-button {
+  font: var(--type-body);
+  color: var(--color-dark-shade-75);
+  width: fit-content;
+  max-width: 266px;
+  display: grid;
+  grid-template-columns: f.toRem(20) auto;
+  column-gap: f.toRem(10);
+  row-gap: f.toRem(4);
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.rich-checkbox-button__input {
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: #fff;
+  border: 1px solid var(--color-dark-shade-25);
+  width: f.toRem(20);
+  height: f.toRem(20);
+  border-radius: 4px;
+  margin: 0;
+  transform: translateY(f.toRem(1));
+  display: grid;
+  place-content: center;
+  cursor: pointer;
+}
+
+.rich-checkbox-button__input:hover {
+  border: 1px solid var(--color-dark-shade-50);
+}
+
+.rich-checkbox-button__input:checked {
+  border: 1px solid var(--color-purple);
+}
+
+.rich-checkbox-button__input::before {
+  content: '';
+  border-right: 2px solid;
+  border-bottom: 2px solid;
+  border-image: var(--gradient-bg-primary) 1;
+  width: 6px;
+  height: 8px;
+  transform: scale(0) rotate(45deg) translate(-1px, -1px);
+}
+
+.rich-checkbox-button__input:checked::before {
+  transform: scale(1) rotate(45deg) translate(-1px, -1px);
+  animation: richCheckboxButtonScaleIn 0.1s ease-in-out;
+}
+
+@keyframes richCheckboxButtonScaleIn {
+  from {
+    transform: scale(0) rotate(45deg) translate(-1px, -1px);
+  }
+
+  75% {
+    transform: scale(1.25) rotate(45deg) translate(-1px, -1px);
+  }
+
+  to {
+    transform: scale(1) rotate(45deg) translate(-1px, -1px);
+  }
+}
+
+.rich-checkbox-button__info {
+  grid-column: 2/3;
+  font-size: f.toRem(12);
+  font-weight: 400;
+  color: var(--color-dark-shade-50);
+  line-height: f.toRem(14);
+}

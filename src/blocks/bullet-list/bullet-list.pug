@@ -1,0 +1,19 @@
+mixin bullet-list(options)
+  //- options = {options, mods=["mod1", "mod2", ...]}
+
+  -
+    let unitClassName = 'bullet-list';
+
+    //- Add modifiers to class name
+    if ( Object.hasOwn(options, 'mods') && options.mods) {
+      //- If modifiers were passed to mixin
+      options.mods.forEach((element) => {
+        unitClassName += ` bullet-list_${element}`;
+      });
+    }
+
+  div(class=unitClassName)&attributes(attributes)
+    .bullet-list__heading= options.heading
+    .bullet-list__list
+      each item in options.items
+        .bullet-list__item!= item

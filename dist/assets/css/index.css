@@ -1249,6 +1249,111 @@ select {
   gap: 10px;
 }
 
+.rich-checkbox-button {
+  font: var(--type-body);
+  color: var(--color-dark-shade-75);
+  width: fit-content;
+  max-width: 266px;
+  display: grid;
+  grid-template-columns: 1.25rem auto;
+  column-gap: 0.625rem;
+  row-gap: 0.25rem;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.rich-checkbox-button__input {
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: #fff;
+  border: 1px solid var(--color-dark-shade-25);
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 4px;
+  margin: 0;
+  transform: translateY(0.0625rem);
+  display: grid;
+  place-content: center;
+  cursor: pointer;
+}
+
+.rich-checkbox-button__input:hover {
+  border: 1px solid var(--color-dark-shade-50);
+}
+
+.rich-checkbox-button__input:checked {
+  border: 1px solid var(--color-purple);
+}
+
+.rich-checkbox-button__input::before {
+  content: "";
+  border-right: 2px solid;
+  border-bottom: 2px solid;
+  border-image: var(--gradient-bg-primary) 1;
+  width: 6px;
+  height: 8px;
+  transform: scale(0) rotate(45deg) translate(-1px, -1px);
+}
+
+.rich-checkbox-button__input:checked::before {
+  transform: scale(1) rotate(45deg) translate(-1px, -1px);
+  animation: richCheckboxButtonScaleIn 0.1s ease-in-out;
+}
+
+@keyframes richCheckboxButtonScaleIn {
+  from {
+    transform: scale(0) rotate(45deg) translate(-1px, -1px);
+  }
+  75% {
+    transform: scale(1.25) rotate(45deg) translate(-1px, -1px);
+  }
+  to {
+    transform: scale(1) rotate(45deg) translate(-1px, -1px);
+  }
+}
+.rich-checkbox-button__info {
+  grid-column: 2/3;
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--color-dark-shade-50);
+  line-height: 0.875rem;
+}
+
+.bullet-list {
+  max-width: 266px;
+}
+
+.bullet-list__heading {
+  font: var(--type-heading-h3);
+  text-transform: uppercase;
+}
+
+.bullet-list__list {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.bullet-list__item {
+  padding-left: 20px;
+  color: var(--color-dark-shade-75);
+  font: var(--type-body);
+  position: relative;
+}
+
+.bullet-list__item::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--color-dark-shade-25);
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: translateY(6px);
+}
+
 .form-elements-section__lists {
   margin-top: 125px;
 }
@@ -1257,6 +1362,19 @@ select {
   display: flex;
   flex-direction: column;
   gap: 20px;
+}
+
+.form-elements-section__rich-checkbox-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.form-elements-section__lists-column-content {
+  display: grid;
+  grid-template-columns: 320px auto;
+  column-gap: 72px;
 }
 
 .form-elements-section {

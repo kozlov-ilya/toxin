@@ -1,0 +1,34 @@
+.bullet-list {
+  max-width: 266px;
+}
+
+.bullet-list__heading {
+  font: var(--type-heading-h3);
+  text-transform: uppercase;
+}
+
+.bullet-list__list {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.bullet-list__item {
+  padding-left: 20px;
+  color: var(--color-dark-shade-75);
+  font: var(--type-body);
+  position: relative;
+}
+
+.bullet-list__item::before {
+  content: '';
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--color-dark-shade-25);
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: translateY(6px);
+}

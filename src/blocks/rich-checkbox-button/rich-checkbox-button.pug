@@ -1,0 +1,21 @@
+mixin rich-checkbox-button(options)
+  //- options = {options, mods=["mod1", "mod2", ...]}
+
+  -
+    let unitClassName = 'rich-checkbox-button';
+
+    //- Add modifiers to class name
+    if ( Object.hasOwn(options, 'mods') && options.mods) {
+      //- If modifiers were passed to mixin
+      options.mods.forEach((element) => {
+        unitClassName += ` rich-checkbox-button_${element}`;
+      });
+    }
+
+  label(class=unitClassName)&attributes(attributes)
+    input.rich-checkbox-button__input(
+      type='checkbox',
+      checked=options.isChecked
+    )
+    | #{ options.label }
+    .rich-checkbox-button__info= options.info
