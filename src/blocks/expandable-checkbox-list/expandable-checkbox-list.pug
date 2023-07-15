@@ -1,0 +1,22 @@
+include ../checkbox-button/checkbox-button
+
+mixin expandable-checkbox-list(options)
+  //- options = {options, mods=["mod1", "mod2", ...]}
+
+  -
+    let unitClassName = 'expandable-checkbox-list';
+
+    //- Add modifiers to class name
+    if ( Object.hasOwn(options, 'mods') && options.mods) {
+      //- If modifiers were passed to mixin
+      options.mods.forEach((element) => {
+        unitClassName += ` expandable-checkbox-list_${element}`;
+      });
+    }
+
+  div(class=unitClassName)&attributes(attributes)
+    .expandable-checkbox-list__heading= options.heading
+    .expandable-checkbox-list__list
+      .expandable-checkbox-list__list-content
+        each item in options.items
+          +checkbox-button({label: item.label, isChecked: item.isChecked}).expandable-checkbox-list__item

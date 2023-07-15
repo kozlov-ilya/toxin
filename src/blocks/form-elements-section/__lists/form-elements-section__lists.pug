@@ -1,0 +1,32 @@
+include ../../form-unit/form-unit
+include ../../expandable-checkbox-list/expandable-checkbox-list
+
+mixin form-elements-section__lists(options)
+  -
+    let unitClassName = 'form-elements-section__lists';
+
+    //- Add modifiers to class name
+    if ( Object.hasOwn(options, 'mods') && options.mods) {
+      //- If modifiers were passed to mixin
+      options.mods.forEach((element) => {
+        unitClassName += ` form-elements-section__lists${element}`;
+      });
+    }
+
+
+  div(class=unitClassName)&attributes(attributes)
+    .form-elements-section__row
+      .form-elements-section__column
+        .form-elements-section__expandable-lists
+          -
+            const expandableCheckboxList = [
+              {label:'Завтрак', isChecked: false},
+              {label:'Письменный стол', isChecked: true},
+              {label:'Стул для кормления', isChecked: true},
+              {label:'Кроватка', isChecked: true},
+              {label:'Телевизор', isChecked: false},
+              {label:'Шампунь', isChecked: false},
+              ];
+          +expandable-checkbox-list({heading: 'expandable checkbox list', items: expandableCheckboxList})
+          +expandable-checkbox-list({heading: 'expandable checkbox list', items: expandableCheckboxList}).expandable-checkbox-list_opened
+      .form-elements-section__column

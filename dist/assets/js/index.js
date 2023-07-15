@@ -1475,6 +1475,16 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
+/***/ "./src/blocks/expandable-checkbox-list/expandable-checkbox-list.js":
+/*!*************************************************************************!*\
+  !*** ./src/blocks/expandable-checkbox-list/expandable-checkbox-list.js ***!
+  \*************************************************************************/
+/***/ (() => {
+
+eval("// function openList(list) {\r\n//   list.classList.add('expandable-checkbox-list_opened');\r\n// }\r\n\r\n// function closeList(list) {\r\n//   list.classList.remove('expandable-checkbox-list_opened');\r\n// }\r\n\r\nfunction handleClick(event) {\r\n  if (event.target.closest('.expandable-checkbox-list__heading')) {\r\n    // const lists = document.querySelectorAll('.expandable-checkbox-list');\r\n    const currentList = event.currentTarget;\r\n    currentList.classList.toggle('expandable-checkbox-list_opened');\r\n  }\r\n}\r\n\r\nconst lists = document.querySelectorAll('.expandable-checkbox-list');\r\n\r\nlists.forEach((list) => {\r\n  list.addEventListener('click', handleClick);\r\n});\r\n\n\n//# sourceURL=webpack://template/./src/blocks/expandable-checkbox-list/expandable-checkbox-list.js?");
+
+/***/ }),
+
 /***/ "./src/blocks/field/field.js":
 /*!***********************************!*\
   !*** ./src/blocks/field/field.js ***!
@@ -1529,6 +1539,17 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _fie
 
 /***/ }),
 
+/***/ "./src/blocks/form-elements-section/__lists/form-elements-section__lists.js":
+/*!**********************************************************************************!*\
+  !*** ./src/blocks/form-elements-section/__lists/form-elements-section__lists.js ***!
+  \**********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _expandable_checkbox_list_expandable_checkbox_list__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../expandable-checkbox-list/expandable-checkbox-list */ \"./src/blocks/expandable-checkbox-list/expandable-checkbox-list.js\");\n/* harmony import */ var _expandable_checkbox_list_expandable_checkbox_list__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_expandable_checkbox_list_expandable_checkbox_list__WEBPACK_IMPORTED_MODULE_0__);\n\r\n\n\n//# sourceURL=webpack://template/./src/blocks/form-elements-section/__lists/form-elements-section__lists.js?");
+
+/***/ }),
+
 /***/ "./src/blocks/form-elements-section/form-elements-section.js":
 /*!*******************************************************************!*\
   !*** ./src/blocks/form-elements-section/form-elements-section.js ***!
@@ -1536,7 +1557,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _fie
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _fields_form_elements_section_fields__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./__fields/form-elements-section__fields */ \"./src/blocks/form-elements-section/__fields/form-elements-section__fields.js\");\n/* harmony import */ var _buttons_form_elements_section_buttons__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./__buttons/form-elements-section__buttons */ \"./src/blocks/form-elements-section/__buttons/form-elements-section__buttons.js\");\n/* harmony import */ var _dropdowns_form_elements_section_dropdowns__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./__dropdowns/form-elements-section__dropdowns */ \"./src/blocks/form-elements-section/__dropdowns/form-elements-section__dropdowns.js\");\n\r\n\r\n\r\n\n\n//# sourceURL=webpack://template/./src/blocks/form-elements-section/form-elements-section.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _fields_form_elements_section_fields__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./__fields/form-elements-section__fields */ \"./src/blocks/form-elements-section/__fields/form-elements-section__fields.js\");\n/* harmony import */ var _buttons_form_elements_section_buttons__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./__buttons/form-elements-section__buttons */ \"./src/blocks/form-elements-section/__buttons/form-elements-section__buttons.js\");\n/* harmony import */ var _dropdowns_form_elements_section_dropdowns__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./__dropdowns/form-elements-section__dropdowns */ \"./src/blocks/form-elements-section/__dropdowns/form-elements-section__dropdowns.js\");\n/* harmony import */ var _lists_form_elements_section_lists__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./__lists/form-elements-section__lists */ \"./src/blocks/form-elements-section/__lists/form-elements-section__lists.js\");\n\r\n\r\n\r\n\r\n\n\n//# sourceURL=webpack://template/./src/blocks/form-elements-section/form-elements-section.js?");
 
 /***/ }),
 

@@ -3,6 +3,7 @@ include ../form-unit/form-unit
 include __fields/form-elements-section__fields
 include __buttons/form-elements-section__buttons
 include __dropdowns/form-elements-section__dropdowns
+include __lists/form-elements-section__lists
 
 mixin form-elements-section(options)
   //- options = {options, mods=["mod1", "mod2", ...]}
@@ -27,3 +28,4 @@ mixin form-elements-section(options)
           .form-elements-section__column
             +form-elements-section__buttons({})
         +form-elements-section__dropdowns({})
+        +form-elements-section__lists({})
