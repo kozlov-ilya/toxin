@@ -67,7 +67,6 @@ function updateDropdownSelectValue(dropdown) {
   });
   const selectValueObj = cutSelectValueArray(selectValueArray, charLimit);
   let selectValue = selectValueObj.array.join(', ');
-  console.log(selectValueObj);
   if (selectValueObj.cut) {
     selectValue = `${selectValue}...`;
   }

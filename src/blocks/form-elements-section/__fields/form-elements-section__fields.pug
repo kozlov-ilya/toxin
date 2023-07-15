@@ -1,7 +1,7 @@
 include ../../form-unit/form-unit
 include ../../text-field/text-field
 include ../../masked-text-field/masked-text-field
-include ../../dropdown/dropdown
+include ../../dropdown-guests/dropdown-guests
 include ../../date-range-picker/date-range-picker
 include ../../filter-date-dropdown/filter-date-dropdown
 include ../../subscription-text-field/subscription-text-field
@@ -31,9 +31,7 @@ mixin form-elements-section__fields(options)
           value='This is pretty awesome'
         )
       +form-unit({title: 'Dropdown'})
-        +dropdown({value: 'Комплектация', counters: ['спальни', 'кровати', 'ванные комнаты']})(
-          data-default-value='Комплектация'
-        )
+        +dropdown-guests({value: 'Сколько гостей', counters: [ {label: 'взрослые', defaultValue: 0}, {label: 'дети', defaultValue: 0}, {label: 'младенцы', defaultValue: 0}]})
       +form-unit({title: 'masked text field', subtitle: ''})
         +masked-text-field({})(placeholder='ДД.ММ.ГГГГ')
     .form-elements-section__fields-fields-row

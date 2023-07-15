@@ -1,3 +1,14 @@
 @forward '../../dropdown/dropdown.scss';
 @forward '../../dropdown-guests/dropdown-guests.scss';
 @forward '../../dropdown-features/dropdown-features.scss';
+
+.form-elements-section__feature-dropdowns {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-elements-section__guests-dropdowns {
+  display: flex;
+  justify-content: space-between;
+}

@@ -19,7 +19,7 @@ mixin dropdown-guests(options)
   +dropdown({value: options.value, selectSize: 'l'})(
     class=unitClassName,
     data-default-value=options.value
-  )
+  )&attributes(attributes)
     each counter in options.counters
       +counter({label: counter.label, defaultValue: counter.defaultValue})
     .dropdown-guests__btns

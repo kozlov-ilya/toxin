@@ -8,15 +8,15 @@ function handleClick(event) {
   if (event.target.closest('.dropdown__select')) {
     /* Dropdown select was clicked */
     let dropdownSelect = event.target.closest('.dropdown__select');
-    let dropdown = dropdownSelect.closest('.dropdown');
+    let curDropdown = dropdownSelect.closest('.dropdown');
     /* Close all dropdowns except clicked */
     dropdowns.forEach((dropdown) => {
-      if (!dropdown.isEqualNode(dropdown)) {
+      if (!dropdown.isEqualNode(curDropdown)) {
         closeDropdown(dropdown);
       }
     });
     /* Toggle clicked dropdown */
-    dropdown.classList.toggle('dropdown_opened');
+    curDropdown.classList.toggle('dropdown_opened');
     return;
   }
 

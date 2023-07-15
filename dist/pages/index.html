@@ -130,10 +130,43 @@
                           <div class="form-unit__subtitle"></div>
                         </div>
                         <div class="form-unit__content">
-                          <div class="dropdown" data-default-value="Комплектация">
-                            <div class="dropdown__select field field_size_undefined">Комплектация</div>
+                          <div class="dropdown dropdown-guests" data-default-value="Сколько гостей">
+                            <div class="dropdown__select field field_size_l">Сколько гостей</div>
                             <div class="dropdown__menu">
-                              <div class="dropdown__menu-content"></div>
+                              <div class="dropdown__menu-content">
+                                <div class="counter" data-value="0">
+                                  <div class="counter__label">взрослые</div>
+                                  <div class="counter__interface"><button
+                                      class="counter__button counter__button_decreasing">-</button>
+                                    <div class="counter__value"></div><button
+                                      class="counter__button counter__button_increasing">+</button>
+                                  </div>
+                                </div>
+                                <div class="counter" data-value="0">
+                                  <div class="counter__label">дети</div>
+                                  <div class="counter__interface"><button
+                                      class="counter__button counter__button_decreasing">-</button>
+                                    <div class="counter__value"></div><button
+                                      class="counter__button counter__button_increasing">+</button>
+                                  </div>
+                                </div>
+                                <div class="counter" data-value="0">
+                                  <div class="counter__label">младенцы</div>
+                                  <div class="counter__interface"><button
+                                      class="counter__button counter__button_decreasing">-</button>
+                                    <div class="counter__value"></div><button
+                                      class="counter__button counter__button_increasing">+</button>
+                                  </div>
+                                </div>
+                                <div class="dropdown-guests__btns">
+                                  <div class="button dropdown-guests__clear-btn button_type_text">
+                                    <p class="button__text">Очистить</p>
+                                  </div>
+                                  <div class="button dropdown-guests__submit-btn button_type_text">
+                                    <p class="button__text">Применить</p>
+                                  </div>
+                                </div>
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -687,39 +720,81 @@
               <div class="form-elements-section__dropdowns">
                 <div class="form-elements-section__row">
                   <div class="form-elements-section__column">
-                    <div class="form-unit">
-                      <div class="form-unit__label">
-                        <div class="form-unit__title">dropdown</div>
-                        <div class="form-unit__subtitle">default</div>
+                    <div class="form-elements-section__feature-dropdowns">
+                      <div class="form-unit">
+                        <div class="form-unit__label">
+                          <div class="form-unit__title">dropdown</div>
+                          <div class="form-unit__subtitle">default</div>
+                        </div>
+                        <div class="form-unit__content">
+                          <div class="dropdown dropdown-features" data-default-value="Комплектация">
+                            <div class="dropdown__select field field_size_m">Комплектация</div>
+                            <div class="dropdown__menu">
+                              <div class="dropdown__menu-content">
+                                <div class="counter" data-value="2" data-word-forms="спальня,спальни,спален">
+                                  <div class="counter__label">спальни</div>
+                                  <div class="counter__interface"><button
+                                      class="counter__button counter__button_decreasing">-</button>
+                                    <div class="counter__value"></div><button
+                                      class="counter__button counter__button_increasing">+</button>
+                                  </div>
+                                </div>
+                                <div class="counter" data-value="2" data-word-forms="кровать,кровати,кроватей">
+                                  <div class="counter__label">кровати</div>
+                                  <div class="counter__interface"><button
+                                      class="counter__button counter__button_decreasing">-</button>
+                                    <div class="counter__value"></div><button
+                                      class="counter__button counter__button_increasing">+</button>
+                                  </div>
+                                </div>
+                                <div class="counter" data-value="0"
+                                  data-word-forms="ванная комната,ванные комнаты,ванных комнат">
+                                  <div class="counter__label">ванные комнаты</div>
+                                  <div class="counter__interface"><button
+                                      class="counter__button counter__button_decreasing">-</button>
+                                    <div class="counter__value"></div><button
+                                      class="counter__button counter__button_increasing">+</button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                       </div>
-                      <div class="form-unit__content">
-                        <div class="dropdown dropdown-features" data-default-value="Комплектация">
-                          <div class="dropdown__select field field_size_m">Комплектация</div>
-                          <div class="dropdown__menu">
-                            <div class="dropdown__menu-content">
-                              <div class="counter" data-value="2" data-word-forms="спальня,спальни,спален">
-                                <div class="counter__label">спальни</div>
-                                <div class="counter__interface"><button
-                                    class="counter__button counter__button_decreasing">-</button>
-                                  <div class="counter__value"></div><button
-                                    class="counter__button counter__button_increasing">+</button>
+                      <div class="form-unit">
+                        <div class="form-unit__label">
+                          <div class="form-unit__title">dropdown</div>
+                          <div class="form-unit__subtitle">default</div>
+                        </div>
+                        <div class="form-unit__content">
+                          <div class="dropdown dropdown-features dropdown_opened" data-default-value="Комплектация">
+                            <div class="dropdown__select field field_size_m">Комплектация</div>
+                            <div class="dropdown__menu">
+                              <div class="dropdown__menu-content">
+                                <div class="counter" data-value="2" data-word-forms="спальня,спальни,спален">
+                                  <div class="counter__label">спальни</div>
+                                  <div class="counter__interface"><button
+                                      class="counter__button counter__button_decreasing">-</button>
+                                    <div class="counter__value"></div><button
+                                      class="counter__button counter__button_increasing">+</button>
+                                  </div>
                                 </div>
-                              </div>
-                              <div class="counter" data-value="2" data-word-forms="кровать,кровати,кроватей">
-                                <div class="counter__label">кровати</div>
-                                <div class="counter__interface"><button
-                                    class="counter__button counter__button_decreasing">-</button>
-                                  <div class="counter__value"></div><button
-                                    class="counter__button counter__button_increasing">+</button>
+                                <div class="counter" data-value="2" data-word-forms="кровать,кровати,кроватей">
+                                  <div class="counter__label">кровати</div>
+                                  <div class="counter__interface"><button
+                                      class="counter__button counter__button_decreasing">-</button>
+                                    <div class="counter__value"></div><button
+                                      class="counter__button counter__button_increasing">+</button>
+                                  </div>
                                 </div>
-                              </div>
-                              <div class="counter" data-value="0"
-                                data-word-forms="ванная комната,ванные комнаты,ванных комнат">
-                                <div class="counter__label">ванные комнаты</div>
-                                <div class="counter__interface"><button
-                                    class="counter__button counter__button_decreasing">-</button>
-                                  <div class="counter__value"></div><button
-                                    class="counter__button counter__button_increasing">+</button>
+                                <div class="counter" data-value="0"
+                                  data-word-forms="ванная комната,ванные комнаты,ванных комнат">
+                                  <div class="counter__label">ванные комнаты</div>
+                                  <div class="counter__interface"><button
+                                      class="counter__button counter__button_decreasing">-</button>
+                                    <div class="counter__value"></div><button
+                                      class="counter__button counter__button_increasing">+</button>
+                                  </div>
                                 </div>
                               </div>
                             </div>
@@ -729,46 +804,95 @@
                     </div>
                   </div>
                   <div class="form-elements-section__column">
-                    <div class="form-unit">
-                      <div class="form-unit__label">
-                        <div class="form-unit__title">dropdown</div>
-                        <div class="form-unit__subtitle"></div>
+                    <div class="form-elements-section__guests-dropdowns">
+                      <div class="form-unit">
+                        <div class="form-unit__label">
+                          <div class="form-unit__title">dropdown</div>
+                          <div class="form-unit__subtitle"></div>
+                        </div>
+                        <div class="form-unit__content">
+                          <div class="dropdown dropdown-guests dropdown_opened" data-default-value="Сколько гостей">
+                            <div class="dropdown__select field field_size_l">Сколько гостей</div>
+                            <div class="dropdown__menu">
+                              <div class="dropdown__menu-content">
+                                <div class="counter" data-value="0">
+                                  <div class="counter__label">взрослые</div>
+                                  <div class="counter__interface"><button
+                                      class="counter__button counter__button_decreasing">-</button>
+                                    <div class="counter__value"></div><button
+                                      class="counter__button counter__button_increasing">+</button>
+                                  </div>
+                                </div>
+                                <div class="counter" data-value="0">
+                                  <div class="counter__label">дети</div>
+                                  <div class="counter__interface"><button
+                                      class="counter__button counter__button_decreasing">-</button>
+                                    <div class="counter__value"></div><button
+                                      class="counter__button counter__button_increasing">+</button>
+                                  </div>
+                                </div>
+                                <div class="counter" data-value="0">
+                                  <div class="counter__label">младенцы</div>
+                                  <div class="counter__interface"><button
+                                      class="counter__button counter__button_decreasing">-</button>
+                                    <div class="counter__value"></div><button
+                                      class="counter__button counter__button_increasing">+</button>
+                                  </div>
+                                </div>
+                                <div class="dropdown-guests__btns">
+                                  <div class="button dropdown-guests__clear-btn button_type_text">
+                                    <p class="button__text">Очистить</p>
+                                  </div>
+                                  <div class="button dropdown-guests__submit-btn button_type_text">
+                                    <p class="button__text">Применить</p>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                       </div>
-                      <div class="form-unit__content">
-                        <div class="dropdown dropdown-guests" data-default-value="Сколько гостей">
-                          <div class="dropdown__select field field_size_l">Сколько гостей</div>
-                          <div class="dropdown__menu">
-                            <div class="dropdown__menu-content">
-                              <div class="counter" data-value="0">
-                                <div class="counter__label">взрослые</div>
-                                <div class="counter__interface"><button
-                                    class="counter__button counter__button_decreasing">-</button>
-                                  <div class="counter__value"></div><button
-                                    class="counter__button counter__button_increasing">+</button>
+                      <div class="form-unit">
+                        <div class="form-unit__label">
+                          <div class="form-unit__title">dropdown</div>
+                          <div class="form-unit__subtitle"></div>
+                        </div>
+                        <div class="form-unit__content">
+                          <div class="dropdown dropdown-guests dropdown_opened" data-default-value="Сколько гостей">
+                            <div class="dropdown__select field field_size_l">Сколько гостей</div>
+                            <div class="dropdown__menu">
+                              <div class="dropdown__menu-content">
+                                <div class="counter" data-value="2">
+                                  <div class="counter__label">взрослые</div>
+                                  <div class="counter__interface"><button
+                                      class="counter__button counter__button_decreasing">-</button>
+                                    <div class="counter__value"></div><button
+                                      class="counter__button counter__button_increasing">+</button>
+                                  </div>
                                 </div>
-                              </div>
-                              <div class="counter" data-value="0">
-                                <div class="counter__label">дети</div>
-                                <div class="counter__interface"><button
-                                    class="counter__button counter__button_decreasing">-</button>
-                                  <div class="counter__value"></div><button
-                                    class="counter__button counter__button_increasing">+</button>
+                                <div class="counter" data-value="1">
+                                  <div class="counter__label">дети</div>
+                                  <div class="counter__interface"><button
+                                      class="counter__button counter__button_decreasing">-</button>
+                                    <div class="counter__value"></div><button
+                                      class="counter__button counter__button_increasing">+</button>
+                                  </div>
                                 </div>
-                              </div>
-                              <div class="counter" data-value="0">
-                                <div class="counter__label">младенцы</div>
-                                <div class="counter__interface"><button
-                                    class="counter__button counter__button_decreasing">-</button>
-                                  <div class="counter__value"></div><button
-                                    class="counter__button counter__button_increasing">+</button>
+                                <div class="counter" data-value="0">
+                                  <div class="counter__label">младенцы</div>
+                                  <div class="counter__interface"><button
+                                      class="counter__button counter__button_decreasing">-</button>
+                                    <div class="counter__value"></div><button
+                                      class="counter__button counter__button_increasing">+</button>
+                                  </div>
                                 </div>
-                              </div>
-                              <div class="dropdown-guests__btns">
-                                <div class="button dropdown-guests__clear-btn button_type_text">
-                                  <p class="button__text">Очистить</p>
-                                </div>
-                                <div class="button dropdown-guests__submit-btn button_type_text">
-                                  <p class="button__text">Применить</p>
+                                <div class="dropdown-guests__btns">
+                                  <div class="button dropdown-guests__clear-btn button_type_text">
+                                    <p class="button__text">Очистить</p>
+                                  </div>
+                                  <div class="button dropdown-guests__submit-btn button_type_text">
+                                    <p class="button__text">Применить</p>
+                                  </div>
                                 </div>
                               </div>
                             </div>
