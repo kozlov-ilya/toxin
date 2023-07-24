@@ -58,12 +58,12 @@
 @font-face {
   font-family: "Montserrat";
   font-weight: 400;
-  src: url(../fonts/Montserrat-Regular.woff2) format(woff2), url(../fonts/Montserrat-Regular.woff) format(woff), url(../fonts/Montserrat-Regular.ttf) format(ttf);
+  src: url(../fonts/Montserrat-Regular.woff2) format(woff2), url(../fonts/Montserrat-Regular.woff) format(woff);
 }
 @font-face {
   font-family: "Montserrat";
   font-weight: 700;
-  src: url(../fonts/Montserrat-Bold.woff2) format(woff2), url(../fonts/Montserrat-Bold.woff) format(woff), url(../fonts/Montserrat-Bold.ttf) format(ttf);
+  src: url(../fonts/Montserrat-Bold.woff2) format(woff2), url(../fonts/Montserrat-Bold.woff) format(woff);
 }
 /* Box sizing rules */
 *,
