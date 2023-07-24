@@ -1,5 +1,6 @@
 include ../layout/layout
 include ../form-unit/form-unit
+include ../feature-box/feature-box
 include __fields/form-elements-section__fields
 include __buttons/form-elements-section__buttons
 include __dropdowns/form-elements-section__dropdowns
@@ -29,3 +30,8 @@ mixin form-elements-section(options)
             +form-elements-section__buttons({})
         +form-elements-section__dropdowns({})
         +form-elements-section__lists({})
+        .form-elements-section__row
+          .form-elements-section__column
+            .form-elements-section__feature-boxes
+              +feature-box({iconSrc: './assets/insert_emoticon.svg', iconWidth: 40, iconHight: 40, title: 'Комфорт', description: 'Шумопоглощающие стены'})
+              +feature-box({iconSrc: './assets/location_city.svg', iconWidth: 36, iconHight: 38, title: 'Удобство', description: 'Окно в каждой из спален'})

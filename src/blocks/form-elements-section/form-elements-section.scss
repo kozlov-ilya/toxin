@@ -1,10 +1,12 @@
-@use '../../scss/abstracts/functions' as f;
+@use "../../scss/abstracts/functions" as f;
 
-@forward '../layout/layout.scss';
-@forward './__fields/form-elements-section__fields.scss';
-@forward './__buttons/form-elements-section__buttons.scss';
-@forward './__dropdowns/form-elements-section__dropdowns.scss';
-@forward './__lists/form-elements-section__lists.scss';
+@forward "../layout/layout.scss";
+@forward "../form-unit/form-unit.scss";
+@forward "../feature-box/feature-box.scss";
+@forward "./__fields/form-elements-section__fields.scss";
+@forward "./__buttons/form-elements-section__buttons.scss";
+@forward "./__dropdowns/form-elements-section__dropdowns.scss";
+@forward "./__lists/form-elements-section__lists.scss";
 
 .form-elements-section {
   padding: f.toRem(140) 0 f.toRem(80);
@@ -20,4 +22,10 @@
   display: grid;
   grid-template-columns: 320px 1fr;
   column-gap: 125px;
+}
+
+.form-elements-section__feature-boxes {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }

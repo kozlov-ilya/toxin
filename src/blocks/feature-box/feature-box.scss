@@ -1,0 +1,28 @@
+.feature-box {
+  display: flex;
+  gap: 10px;
+  padding-bottom: 17px;
+  align-items: center;
+  border-bottom: 1px solid var(--color-dark-shade-10);
+}
+
+.feature-box__icon {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+}
+
+.feature-box__text-content {
+  font-size: 14px;
+  line-height: 24px;
+  color: var(--color-dark-shade-75);
+}
+
+.feature-box__title {
+  font-weight: 700;
+}
+
+.feature-box__decription {
+  font-weight: 400;
+}

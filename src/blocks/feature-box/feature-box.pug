@@ -1,0 +1,25 @@
+mixin feature-box(options)
+  //- options = {options, mods=["mod1", "mod2", ...]}
+
+  -
+    let unitClassName = 'feature-box';
+
+    //- Add modifiers to class name
+    if ( Object.hasOwn(options, 'mods') && options.mods) {
+      //- If modifiers were passed to mixin
+      options.mods.forEach((element) => {
+        unitClassName += ` feature-box_${element}`;
+      });
+    }
+
+  div(class=unitClassName)&attributes(attributes)
+    .feature-box__icon
+      img(
+        src=require(options.iconSrc),
+        alt="feature-icon",
+        width=options.iconWidth,
+        height=options.iconHeight
+      )
+    .feature-box__text-content
+      .feature-box__title= options.title
+      .feature-box__decription= options.description

@@ -4,6 +4,7 @@
   --color-dark-shade-75: #575871;
   --color-dark-shade-50: #8f90a0;
   --color-dark-shade-25: #c7c7cf;
+  --color-dark-shade-10: #e9e9ec;
   --color-dark-shade-5: #f3f4f5;
   --color-purple: #bc9cff;
   --color-bluish-purple: #8ba4f9;
@@ -58,12 +59,12 @@
 @font-face {
   font-family: "Montserrat";
   font-weight: 400;
-  src: url(../fonts/Montserrat-Regular.woff2) format(woff2), url(../fonts/Montserrat-Regular.woff) format(woff), url(../fonts/Montserrat-Regular.ttf) format(ttf);
+  src: url(../fonts/Montserrat-Regular.woff2) format(woff2), url(../fonts/Montserrat-Regular.woff) format(woff);
 }
 @font-face {
   font-family: "Montserrat";
   font-weight: 700;
-  src: url(../fonts/Montserrat-Bold.woff2) format(woff2), url(../fonts/Montserrat-Bold.woff) format(woff), url(../fonts/Montserrat-Bold.ttf) format(ttf);
+  src: url(../fonts/Montserrat-Bold.woff2) format(woff2), url(../fonts/Montserrat-Bold.woff) format(woff);
 }
 /* Box sizing rules */
 *,
@@ -260,6 +261,35 @@ select {
 
 .form-unit__content {
   margin-top: 5px;
+}
+
+.feature-box {
+  display: flex;
+  gap: 10px;
+  padding-bottom: 17px;
+  align-items: center;
+  border-bottom: 1px solid var(--color-dark-shade-10);
+}
+
+.feature-box__icon {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+}
+
+.feature-box__text-content {
+  font-size: 14px;
+  line-height: 24px;
+  color: var(--color-dark-shade-75);
+}
+
+.feature-box__title {
+  font-weight: 700;
+}
+
+.feature-box__decription {
+  font-weight: 400;
 }
 
 .field.field_focused {
@@ -1391,4 +1421,10 @@ select {
   display: grid;
   grid-template-columns: 320px 1fr;
   column-gap: 125px;
+}
+
+.form-elements-section__feature-boxes {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
