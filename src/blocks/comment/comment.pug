@@ -1,0 +1,30 @@
+include ../like-button/like-button
+
+mixin comment(options)
+  //- options = {options, mods=["mod1", "mod2", ...]}
+
+  -
+    let unitClassName = 'comment';
+
+    //- Add modifiers to class name
+    if ( Object.hasOwn(options, 'mods') && options.mods) {
+      //- If modifiers were passed to mixin
+      options.mods.forEach((element) => {
+        unitClassName += ` comment_${element}`;
+      });
+    }
+
+  div(class=unitClassName)&attributes(attributes)
+    .comment__user-avatar-container
+      img.comment__user-avatar(
+        src=require(options.avatarSrc),
+        alt="feature-avatar",
+        width=options.avatarWidth,
+        height=options.avatarHeight
+      )
+    .comment__info
+      .comment__user-name= options.userName
+      .comment__comment-date(data-date=options.commentDate)
+    .comment__likes-container
+      +like-button({defaultValue: options.likesCount}).comment__likes.like-button_checked
+    .comment__comment-text= options.commentText

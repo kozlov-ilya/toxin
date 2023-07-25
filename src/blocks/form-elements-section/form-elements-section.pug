@@ -1,6 +1,7 @@
 include ../layout/layout
 include ../form-unit/form-unit
 include ../feature-box/feature-box
+include ../comment/comment
 include __fields/form-elements-section__fields
 include __buttons/form-elements-section__buttons
 include __dropdowns/form-elements-section__dropdowns
@@ -35,3 +36,5 @@ mixin form-elements-section(options)
             .form-elements-section__feature-boxes
               +feature-box({iconSrc: './assets/insert_emoticon.svg', iconWidth: 40, iconHight: 40, title: 'Комфорт', description: 'Шумопоглощающие стены'})
               +feature-box({iconSrc: './assets/location_city.svg', iconWidth: 36, iconHight: 38, title: 'Удобство', description: 'Окно в каждой из спален'})
+          .form-elements-section__column
+            +comment({avatarSrc: 'C:/Web/Projects/toxin/src/blocks/form-elements-section/assets/papich-pixel.jpg', avatarWidth: 68, avatarHeight: 48, userName: 'Виталий Цаль', commentDate: '20.07.2023', likesCount: '12', commentText: 'Просто королевский завтрак! Твикс с хлебом и фантой — то, что я люблю! Стены, действительно, шумоподавляющие. Выкрикивал "НЫА" во время критов — никто не жаловался из соседей.'})
