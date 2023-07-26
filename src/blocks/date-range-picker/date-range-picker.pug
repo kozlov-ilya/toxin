@@ -15,7 +15,7 @@ mixin date-range-picker(options)
       });
     }
 
-  div(class=unitClassName)&attributes(attributes)
+  div(class=unitClassName)&attributes(attributes)(data-date-from="", data-date-to="")
     .date-range-picker__selects
       +form-unit({title: options.titles[0], subtitle: options.subtitles[0]})
         +date-dropdown({value: 'ДД.ММ.ГГГГ', selectClass: 'field_size_s'}).date-range-picker__date-dropdown.date-range-picker__date-dropdown-from(
