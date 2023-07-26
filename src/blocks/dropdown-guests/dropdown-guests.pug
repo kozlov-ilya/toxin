@@ -23,5 +23,9 @@ mixin dropdown-guests(options)
     each counter in options.counters
       +counter({label: counter.label, defaultValue: counter.defaultValue})
     .dropdown-guests__btns
-      +button({text: 'Очистить'}).dropdown-guests__clear-btn.button_type_text
-      +button({text: 'Применить'}).dropdown-guests__submit-btn.button_type_text
+      +button({text: 'Очистить'}).dropdown-guests__clear-btn.button_type_text(
+        type="button"
+      )
+      +button({text: 'Применить'}).dropdown-guests__submit-btn.button_type_text(
+        type="button"
+      )

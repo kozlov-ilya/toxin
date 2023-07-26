@@ -1,12 +1,12 @@
-@use '../../scss/abstracts/functions' as f;
+@use "../../scss/abstracts/functions" as f;
 
-.button_cta-primary {
+.button.button_cta-primary {
   width: f.toRem(320);
   text-align: center;
 }
 
-.button_cta-primary::before {
-  content: '';
+.button.button_cta-primary::before {
+  content: "";
   position: absolute;
   right: 0;
   top: 0;

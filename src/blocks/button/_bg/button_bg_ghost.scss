@@ -1,11 +1,11 @@
-.button_bg_ghost {
+.button.button_bg_ghost {
   color: var(--color-purple);
   border: none;
   overflow: hidden;
 }
 
-.button_bg_ghost::before {
-  content: '';
+.button.button_bg_ghost::before {
+  content: "";
   position: absolute;
   background-color: #fff;
   inset: 0;
@@ -16,8 +16,8 @@
   z-index: 10;
 }
 
-.button_bg_ghost:hover::after {
-  content: '';
+.button.button_bg_ghost:hover::after {
+  content: "";
   position: absolute;
   background-color: #fff;
   inset: 0;

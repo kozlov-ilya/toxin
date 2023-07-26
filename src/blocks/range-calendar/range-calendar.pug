@@ -26,26 +26,28 @@ mixin range-calendar(options)
     }
 
   div(class=unitClassName)&attributes(attributes)(
-    data-month='',
-    data-date-from='',
-    data-date-to=''
+    data-month="",
+    data-date-from="",
+    data-date-to=""
   )
     .range-calendar__header
       .range-calendar__month-switch
-        button.range-calendar__previous-month-btn.switch-month-btn
+        button.range-calendar__previous-month-btn.switch-month-btn(
+          type="button"
+        )
           img.logo__img(
-            src=require('./assets/arrow_back.svg'),
-            alt='back',
+            src=require("./assets/arrow_back.svg"),
+            alt="back",
             width=17,
             height=18
           )
         .range-calendar__month-year-label
-          span.range-calendar__month-label= ''
-          span.range-calendar__year-label= ''
-        button.range-calendar__next-month-btn.switch-month-btn
+          span.range-calendar__month-label= ""
+          span.range-calendar__year-label= ""
+        button.range-calendar__next-month-btn.switch-month-btn(type="button")
           img.logo__img(
-            src=require('./assets/arrow_forward.svg'),
-            alt='forward',
+            src=require("./assets/arrow_forward.svg"),
+            alt="forward",
             width=17,
             height=18
           )
@@ -58,8 +60,14 @@ mixin range-calendar(options)
         each dayRow in daysValues
           .range-calendar__days-row
             each day in dayRow
-              button.range-calendar__day-unit.day-unit-btn(data-date-value)= day
+              button.range-calendar__day-unit.day-unit-btn(type="button")(
+                data-date-value
+              )= day
     .range-calendar__footer
       .range-calendar__buttons
-        +button({text:'очистить'}).range-calendar__clear-button.button_type_text
-        +button({text: 'применить'}).range-calendar__submit-button.button_type_text
+        +button({text:'очистить'}).range-calendar__clear-button.button_type_text(
+          type="button"
+        )
+        +button({text: 'применить'}).range-calendar__submit-button.button_type_text(
+          type="button"
+        )
