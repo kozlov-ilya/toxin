@@ -1,0 +1,24 @@
+mixin room-label(options)
+  //- options = {options, mods=["mod1", "mod2", ...]}
+
+  -
+    let unitClassName = 'room-label';
+
+    //- Add modifiers to class name
+    if ( Object.hasOwn(options, 'mods') && options.mods) {
+      //- If modifiers were passed to mixin
+      options.mods.forEach((element) => {
+        unitClassName += ` room-label_${element}`;
+      });
+    }
+
+  div(class=unitClassName)&attributes(attributes)(data-price=options.roomPrice)
+    .room-label__room-info
+      .room-label__room-number
+        .romm-label__room-number-symbol= "№"
+        .romm-label__room-number-value= options.roomNumber
+      if options.isLux
+        .room-label__room-tag= "ЛЮКС"
+    .room-label__room-price
+      span.room-label__room-price-value
+      | в сутки

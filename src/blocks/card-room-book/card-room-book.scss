@@ -1,0 +1,107 @@
+@forward "../card/card";
+@forward "../form-unit/form-unit";
+@forward "../date-range-picker/date-range-picker";
+@forward "../dropdown-guests/dropdown-guests";
+@forward "../button/button";
+@forward "../room-label/room-label";
+
+.card-room-book__form {
+  margin-top: 20px;
+}
+
+.card-room-book__inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.card-room-book__price-info {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font: var(--type-body);
+  color: var(--color-dark-shade-75);
+  line-height: 18px;
+}
+
+.price-info__item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.price-info__item_detailed {
+  display: grid;
+  grid-template-columns: calc(214 / 320 * 100%) auto 1fr;
+}
+
+.price-info__item-more-info {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--color-dark-shade-25);
+  color: var(--color-dark-shade-25);
+  font-size: 12px;
+  font-weight: 700;
+  user-select: none;
+  position: relative;
+}
+
+.price-info__popup {
+  display: none;
+  position: absolute;
+  left: 30px;
+  top: 0;
+  padding: 5px;
+  background: #fff;
+  box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.2);
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--color-dark-shade-75);
+  width: 300px;
+  max-width: 150px;
+  z-index: 1000;
+  border-radius: 4px;
+}
+
+.price-info__popup_opened {
+  display: block;
+}
+
+.price-info__item-label {
+  position: relative;
+}
+
+.price-info__item-value {
+  text-align: end;
+}
+
+.card-room-book__total-price {
+  margin-top: 20px;
+}
+
+.total-price {
+  font: var(--type-heading-h2);
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+}
+
+.total-price__line {
+  position: relative;
+}
+
+.total-price__line::before {
+  content: "";
+  width: 100%;
+  height: 2px;
+  border-bottom: 1px dashed var(--color-dark-shade-25);
+  position: absolute;
+  bottom: 5px;
+  left: 0;
+}
+
+.card-room-book__book-btn {
+  margin-top: 20px;
+}

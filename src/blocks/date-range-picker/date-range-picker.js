@@ -111,6 +111,7 @@ document.addEventListener("click", handleDatePickerSelectClick);
 
 const datePickers = document.querySelectorAll(".date-range-picker");
 datePickers.forEach((datePicker) => {
+  updateDatePickerDropdowns(datePicker);
   datePicker.addEventListener("click", handleDatePickerCalendarDayUnitBtnClick);
   datePicker.addEventListener("click", handleDatePickerCalendarClearBtnClick);
   datePicker.addEventListener("click", handleDatePickerCalendarSubmitBtnClick);

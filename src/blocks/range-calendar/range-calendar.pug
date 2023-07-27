@@ -26,9 +26,9 @@ mixin range-calendar(options)
     }
 
   div(class=unitClassName)&attributes(attributes)(
-    data-month="",
-    data-date-from="",
-    data-date-to=""
+    data-month=options.month ? options.month : "",
+    data-date-from=options.dateFrom ? options.dateFrom : "",
+    data-date-to=options.dateTo ? options.dateTo : ""
   )
     .range-calendar__header
       .range-calendar__month-switch
