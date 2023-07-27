@@ -1,10 +1,10 @@
-import '../dropdown/dropdown';
-import '../counter/counter';
-import '../button/button';
-import * as c from '../counter/counter';
-import * as d from '../dropdown/dropdown';
+import "../dropdown/dropdown";
+import "../counter/counter";
+import "../button/button";
+import * as c from "../counter/counter";
+import * as d from "../dropdown/dropdown";
 
-const guestWordForms = ['гость', 'гостя', 'гостей'];
+const guestWordForms = ["гость", "гостя", "гостей"];
 
 function getProperWordForm(value, wordForms) {
   value = Math.abs(value) % 100;
@@ -17,7 +17,7 @@ function getProperWordForm(value, wordForms) {
 
 function loadDropdownCounters(dropdown) {
   let dropdownCountersMap = new Map();
-  dropdown.querySelectorAll('.counter').forEach((counter) => {
+  dropdown.querySelectorAll(".counter").forEach((counter) => {
     let counterLabel = c.getLabel(counter);
     let counterValue = c.getValue(counter);
     dropdownCountersMap.set(counterLabel, counterValue);
@@ -27,7 +27,7 @@ function loadDropdownCounters(dropdown) {
 
 function areCountersZero(dropdown) {
   let result = true;
-  dropdown.querySelectorAll('.counter').forEach((counter) => {
+  dropdown.querySelectorAll(".counter").forEach((counter) => {
     if (c.getValue(counter)) {
       result = false;
     }
@@ -36,13 +36,13 @@ function areCountersZero(dropdown) {
 }
 
 function showClearBtn(dropdown) {
-  const clearBtn = dropdown.querySelector('.dropdown-guests__clear-btn');
-  clearBtn.classList.remove('dropdown-guests__clear-btn_hidden');
+  const clearBtn = dropdown.querySelector(".dropdown-guests__clear-btn");
+  clearBtn.classList.remove("dropdown-guests__clear-btn_hidden");
 }
 
 function hideClearBtn(dropdown) {
-  const clearBtn = dropdown.querySelector('.dropdown-guests__clear-btn');
-  clearBtn.classList.add('dropdown-guests__clear-btn_hidden');
+  const clearBtn = dropdown.querySelector(".dropdown-guests__clear-btn");
+  clearBtn.classList.add("dropdown-guests__clear-btn_hidden");
 }
 
 function updateClearBtnVisibility(dropdown) {
@@ -50,7 +50,7 @@ function updateClearBtnVisibility(dropdown) {
 }
 
 function setDropdownSelectValue(dropdown, dropdownSelectValue) {
-  let dropdownSelect = dropdown.querySelector('.dropdown__select');
+  let dropdownSelect = dropdown.querySelector(".dropdown__select");
   if (areCountersZero(dropdown)) {
     dropdownSelect.textContent = dropdown.dataset.defaultValue;
   } else {
@@ -80,20 +80,20 @@ function updateDropdown(dropdown) {
 }
 
 function resetCounters(dropdown) {
-  dropdown.querySelectorAll('.counter').forEach((counter) => {
+  dropdown.querySelectorAll(".counter").forEach((counter) => {
     c.resetCounter(counter);
   });
 }
 
 function handleDropdownCounterClick(event) {
-  if (event.target.closest('.counter__button')) {
-    let dropdown = event.target.closest('.dropdown');
+  if (event.target.closest(".counter__button")) {
+    let dropdown = event.target.closest(".dropdown");
     updateDropdown(dropdown);
   }
 }
 
 function handleClearBtnClick(event) {
-  if (event.target.closest('.dropdown-guests__clear-btn')) {
+  if (event.target.closest(".dropdown-guests__clear-btn")) {
     const dropdown = event.currentTarget;
     resetCounters(dropdown);
     updateDropdown(dropdown);
@@ -101,16 +101,24 @@ function handleClearBtnClick(event) {
 }
 
 function handleSubmitBtnClick(event) {
-  if (event.target.closest('.dropdown-guests__submit-btn')) {
+  if (event.target.closest(".dropdown-guests__submit-btn")) {
     const dropdown = event.currentTarget;
     d.closeDropdown(dropdown);
   }
 }
 
-const dropdowns = document.querySelectorAll('.dropdown-guests');
+const dropdowns = document.querySelectorAll(".dropdown-guests");
 dropdowns.forEach((dropdown) => {
   updateDropdown(dropdown);
-  dropdown.addEventListener('click', handleDropdownCounterClick);
-  dropdown.addEventListener('click', handleClearBtnClick);
-  dropdown.addEventListener('click', handleSubmitBtnClick);
+  dropdown.addEventListener("click", handleDropdownCounterClick);
+  dropdown.addEventListener("click", handleClearBtnClick);
+  dropdown.addEventListener("click", handleSubmitBtnClick);
 });
+
+export function getCounters(dropdown) {
+  let countersMap = new Map();
+  dropdown.querySelectorAll(".counter").forEach((counter) => {
+    countersMap.set(counter.dataset.name, counter.dataset.value);
+  });
+  return countersMap;
+}

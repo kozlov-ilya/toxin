@@ -21,7 +21,7 @@ mixin dropdown-guests(options)
     data-default-value=options.value
   )&attributes(attributes)
     each counter in options.counters
-      +counter({label: counter.label, defaultValue: counter.defaultValue})
+      +counter({label: counter.label, defaultValue: counter.defaultValue, name: counter.name})
     .dropdown-guests__btns
       +button({text: 'Очистить'}).dropdown-guests__clear-btn.button_type_text(
         type="button"

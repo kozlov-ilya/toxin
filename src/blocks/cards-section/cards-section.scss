@@ -1,0 +1,18 @@
+@forward "../layout/layout";
+@forward "../card-room-search/card-room-search";
+@forward "../range-calendar/range-calendar";
+
+.cards-section {
+  padding-top: 150px;
+}
+
+.cards-section__content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cards-section__column {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}

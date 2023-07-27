@@ -1,0 +1,30 @@
+include ../card/card
+include ../form-unit/form-unit
+include ../date-range-picker/date-range-picker
+include ../dropdown-guests/dropdown-guests
+include ../button/button
+
+mixin card-room-search(options)
+  //- options = {options, mods=["mod1", "mod2", ...]}
+
+  -
+    let unitClassName = 'card-room-search';
+
+    //- Add modifiers to class name
+    if ( Object.hasOwn(options, 'mods') && options.mods) {
+      //- If modifiers were passed to mixin
+      options.mods.forEach((element) => {
+        unitClassName += ` card-room-search_${element}`;
+      });
+    }
+
+  +card({})(class=unitClassName)&attributes(attributes)
+    .card-room-search__title= options.title
+    form.card-room-search__form(action="")
+      .card-room-search__inputs
+        +date-range-picker({titles: ['прибытие', 'выезд'], subtitles: ['', '']})
+        +form-unit({title: 'гости', subtitle: ''})
+          +dropdown-guests({value: 'Сколько гостей', counters: [ {label: 'взрослые', defaultValue: 0, name: 'adults'}, {label: 'дети', defaultValue: 0, name: 'teens'}, {label: 'младенцы', defaultValue: 0, name: 'babies'}]})
+      +button({text: 'подобрать номер', mods: ['type_cta', 'bg_filled', 'cta-primary']}).card-room-search__search-btn(
+        type="submit"
+      )

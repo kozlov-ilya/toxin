@@ -1,0 +1,27 @@
+@forward "../card/card";
+@forward "../form-unit/form-unit";
+@forward "../date-range-picker/date-range-picker";
+@forward "../dropdown-guests/dropdown-guests";
+@forward "../button/button";
+
+.card-room-search {
+}
+
+.card-room-search__title {
+  font: var(--type-heading-h1);
+}
+
+.card-room-search__inputs {
+  margin-top: 21px;
+  display: flex;
+  flex-direction: column;
+  gap: 21px;
+}
+
+.card-room-search__inputs {
+  margin-top: 21px;
+}
+
+.card-room-search__search-btn {
+  margin-top: 31px;
+}

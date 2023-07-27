@@ -1,0 +1,17 @@
+mixin card(options)
+  //- options = {options, mods=["mod1", "mod2", ...]}
+
+  -
+    let unitClassName = 'card';
+
+    //- Add modifiers to class name
+    if ( Object.hasOwn(options, 'mods') && options.mods) {
+      //- If modifiers were passed to mixin
+      options.mods.forEach((element) => {
+        unitClassName += ` card_${element}`;
+      });
+    }
+
+  div(class=unitClassName)&attributes(attributes)
+    .card__content
+      block

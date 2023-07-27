@@ -1,0 +1,25 @@
+include ../layout/layout
+include ../card-room-search/card-room-search
+include ../range-calendar/range-calendar
+
+mixin cards-section(options)
+  //- options = {options, mods=["mod1", "mod2", ...]}
+
+  -
+    let unitClassName = 'cards-section';
+
+    //- Add modifiers to class name
+    if ( Object.hasOwn(options, 'mods') && options.mods) {
+      //- If modifiers were passed to mixin
+      options.mods.forEach((element) => {
+        unitClassName += ` cards-section_${element}`;
+      });
+    }
+
+  section(class=unitClassName)&attributes(attributes)
+    +layout({})
+      .cards-section__content
+        .cards-section__column
+          +card-room-search({title: 'Найдём номера под ваши пожелания'})
+        .cards-section__column
+        .cards-section__column

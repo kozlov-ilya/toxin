@@ -12,7 +12,10 @@ mixin counter(options)
       });
     }
 
-  div(class=unitClassName)&attributes(attributes)(data-value=options.defaultValue)
+  div(class=unitClassName)&attributes(attributes)(
+    data-value=options.defaultValue,
+    data-name=options.name
+  )
     .counter__label!= options.label
     .counter__interface
       button.counter__button.counter__button_decreasing(type="button") -

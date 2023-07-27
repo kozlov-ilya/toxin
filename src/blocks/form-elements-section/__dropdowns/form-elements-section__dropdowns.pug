@@ -26,6 +26,6 @@ mixin form-elements-section__dropdowns(options)
       .form-elements-section__column
         .form-elements-section__guests-dropdowns
           +form-unit({title: 'dropdown'})
-            +dropdown-guests({value: 'Сколько гостей', counters: [ {label: 'взрослые', defaultValue: 0}, {label: 'дети', defaultValue: 0}, {label: 'младенцы', defaultValue: 0}]}).dropdown_opened
+            +dropdown-guests({value: 'Сколько гостей', counters: [ {label: 'взрослые', defaultValue: 0, name: 'adults'}, {label: 'дети', defaultValue: 0, name: 'teens'}, {label: 'младенцы', defaultValue: 0, name: 'babies'}]}).dropdown_opened
           +form-unit({title: 'dropdown'})
-            +dropdown-guests({value: 'Сколько гостей', counters: [ {label: 'взрослые', defaultValue: 2}, {label: 'дети', defaultValue: 1}, {label: 'младенцы', defaultValue: 0}]}).dropdown_opened
+            +dropdown-guests({value: 'Сколько гостей', counters: [ {label: 'взрослые', defaultValue: 2, name: 'adults'}, {label: 'дети', defaultValue: 1, name: 'teens'}, {label: 'младенцы', defaultValue: 0, name: 'babies'}]}).dropdown_opened
