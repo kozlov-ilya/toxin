@@ -1,6 +1,7 @@
 include ../layout/layout
 include ../card-room-search/card-room-search
 include ../card-room-book/card-room-book
+include ../card-registration/card-registration
 include ../range-calendar/range-calendar
 
 mixin cards-section(options)
@@ -22,6 +23,7 @@ mixin cards-section(options)
       .cards-section__content
         .cards-section__column
           +card-room-search({title: 'Найдём номера под ваши пожелания'})
+          +card-registration({})
         .cards-section__column
           +card-room-book({roomNumber:888, isLux: true, roomPrice: 9990, discount: 2179, servicePrice: 0, addPrice: 300})
         .cards-section__column
