@@ -1,0 +1,40 @@
+include ../card/card
+include ../text-field/text-field
+include ../button/button
+
+mixin card-sign-in(options)
+  //- options = {options, mods=["mod1", "mod2", ...]}
+
+  -
+    let unitClassName = 'card-sign-in';
+
+    //- Add modifiers to class name
+    if ( Object.hasOwn(options, 'mods') && options.mods) {
+      //- If modifiers were passed to mixin
+      options.mods.forEach((element) => {
+        unitClassName += ` card-sign-in_${element}`;
+      });
+    }
+
+  +card({})(class=unitClassName)&attributes(attributes)
+    .card-sign-in__title= "Войти"
+    form.card-sign-in__form(action="")
+      .card-sign-in__inputs
+        +text-field({}).field_size_l(
+          type="email",
+          placeholder="Email",
+          required
+        )
+        +text-field({}).field_size_l(
+          type="password",
+          placeholder="Пароль",
+          required
+        )
+      +button({text: 'Войти', mods: ['type_cta', 'bg_filled', 'cta-primary']}).card-sign-in__sign-in-btn(
+        type="submit"
+      )
+    .card-sign-in__sign-up-box
+      .card-sign-in__sign-up-label= "Нет аккаунта на Toxin?"
+      +button({text: 'создать', mods: ['type_cta', 'bg_ghost']}).card-sign-in__sign-up-btn(
+        type="button"
+      )

@@ -1,0 +1,38 @@
+@forward "../card/card";
+@forward "../field/field";
+@forward "../text-field/text-field";
+@forward "../button/button";
+
+.card-sign-in {
+}
+
+.card-sign-in__title {
+  font: var(--type-heading-h1);
+}
+
+.card-sign-in__form {
+  margin-top: 20px;
+}
+
+.card-sign-in__inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.card-sign-in__sign-in-btn {
+  margin-top: 20px;
+}
+
+.card-sign-in__sign-up-box {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-sign-in__sign-up-label {
+  font-size: 14px;
+  line-height: 18px;
+  color: #000;
+}
