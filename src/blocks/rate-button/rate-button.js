@@ -1,25 +1,29 @@
-const rateButtons = document.querySelectorAll('.rate-button');
+const rateButtons = document.querySelectorAll(".rate-button");
+
+function isActive(rateButton) {
+  return rateButton.hasAttribute("data-is-active");
+}
 
 /* Reset all stars to unchecked */
 function resetRateButtonView(rateButton) {
-  const stars = rateButton.querySelectorAll('.rate-button__star');
+  const stars = rateButton.querySelectorAll(".rate-button__star");
   stars.forEach((star) => {
-    star.classList.remove('rate-button__star_checked');
+    star.classList.remove("rate-button__star_checked");
   });
 }
 
 /* Update all stars according to value attribute */
 function updateRateButtonView(rateButton) {
   const value = rateButton.dataset.value;
-  const stars = rateButton.querySelectorAll('.rate-button__star');
+  const stars = rateButton.querySelectorAll(".rate-button__star");
 
   for (let i = 0; i < value; i++) {
-    stars[i].classList.add('rate-button__star_checked');
+    stars[i].classList.add("rate-button__star_checked");
   }
 }
 
 function getStarValue(rateButton, star) {
-  const stars = rateButton.querySelectorAll('.rate-button__star');
+  const stars = rateButton.querySelectorAll(".rate-button__star");
   for (let starCount = 0; starCount < stars.length; starCount++) {
     let currentStar = stars[starCount];
     if (currentStar.isSameNode(star)) {
@@ -35,17 +39,20 @@ function updateRateButtonValueAttribute(rateButton, value) {
 
 function handleRateButtonStarClick(event) {
   const rateButton = event.currentTarget;
-  if (event.target.closest('.rate-button__star')) {
-    const rateButtonStar = event.target.closest('.rate-button__star');
-    const starValue = getStarValue(rateButton, rateButtonStar);
-    updateRateButtonValueAttribute(rateButton, starValue);
-    resetRateButtonView(rateButton);
-    updateRateButtonView(rateButton);
+  if (event.target.closest(".rate-button__star")) {
+    if (isActive(rateButton)) {
+      /* Button is active */
+      const rateButtonStar = event.target.closest(".rate-button__star");
+      const starValue = getStarValue(rateButton, rateButtonStar);
+      updateRateButtonValueAttribute(rateButton, starValue);
+      resetRateButtonView(rateButton);
+      updateRateButtonView(rateButton);
+    }
   }
 }
 
 rateButtons.forEach((rateButton) => {
-  rateButton.addEventListener('click', handleRateButtonStarClick);
+  rateButton.addEventListener("click", handleRateButtonStarClick);
   resetRateButtonView(rateButton);
   updateRateButtonView(rateButton);
 });

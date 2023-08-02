@@ -43,8 +43,8 @@ mixin form-elements-section__buttons(options)
           +like-button({defaultValue: 12, mods: ['checked']})
       +form-unit({title:'rate button', subtitle:''})
         .form-elements-section__rate-button
-          +rate-button({})(data-value=4)
-          +rate-button({})(data-value=5)
+          +rate-button({value: 4, isActive: true})
+          +rate-button({value: 5, isActive: true})
     .form-elements-section__buttons-column
       +range-slider({title: 'range slider', subtitle:''})
       +form-unit({title: 'buttons', subtitle: ''})

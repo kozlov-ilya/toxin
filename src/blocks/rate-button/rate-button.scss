@@ -4,7 +4,12 @@
 }
 
 .rate-button__star {
-  cursor: pointer;
+}
+
+.rate-button[data-is-active] {
+  .rate-button__star {
+    cursor: pointer;
+  }
 }
 
 .rate-button__star_checked {
