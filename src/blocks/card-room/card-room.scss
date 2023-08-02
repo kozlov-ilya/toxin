@@ -1,0 +1,147 @@
+@forward "../rate-button/rate-button.scss";
+@forward "../room-label/room-label.scss";
+
+.card-room {
+  max-width: 270px;
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+.card-room-slider {
+  max-height: 150px;
+  position: relative;
+  overflow: hidden;
+}
+
+.card-room-slider:hover {
+  .card-room-slider-btn {
+    opacity: 1;
+    transition: opacity 0.1s ease-in;
+  }
+}
+
+.card-room-slider-btn {
+  position: absolute;
+  width: 15%;
+  height: 100%;
+  place-items: center;
+  cursor: pointer;
+  display: grid;
+  opacity: 0;
+  transition: opacity 0.2s ease-in;
+}
+
+.card-room-slider-btn:before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(-45deg);
+  cursor: pointer;
+}
+
+.card-room-slider__prev-btn {
+  left: 0;
+  top: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.5) 0%,
+    rgba(0, 0, 0, 0) 99.99%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+.card-room-slider__prev-btn:before {
+  transform: rotate(135deg);
+}
+
+.card-room-slider__next-btn {
+  right: 0;
+  top: 0;
+  background: linear-gradient(
+    -90deg,
+    rgba(0, 0, 0, 0.5) 0%,
+    rgba(0, 0, 0, 0) 99.99%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+.card-room-slider__line {
+  overflow: auto;
+  display: flex;
+  scroll-behavior: smooth;
+}
+
+.card-room-slider__slide {
+  min-width: 270px;
+}
+
+.card-room-slider__slide-img {
+  object-fit: cover;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+}
+
+.card-room-slider__pagination {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  display: flex;
+  gap: 4px;
+  pointer-events: none;
+}
+
+.card-room-slider__pagination-item {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  border: 1.5px solid #fff;
+}
+
+.card-room-slider__pagination-item_colored {
+  background: #fff;
+}
+
+.card-room__body {
+  padding: 20px;
+}
+
+.card-room__room-label {
+}
+
+.card-room__divider {
+  margin-top: 10px;
+  width: 100%;
+  border-bottom: 1px solid var(--color-dark-shade-10);
+}
+
+.card-room__reviews-box {
+  margin-top: 8px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-room__rate-button {
+}
+
+.card-room__reviews {
+  font-size: 14px;
+  line-height: 18px;
+  color: var(--color-dark-shade-50);
+  font-weight: 400;
+}
+
+.card-room__reviews-value {
+  font-weight: 700;
+  padding-right: 5px;
+}

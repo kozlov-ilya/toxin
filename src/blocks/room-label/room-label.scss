@@ -2,11 +2,18 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
+  container-type: inline-size;
 }
 
 .room-label__room-info {
   display: flex;
-  gap: 8px;
+  gap: 0;
+}
+
+@container (min-width: 300px) {
+  .room-label__room-info {
+    gap: 8px;
+  }
 }
 
 .room-label__room-number {

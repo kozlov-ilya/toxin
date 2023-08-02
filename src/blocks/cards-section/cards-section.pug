@@ -3,6 +3,7 @@ include ../card-room-search/card-room-search
 include ../card-room-book/card-room-book
 include ../card-registration/card-registration
 include ../card-sign-in/card-sign-in
+include ../card-room/card-room
 include ../range-calendar/range-calendar
 
 mixin cards-section(options)
@@ -19,6 +20,15 @@ mixin cards-section(options)
       });
     }
 
+    const roomSlides = [['../cards-section/assets/room1.png',
+                         '../cards-section/assets/room1.png',
+                         '../cards-section/assets/room1.png',
+                         '../cards-section/assets/room1.png'],
+                        ['../cards-section/assets/room2.png',
+                         '../cards-section/assets/room2.png',
+                         '../cards-section/assets/room2.png',
+                         '../cards-section/assets/room2.png']]
+
   section(class=unitClassName)&attributes(attributes)
     +layout({})
       .cards-section__content
@@ -29,3 +39,6 @@ mixin cards-section(options)
           +card-room-book({roomNumber:888, isLux: true, roomPrice: 9990, discount: 2179, servicePrice: 0, addPrice: 300})
           +card-sign-in({})
         .cards-section__column
+          +range-calendar({})
+          +card-room({roomNumber: 888, isLux: true, roomPrice: 9990, reviewsTotal: 145, slides: roomSlides[0], stars: 5})
+          +card-room({roomNumber: 840, isLux: false, roomPrice: 9900, reviewsTotal: 65, slides: roomSlides[1], stars: 4})

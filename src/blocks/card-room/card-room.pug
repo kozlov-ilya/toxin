@@ -1,0 +1,45 @@
+include ../room-label/room-label
+include ../rate-button/rate-button
+
+mixin card-room(options)
+  //- options = {options, mods=["mod1", "mod2", ...]}
+
+  -
+    let unitClassName = 'card-room';
+
+    //- Add modifiers to class name
+    if ( Object.hasOwn(options, 'mods') && options.mods) {
+      //- If modifiers were passed to mixin
+      options.mods.forEach((element) => {
+        unitClassName += ` card-room_${element}`;
+      });
+    }
+
+  div(class=unitClassName)&attributes(attributes)
+    .card-room__slider.card-room-slider(
+      data-slide-id=1,
+      data-slides-count=options.slides.length
+    )
+      .card-room-slider__line
+        each slide in options.slides
+          .card-room-slider__slide
+            img.card-room-slider__slide-img(
+              src=require(slide),
+              alt="room",
+              width=320,
+              height=213,
+              draggable="false"
+            )
+      .card-room-slider__prev-btn.card-room-slider-btn
+      .card-room-slider__next-btn.card-room-slider-btn
+      .card-room-slider__pagination
+        each slide in options.slides
+          .card-room-slider__pagination-item
+    .card-room__body
+      +room-label({roomNumber:options.roomNumber, isLux: options.isLux, roomPrice: options.roomPrice}).card-room__room-label
+      .card-room__divider
+      .card-room__reviews-box
+        +rate-button({value: options.stars}).card-room__rate-button
+        .card-room__reviews
+          span.card-room__reviews-value= `${options.reviewsTotal}`
+          | Отзывов

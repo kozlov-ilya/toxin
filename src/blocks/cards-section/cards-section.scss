@@ -3,10 +3,11 @@
 @forward "../card-room-book/card-room-book";
 @forward "../card-registration/card-registration";
 @forward "../card-sign-in/card-sign-in";
+@forward "../card-room/card-room";
 @forward "../range-calendar/range-calendar";
 
 .cards-section {
-  padding-top: 150px;
+  padding: 150px 140px 140px 140px;
 }
 
 .cards-section__content {
