@@ -1,0 +1,12 @@
+@forward "../layout/layout";
+@forward "../header/header";
+
+.headers-footers-section {
+  padding-top: 140px;
+}
+
+.headers-footers-section__content {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}

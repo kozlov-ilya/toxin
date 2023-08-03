@@ -1,0 +1,29 @@
+mixin logo-full(options)
+  //- options = {options, mods=["mod1", "mod2", ...]}
+
+  -
+    let unitClassName = 'logo-full';
+
+    //- Add modifiers to class name
+    if ( Object.hasOwn(options, 'mods') && options.mods) {
+      //- If modifiers were passed to mixin
+      options.mods.forEach((element) => {
+        unitClassName += ` logo-full_${element}`;
+      });
+    }
+
+  div(class=unitClassName)&attributes(attributes)
+    .logo-full__icon
+      img(
+        src=require("./assets/logo-icon.svg"),
+        alt="logo icon",
+        width=40,
+        height=40
+      )
+    .logo-full__text
+      img(
+        src=require("./assets/logo-text.svg"),
+        alt="TOXIN",
+        width=54,
+        height=14
+      )

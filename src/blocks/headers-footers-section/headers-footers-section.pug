@@ -1,0 +1,21 @@
+include ../layout/layout
+include ../header/header
+
+mixin headers-footers-section(options)
+  //- options = {options, mods=["mod1", "mod2", ...]}
+
+  -
+    let unitClassName = 'headers-footers-section';
+
+    //- Add modifiers to class name
+    if ( Object.hasOwn(options, 'mods') && options.mods) {
+      //- If modifiers were passed to mixin
+      options.mods.forEach((element) => {
+        unitClassName += ` headers-footers-section_${element}`;
+      });
+    }
+
+  section(class=unitClassName)&attributes(attributes)
+    .headers-footers-section__content
+      +header({})
+      +header({mods: ['user_authorized']})

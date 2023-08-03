@@ -1,0 +1,56 @@
+include ../button/button
+include ../logo-full/logo-full
+
+mixin header(options)
+  //- options = {options, mods=["mod1", "mod2", ...]}
+
+  -
+    let unitClassName = 'header';
+
+    //- Add modifiers to class name
+    if ( Object.hasOwn(options, 'mods') && options.mods) {
+      //- If modifiers were passed to mixin
+      options.mods.forEach((element) => {
+        unitClassName += ` header_${element}`;
+      });
+    }
+
+  header(class=unitClassName)&attributes(attributes)
+    .header__content
+      +logo-full({}).header__logo
+      .header__menu
+        ul.header__navigation
+          li.header__navigation-menu-item
+            a.header__navigation-menu-link.header__navigation-menu-link_highlighted(
+              href="#"
+            )= "О нас"
+          li.header__navigation-menu-item.header__navigation-menu-item_expandable
+            a.header__navigation-menu-link(href="#")= "Услуги"
+            ul.header__navigation-link-popup
+              li.header__navigation-item
+                a.header__navigation-link(href="#")= "Услугa 1"
+              li.header__navigation-item
+                a.header__navigation-link(href="#")= "Услугa 2"
+              li.header__navigation-item
+                a.header__navigation-link(href="#")= "Услугa 3"
+          li.header__navigation-menu-item
+            a.header__navigation-menu-link(href="#")= "Вакансии"
+          li.header__navigation-menu-item
+            a.header__navigation-menu-link(href="#")= "Новости"
+          li.header__navigation-menu-item.header__navigation-menu-item_expandable
+            a.header__navigation-menu-link(href="#")= "Соглашения"
+            ul.header__navigation-link-popup
+              li.header__navigation-item
+                a.header__navigation-link(href="#")= "Соглашение 1"
+              li.header__navigation-item
+                a.header__navigation-link(href="#")= "Соглашение 2"
+              li.header__navigation-item
+                a.header__navigation-link(href="#")= "Соглашение 3"
+        .header__buttons
+          +button({text: 'войти', mods: ['type_cta', 'bg_ghost', 'size_reduced']}).header__login-btn(
+            type="button"
+          )
+          +button({text: 'Зарегистрироваться', mods: ['type_cta', 'bg_filled', 'size_reduced']}).header__signup-btn(
+            type="submit"
+          )
+        .header__user-name= options.userName ? options.userName : "User Name"
