@@ -1,0 +1,58 @@
+include ../logo-full/logo-full
+include ../subscription-text-field/subscription-text-field
+
+mixin footer(options)
+  //- options = {options, mods=["mod1", "mod2", ...]}
+
+  -
+    let unitClassName = 'footer';
+
+    //- Add modifiers to class name
+    if ( Object.hasOwn(options, 'mods') && options.mods) {
+      //- If modifiers were passed to mixin
+      options.mods.forEach((element) => {
+      unitClassName += ` footer_${element}`;
+      });
+    }
+    const footerNav = 
+    [
+      {
+        header: 'Навигация',
+        items: ['О нас', 'Новости', 'Служба поддержки', 'Услуги']
+      },
+      {
+        header: 'о нас',
+        items: ['О сервисе', 'Наша команда', 'Вакансии', 'Инвесторы']
+      },
+      {
+        header: 'Служба поддержки',
+        items: ['Соглашения', 'Сообщества', 'Связь с нами']
+      }
+    ]
+
+
+  footer(class=unitClassName)&attributes(attributes)
+    .footer__body
+      .footer__info
+        +logo-full({}).footer__logo
+        .footer__description= "Бронирование номеров в лучшем отеле 2019 года по версии ассоциации «Отельные взгляды»"
+      .footer__navigation
+        each column in footerNav
+          .footer__navigation-column
+            .footer__navigation-header= column.header
+            .footer__navigation-items
+              each item in column.items
+                a.footer__navigation-link(href="#")= item
+      .footer__subscription-box
+        .footer__subscription-header= "Подписка"
+        .footer__subscription-description= "Получайте специальные предложения и новости сервиса"
+        +subscription-text-field({inputType: 'email', inputPlaceholder:'Email'})
+    .footer__copyright-bar
+      .footer__copyright= "Copyright © 2018 Toxin отель. Все права защищены."
+      .footer__socials
+        a.footer__social-link(href="#")
+          img(src=require("./assets/twitter-icon.svg"), alt="twitter")
+        a.footer__social-link(href="#") 
+          img(src=require("./assets/facebook-icon.svg"), alt="twitter")
+        a.footer__social-link(href="")
+          img(src=require("./assets/inst-icon.svg"), alt="twitter")

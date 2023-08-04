@@ -2,10 +2,11 @@
   position: relative;
   border-radius: 4px;
   overflow: hidden;
+  width: fit-content;
 }
 
 .subscription-text-field::before {
-  content: '';
+  content: "";
   position: absolute;
   right: 0;
   top: 0;

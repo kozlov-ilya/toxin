@@ -1,0 +1,28 @@
+include ../logo-full/logo-full
+
+mixin footer-mobile(options)
+  //- options = {options, mods=["mod1", "mod2", ...]}
+
+  -
+    let unitClassName = 'footer-mobile';
+
+    //- Add modifiers to class name
+    if ( Object.hasOwn(options, 'mods') && options.mods) {
+      //- If modifiers were passed to mixin
+      options.mods.forEach((element) => {
+      unitClassName += ` footer-mobile_${element}`;
+      });
+    }
+
+
+  footer(class=unitClassName)&attributes(attributes)
+    .footer-mobile__body
+      +logo-full({})
+      .footer-mobile__copyright= "Copyright © 2018 Toxin отель. Все права защищены."
+      .footer-mobile__socials
+        a.footer-mobile__social-link(href="#")
+          img(src=require("./assets/twitter-icon.svg"), alt="twitter")
+        a.footer-mobile__social-link(href="#") 
+          img(src=require("./assets/facebook-icon.svg"), alt="twitter")
+        a.footer-mobile__social-link(href="")
+          img(src=require("./assets/inst-icon.svg"), alt="twitter")

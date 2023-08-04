@@ -1,8 +1,11 @@
 @forward "../layout/layout";
 @forward "../header/header";
+@forward "../footer/footer";
+@forward "../footer-mobile/footer-mobile";
 
 .headers-footers-section {
-  padding-top: 140px;
+  padding: 140px 0;
+  background: #f4f4f6;
 }
 
 .headers-footers-section__content {

@@ -1,5 +1,7 @@
 include ../layout/layout
 include ../header/header
+include ../footer/footer
+include ../footer-mobile/footer-mobile
 
 mixin headers-footers-section(options)
   //- options = {options, mods=["mod1", "mod2", ...]}
@@ -19,3 +21,5 @@ mixin headers-footers-section(options)
     .headers-footers-section__content
       +header({})
       +header({mods: ['user_authorized']})
+      +footer({})
+      +footer-mobile({})
