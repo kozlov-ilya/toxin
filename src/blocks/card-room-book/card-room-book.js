@@ -3,16 +3,11 @@ import "../date-range-picker/date-range-picker";
 import "../dropdown-guests/dropdown-guests";
 import "../button/button";
 import "../room-label/room-label";
-import { getCounters } from "../dropdown-guests/dropdown-guests";
 
 const bookCards = document.querySelectorAll(".card-room-book");
 
 function addSpacesToNumber(number) {
   return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
-}
-
-function addClassToElem(elem, className) {
-  elem.classList.add(className);
 }
 
 function getBookDates(card) {
@@ -108,7 +103,9 @@ function calcTotalPrice(card) {
   const addPrice = parseInt(
     card.querySelector(".price-info").dataset.additionalPrice
   );
-  return bookPrice + servicePrice + addPrice - discount;
+
+  const totalPrice = bookPrice + servicePrice + addPrice - discount;
+  return totalPrice > 0 ? totalPrice : 0;
 }
 
 function fillTotalPriceElem(card) {
@@ -161,4 +158,24 @@ bookCards.forEach((card) => {
   cardForm.addEventListener("submit", handleSubmit);
   card.addEventListener("mouseover", handleMoreInfoHover);
   card.addEventListener("mouseout", handleMoreInfoUnhover);
+
+  /* Update price when date attributes change */
+  const datePicker = card.querySelector(".date-range-picker");
+
+  const config = {
+    attributes: true,
+    attributeFilter: ["data-date-from", "data-date-to"],
+  };
+
+  const updatePrice = (mutationList, observer) => {
+    fillPriceInfo(card);
+    fillTotalPriceElem(card);
+  };
+
+  const observer = new MutationObserver(updatePrice);
+  observer.observe(datePicker, config);
 });
+
+export function getTotalPrice(card) {
+  return calcTotalPrice(card);
+}
