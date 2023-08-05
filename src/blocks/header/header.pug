@@ -22,10 +22,11 @@ mixin header(options)
         ul.header__navigation
           li.header__navigation-menu-item
             a.header__navigation-menu-link.header__navigation-menu-link_highlighted(
-              href="#"
+              href="#",
+              data-text="О нас"
             )= "О нас"
           li.header__navigation-menu-item.header__navigation-menu-item_expandable
-            a.header__navigation-menu-link(href="#")= "Услуги"
+            a.header__navigation-menu-link(href="#", data-text="Услуги")= "Услуги"
             ul.header__navigation-link-popup
               li.header__navigation-item
                 a.header__navigation-link(href="#")= "Услугa 1"
@@ -34,11 +35,11 @@ mixin header(options)
               li.header__navigation-item
                 a.header__navigation-link(href="#")= "Услугa 3"
           li.header__navigation-menu-item
-            a.header__navigation-menu-link(href="#")= "Вакансии"
+            a.header__navigation-menu-link(href="#", data-text="Вакансии")= "Вакансии"
           li.header__navigation-menu-item
-            a.header__navigation-menu-link(href="#")= "Новости"
+            a.header__navigation-menu-link(href="#", data-text="Новости")= "Новости"
           li.header__navigation-menu-item.header__navigation-menu-item_expandable
-            a.header__navigation-menu-link(href="#")= "Соглашения"
+            a.header__navigation-menu-link(href="#", data-text="Соглашения")= "Соглашения"
             ul.header__navigation-link-popup
               li.header__navigation-item
                 a.header__navigation-link(href="#")= "Соглашение 1"

@@ -19,7 +19,7 @@ mixin card-room-search(options)
     }
 
   +card({})(class=unitClassName)&attributes(attributes)
-    .card-room-search__title= options.title
+    .card-room-search__title= "Найдём номера под ваши пожелания"
     form.card-room-search__form(action="")
       .card-room-search__inputs
         +date-range-picker({titles: ['прибытие', 'выезд'], subtitles: ['', '']})
