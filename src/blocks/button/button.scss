@@ -11,10 +11,11 @@
   appearance: none;
   cursor: pointer;
   position: relative;
+  height: fit-content;
 }
 
 .button__text {
   position: relative;
-  z-index: 10;
+  z-index: 2;
   opacity: 1;
 }

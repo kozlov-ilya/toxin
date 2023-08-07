@@ -14,44 +14,112 @@ mixin header(options)
         unitClassName += ` header_${element}`;
       });
     }
+    const headerNavLinks = [
+      {
+        name: "О нас",
+        expandable: false,
+      },
+      {
+        name: "Услуги",
+        expandable: true,
+        children: [
+          {
+            name: "Услуга 1",
+            expandable: false,
+          },
+          {
+            name: "Услуга 2",
+            expandable: false,
+          },
+          {
+            name: "Услуга 3",
+            expandable: false,
+          }
+        ],
+      },
+      {
+        name: "Вакансии",
+        expandable: false,
+      },
+      {
+        name: "Новости",
+        expandable: false,
+      },
+      {
+        name: "Соглашения",
+        expandable: true,
+        children: [
+          {
+            name: "Соглашениe 1",
+            expandable: false,
+          },
+          {
+            name: "Соглашениe 2",
+            expandable: false,
+          },
+          {
+            name: "Соглашениe 3",
+            expandable: false,
+          }
+        ],
+      },
+    ];
 
   header(class=unitClassName)&attributes(attributes)
     .header__content
       +logo-full({}).header__logo
       .header__menu
-        ul.header__navigation
-          li.header__navigation-menu-item
-            a.header__navigation-menu-link.header__navigation-menu-link_highlighted(
-              href="#",
-              data-text="О нас"
-            )= "О нас"
-          li.header__navigation-menu-item.header__navigation-menu-item_expandable
-            a.header__navigation-menu-link(href="#", data-text="Услуги")= "Услуги"
-            ul.header__navigation-link-popup
-              li.header__navigation-item
-                a.header__navigation-link(href="#")= "Услугa 1"
-              li.header__navigation-item
-                a.header__navigation-link(href="#")= "Услугa 2"
-              li.header__navigation-item
-                a.header__navigation-link(href="#")= "Услугa 3"
-          li.header__navigation-menu-item
-            a.header__navigation-menu-link(href="#", data-text="Вакансии")= "Вакансии"
-          li.header__navigation-menu-item
-            a.header__navigation-menu-link(href="#", data-text="Новости")= "Новости"
-          li.header__navigation-menu-item.header__navigation-menu-item_expandable
-            a.header__navigation-menu-link(href="#", data-text="Соглашения")= "Соглашения"
-            ul.header__navigation-link-popup
-              li.header__navigation-item
-                a.header__navigation-link(href="#")= "Соглашение 1"
-              li.header__navigation-item
-                a.header__navigation-link(href="#")= "Соглашение 2"
-              li.header__navigation-item
-                a.header__navigation-link(href="#")= "Соглашение 3"
-        .header__buttons
-          +button({text: 'войти', mods: ['type_cta', 'bg_ghost', 'size_reduced']}).header__login-btn(
-            type="button"
+        .header__overlay
+        .header__menu-content
+          .header__nav
+            each item in headerNavLinks
+              if item.expandable
+                .header__nav-item.nav-item.nav-item_expandable_yes
+                  .nav-item__label
+                    span.nav-item__title.nav-item__hover-type_bold(
+                      data-title=item.name
+                    )= item.name
+                    span.nav-item__arrow-icon
+                      <svg width="12" height="12" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10.5938 0.578125L12 1.98438L6 7.98438L0 1.98438L1.40625 0.578125L6 5.17188L10.5938 0.578125Z" fill="#1F2041" fill-opacity="0.5"/>
+                      </svg>
+                  ul.nav-item__list
+                    each link in item.children
+                      li.nav-item__list-item
+                        a.nav-item__list-link(href="#")= link.name
+              else
+                .header__nav-item.nav-item.nav-item_expandable_no
+                  a.nav-item__link.nav-item__hover-type_bold(
+                    href="#",
+                    data-title=item.name
+                  )= item.name
+          .header__actions
+            +button({text: 'Зарегистрироваться', mods: ['type_cta', 'bg_filled', 'size_shrinked']}).header__signup-button(
+              type="button"
+            )
+            +button({text: 'войти', mods: ['type_cta', 'bg_ghost', 'size_shrinked']}).header__signin-button(
+              type="button"
+            )
+      .header__burger-menu-button.burger-button
+        svg.burger-button__burger(viewBox="0 0 100 100", width="30px")
+          rect.burger-button__top-line.burger-button-line(
+            width="80",
+            height="10",
+            x="10",
+            y="25",
+            rx="5"
           )
-          +button({text: 'Зарегистрироваться', mods: ['type_cta', 'bg_filled', 'size_reduced']}).header__signup-btn(
-            type="submit"
+          rect.burger-button__mid-line.burger-button-line(
+            width="80",
+            height="10",
+            x="10",
+            y="45",
+            rx="5"
           )
-        .header__user-name= options.userName ? options.userName : "User Name"
+          rect.burger-button__bottom-line.burger-button-line(
+            width="80",
+            height="10",
+            x="10",
+            y="65",
+            rx="5"
+          )

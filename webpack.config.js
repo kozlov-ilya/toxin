@@ -1,15 +1,16 @@
-const path = require('path');
-const PugPlugin = require('pug-plugin');
+const path = require("path");
+const PugPlugin = require("pug-plugin");
 
 module.exports = {
   output: {
     clean: true,
-    path: path.join(__dirname, 'dist'),
+    path: path.join(__dirname, "dist"),
   },
 
   entry: {
     // define Pug files here
-    'pages/index': './src/pages/index/index.pug',
+    "pages/gui-page": "./src/pages/gui-page/gui-page.pug",
+    "pages/landing-page": "./src/pages/landing-page/landing-page.pug",
   },
 
   plugins: [
@@ -17,11 +18,11 @@ module.exports = {
       pretty: true, // formatting HTML, useful for development mode
       js: {
         // output filename of extracted JS file from source script
-        filename: 'assets/js/[name].js',
+        filename: "assets/js/[name].js",
       },
       css: {
         // output filename of extracted CSS file from source style
-        filename: 'assets/css/[name].css',
+        filename: "assets/css/[name].css",
       },
     }),
   ],
@@ -34,24 +35,24 @@ module.exports = {
       },
       {
         test: /\.(css|sass|scss)$/,
-        use: ['css-loader', 'sass-loader'],
+        use: ["css-loader", "sass-loader"],
       },
 
       {
         test: /\.(woff(2)?|ttf|eot)$/,
-        type: 'asset/resource',
+        type: "asset/resource",
         generator: {
-          filename: './assets/fonts/[name][ext]',
+          filename: "./assets/fonts/[name][ext]",
         },
       },
 
       {
         test: /\.(png|jpg|jpeg|ico|svg)/,
-        type: 'asset/resource',
+        type: "asset/resource",
         generator: {
-          filename: './assets/img/[name][ext]',
+          filename: "./assets/img/[name][ext]",
         },
       },
     ],
   },
-}
+};

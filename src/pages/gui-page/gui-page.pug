@@ -1,0 +1,25 @@
+include ../../blocks/gui-section/gui-section
+include ../../blocks/colors-type-section/colors-type-section
+include ../../blocks/form-elements-section/form-elements-section
+include ../../blocks/cards-section/cards-section
+include ../../blocks/headers-footers-section/headers-footers-section
+
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    link(rel="stylesheet", href=require("./gui-page.scss"))
+    script(src=require("./gui-page.js"), defer="defer")
+    link(rel="icon", href=require("./assets/img/gorilla.svg"))
+    title Ape++
+  body
+    +gui-section({})
+      +colors-type-section({})
+    +gui-section({})
+      +form-elements-section({})
+    +gui-section({})
+      +cards-section({})
+    +gui-section({})
+      +headers-footers-section({})

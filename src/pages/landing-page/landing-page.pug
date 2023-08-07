@@ -1,0 +1,22 @@
+include ../../blocks/header/header
+include ../../blocks/footer/footer
+include ../../blocks/card-room-search/card-room-search
+
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+
+    script(src=require("./landing-page.js"), defer="defer")
+    link(rel="stylesheet", href=require("./landing-page.scss"))
+    link(rel="icon", href=require("./assets/img/gorilla.svg"))
+    title Ape++
+  body.page
+    +header({})
+    main.main
+      .main__content
+        +card-room-search({}).main__card-room-search
+        .main__subtitle!= "Лучшие номера для вашей работы,<br> отдыха и просто вдохновения"
+    +footer({})
