@@ -27,6 +27,12 @@
   background-position: center;
 }
 
+@media screen and (width < 600px) {
+  .main {
+    height: 600px;
+  }
+}
+
 .main__content {
   max-width: var(--page-wrapper-width);
   position: relative;
@@ -41,10 +47,30 @@
   left: 9.72222%;
 }
 
+@media screen and (width < 600px) {
+  .main__card-room-search {
+    position: absolute;
+    left: 0;
+  }
+}
+
 .main__subtitle {
   position: absolute;
   bottom: 18px;
-  right: 134px;
+  right: min(134px, 10%);
   font: var(--type-body);
   color: var(--color-dark-shade-75);
+}
+
+@media screen and (width > 2000px) {
+  .main__subtitle {
+    display: none;
+  }
+}
+
+@media screen and (width < 600px) {
+  .main__card-room-search {
+    position: absolute;
+    left: 0;
+  }
 }

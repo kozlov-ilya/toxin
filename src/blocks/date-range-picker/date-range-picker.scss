@@ -14,6 +14,12 @@
   position: relative;
 }
 
+@media screen and (width < 600px) {
+  .date-range-picker {
+    max-width: 100%;
+  }
+}
+
 .date-range-picker_opened {
   .date-range-picker__popup {
     display: block;
@@ -48,6 +54,7 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
+  gap: 10px;
 }
 
 .date-range-picker__popup {
@@ -57,4 +64,5 @@
   opacity: 0;
   top: calc(100% + 15px);
   transition: top 0s var(--animation-length);
+  width: 100%;
 }

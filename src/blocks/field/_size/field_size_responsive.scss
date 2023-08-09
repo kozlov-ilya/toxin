@@ -1,5 +1,5 @@
 @use "../../../scss/abstracts/functions" as f;
 
-.field_size_m {
-  width: f.toRem(266);
+.field_size_responsive {
+  width: 100%;
 }

@@ -29,7 +29,14 @@
     right: 0;
     min-width: 320px;
     z-index: 100;
+    visibility: hidden;
+    transition: visibility 0ms 250ms;
   }
+}
+
+.header__menu_expanded_yes {
+  visibility: visible;
+  transition: visibility 0ms 0ms;
 }
 
 .header__overlay {
