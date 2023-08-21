@@ -1,5 +1,3 @@
-include ../form-unit/form-unit
-
 mixin range-slider(options)
   //- options = {options, mods=["mod1", "mod2", ...]}
 
@@ -14,11 +12,12 @@ mixin range-slider(options)
       });
     }
 
-  +form-unit({title: options.title, subtitle: options.subtitle})(
-    class=unitClassName
-  )&attributes(attributes)
-    .range-slider__slider.slider(data-min-value=0, data-max-value=15000)
-      .slider__track
-        .slider__track-range
-      .slider__thumb-min.slider-thumb(data-value=5000)
-      .slider__thumb-max.slider-thumb(data-value=10000)
+  div(class=unitClassName)&attributes(attributes)(data-min-value=0, data-max-value=15000)
+    .range-slider__header
+      .range-slider__title= options.title
+      .range-slider__range-label
+    .range-slider__body
+      .range-slider__track
+        .range-slider__track-range
+      .range-slider__thumb-min.range-slider-thumb(data-value=5000)
+      .range-slider__thumb-max.range-slider-thumb(data-value=10000)

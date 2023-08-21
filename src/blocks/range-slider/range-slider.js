@@ -1,167 +1,225 @@
 const rangeSliders = document.querySelectorAll('.range-slider');
+const thumbWidth = 12;
 
-function getOffset(el) {
-  const rect = el.getBoundingClientRect();
-  return {
-    left: rect.left + window.scrollX,
-    top: rect.top + window.scrollY,
-  };
+rangeSliders.forEach((rangeSlider) => {
+  setRangeSliderHandlers(rangeSlider);
+  initThumbsPos(rangeSlider);
+  updateTrackRange(rangeSlider);
+  updateRangeLabel(rangeSlider);
+});
+
+function setRangeSliderHandlers(slider) {
+  slider.addEventListener('mousedown', handleRangeSliderThumbPickup);
+  slider.addEventListener('touchstart', handleRangeSliderThumbPickup);
 }
 
-function getOffsetX(el) {
-  return getOffset(el).left;
-}
+function handleRangeSliderThumbPickup(event) {
+  if (!event.target.closest('.range-slider-thumb')) {
+    return;
+  }
 
-function getThumbValue(thumb) {
-  return parseInt(thumb.dataset.value);
-}
+  const slider = event.currentTarget;
+  const curThumb = event.target.closest('.range-slider-thumb');
 
-function getThumbs(slider) {
-  const minThumb = slider.querySelector('.slider__thumb-min');
-  const maxThumb = slider.querySelector('.slider__thumb-max');
+  document.addEventListener('mousemove', dragThumb);
+  document.addEventListener('touchmove', dragThumb);
 
-  const minThumbValue = getThumbValue(minThumb);
-  const maxThumbValue = getThumbValue(maxThumb);
+  function dragThumb(event) {
+    let thumbLeftPos = calcThumbLeftPos(event, slider);
+    updateThumbCondition(curThumb, thumbLeftPos, slider);
+    if (isThumbsSwitchNeeded(slider)) {
+      switchThumbs(slider);
+    }
+    updateTrackRange(slider);
+    updateRangeLabel(slider);
+  }
 
-  return {
-    min: { el: minThumb, value: minThumbValue },
-    max: { el: maxThumb, value: maxThumbValue },
-  };
-}
+  document.addEventListener('mouseup', handleRangeSliderThumbPutdown);
+  document.addEventListener('touchend', handleRangeSliderThumbPutdown);
 
-function getTrack(slider) {
-  const track = slider.querySelector('.slider__track');
-  const trackX = getOffsetX(track);
-  const trackWidth = track.offsetWidth - 12;
-  return { x: trackX, width: trackWidth };
-}
-
-function getThumbRelX(thumb, track) {
-  const thumbX = getOffsetX(thumb);
-  return thumbX - track.x;
-}
-
-function setThumbX(thumb, x) {
-  thumb.style.left = x + 'px';
-}
-
-function convertThumbValueToX(thumbObj, slider) {
-  const track = getTrack(slider);
-  const thumbValue = thumbObj.value;
-  const sliderMinValue = parseInt(slider.dataset.minValue);
-  const sliderMaxValue = parseInt(slider.dataset.maxValue);
-  const valueRange = sliderMaxValue - sliderMinValue;
-  return ((thumbValue - sliderMinValue) / valueRange) * track.width;
-}
-function convertXToThumbValue(x, slider) {
-  const track = getTrack(slider);
-  const sliderMinValue = parseInt(slider.dataset.minValue);
-  const sliderMaxValue = parseInt(slider.dataset.maxValue);
-  const valueRange = sliderMaxValue - sliderMinValue;
-  return (valueRange / track.width) * x;
-}
-
-function positionThumbs(slider) {
-  const thumbs = getThumbs(slider);
-  const minThumbX = convertThumbValueToX(thumbs.min, slider);
-  const maxThumbX = convertThumbValueToX(thumbs.max, slider);
-  setThumbX(thumbs.min.el, minThumbX);
-  setThumbX(thumbs.max.el, maxThumbX);
-}
-
-function getCursorRelX(event, slider) {
-  const track = getTrack(slider);
-  const cursorX = event.pageX;
-  return cursorX - track.x;
-}
-
-function setThumbValue(thumb, value) {
-  thumb.dataset.value = value;
-}
-
-function limitCursorRelX(cursorRelX, slider, thumbWidth) {
-  const track = getTrack(slider);
-  const minX = 0 + thumbWidth / 2;
-  const maxX = track.width + thumbWidth / 2;
-  cursorRelX = cursorRelX < minX ? minX : cursorRelX;
-  cursorRelX = cursorRelX > maxX ? maxX : cursorRelX;
-  return cursorRelX;
-}
-
-function switchThumbsClasses(slider) {
-  const thumbs = getThumbs(slider);
-  if (thumbs.min.value > thumbs.max.value) {
-    thumbs.min.el.classList.remove('slider__thumb-min');
-    thumbs.min.el.classList.add('slider__thumb-max');
-    thumbs.max.el.classList.remove('slider__thumb-max');
-    thumbs.max.el.classList.add('slider__thumb-min');
+  function handleRangeSliderThumbPutdown(event) {
+    document.removeEventListener('mousemove', dragThumb);
+    document.removeEventListener('touchmove', dragThumb);
   }
 }
 
-function drawTrackRange(slider) {
-  const track = getTrack(slider);
+function switchThumbs(slider) {
   const thumbs = getThumbs(slider);
-  const trackRange = slider.querySelector('.slider__track-range');
-  const minThumbRelX = getThumbRelX(thumbs.min.el, track);
-  const maxThumbRelX = getThumbRelX(thumbs.max.el, track);
-  const trackRangeWidth =
-    maxThumbRelX - minThumbRelX + thumbs.max.el.offsetWidth / 2;
-  trackRange.style.left = minThumbRelX + 'px';
-  trackRange.style.width = trackRangeWidth + 'px';
+  const minThumb = thumbs.min.elem;
+  const maxThumb = thumbs.max.elem;
+
+  minThumb.classList.remove('range-slider__thumb-min');
+  minThumb.classList.add('range-slider__thumb-max');
+  maxThumb.classList.remove('range-slider__thumb-max');
+  maxThumb.classList.add('range-slider__thumb-min');
+}
+
+function isThumbsSwitchNeeded(slider) {
+  const thumbs = getThumbs(slider);
+
+  return thumbs.min.value > thumbs.max.value;
+}
+
+function updateRangeLabel(slider) {
+  const rangeLabel = slider.querySelector('.range-slider__range-label');
+  const thumbs = getThumbs(slider);
+
+  const minThumbValueText = numberWithSpaces(thumbs.min.value);
+  const maxThumbValueText = numberWithSpaces(thumbs.max.value);
+  const rangeLabelText = `${minThumbValueText}₽ - ${maxThumbValueText}₽`;
+
+  rangeLabel.textContent = rangeLabelText;
 }
 
 function numberWithSpaces(x) {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
 }
 
-function updateRangeLabel(rangeSlider) {
-  const rangeLabel = rangeSlider.querySelector('.form-unit__subtitle');
-  const slider = rangeSlider.querySelector('.slider');
+function updateTrackRange(slider) {
+  const trackRangeElem = slider.querySelector('.range-slider__track-range');
   const thumbs = getThumbs(slider);
-  const rangeMinValue = numberWithSpaces(thumbs.min.value);
-  const rangeMaxValue = numberWithSpaces(thumbs.max.value);
-  const rangeLabelValue = `${rangeMinValue}₽ - ${rangeMaxValue}₽`;
-  rangeLabel.innerHTML = rangeLabelValue;
+
+  const minThumbLeft = convertThumbValueToLeftPos(thumbs.min.value, slider);
+  const maxThumbLeft = convertThumbValueToLeftPos(thumbs.max.value, slider);
+
+  trackRangeElem.style.left = minThumbLeft + 'px';
+  trackRangeElem.style.width =
+    maxThumbLeft - minThumbLeft + thumbWidth / 2 + 'px';
 }
 
-function handleThumbMousedown(event) {
-  if (event.target.closest('.slider-thumb')) {
-    const rangeSlider = event.currentTarget;
-    const slider = rangeSlider.querySelector('.slider');
-    const thumb = event.target.closest('.slider-thumb');
-    const thumbWidth = thumb.offsetWidth;
-
-    function dragThumb(event) {
-      let cursorRelX = getCursorRelX(event, slider);
-      cursorRelX = limitCursorRelX(cursorRelX, slider, thumbWidth);
-      const newThumbX = cursorRelX - thumbWidth / 2;
-      let newThumbValue = convertXToThumbValue(newThumbX, slider);
-      setThumbValue(thumb, newThumbValue);
-      positionThumbs(slider);
-      switchThumbsClasses(slider);
-      drawTrackRange(slider);
-      updateRangeLabel(rangeSlider);
-    }
-
-    document.addEventListener('mousemove', dragThumb);
-
-    function handleThumbMouseup(event) {
-      document.removeEventListener('mousemove', dragThumb);
-    }
-    document.addEventListener('mouseup', handleThumbMouseup);
-  }
+function updateThumbCondition(thumb, left, slider) {
+  setThumbLeftPos(thumb, left);
+  updateThumbValueAttribute(thumb, left, slider);
 }
 
-rangeSliders.forEach((rangeSlider) => {
-  const slider = rangeSlider.querySelector('.slider');
-  const track = getTrack(slider);
+function initThumbsPos(slider) {
   const thumbs = getThumbs(slider);
-  positionThumbs(slider);
-  drawTrackRange(slider);
-  updateRangeLabel(rangeSlider);
-  rangeSlider.addEventListener('mousedown', handleThumbMousedown);
 
-  slider.ondragstart = function () {
-    return false;
+  setThumbLeftPos(
+    thumbs.min.elem,
+    convertThumbValueToLeftPos(thumbs.min.value, slider)
+  );
+  setThumbLeftPos(
+    thumbs.max.elem,
+    convertThumbValueToLeftPos(thumbs.max.value, slider)
+  );
+}
+
+function updateThumbValueAttribute(thumb, left, slider) {
+  thumb.dataset.value = convertLeftPosToThumbValue(left, slider);
+}
+
+function convertLeftPosToThumbValue(left, slider) {
+  const track = getRangeSliderTrack(slider);
+  const valueLimits = getRangeValueLimits(slider);
+
+  const totalRangeSize = valueLimits.max - valueLimits.min;
+
+  return ((left + thumbWidth / 2) / track.width) * totalRangeSize;
+}
+
+function convertThumbValueToLeftPos(value, slider) {
+  const track = getRangeSliderTrack(slider);
+  const valueLimits = getRangeValueLimits(slider);
+
+  const totalRangeSize = valueLimits.max - valueLimits.min;
+  const curRangeSize = value - valueLimits.min;
+
+  return (curRangeSize / totalRangeSize) * track.width - thumbWidth / 2;
+}
+
+function getRangeValueLimits(slider) {
+  const min = slider.dataset.minValue;
+  const max = slider.dataset.maxValue;
+
+  return { min, max };
+}
+
+function getThumbs(slider) {
+  const minThumb = slider.querySelector('.range-slider__thumb-min');
+  const maxThumb = slider.querySelector('.range-slider__thumb-max');
+
+  const minThumbValue = getThumbValue(minThumb);
+  const maxThumbValue = getThumbValue(maxThumb);
+
+  return {
+    min: { elem: minThumb, value: minThumbValue },
+    max: { elem: maxThumb, value: maxThumbValue },
   };
-});
+}
+
+function getThumbValue(thumb) {
+  return parseInt(thumb.dataset.value);
+}
+
+function setThumbLeftPos(thumb, left) {
+  thumb.style.left = left + 'px';
+}
+
+function calcThumbLeftPos(event, slider) {
+  const cursorRelPos = getCursorRelPos(event, slider);
+  const track = getRangeSliderTrack(slider);
+  let thumbLeftPos;
+
+  const minLeft = 0;
+  const maxLeft = track.width;
+
+  if (cursorRelPos.left < minLeft) {
+    thumbLeftPos = minLeft;
+  } else if (cursorRelPos.left > maxLeft) {
+    thumbLeftPos = maxLeft;
+  } else {
+    thumbLeftPos = cursorRelPos.left;
+  }
+
+  thumbLeftPos -= thumbWidth / 2;
+
+  return thumbLeftPos;
+}
+
+function getCursorRelPos(event, slider) {
+  const cursorAbsPos = getCursorAbsPos(event);
+  const track = getRangeSliderTrack(slider);
+  const trackAbsPos = track.pos;
+
+  const left = cursorAbsPos.left - trackAbsPos.left;
+  const top = cursorAbsPos.top - trackAbsPos.top;
+
+  return { left, top };
+}
+
+function getRangeSliderTrack(slider) {
+  const track = slider.querySelector('.range-slider__track');
+  const trackPos = getElementAbsPos(track);
+  const trackWidth = track.offsetWidth;
+  return { pos: { left: trackPos.left, top: trackPos.top }, width: trackWidth };
+}
+
+function getCursorAbsPos(event) {
+  let left;
+  let top;
+
+  if (event.pageX !== undefined) {
+    left = event.pageX;
+    top = event.pageY;
+  } else {
+    left = event.changedTouches[0].pageX;
+    top = event.changedTouches[0].pageY;
+  }
+
+  return { left, top };
+}
+
+function getElementAbsPos(element) {
+  const rect = element.getBoundingClientRect();
+
+  return {
+    left: rect.left + window.scrollX,
+    top: rect.top + window.scrollY,
+  };
+}
+
+export function getRangeSliderValues(slider) {
+  const thumbs = getThumbs(slider);
+  return { min: thumbs.min.value, max: thumbs.max.value };
+}
