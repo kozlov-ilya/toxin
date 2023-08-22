@@ -1,4 +1,4 @@
-include ../../form-unit/form-unit
+include ../../form-unit-header/form-unit-header
 include ../../checkbox-button/checkbox-button
 include ../../radio-button/radio-button
 include ../../toggle/toggle
@@ -24,30 +24,36 @@ mixin form-elements-section__buttons(options)
 
   div(class=unitClassName)&attributes(attributes)
     .form-elements-section__buttons-column
-      +form-unit({title:'Checkbox Buttons', subtitle:''})
-        .form-elements-section__checkbox-buttons
+      .form-elements-section__checkbox-buttons.form-elements-section__buttons-form-unit
+        +form-unit-header({title:'Checkbox Buttons', subtitle:''})
+        .form-elements-section__checkbox-buttons-body
           +checkbox-button({label: 'Можно курить'})
           +checkbox-button({label: 'Можно с питомцами', isChecked: true})
           +checkbox-button({label: 'Можно пригласить гостей (до 10 человек)', isChecked: true})
-      +form-unit({title:'Radio Buttons', subtitle:''})
-        .form-elements-section__radio-buttons
+      .form-elements-section__radio-buttons.form-elements-section__buttons-form-unit
+        +form-unit-header({title:'Radio Buttons', subtitle:''})
+        .form-elements-section__radio-buttons-body
           +radio-button({label: 'Мужчина', name: 'gender', value: 'male', isChecked: true})
           +radio-button({label: 'Женщина', name: 'gender', value: 'female'}) 
-      +form-unit({title:'Toggle', subtitle:''})
-        .form-elements-section__toggle
+      .form-elements-section__toggle.form-elements-section__buttons-form-unit
+        +form-unit-header({title:'Toggle', subtitle:''})
+        .form-elements-section__toggle-body
           +toggle({label: 'Получать спецпредложения', name: '', value: '', isChecked: true})
           +toggle({label: 'Получать спецпредложения', name: '', value: ''})
-      +form-unit({title:'Like button', subtitle:''})
-        .form-elements-section__like-button
+      .form-elements-section__like-button.form-elements-section__buttons-form-unit
+        +form-unit-header({title:'Like button', subtitle:''})
+        .form-elements-section__like-button-body
           +like-button({defaultValue: 2})
           +like-button({defaultValue: 12, mods: ['checked']})
-      +form-unit({title:'rate button', subtitle:''})
-        .form-elements-section__rate-button
+      .form-elements-section__rate-button.form-elements-section__buttons-form-unit
+        +form-unit-header({title:'rate button', subtitle:''})
+        .form-elements-section__rate-button-body
           +rate-button({value: 4, isActive: true})
           +rate-button({value: 5, isActive: true})
     .form-elements-section__buttons-column
       +range-slider({title: 'range slider', subtitle:''})
-      +form-unit({title: 'buttons', subtitle: ''})
+      .form-elements-section__buttons.form-elements-section__buttons-form-unit
+        +form-unit-header({title: 'buttons', subtitle: ''})
         .form-elements-section__click-buttons
           .form-elements-section__click-buttons-row
             +button({text: 'Click me'}).button_type_cta.button_bg_filled.button_cta-secondary
@@ -60,5 +66,6 @@ mixin form-elements-section__buttons(options)
             +button({text: 'Click me'}).button_type_text
           .form-elements-section__click-buttons-row
             +button({text: 'перейти к оплате'}).button_type_cta.button_bg_filled.button_cta-primary
-      +form-unit({title: 'pagination', subtitle: ''})
+      .form-elements-section__pagination.form-elements-section__buttons-form-unit
+        +form-unit-header({title: 'pagination', subtitle: ''})
         +pagination({})

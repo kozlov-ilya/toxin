@@ -37,6 +37,28 @@ function updateRateButtonValueAttribute(rateButton, value) {
   rateButton.dataset.value = value;
 }
 
+function paintStars() {
+  const rateButtons = document.querySelectorAll(".rate-button");
+
+  rateButtons.forEach((rateButton, index) => {
+    const gradients = rateButton.querySelectorAll(".star-gradient");
+    const stars = rateButton.querySelectorAll(".rate-button__star");
+
+    gradients.forEach((gradient) => {
+      gradient.id = `rate-button-gradient-${index}`;
+    });
+
+    stars.forEach((star) => {
+      star.querySelector(
+        ".rate-button__star-bg"
+      ).style = `fill: url(#rate-button-gradient-${index})`;
+      star.querySelector(
+        ".rate-button__star-border"
+      ).style = `fill: url(#rate-button-gradient-${index})`;
+    });
+  });
+}
+
 function handleRateButtonStarClick(event) {
   const rateButton = event.currentTarget;
   if (event.target.closest(".rate-button__star")) {
@@ -56,3 +78,5 @@ rateButtons.forEach((rateButton) => {
   resetRateButtonView(rateButton);
   updateRateButtonView(rateButton);
 });
+
+paintStars();

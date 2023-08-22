@@ -1,4 +1,3 @@
-include ../../form-unit/form-unit
 include ../../dropdown/dropdown
 include ../../dropdown-guests/dropdown-guests
 include ../../dropdown-features/dropdown-features
@@ -19,13 +18,13 @@ mixin form-elements-section__dropdowns(options)
     .form-elements-section__row
       .form-elements-section__column
         .form-elements-section__feature-dropdowns
-          +form-unit({title: 'dropdown', subtitle:'default'})
-            +dropdown-features({value: 'Комплектация', counters: [{label: 'спальни', defaultValue: 2, wordForms: 'спальня,спальни,спален'}, {label: 'кровати', defaultValue: 2, wordForms: 'кровать,кровати,кроватей'}, {label: 'ванные комнаты', defaultValue: 0, wordForms: 'ванная комната,ванные комнаты,ванных комнат'}]})
-          +form-unit({title: 'dropdown', subtitle:'default'})
-            +dropdown-features({value: 'Комплектация', counters: [{label: 'спальни', defaultValue: 2, wordForms: 'спальня,спальни,спален'}, {label: 'кровати', defaultValue: 2, wordForms: 'кровать,кровати,кроватей'}, {label: 'ванные комнаты', defaultValue: 0, wordForms: 'ванная комната,ванные комнаты,ванных комнат'}]}).dropdown_opened
+          .form-elements-section__feature-dropdown.form-elements-section__dropdown-form-unit
+            +dropdown-features({title: 'dropdown', subtitle: 'default', value: 'Комплектация', counters: [{label: 'спальни', defaultValue: 2, wordForms: 'спальня,спальни,спален'}, {label: 'кровати', defaultValue: 2, wordForms: 'кровать,кровати,кроватей'}, {label: 'ванные комнаты', defaultValue: 0, wordForms: 'ванная комната,ванные комнаты,ванных комнат'}]})
+          .form-elements-section__feature-dropdown.form-elements-section__dropdown-form-unit
+            +dropdown-features({title: 'dropdown', subtitle: 'expanded', value: 'Комплектация', counters: [{label: 'спальни', defaultValue: 2, wordForms: 'спальня,спальни,спален'}, {label: 'кровати', defaultValue: 2, wordForms: 'кровать,кровати,кроватей'}, {label: 'ванные комнаты', defaultValue: 0, wordForms: 'ванная комната,ванные комнаты,ванных комнат'}]}).dropdown_opened
       .form-elements-section__column
         .form-elements-section__guests-dropdowns
-          +form-unit({title: 'dropdown'})
-            +dropdown-guests({value: 'Сколько гостей', counters: [ {label: 'взрослые', defaultValue: 0, name: 'adults'}, {label: 'дети', defaultValue: 0, name: 'teens'}, {label: 'младенцы', defaultValue: 0, name: 'babies'}]}).dropdown_opened
-          +form-unit({title: 'dropdown'})
-            +dropdown-guests({value: 'Сколько гостей', counters: [ {label: 'взрослые', defaultValue: 2, name: 'adults'}, {label: 'дети', defaultValue: 1, name: 'teens'}, {label: 'младенцы', defaultValue: 0, name: 'babies'}]}).dropdown_opened
+          .form-elements-section__guests-dropdown.form-elements-section__dropdown-form-unit
+            +dropdown-guests({title: 'dropdown', value: 'Сколько гостей', counters: [ {label: 'взрослые', defaultValue: 0, name: 'adults'}, {label: 'дети', defaultValue: 0, name: 'teens'}, {label: 'младенцы', defaultValue: 0, name: 'babies'}]}).dropdown_opened
+          .form-elements-section__guests-dropdown.form-elements-section__dropdown-form-unit
+            +dropdown-guests({title: 'dropdown', value: 'Сколько гостей', counters: [ {label: 'взрослые', defaultValue: 2, name: 'adults'}, {label: 'дети', defaultValue: 1, name: 'teens'}, {label: 'младенцы', defaultValue: 0, name: 'babies'}]}).dropdown_opened

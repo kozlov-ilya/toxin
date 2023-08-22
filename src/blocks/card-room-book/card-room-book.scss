@@ -1,9 +1,8 @@
-@forward "../card/card";
-@forward "../form-unit/form-unit";
-@forward "../date-range-picker/date-range-picker";
-@forward "../dropdown-guests/dropdown-guests";
-@forward "../button/button";
-@forward "../room-label/room-label";
+@forward '../card/card';
+@forward '../date-range-picker/date-range-picker';
+@forward '../dropdown-guests/dropdown-guests';
+@forward '../button/button';
+@forward '../room-label/room-label';
 
 .card-room-book__form {
   margin-top: 20px;
@@ -93,7 +92,7 @@
 }
 
 .total-price__line::before {
-  content: "";
+  content: '';
   width: 100%;
   height: 2px;
   border-bottom: 1px dashed var(--color-dark-shade-25);

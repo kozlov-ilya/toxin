@@ -1,4 +1,4 @@
-@forward '../../form-unit/form-unit.scss';
+@forward '../../form-unit-header/form-unit-header.scss';
 @forward '../../field/field.scss';
 @forward '../../text-field/text-field.scss';
 @forward '../../masked-text-field/masked-text-field.scss';
@@ -17,4 +17,10 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+}
+
+.form-elements-section__field-form-unit {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }

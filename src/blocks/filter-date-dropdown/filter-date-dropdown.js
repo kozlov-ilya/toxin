@@ -1,127 +1,174 @@
-import moment from 'moment';
+import moment from "moment";
 
-import '../date-dropdown/date-dropdown';
-import '../range-calendar/range-calendar';
+import "../date-dropdown/date-dropdown";
+import "../range-calendar/range-calendar";
 
 /* Locale settings */
-moment.locale('ru');
-moment.updateLocale('ru', {
+moment.locale("ru");
+moment.updateLocale("ru", {
   monthsShort: [
-    'янв',
-    'фев',
-    'март',
-    'апр',
-    'май',
-    'июнь',
-    'июль',
-    'авг',
-    'сент',
-    'окт',
-    'нояб',
-    'дек',
+    "янв",
+    "фев",
+    "март",
+    "апр",
+    "май",
+    "июнь",
+    "июль",
+    "авг",
+    "сент",
+    "окт",
+    "нояб",
+    "дек",
   ],
 });
 
 /* Functions */
+function openDropdown(dropdown) {
+  dropdown.classList.add("filter-date-dropdown_opened");
+}
+
+function closeDropdown(dropdown) {
+  dropdown.classList.remove("filter-date-dropdown_opened");
+}
+
+function closeAllDropdownsExceptOne(dropdownToBeOpen) {
+  const filterDateDropdowns = document.querySelectorAll(
+    ".filter-date-dropdown"
+  );
+  filterDateDropdowns.forEach((dropdown) => {
+    if (!dropdown.isEqualNode(dropdownToBeOpen)) {
+      closeDropdown(dropdown);
+    }
+  });
+}
+
+function closeAllDropdowns() {
+  const filterDateDropdowns = document.querySelectorAll(
+    ".filter-date-dropdown"
+  );
+  filterDateDropdowns.forEach((dropdown) => {
+    closeDropdown(dropdown);
+  });
+}
+
+function getDropdownDateAttributes(filterDateDropdown) {
+  return {
+    from: filterDateDropdown.dataset.dateFrom,
+    to: filterDateDropdown.dataset.dateTo,
+  };
+}
+
+function setDropdownDateAttributes(filterDateDropdown, dateFrom, dateTo) {
+  filterDateDropdown.dataset.dateFrom = dateFrom;
+  filterDateDropdown.dataset.dateTo = dateTo;
+}
+
+function resetDropdownDateAttributes(filterDateDropdown) {
+  filterDateDropdown.dataset.dateFrom = "";
+  filterDateDropdown.dataset.dateTo = "";
+}
+
+function getDatesFromCalendar(filterDateDropdown) {
+  const calendar = filterDateDropdown.querySelector(".range-calendar");
+  return { from: calendar.dataset.dateFrom, to: calendar.dataset.dateTo };
+}
+
+function updateDropdownDateAttributesFromCalendar(filterDateDropdown) {
+  const dates = getDatesFromCalendar(filterDateDropdown);
+  setDropdownDateAttributes(filterDateDropdown, dates.from, dates.to);
+}
+
 function setFilterDateDropdownSelectValue(filterDateDropdown, value) {
-  const dateDropdown = filterDateDropdown.querySelector('.date-dropdown');
-  dateDropdown.querySelector('.date-dropdown__select').innerHTML = value;
+  const dateDropdown = filterDateDropdown.querySelector(".date-dropdown");
+  dateDropdown.querySelector(".date-dropdown__select").textContent = value;
 }
 
 function resetFilterDateDropdownSelectValue(filterDateDropdown) {
-  const dateDropdown = filterDateDropdown.querySelector('.date-dropdown');
-  dateDropdown.querySelector('.date-dropdown__select').innerHTML =
+  const dateDropdown = filterDateDropdown.querySelector(".date-dropdown");
+  dateDropdown.querySelector(".date-dropdown__select").textContent =
     dateDropdown.dataset.defaultValue;
 }
 
-function isFilterDateDropdownCalendarRangeValueFull(filterDateDropdown) {
-  const calendar = filterDateDropdown.querySelector('.range-calendar');
-  return calendar.dataset.dateFrom && calendar.dataset.dateTo;
+function isCalendarDateValid(filterDateDropdown) {
+  const dates = getDatesFromCalendar(filterDateDropdown);
+  return Boolean(dates.from && dates.to);
 }
 
-function getFilterDateDropdownCalendarRangeValue(filterDateDropdown) {
-  const calendar = filterDateDropdown.querySelector('.range-calendar');
-  let value = '';
-  value += moment(calendar.dataset.dateFrom).format('DD MMM');
-  value += ' - ';
-  value += moment(calendar.dataset.dateTo).format('DD MMM');
+function createFilterDateDropdownSelectValue(filterDateDropdown) {
+  const dates = getDropdownDateAttributes(filterDateDropdown);
+  let value = "";
+  value += moment(dates.from).format("DD MMM");
+  value += " - ";
+  value += moment(dates.to).format("DD MMM");
   return value;
 }
 
 function updateFilterDateDropdownSelectValue(filterDateDropdown) {
-  console.log(isFilterDateDropdownCalendarRangeValueFull(filterDateDropdown));
-  if (isFilterDateDropdownCalendarRangeValueFull(filterDateDropdown)) {
-    const selectValue =
-      getFilterDateDropdownCalendarRangeValue(filterDateDropdown);
+  if (isCalendarDateValid(filterDateDropdown)) {
+    updateDropdownDateAttributesFromCalendar(filterDateDropdown);
+    const selectValue = createFilterDateDropdownSelectValue(filterDateDropdown);
     setFilterDateDropdownSelectValue(filterDateDropdown, selectValue);
   } else {
+    resetDropdownDateAttributes(filterDateDropdown);
     resetFilterDateDropdownSelectValue(filterDateDropdown);
   }
 }
 
 /* Handlers */
 function handleFilterDateDropdownSelectClick(event) {
-  const filterDateDropdowns = document.querySelectorAll(
-    '.filter-date-dropdown'
-  );
-  if (event.target.closest('.filter-date-dropdown__date-dropdown')) {
-    const filterDateDropdown = event.target.closest('.filter-date-dropdown');
-
-    /* Hide others filter date dropdown's popups */
-    filterDateDropdowns.forEach((dropdown) => {
-      if (!dropdown.isEqualNode(filterDateDropdown))
-        dropdown.classList.remove('filter-date-dropdown_opened');
-    });
-
-    /* Show clicked date picker's poups */
-    filterDateDropdown.classList.add('filter-date-dropdown_opened');
-
+  if (event.target.closest(".filter-date-dropdown__date-dropdown")) {
+    const filterDateDropdown = event.target.closest(".filter-date-dropdown");
+    closeAllDropdownsExceptOne(filterDateDropdown);
+    /* Open clicked dropdown */
+    openDropdown(filterDateDropdown);
     return;
   }
 
-  if (!event.target.closest('.filter-date-dropdown__popup')) {
-    filterDateDropdowns.forEach((dropdown) => {
-      dropdown.classList.remove('filter-date-dropdown_opened');
-    });
+  if (!event.target.closest(".filter-date-dropdown__popup")) {
+    closeAllDropdowns();
   }
 }
 
 function handleFilterDateDropdownCalendarDayUnitBtnClick(event) {
   const filterDateDropdown = event.currentTarget;
-  if (event.target.closest('.day-unit-btn')) {
+  if (event.target.closest(".day-unit-btn")) {
     updateFilterDateDropdownSelectValue(filterDateDropdown);
   }
 }
 
 function handleFilterDateDropdownCalendarClearBtnClick(event) {
   const filterDateDropdown = event.currentTarget;
-  if (event.target.closest('.range-calendar__clear-button')) {
+  if (event.target.closest(".range-calendar__clear-button")) {
+    resetDropdownDateAttributes(filterDateDropdown);
     resetFilterDateDropdownSelectValue(filterDateDropdown);
   }
 }
 
 function handleFilterDateDropdownCalendarSubmitBtnClick(event) {
   const filterDateDropdown = event.currentTarget;
-  if (event.target.closest('.range-calendar__submit-button')) {
-    filterDateDropdown.classList.remove('filter-date-dropdown_opened');
+  if (event.target.closest(".range-calendar__submit-button")) {
+    closeDropdown(filterDateDropdown);
   }
 }
 
 /* Add handlers */
-document.addEventListener('click', handleFilterDateDropdownSelectClick);
+document.addEventListener("click", handleFilterDateDropdownSelectClick);
 
-const filterDateDropdowns = document.querySelectorAll('.filter-date-dropdown');
+const filterDateDropdowns = document.querySelectorAll(".filter-date-dropdown");
+
 filterDateDropdowns.forEach((dropdown) => {
+  updateFilterDateDropdownSelectValue(dropdown);
+
   dropdown.addEventListener(
-    'click',
+    "click",
     handleFilterDateDropdownCalendarDayUnitBtnClick
   );
   dropdown.addEventListener(
-    'click',
+    "click",
     handleFilterDateDropdownCalendarClearBtnClick
   );
   dropdown.addEventListener(
-    'click',
+    "click",
     handleFilterDateDropdownCalendarSubmitBtnClick
   );
 });

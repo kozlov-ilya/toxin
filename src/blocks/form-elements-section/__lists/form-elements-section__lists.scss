@@ -1,4 +1,4 @@
-@forward '../../form-unit/form-unit.scss';
+@forward '../../form-unit-header/form-unit-header.scss';
 @forward '../../expandable-checkbox-list/expandable-checkbox-list.scss';
 @forward '../../rich-checkbox-button/rich-checkbox-button.scss';
 @forward '../../bullet-list/bullet-list.scss';
@@ -16,8 +16,13 @@
 .form-elements-section__rich-checkbox-buttons {
   display: flex;
   flex-direction: column;
+  gap: 16px;
+}
+
+.form-elements-section__rich-checkbox-buttons-body {
+  display: flex;
+  flex-direction: column;
   gap: 10px;
-  margin-top: 16px;
 }
 
 .form-elements-section__lists-column-content {

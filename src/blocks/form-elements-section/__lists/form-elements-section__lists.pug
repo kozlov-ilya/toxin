@@ -1,4 +1,4 @@
-include ../../form-unit/form-unit
+include ../../form-unit-header/form-unit-header
 include ../../expandable-checkbox-list/expandable-checkbox-list
 include ../../rich-checkbox-button/rich-checkbox-button
 include ../../bullet-list/bullet-list
@@ -33,8 +33,9 @@ mixin form-elements-section__lists(options)
           +expandable-checkbox-list({heading: 'expandable checkbox list', items: expandableCheckboxList}).expandable-checkbox-list_opened
       .form-elements-section__column
         .form-elements-section__lists-column-content
-          +form-unit({title: 'rich checkbox buttons'})
-            .form-elements-section__rich-checkbox-buttons
+          .form-elements-section__rich-checkbox-buttons
+            +form-unit-header({title: 'rich checkbox buttons'})
+            .form-elements-section__rich-checkbox-buttons-body
               +rich-checkbox-button({label: 'Широкий коридор', info:'Ширина коридоров в номере не менее 91 см.', isChecked:false})
               +rich-checkbox-button({label: 'Помощник для инвалидов', info:'На 1 этаже вас встретит специалист и проводит до номера.', isChecked:false})
           +bullet-list({heading: 'bullet list', items: ['Нельзя с питомцами', 'Без вечеринок и мероприятий', 'Время прибытия — после 13:00, а выезд до 12:00']})

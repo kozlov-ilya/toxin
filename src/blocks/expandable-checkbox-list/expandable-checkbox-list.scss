@@ -23,7 +23,6 @@
   position: relative;
   text-transform: uppercase;
   cursor: pointer;
-  height: 44px;
   display: flex;
   align-items: center;
 }
@@ -43,6 +42,7 @@
 }
 
 .expandable-checkbox-list__list {
+  margin-top: 16px;
   width: 100%;
   display: grid;
   grid-template-rows: 0fr;

@@ -15,7 +15,7 @@ mixin dropdown-features(options)
       });
     }
 
-  +dropdown({value: options.value, selectSize: 'm'})(
+  +dropdown({title: options.title, subtitle: options.subtitle, value: options.value, selectSize: 'm'})(
     class=unitClassName,
     data-default-value=options.value
   )&attributes(attributes)

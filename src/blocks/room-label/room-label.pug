@@ -15,8 +15,8 @@ mixin room-label(options)
   div(class=unitClassName)&attributes(attributes)(data-price=options.roomPrice)
     .room-label__room-info
       .room-label__room-number
-        .romm-label__room-number-symbol= "№"
-        .romm-label__room-number-value= options.roomNumber
+        .room-label__room-number-symbol= "№"
+        .room-label__room-number-value= options.roomNumber
       if options.isLux
         .room-label__room-tag= "ЛЮКС"
     .room-label__room-price

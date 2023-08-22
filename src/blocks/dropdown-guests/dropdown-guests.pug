@@ -16,7 +16,7 @@ mixin dropdown-guests(options)
       });
     }
 
-  +dropdown({value: options.value, selectSize: 'l'})(
+  +dropdown({title: options.title, subtitle: options.subtitle, value: options.value, selectSize: options.selectSize ? options.selectSize : 'l'})(
     class=unitClassName,
     data-default-value=options.value
   )&attributes(attributes)
@@ -24,8 +24,8 @@ mixin dropdown-guests(options)
       +counter({label: counter.label, defaultValue: counter.defaultValue, name: counter.name})
     .dropdown-guests__btns
       +button({text: 'Очистить'}).dropdown-guests__clear-btn.button_type_text(
-        type="button"
+        type='button'
       )
       +button({text: 'Применить'}).dropdown-guests__submit-btn.button_type_text(
-        type="button"
+        type='button'
       )

@@ -1,3 +1,4 @@
+include ../form-unit-header/form-unit-header
 include ../date-dropdown/date-dropdown
 include ../range-calendar/range-calendar
 
@@ -17,13 +18,15 @@ mixin date-range-picker(options)
 
   div(class=unitClassName)&attributes(attributes)
     .date-range-picker__selects
-      +form-unit({title: options.titles[0], subtitle: options.subtitles[0]})
+      .date-range-picker__select-item
+        +form-unit-header({title: options.titles[0], subtitle: options.subtitles[0]})
         +date-dropdown({value: 'ДД.ММ.ГГГГ', selectClass: 'field_size_s'}).date-range-picker__date-dropdown.date-range-picker__date-dropdown-from(
-          data-default-value="ДД.ММ.ГГГГ"
+          data-default-value='ДД.ММ.ГГГГ'
         )
-      +form-unit({title: options.titles[1], subtitle: options.subtitles[1]})
+      .date-range-picker__select-item
+        +form-unit-header({title: options.titles[1], subtitle: options.subtitles[1]})
         +date-dropdown({value: 'ДД.ММ.ГГГГ', selectClass: 'field_size_s'}).date-range-picker__date-dropdown.date-range-picker__date-dropdown-to(
-          data-default-value="ДД.ММ.ГГГГ"
+          data-default-value='ДД.ММ.ГГГГ'
         )
     .date-range-picker__popup
       +range-calendar({dateFrom: options.dateFrom ? options.dateFrom : "", dateTo: options.dateTo ? options.dateTo : "" })

@@ -1,4 +1,4 @@
-include ../counter/counter
+include ../form-unit-header/form-unit-header
 
 mixin dropdown(options)
   //- options = {options, mods=["mod1", "mod2", ...]}
@@ -15,7 +15,9 @@ mixin dropdown(options)
     }
 
   div(class=unitClassName)&attributes(attributes)
-    .dropdown__select.field(class=`field_size_${options.selectSize}`)!= options.value
+    .dropdown__header
+      +form-unit-header({title: options.title, subtitle: options.subtitle})
+      .dropdown__select.field(class=`field_size_${options.selectSize}`)!= options.value
     .dropdown__menu
       .dropdown__menu-content
         block

@@ -2,19 +2,19 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
-  container-type: inline-size;
+  // container-type: inline-size;
 }
 
 .room-label__room-info {
   display: flex;
-  gap: 0;
+  gap: 8px;
 }
 
-@container (min-width: 300px) {
-  .room-label__room-info {
-    gap: 8px;
-  }
-}
+// @container (min-width: 300px) {
+//   .room-label__room-info {
+//     gap: 8px;
+//   }
+// }
 
 .room-label__room-number {
   display: flex;
@@ -24,16 +24,21 @@
   color: var(--color-dark-shade-100);
 }
 
-.romm-label__room-number-symbol {
+.room-label__room-number-symbol {
   font-size: 14px;
   display: flex;
   align-items: end;
   transform: translateY(-3px);
 }
 
-.romm-label__room-number-value {
-  font-size: 24px;
+.room-label__room-number-value {
+  font-size: 19px;
   margin-left: 3px;
+}
+.room-label_size_big {
+  .room-label__room-number-value {
+    font-size: 24px;
+  }
 }
 
 .room-label__room-tag {

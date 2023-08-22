@@ -38,7 +38,12 @@ function updateSlideIdAttribute(slider, up) {
     slideId = slideId > 1 ? slideId - 1 : slideId;
   }
   slider.dataset.slideId = slideId;
-  console.log(slideId);
+}
+
+function isSliderSnapped(slider) {
+  const sliderLine = slider.querySelector(".card-room-slider__line");
+  const divisionReminder = sliderLine.scrollLeft % getSlideWidth(slider);
+  return divisionReminder < 5 || divisionReminder > getSlideWidth(slider) - 5;
 }
 
 function scrollSliderRight(slider) {
@@ -56,16 +61,17 @@ function handleSliderBtnClick(event) {
     const roomCard = event.currentTarget;
     const slider = roomCard.querySelector(".card-room-slider");
     const sliderBtn = event.target.closest(".card-room-slider-btn");
+    if (isSliderSnapped(slider)) {
+      if (sliderBtn.classList.contains("card-room-slider__next-btn")) {
+        scrollSliderRight(slider);
+        updateSlideIdAttribute(slider, true);
+      } else {
+        scrollSliderLeft(slider);
+        updateSlideIdAttribute(slider, false);
+      }
 
-    if (sliderBtn.classList.contains("card-room-slider__next-btn")) {
-      scrollSliderRight(slider);
-      updateSlideIdAttribute(slider, true);
-    } else {
-      scrollSliderLeft(slider);
-      updateSlideIdAttribute(slider, false);
+      updatePagination(slider);
     }
-
-    updatePagination(slider);
   }
 }
 

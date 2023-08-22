@@ -1,11 +1,10 @@
-@forward "../card/card";
-@forward "../field/field";
-@forward "../text-field/text-field";
-@forward "../radio-button/radio-button";
-@forward "../form-unit/form-unit";
-@forward "../masked-text-field/masked-text-field";
-@forward "../toggle/toggle";
-@forward "../button/button";
+@forward '../card/card';
+@forward '../field/field';
+@forward '../text-field/text-field';
+@forward '../radio-button/radio-button';
+@forward '../masked-text-field/masked-text-field';
+@forward '../toggle/toggle';
+@forward '../button/button';
 
 .card-registration {
 }
@@ -38,9 +37,18 @@
 }
 
 .card-registration__birth-date {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
 .card-registration__authorization-data {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.card-registration__authorization-data-body {
   display: flex;
   flex-direction: column;
   gap: 10px;

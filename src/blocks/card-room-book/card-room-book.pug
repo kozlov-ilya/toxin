@@ -1,5 +1,4 @@
 include ../card/card
-include ../form-unit/form-unit
 include ../date-range-picker/date-range-picker
 include ../dropdown-guests/dropdown-guests
 include ../button/button
@@ -22,12 +21,11 @@ mixin card-room-book(options)
   +card({})(class=unitClassName)&attributes(attributes)(
     data-room-price=options.roomPrice
   )
-    +room-label({roomNumber:options.roomNumber, isLux: options.isLux, roomPrice: options.roomPrice})
-    form.card-room-book__form(action="")
+    +room-label({roomNumber:options.roomNumber, isLux: options.isLux, roomPrice: options.roomPrice, mods: ['size_big']})
+    form.card-room-book__form(action='')
       .card-room-book__inputs
         +date-range-picker({titles: ['прибытие', 'выезд'], subtitles: ['', ''], dateFrom: '2023-07-19', dateTo: '2023-07-23'})
-        +form-unit({title: 'гости', subtitle: ''})
-          +dropdown-guests({value: 'Сколько гостей', counters: [ {label: 'взрослые', defaultValue: 3, name: 'adults'}, {label: 'дети', defaultValue: 0, name: 'teens'}, {label: 'младенцы', defaultValue: 0, name: 'babies'}]})
+        +dropdown-guests({title:'гости', value: 'Сколько гостей', counters: [ {label: 'взрослые', defaultValue: 3, name: 'adults'}, {label: 'дети', defaultValue: 0, name: 'teens'}, {label: 'младенцы', defaultValue: 0, name: 'babies'}]})
       .card-room-book__price-info.price-info(
         data-discount=options.discount,
         data-service-price=options.servicePrice,
@@ -38,18 +36,18 @@ mixin card-room-book(options)
           .price-info__item-value
         .price-info__item.service-price-info.price-info__item_detailed
           .price-info__item-label
-          .price-info__item-more-info= "i"
-            .price-info__popup= "Скидка"
+          .price-info__item-more-info= 'i'
+            .price-info__popup= 'Скидка'
           .price-info__item-value
         .price-info__item.additional-price-info.price-info__item_detailed
           .price-info__item-label
-          .price-info__item-more-info= "i"
-            .price-info__popup= "Доп. услуги"
+          .price-info__item-more-info= 'i'
+            .price-info__popup= 'Доп. услуги'
           .price-info__item-value
       .card-room-book__total-price.total-price
         .total-price__label
         .total-price__line
         .total-price__value
       +button({text: 'забронировать', mods: ['type_cta', 'bg_filled', 'cta-primary']}).card-room-book__book-btn(
-        type="submit"
+        type='submit'
       )

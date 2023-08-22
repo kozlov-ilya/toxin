@@ -1,20 +1,17 @@
-mixin form-unit(options)
+mixin form-unit-header(options)
   //- options = {title, subtitle, mods=["mod1", "mod2", ...]}
 
   -
-    let unitClassName = 'form-unit';
+    let unitClassName = 'form-unit-header';
 
     //- Add modifiers to class name
     if ( Object.hasOwn(options, 'mods') && options.mods) {
       //- If modifiers were passed to mixin
       options.mods.forEach((element) => {
-        unitClassName += ` form-unit_${element}`;
+        unitClassName += ` form-unit-header_${element}`;
       });
     }
 
   div(class=unitClassName)&attributes(attributes)
-    .form-unit__label
-      .form-unit__title!= options.title
-      .form-unit__subtitle!= options.subtitle
-    .form-unit__content
-      block
+    .form-unit-header__title= options.title
+    .form-unit-header__subtitle= options.subtitle

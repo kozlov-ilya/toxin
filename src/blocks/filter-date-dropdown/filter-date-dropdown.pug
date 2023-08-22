@@ -17,7 +17,9 @@ mixin filter-date-dropdown(options)
 
   div(class=unitClassName)&attributes(attributes)
     +date-dropdown({value: 'ДД.ММ - ДД.ММ', selectClass: 'field_size_m'}).filter-date-dropdown__date-dropdown(
-      data-default-value='ДД.ММ - ДД.ММ'
+      data-default-value="ДД.ММ - ДД.ММ",
+      data-date-from=options.dateFrom ? options.dateFrom : "",
+      data-date-to=options.dateTo ? options.dateTo : ""
     )
     .filter-date-dropdown__popup
-      +range-calendar({})
+      +range-calendar({month: options.month, dateFrom: options.dateFrom, dateTo: options.dateTo })

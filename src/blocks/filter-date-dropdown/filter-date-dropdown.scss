@@ -1,13 +1,15 @@
-@use '../../scss/abstracts/functions' as f;
-@forward '../date-dropdown/date-dropdown.scss';
-@forward '../range-calendar/range-calendar.scss';
+@use "../../scss/abstracts/functions" as f;
+@forward "../date-dropdown/date-dropdown.scss";
+@forward "../range-calendar/range-calendar.scss";
 
 :root {
   --animation-length: 0.1s;
 }
 
 .filter-date-dropdown {
+  width: fit-content;
   position: relative;
+  z-index: 105;
 }
 
 .filter-date-dropdown_opened {
@@ -46,4 +48,5 @@
   opacity: 0;
   top: calc(100% + 15px);
   transition: top 0s var(--animation-length);
+  width: 320px;
 }

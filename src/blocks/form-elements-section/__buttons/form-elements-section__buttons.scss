@@ -1,4 +1,3 @@
-@forward '../../form-unit/form-unit.scss';
 @forward '../../checkbox-button/checkbox-button.scss';
 @forward '../../radio-button/radio-button.scss';
 @forward '../../toggle/toggle.scss';
@@ -19,35 +18,36 @@
   gap: 40px;
 }
 
-.form-elements-section__checkbox-buttons {
-  padding-top: 10px;
+.form-elements-section__buttons-form-unit {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-elements-section__checkbox-buttons-body {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
-.form-elements-section__radio-buttons {
-  padding-top: 10px;
+.form-elements-section__radio-buttons-body {
   display: flex;
   gap: 20px;
 }
 
-.form-elements-section__toggle {
-  padding-top: 10px;
+.form-elements-section__toggle-body {
   display: flex;
   flex-direction: column;
   gap: 14px;
 }
 
-.form-elements-section__like-button {
-  padding-top: 10px;
+.form-elements-section__like-button-body {
   display: flex;
   gap: 10px;
   align-items: flex-start;
 }
 
-.form-elements-section__rate-button {
-  padding-top: 10px;
+.form-elements-section__rate-button-body {
   display: flex;
   gap: 20px;
 }

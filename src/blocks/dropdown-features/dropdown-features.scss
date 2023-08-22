@@ -1,4 +1,8 @@
-@use '../../scss/abstracts/functions' as f;
+@use "../../scss/abstracts/functions" as f;
 
-@forward '../dropdown/dropdown.scss';
-@forward '../counter/counter.scss';
+@forward "../dropdown/dropdown.scss";
+@forward "../counter/counter.scss";
+
+.dropdown-features {
+  width: fit-content;
+}

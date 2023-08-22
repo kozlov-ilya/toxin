@@ -1,15 +1,18 @@
-@forward "../button/button";
-@forward "../logo-full/logo-full";
+@forward '../button/button';
+@forward '../logo-full/logo-full';
 
 .header {
   height: 70px;
+  padding: 0 20px;
+  box-shadow: 0px 10px 20px 0px rgba(31, 32, 65, 0.05);
+  position: relative;
+  z-index: 1000;
 }
 
 .header__content {
   max-width: var(--header-wrapper-width);
   position: relative;
   height: 100%;
-  padding: 0 20px;
   margin: auto;
   display: flex;
   justify-content: space-between;
@@ -20,6 +23,7 @@
 
 .header__menu {
   height: 100%;
+  z-index: 2;
 }
 
 @media screen and (width < 1024px) {
@@ -28,7 +32,6 @@
     top: 0;
     right: 0;
     min-width: 320px;
-    z-index: 100;
     visibility: hidden;
     transition: visibility 0ms 250ms;
   }
@@ -84,6 +87,14 @@
       padding-top: 70px;
       transition: translate 250ms ease-in-out;
     }
+  }
+
+  .header__menu-content::-webkit-scrollbar {
+    display: none;
+  }
+  .header__menu-content {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
   }
 }
 
@@ -218,10 +229,10 @@
 }
 
 .nav-item__list-link::after {
-  content: "";
+  content: '';
   width: 10px;
   height: 10px;
-  background: url("./img/arrow-right.svg");
+  background: url('./img/arrow-right.svg');
   position: absolute;
   right: 0;
   top: 0;
@@ -271,7 +282,7 @@
 
 .header__burger-menu-button {
   position: absolute;
-  right: 20px;
+  right: 0px;
   top: 0;
   bottom: 0;
   margin: auto;

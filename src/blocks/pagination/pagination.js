@@ -1,12 +1,12 @@
 const ITEMS_PER_PAGE = 12;
-const TOTAL_ITEMS_COUNT = 150;
+const TOTAL_ITEMS_COUNT = 156;
 const TOTAL_PAGE_NUMBER = Math.ceil(TOTAL_ITEMS_COUNT / ITEMS_PER_PAGE);
-const paginations = document.querySelectorAll('.pagination');
+const paginations = document.querySelectorAll(".pagination");
 
 function createPageLink(pageLinkText) {
-  const pageLink = document.createElement('li');
+  const pageLink = document.createElement("li");
   pageLink.innerHTML = pageLinkText;
-  pageLink.classList.add('pagination__page-link');
+  pageLink.classList.add("pagination__page-link");
   pageLink.dataset.page = pageLinkText;
   return pageLink;
 }
@@ -22,7 +22,7 @@ function fillPageLinkList(pageLinkList, pageLinkArray) {
 }
 
 function updatePageLinkList(pageLinkList, pageLinkArray) {
-  pageLinkList.textContent = '';
+  pageLinkList.textContent = "";
   fillPageLinkList(pageLinkList, pageLinkArray);
 }
 
@@ -56,12 +56,12 @@ function addPageLinkWithNeighbours(
 
 function addPageLinkArrayStart(pageLinkArray, currentPage) {
   pageLinkArray.push(1);
-  if (currentPage > 3) pageLinkArray.push('...');
+  if (currentPage > 3) pageLinkArray.push("...");
   return pageLinkArray;
 }
 
 function addPageLinkArrayEnd(pageLinkArray, currentPage) {
-  if (currentPage <= TOTAL_PAGE_NUMBER - 3) pageLinkArray.push('...');
+  if (currentPage <= TOTAL_PAGE_NUMBER - 3) pageLinkArray.push("...");
   pageLinkArray.push(TOTAL_PAGE_NUMBER);
   return pageLinkArray;
 }
@@ -81,20 +81,20 @@ function fillPageLinkArray(pageLinkList) {
 }
 
 function highlightCurrentPage(pageLinkList) {
-  const pageLinks = pageLinkList.querySelectorAll('.pagination__page-link');
+  const pageLinks = pageLinkList.querySelectorAll(".pagination__page-link");
   const currentPage = getCurrentPage(pageLinkList);
   pageLinks.forEach((pageLink) => {
-    pageLink.classList.remove('pagination__page-link_current');
+    pageLink.classList.remove("pagination__page-link_current");
     if (pageLink.dataset.page == currentPage) {
-      pageLink.classList.add('pagination__page-link_current');
+      pageLink.classList.add("pagination__page-link_current");
     }
   });
 }
 
 function updatePaginationLabel(pagination) {
-  const pageLinkList = pagination.querySelector('.pagination__page-links');
+  const pageLinkList = pagination.querySelector(".pagination__page-links");
   const currentPage = getCurrentPage(pageLinkList);
-  const label = pagination.querySelector('.pagination__label');
+  const label = pagination.querySelector(".pagination__label");
   const firstItemOnPage = ITEMS_PER_PAGE * (currentPage - 1) + 1;
   const lastItemOnPage =
     ITEMS_PER_PAGE * currentPage > TOTAL_ITEMS_COUNT
@@ -102,17 +102,17 @@ function updatePaginationLabel(pagination) {
       : ITEMS_PER_PAGE * currentPage;
   const totalItemsCount =
     TOTAL_ITEMS_COUNT > 100
-      ? Math.floor(TOTAL_ITEMS_COUNT / 100) * 100 + '+'
+      ? Math.floor(TOTAL_ITEMS_COUNT / 100) * 100 + "+"
       : TOTAL_ITEMS_COUNT;
   label.innerHTML = `${firstItemOnPage} – ${lastItemOnPage} из ${totalItemsCount} вариантов аренды`;
 }
 
 function handlePageLinkClick(event) {
-  if (event.target.closest('.pagination__page-link')) {
+  if (event.target.closest(".pagination__page-link")) {
     const pagination = event.currentTarget;
-    const pageLinkList = pagination.querySelector('.pagination__page-links');
-    const pageLink = event.target.closest('.pagination__page-link');
-    if (pageLink.dataset.page != '...') {
+    const pageLinkList = pagination.querySelector(".pagination__page-links");
+    const pageLink = event.target.closest(".pagination__page-link");
+    if (pageLink.dataset.page != "...") {
       pageLinkList.dataset.currentPage = pageLink.dataset.page;
       const pageLinkArray = fillPageLinkArray(pageLinkList);
       updatePageLinkList(pageLinkList, pageLinkArray);
@@ -123,9 +123,9 @@ function handlePageLinkClick(event) {
 }
 
 function handleNextBtnClick(event) {
-  if (event.target.closest('.pagination__next-btn')) {
+  if (event.target.closest(".pagination__next-btn")) {
     const pagination = event.currentTarget;
-    const pageLinkList = pagination.querySelector('.pagination__page-links');
+    const pageLinkList = pagination.querySelector(".pagination__page-links");
     const currentPage = getCurrentPage(pageLinkList);
     if (currentPage != TOTAL_PAGE_NUMBER)
       pageLinkList.dataset.currentPage = currentPage + 1;
@@ -137,11 +137,11 @@ function handleNextBtnClick(event) {
 }
 
 paginations.forEach((pagination) => {
-  const pageLinkList = pagination.querySelector('.pagination__page-links');
+  const pageLinkList = pagination.querySelector(".pagination__page-links");
   const pageLinkArray = fillPageLinkArray(pageLinkList);
   updatePageLinkList(pageLinkList, pageLinkArray);
   highlightCurrentPage(pageLinkList);
   updatePaginationLabel(pagination);
-  pagination.addEventListener('click', handlePageLinkClick);
-  pagination.addEventListener('click', handleNextBtnClick);
+  pagination.addEventListener("click", handlePageLinkClick);
+  pagination.addEventListener("click", handleNextBtnClick);
 });

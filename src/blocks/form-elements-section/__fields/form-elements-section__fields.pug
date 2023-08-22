@@ -1,4 +1,4 @@
-include ../../form-unit/form-unit
+include ../../form-unit-header/form-unit-header
 include ../../text-field/text-field
 include ../../masked-text-field/masked-text-field
 include ../../dropdown-guests/dropdown-guests
@@ -22,23 +22,29 @@ mixin form-elements-section__fields(options)
 
   div(class=unitClassName)&attributes(attributes)
     .form-elements-section__fields-row
-      +form-unit({title: 'Text Field', subtitle: 'Default'})
-        +text-field({}).field_size_l(type="email", placeholder="Email")
-      +form-unit({title: 'Text Field', subtitle: 'hover/focus'})
+      .form-elements-section__text-field.form-elements-section__field-form-unit
+        +form-unit-header({title: 'Text Field', subtitle: 'Default'})
+        +text-field({}).field_size_l(type='email', placeholder='Email')
+      .form-elements-section__text-field.form-elements-section__field-form-unit
+        +form-unit-header({title: 'Text Field', subtitle: 'hover/focus'})
         +text-field({}).field_size_l.field_always-hovered(
-          type="text",
-          placeholder="Text",
-          value="This is pretty awesome"
+          type='text',
+          placeholder='Text',
+          value='This is pretty awesome'
         )
-      +form-unit({title: 'Dropdown'})
+      .form-elements-section__dropdown.form-elements-section__field-form-unit
+        +form-unit-header({title: 'Dropdown'})
         +dropdown-guests({value: 'Сколько гостей', counters: [ {label: 'взрослые', defaultValue: 0}, {label: 'дети', defaultValue: 0}, {label: 'младенцы', defaultValue: 0}]})
-      +form-unit({title: 'masked text field', subtitle: ''})
-        +masked-text-field({})(placeholder="ДД.ММ.ГГГГ")
+      .form-elements-section__masked-text-field.form-elements-section__field-form-unit
+        +form-unit-header({title: 'masked text field', subtitle: ''})
+        +masked-text-field({})(placeholder='ДД.ММ.ГГГГ')
     .form-elements-section__fields-fields-row
       +date-range-picker({titles: ['Date dropdown', 'Date dropdown'], subtitles: ['', '']})
     .form-elements-section__fields-row
-      +form-unit({title: 'filter date dropdown', subtitle: ''})
+      .form-elements-section__filter-date-dropdown.form-elements-section__field-form-unit
+        +form-unit-header({title: 'filter date dropdown', subtitle: ''})
         +filter-date-dropdown({})
     .form-elements-section__fields-row
-      +form-unit({title: 'subscription text field', subtitle: ''})
+      .form-elements-section__subscription-text-field.form-elements-section__field-form-unit
+        +form-unit-header({title: 'subscription text field', subtitle: ''})
         +subscription-text-field({inputType: 'text', inputPlaceholder: 'Email'})

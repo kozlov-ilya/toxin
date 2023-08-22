@@ -12,9 +12,13 @@
   }
 }
 
+.rate-button__star-bg {
+  visibility: hidden;
+}
+
 .rate-button__star_checked {
   .rate-button__star-bg {
-    fill: url(#paint0_linear_18447_192);
+    visibility: visible;
   }
 }
 

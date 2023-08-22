@@ -11,6 +11,7 @@ module.exports = {
     // define Pug files here
     "pages/gui-page": "./src/pages/gui-page/gui-page.pug",
     "pages/landing-page": "./src/pages/landing-page/landing-page.pug",
+    "pages/search-page": "./src/pages/search-page/search-page.pug",
   },
 
   plugins: [

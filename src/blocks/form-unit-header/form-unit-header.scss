@@ -1,0 +1,16 @@
+.form-unit-header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  text-transform: uppercase;
+}
+
+.form-unit-header__title {
+  font: var(--type-heading-h3);
+  color: var(--color-dark-shade-100);
+}
+
+.form-unit-header__subtitle {
+  font-size: var(--heading-h3-font-size);
+  color: var(--color-dark-shade-50);
+}
