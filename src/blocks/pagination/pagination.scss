@@ -6,6 +6,13 @@
 
 .pagination__interface {
   display: flex;
+  justify-content: center;
+
+  @media screen and (width < 600px) {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
 }
 
 .pagination__page-links {
@@ -33,13 +40,18 @@
 .pagination__next-btn {
   width: 40px;
   height: 40px;
-  border-radius: 50%;
+  border-radius: 20px;
   position: relative;
   background: var(--gradient-bg-additional);
+
+  @media screen and (width < 600px) {
+    width: 100%;
+    max-width: 200px;
+  }
 }
 
 .pagination__next-btn::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   margin: auto;
@@ -52,4 +64,5 @@
 .pagination__label {
   font: var(--type-body);
   color: var(--color-dark-shade-75);
+  text-align: center;
 }

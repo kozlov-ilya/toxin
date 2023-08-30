@@ -12,7 +12,11 @@ mixin range-slider(options)
       });
     }
 
-  div(class=unitClassName)&attributes(attributes)(data-min-value=0, data-max-value=15000)
+  div(class=unitClassName)&attributes(attributes)(
+    data-min-value=0,
+    data-max-value=15000,
+    data-is-dragging='false'
+  )
     .range-slider__header
       .range-slider__title= options.title
       .range-slider__range-label

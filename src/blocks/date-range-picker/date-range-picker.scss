@@ -59,10 +59,20 @@
   gap: 10px;
 }
 
+// @media screen and (width < 600px) {
+//   .date-range-picker__selects {
+//     width: 100%;
+//     display: flex;
+//     justify-content: space-between;
+//     gap: 10px;
+//   }
+// }
+
 .date-range-picker__select-item {
   display: flex;
   flex-direction: column;
   gap: 5px;
+  flex-grow: 1;
 }
 
 .date-range-picker__popup {

@@ -1,11 +1,19 @@
-@use "../../scss/abstracts/functions" as f;
+@use '../../scss/abstracts/functions' as f;
 
-@forward "../dropdown/dropdown.scss";
-@forward "../counter/counter.scss";
-@forward "../button/button.scss";
+@forward '../dropdown/dropdown.scss';
+@forward '../counter/counter.scss';
+@forward '../button/button.scss';
 
 .dropdown-guests {
   width: fit-content;
+}
+
+.dropdown-guests_size_responsive {
+  width: 100%;
+
+  .field {
+    width: 100%;
+  }
 }
 
 .dropdown-guests__btns.dropdown-guests__btns {

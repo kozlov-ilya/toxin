@@ -3,7 +3,7 @@
 }
 
 .expandable-checkbox-list {
-  max-width: 266px;
+  min-width: 266px;
 }
 
 .expandable-checkbox-list_opened {
@@ -28,7 +28,7 @@
 }
 
 .expandable-checkbox-list__heading::before {
-  content: '';
+  content: "";
   position: absolute;
   width: 7px;
   height: 7px;

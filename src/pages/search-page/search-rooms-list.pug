@@ -1,0 +1,178 @@
+-
+  let roomsTotal = [];
+  const rooms = [
+    {
+      roomNumber: 888,
+      isLux: true,
+      roomPrice: 9990,
+      reviewsTotal: 145,
+      slides: [
+        "../../pages/search-page/assets/img/room1.png",
+        "../../pages/search-page/assets/img/room1.png",
+        "../../pages/search-page/assets/img/room1.png",
+        "../../pages/search-page/assets/img/room1.png",
+      ],
+      stars: 5,
+    },
+    {
+      roomNumber: 840,
+      isLux: false,
+      roomPrice: 9900,
+      reviewsTotal: 64,
+      slides: [
+        "../../pages/search-page/assets/img/room2.png",
+        "../../pages/search-page/assets/img/room2.png",
+        "../../pages/search-page/assets/img/room2.png",
+        "../../pages/search-page/assets/img/room2.png",
+      ],
+      stars: 4,
+    },
+    {
+      roomNumber: 980,
+      isLux: true,
+      roomPrice: 8500,
+      reviewsTotal: 35,
+      slides: [
+        "../../pages/search-page/assets/img/room3.png",
+        "../../pages/search-page/assets/img/room3.png",
+        "../../pages/search-page/assets/img/room3.png",
+        "../../pages/search-page/assets/img/room3.png",
+      ],
+      stars: 3,
+    },
+    {
+      roomNumber: 856,
+      isLux: false,
+      roomPrice: 7300,
+      reviewsTotal: 19,
+      slides: [
+        "../../pages/search-page/assets/img/room4.png",
+        "../../pages/search-page/assets/img/room4.png",
+        "../../pages/search-page/assets/img/room4.png",
+        "../../pages/search-page/assets/img/room4.png",
+      ],
+      stars: 5,
+    },
+    {
+      roomNumber: 740,
+      isLux: false,
+      roomPrice: 6000,
+      reviewsTotal: 44,
+      slides: [
+        "../../pages/search-page/assets/img/room5.png",
+        "../../pages/search-page/assets/img/room5.png",
+        "../../pages/search-page/assets/img/room5.png",
+        "../../pages/search-page/assets/img/room5.png",
+      ],
+      stars: 4,
+    },
+    {
+      roomNumber: 982,
+      isLux: false,
+      roomPrice: 5800,
+      reviewsTotal: 56,
+      slides: [
+        "../../pages/search-page/assets/img/room6.png",
+        "../../pages/search-page/assets/img/room6.png",
+        "../../pages/search-page/assets/img/room6.png",
+        "../../pages/search-page/assets/img/room6.png",
+      ],
+      stars: 3,
+    },
+    {
+      roomNumber: 678,
+      isLux: false,
+      roomPrice: 5500,
+      reviewsTotal: 45,
+      slides: [
+        "../../pages/search-page/assets/img/room7.png",
+        "../../pages/search-page/assets/img/room7.png",
+        "../../pages/search-page/assets/img/room7.png",
+        "../../pages/search-page/assets/img/room7.png",
+      ],
+      stars: 5,
+    },
+    {
+      roomNumber: 450,
+      isLux: false,
+      roomPrice: 5300,
+      reviewsTotal: 39,
+      slides: [
+        "../../pages/search-page/assets/img/room8.png",
+        "../../pages/search-page/assets/img/room8.png",
+        "../../pages/search-page/assets/img/room8.png",
+        "../../pages/search-page/assets/img/room8.png",
+      ],
+      stars: 4,
+    },
+    {
+      roomNumber: 350,
+      isLux: false,
+      roomPrice: 5000,
+      reviewsTotal: 77,
+      slides: [
+        "../../pages/search-page/assets/img/room9.png",
+        "../../pages/search-page/assets/img/room9.png",
+        "../../pages/search-page/assets/img/room9.png",
+        "../../pages/search-page/assets/img/room9.png",
+      ],
+      stars: 3,
+    },
+    {
+      roomNumber: 666,
+      isLux: false,
+      roomPrice: 5000,
+      reviewsTotal: 25,
+      slides: [
+        "../../pages/search-page/assets/img/room10.png",
+        "../../pages/search-page/assets/img/room10.png",
+        "../../pages/search-page/assets/img/room10.png",
+        "../../pages/search-page/assets/img/room10.png",
+      ],
+      stars: 5,
+    },
+    {
+      roomNumber: 444,
+      isLux: false,
+      roomPrice: 5000,
+      reviewsTotal: 15,
+      slides: [
+        "../../pages/search-page/assets/img/room11.png",
+        "../../pages/search-page/assets/img/room11.png",
+        "../../pages/search-page/assets/img/room11.png",
+        "../../pages/search-page/assets/img/room11.png",
+      ],
+      stars: 3,
+    },
+    {
+      roomNumber: 352,
+      isLux: false,
+      roomPrice: 5000,
+      reviewsTotal: 55,
+      slides: [
+        "../../pages/search-page/assets/img/room12.png",
+        "../../pages/search-page/assets/img/room12.png",
+        "../../pages/search-page/assets/img/room12.png",
+        "../../pages/search-page/assets/img/room12.png",
+      ],
+      stars: 3,
+    },
+  ];
+
+  roomsTotal = [...rooms];
+
+  for (let i = 0; i < 12; i++) {
+    shuffledRooms = shuffleArray(rooms);
+    roomsTotal = [...roomsTotal, ...shuffledRooms];
+  }
+
+  function shuffleArray(arrayOld) {
+    let array = arrayOld;
+    for (var i = array.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var temp = array[i];
+      array[i] = array[j];
+      array[j] = temp;
+    }
+    return array;
+  }

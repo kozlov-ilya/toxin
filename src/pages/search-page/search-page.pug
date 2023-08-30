@@ -1,0 +1,95 @@
+include ./search-rooms-list.pug
+include ../../blocks/header/header
+include ../../blocks/footer/footer
+include ../../blocks/form-unit-header/form-unit-header
+include ../../blocks/filter-date-dropdown/filter-date-dropdown
+include ../../blocks/dropdown-guests/dropdown-guests
+include ../../blocks/range-slider/range-slider
+include ../../blocks/checkbox-button/checkbox-button
+include ../../blocks/rich-checkbox-button/rich-checkbox-button
+include ../../blocks/dropdown-features/dropdown-features
+include ../../blocks/expandable-checkbox-list/expandable-checkbox-list
+include ../../blocks/card-room/card-room
+include ../../blocks/pagination/pagination
+include ../../blocks/rate-button/rate-button
+
+-
+  const expandableCheckboxList = [
+    {label:'Завтрак', isChecked: false},
+    {label:'Письменный стол', isChecked: true},
+    {label:'Стул для кормления', isChecked: true},
+    {label:'Кроватка', isChecked: true},
+    {label:'Телевизор', isChecked: false},
+    {label:'Шампунь', isChecked: false},
+    ];
+
+  //- const pages = [];
+  //- while(roomsTotal.length) {
+  //-   pages.push(roomsTotal.splice(0, 12))
+  //- }
+
+
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+
+    script(src=require("./search-page.js"), defer="defer")
+    link(rel="stylesheet", href=require("./search-page.scss"))
+    link(rel="icon", href=require("./assets/img/gorilla.svg"))
+    title Ape++
+  body.page
+    +header({})
+    main.main
+      .main__content
+        .rooms-filter
+          button.rooms-filter__close-btn.filters-close-btn
+            svg.filters-close-btn__body(viewBox="0 0 100 100", width="30px")
+              rect.filters-close-btn__line(
+                width="80",
+                height="10",
+                x="10",
+                y="25",
+                rx="5"
+              )
+              rect.filters-close-btn__line(
+                width="80",
+                height="10",
+                x="10",
+                y="65",
+                rx="5"
+              )
+          .rooms-filter__content
+            .rooms-filter__main-info
+              .rooms-filter__arriving-dates
+                +form-unit-header({title: 'даты пребывания в отеле', subtitle:''})
+                +filter-date-dropdown({ dateFrom: '2023-08-13', dateTo: '2023-08-20' })
+              +dropdown-guests({selectSize: 'm',value: 'Сколько гостей', counters: [ {label: 'взрослые', defaultValue: 3, name: 'adults'}, {label: 'дети', defaultValue: 0, name: 'teens'}, {label: 'младенцы', defaultValue: 1, name: 'babies'}]})
+            +range-slider({title: 'диапазон цены'})
+            .rooms-filter__room-rules
+              +form-unit-header({title: 'правила дома'})
+              .rooms-filter__room-rules-checkboxes
+                +checkbox-button({label: 'Можно курить'})
+                +checkbox-button({label: 'Можно с питомцами', isChecked: true})
+                +checkbox-button({label: 'Можно пригласить гостей (до 10 человек)', isChecked: true})
+            .rooms-filter__room-accessibility
+              +form-unit-header({title: 'доступность'})
+              .rooms-filter__room-accessibility-checkboxes
+                +rich-checkbox-button({label: 'Широкий коридор', info:'Ширина коридоров в номере не менее 91 см.', isChecked:false})
+                +rich-checkbox-button({label: 'Помощник для инвалидов', info:'На 1 этаже Вас встретит специалист и проводит до номера.', isChecked:false})
+            .rooms-filter__room-conveniences
+              +dropdown-features({title: 'удобства номера', value: 'Комплектация', counters: [{label: 'спальни', defaultValue: 2, wordForms: 'спальня,спальни,спален'}, {label: 'кровати', defaultValue: 2, wordForms: 'кровать,кровати,кроватей'}, {label: 'ванные комнаты', defaultValue: 1, wordForms: 'ванная комната,ванные комнаты,ванных комнат'}]})
+            .rooms-filter__additional-features
+              +expandable-checkbox-list({heading: 'дополнительные удобства', items: expandableCheckboxList})
+        .rooms
+          .rooms__header
+            .rooms__title= "Номера, которые мы для вас подобрали"
+            button.rooms__filters-button= "Фильтры"
+          .rooms__body
+            each room in roomsTotal
+              +card-room(room)
+          .rooms__footer
+            +pagination({itemsPerPage: 12})
+    +footer({})

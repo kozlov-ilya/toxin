@@ -1,6 +1,9 @@
 .range-slider {
   max-width: 266px;
-  flex-grow: 1;
+}
+
+.range-slider_size_responsive {
+  max-width: 100%;
 }
 
 .range-slider__header {

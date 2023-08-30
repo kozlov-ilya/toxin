@@ -1,147 +1,193 @@
-const ITEMS_PER_PAGE = 12;
-const TOTAL_ITEMS_COUNT = 156;
-const TOTAL_PAGE_NUMBER = Math.ceil(TOTAL_ITEMS_COUNT / ITEMS_PER_PAGE);
 const paginations = document.querySelectorAll(".pagination");
 
-function createPageLink(pageLinkText) {
-  const pageLink = document.createElement("li");
-  pageLink.innerHTML = pageLinkText;
-  pageLink.classList.add("pagination__page-link");
-  pageLink.dataset.page = pageLinkText;
-  return pageLink;
+export function setTotalItemsCount(pagination, itemsCount) {
+  getLinksListElem(pagination).dataset.totalItemsCount = itemsCount;
 }
 
-function addPageLink(pageLink, pageLinkList) {
-  pageLinkList.appendChild(pageLink);
-}
+export function updatePagination(pagination) {
+  const linksArray = createLinksArray(pagination);
 
-function fillPageLinkList(pageLinkList, pageLinkArray) {
-  pageLinkArray.forEach((pageLink) => {
-    addPageLink(createPageLink(pageLink), pageLinkList);
-  });
-}
-
-function updatePageLinkList(pageLinkList, pageLinkArray) {
-  pageLinkList.textContent = "";
-  fillPageLinkList(pageLinkList, pageLinkArray);
-}
-
-function getCurrentPage(pageLinkList) {
-  return parseInt(pageLinkList.dataset.currentPage);
-}
-
-function addPageLinkNeighbour(pageLinkArray, currentPage, neighbourStep) {
-  const prevLink = pageLinkArray.slice(-1)[0];
-  const neighbourLink = currentPage + neighbourStep;
-  if (
-    neighbourLink != prevLink &&
-    neighbourLink > 1 &&
-    neighbourLink < TOTAL_PAGE_NUMBER
-  ) {
-    pageLinkArray.push(neighbourLink);
-  }
-  return pageLinkArray;
-}
-
-function addPageLinkWithNeighbours(
-  pageLinkArray,
-  currentPage,
-  neighboursCount
-) {
-  for (let i = -neighboursCount; i <= neighboursCount; i++) {
-    pageLinkArray = addPageLinkNeighbour(pageLinkArray, currentPage, i);
-  }
-  return pageLinkArray;
-}
-
-function addPageLinkArrayStart(pageLinkArray, currentPage) {
-  pageLinkArray.push(1);
-  if (currentPage > 3) pageLinkArray.push("...");
-  return pageLinkArray;
-}
-
-function addPageLinkArrayEnd(pageLinkArray, currentPage) {
-  if (currentPage <= TOTAL_PAGE_NUMBER - 3) pageLinkArray.push("...");
-  pageLinkArray.push(TOTAL_PAGE_NUMBER);
-  return pageLinkArray;
-}
-
-function fillPageLinkArray(pageLinkList) {
-  const currentPage = getCurrentPage(pageLinkList);
-
-  let pageLinkArray = [];
-  pageLinkArray = addPageLinkArrayStart(pageLinkArray, currentPage);
-  if (currentPage == 1 || currentPage == TOTAL_PAGE_NUMBER) {
-    pageLinkArray = addPageLinkWithNeighbours(pageLinkArray, currentPage, 2);
-  } else {
-    pageLinkArray = addPageLinkWithNeighbours(pageLinkArray, currentPage, 1);
-  }
-  pageLinkArray = addPageLinkArrayEnd(pageLinkArray, currentPage);
-  return pageLinkArray;
-}
-
-function highlightCurrentPage(pageLinkList) {
-  const pageLinks = pageLinkList.querySelectorAll(".pagination__page-link");
-  const currentPage = getCurrentPage(pageLinkList);
-  pageLinks.forEach((pageLink) => {
-    pageLink.classList.remove("pagination__page-link_current");
-    if (pageLink.dataset.page == currentPage) {
-      pageLink.classList.add("pagination__page-link_current");
-    }
-  });
-}
-
-function updatePaginationLabel(pagination) {
-  const pageLinkList = pagination.querySelector(".pagination__page-links");
-  const currentPage = getCurrentPage(pageLinkList);
-  const label = pagination.querySelector(".pagination__label");
-  const firstItemOnPage = ITEMS_PER_PAGE * (currentPage - 1) + 1;
-  const lastItemOnPage =
-    ITEMS_PER_PAGE * currentPage > TOTAL_ITEMS_COUNT
-      ? TOTAL_ITEMS_COUNT
-      : ITEMS_PER_PAGE * currentPage;
-  const totalItemsCount =
-    TOTAL_ITEMS_COUNT > 100
-      ? Math.floor(TOTAL_ITEMS_COUNT / 100) * 100 + "+"
-      : TOTAL_ITEMS_COUNT;
-  label.innerHTML = `${firstItemOnPage} – ${lastItemOnPage} из ${totalItemsCount} вариантов аренды`;
-}
-
-function handlePageLinkClick(event) {
-  if (event.target.closest(".pagination__page-link")) {
-    const pagination = event.currentTarget;
-    const pageLinkList = pagination.querySelector(".pagination__page-links");
-    const pageLink = event.target.closest(".pagination__page-link");
-    if (pageLink.dataset.page != "...") {
-      pageLinkList.dataset.currentPage = pageLink.dataset.page;
-      const pageLinkArray = fillPageLinkArray(pageLinkList);
-      updatePageLinkList(pageLinkList, pageLinkArray);
-      highlightCurrentPage(pageLinkList);
-      updatePaginationLabel(pagination);
-    }
-  }
-}
-
-function handleNextBtnClick(event) {
-  if (event.target.closest(".pagination__next-btn")) {
-    const pagination = event.currentTarget;
-    const pageLinkList = pagination.querySelector(".pagination__page-links");
-    const currentPage = getCurrentPage(pageLinkList);
-    if (currentPage != TOTAL_PAGE_NUMBER)
-      pageLinkList.dataset.currentPage = currentPage + 1;
-    const pageLinkArray = fillPageLinkArray(pageLinkList);
-    updatePageLinkList(pageLinkList, pageLinkArray);
-    highlightCurrentPage(pageLinkList);
-    updatePaginationLabel(pagination);
-  }
+  clearPagination(pagination);
+  fillPaginationWithPageLinks(pagination, linksArray);
+  highlightCurrentPageLink(pagination);
+  updatePaginationLabel(pagination);
 }
 
 paginations.forEach((pagination) => {
-  const pageLinkList = pagination.querySelector(".pagination__page-links");
-  const pageLinkArray = fillPageLinkArray(pageLinkList);
-  updatePageLinkList(pageLinkList, pageLinkArray);
-  highlightCurrentPage(pageLinkList);
-  updatePaginationLabel(pagination);
-  pagination.addEventListener("click", handlePageLinkClick);
-  pagination.addEventListener("click", handleNextBtnClick);
+  setPaginationHandlers(pagination);
 });
+
+function setPaginationHandlers(pagination) {
+  pagination.addEventListener("click", handlePaginationLinkClick);
+  pagination.addEventListener("click", handlePaginationNextBtnClick);
+}
+
+function handlePaginationNextBtnClick(event) {
+  if (!event.target.closest(".pagination__next-btn")) {
+    return;
+  }
+
+  const pagination = event.currentTarget;
+  const pageLinks = Array.from(
+    pagination.querySelectorAll(".pagination__page-link")
+  );
+
+  const currentPage = getCurrentPage(pagination);
+  const currentPageLinkIndex = pageLinks.findIndex((pageLink) => {
+    return parseInt(pageLink.dataset.pageId) === currentPage;
+  });
+
+  if (pageLinks[currentPageLinkIndex + 1]) {
+    setCurrentPage(
+      pagination,
+      pageLinks[currentPageLinkIndex + 1].dataset.pageId
+    );
+    updatePagination(pagination);
+  }
+}
+
+function handlePaginationLinkClick(event) {
+  if (!event.target.closest(".pagination__page-link")) {
+    return;
+  }
+
+  const pagination = event.currentTarget;
+  const pageLink = event.target.closest(".pagination__page-link");
+  const linkPageId = pageLink.dataset.pageId;
+
+  if (linkPageId === "-1") return;
+
+  setCurrentPage(pagination, linkPageId);
+  updatePagination(pagination);
+}
+
+function updatePaginationLabel(pagination) {
+  const totalItemsCount = getTotalItemsCount(pagination);
+  const itemsPerPage = getItemsPerPageCount(pagination);
+  const currentPage = getCurrentPage(pagination);
+
+  let firstItemOnPageNum = 1 + (currentPage - 1) * itemsPerPage;
+  firstItemOnPageNum = totalItemsCount === 0 ? 0 : firstItemOnPageNum;
+
+  let lastItemOnPageNum = firstItemOnPageNum + itemsPerPage - 1;
+  lastItemOnPageNum =
+    lastItemOnPageNum > totalItemsCount ? totalItemsCount : lastItemOnPageNum;
+
+  const totalItemsCountLabel =
+    totalItemsCount > 100 ? "100+" : totalItemsCount.toString();
+
+  const paginationLabelText = `${firstItemOnPageNum} - ${lastItemOnPageNum} из ${totalItemsCountLabel} вариантов аренды`;
+
+  const paginationLabelElem = pagination.querySelector(".pagination__label");
+  paginationLabelElem.textContent = paginationLabelText;
+}
+
+export function highlightCurrentPageLink(pagination) {
+  const currentPage = getCurrentPage(pagination);
+
+  const pageLinks = Array.from(
+    pagination.querySelectorAll(".pagination__page-link")
+  );
+  const currentPageLinkElem = pageLinks.find((pageLink) => {
+    return parseInt(pageLink.dataset.pageId) === currentPage;
+  });
+
+  pageLinks.forEach((pageLink) => {
+    pageLink.classList.remove("pagination__page-link_current");
+  });
+  currentPageLinkElem.classList.add("pagination__page-link_current");
+}
+
+export function setCurrentPage(pagination, currentPage) {
+  getLinksListElem(pagination).dataset.currentPage = currentPage;
+}
+
+function clearPagination(pagination) {
+  getLinksListElem(pagination).textContent = "";
+}
+
+function fillPaginationWithPageLinks(pagination, linksArray) {
+  linksArray.forEach((pageLink) => {
+    addPageLinkToPagination(pagination, pageLink);
+  });
+}
+
+function addPageLinkToPagination(pagination, pageLinkText) {
+  const linksList = getLinksListElem(pagination);
+  const pageLinkElem = createPageLink(pageLinkText);
+  linksList.appendChild(pageLinkElem);
+}
+
+function createLinksArray(pagination) {
+  const linksCount = calcLinksCount(pagination);
+  const currentPage = getCurrentPage(pagination);
+  const linksArray = [];
+
+  linksArray.push("1");
+
+  if (currentPage === linksCount) {
+    addLinkToArray(currentPage - 2, linksArray, linksCount);
+  }
+
+  addLinkToArray(currentPage - 1, linksArray, linksCount);
+  addLinkToArray(currentPage, linksArray, linksCount);
+  addLinkToArray(currentPage + 1, linksArray, linksCount);
+
+  if (currentPage === 1) {
+    addLinkToArray(currentPage + 2, linksArray, linksCount);
+  }
+
+  if (linksCount > 1) {
+    linksArray.push(linksCount.toString());
+  }
+
+  if (linksArray[1] && linksArray[1] - linksArray[0] > 1) {
+    linksArray.splice(1, 0, "…");
+  }
+
+  if (linksArray.at(-2) && linksArray.at(-1) - linksArray.at(-2) > 1) {
+    linksArray.splice(-1, 0, "…");
+  }
+
+  return linksArray;
+}
+
+function addLinkToArray(link, linksArray, linksCount) {
+  if (link < linksCount && link > 1) {
+    linksArray.push(link.toString());
+  }
+}
+
+function calcLinksCount(pagination) {
+  const totalItemsCount = getTotalItemsCount(pagination);
+  const itemsPerPageCount = getItemsPerPageCount(pagination);
+
+  return Math.ceil(totalItemsCount / itemsPerPageCount);
+}
+
+export function getCurrentPage(pagination) {
+  return parseInt(getLinksListElem(pagination).dataset.currentPage);
+}
+
+function getTotalItemsCount(pagination) {
+  return parseInt(getLinksListElem(pagination).dataset.totalItemsCount);
+}
+
+function getItemsPerPageCount(pagination) {
+  return parseInt(getLinksListElem(pagination).dataset.itemsPerPage);
+}
+
+function getLinksListElem(pagination) {
+  const linksListElem = pagination.querySelector(".pagination__page-links");
+
+  return linksListElem;
+}
+
+function createPageLink(pageLinkText) {
+  const pageLinkElem = document.createElement("li");
+  pageLinkElem.classList.add("pagination__page-link");
+  pageLinkElem.textContent = pageLinkText;
+  pageLinkElem.dataset.pageId = isNaN(Number(pageLinkText)) ? -1 : pageLinkText;
+
+  return pageLinkElem;
+}

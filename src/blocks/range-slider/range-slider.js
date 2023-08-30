@@ -1,28 +1,33 @@
-const rangeSliders = document.querySelectorAll('.range-slider');
+const rangeSliders = document.querySelectorAll(".range-slider");
 const thumbWidth = 12;
 
 rangeSliders.forEach((rangeSlider) => {
   setRangeSliderHandlers(rangeSlider);
-  initThumbsPos(rangeSlider);
-  updateTrackRange(rangeSlider);
-  updateRangeLabel(rangeSlider);
+  updateSlider(rangeSlider);
 });
 
+export function updateSlider(rangeSlider) {
+  setThumbsPos(rangeSlider);
+  updateTrackRange(rangeSlider);
+  updateRangeLabel(rangeSlider);
+}
+
 function setRangeSliderHandlers(slider) {
-  slider.addEventListener('mousedown', handleRangeSliderThumbPickup);
-  slider.addEventListener('touchstart', handleRangeSliderThumbPickup);
+  slider.addEventListener("mousedown", handleRangeSliderThumbPickup);
+  slider.addEventListener("touchstart", handleRangeSliderThumbPickup);
 }
 
 function handleRangeSliderThumbPickup(event) {
-  if (!event.target.closest('.range-slider-thumb')) {
+  if (!event.target.closest(".range-slider-thumb")) {
     return;
   }
 
   const slider = event.currentTarget;
-  const curThumb = event.target.closest('.range-slider-thumb');
+  const curThumb = event.target.closest(".range-slider-thumb");
 
-  document.addEventListener('mousemove', dragThumb);
-  document.addEventListener('touchmove', dragThumb);
+  document.addEventListener("mousemove", dragThumb);
+  document.addEventListener("touchmove", dragThumb);
+  setDraggingAttribute(slider, true);
 
   function dragThumb(event) {
     let thumbLeftPos = calcThumbLeftPos(event, slider);
@@ -34,13 +39,20 @@ function handleRangeSliderThumbPickup(event) {
     updateRangeLabel(slider);
   }
 
-  document.addEventListener('mouseup', handleRangeSliderThumbPutdown);
-  document.addEventListener('touchend', handleRangeSliderThumbPutdown);
+  document.addEventListener("mouseup", handleRangeSliderThumbPutdown);
+  document.addEventListener("touchend", handleRangeSliderThumbPutdown);
 
   function handleRangeSliderThumbPutdown(event) {
-    document.removeEventListener('mousemove', dragThumb);
-    document.removeEventListener('touchmove', dragThumb);
+    document.removeEventListener("mousemove", dragThumb);
+    document.removeEventListener("touchmove", dragThumb);
+    document.removeEventListener("mouseup", handleRangeSliderThumbPutdown);
+    document.removeEventListener("touchend", handleRangeSliderThumbPutdown);
+    setDraggingAttribute(slider, false);
   }
+}
+
+function setDraggingAttribute(slider, isDragging) {
+  slider.dataset.isDragging = isDragging;
 }
 
 function switchThumbs(slider) {
@@ -48,10 +60,10 @@ function switchThumbs(slider) {
   const minThumb = thumbs.min.elem;
   const maxThumb = thumbs.max.elem;
 
-  minThumb.classList.remove('range-slider__thumb-min');
-  minThumb.classList.add('range-slider__thumb-max');
-  maxThumb.classList.remove('range-slider__thumb-max');
-  maxThumb.classList.add('range-slider__thumb-min');
+  minThumb.classList.remove("range-slider__thumb-min");
+  minThumb.classList.add("range-slider__thumb-max");
+  maxThumb.classList.remove("range-slider__thumb-max");
+  maxThumb.classList.add("range-slider__thumb-min");
 }
 
 function isThumbsSwitchNeeded(slider) {
@@ -61,7 +73,7 @@ function isThumbsSwitchNeeded(slider) {
 }
 
 function updateRangeLabel(slider) {
-  const rangeLabel = slider.querySelector('.range-slider__range-label');
+  const rangeLabel = slider.querySelector(".range-slider__range-label");
   const thumbs = getThumbs(slider);
 
   const minThumbValueText = numberWithSpaces(thumbs.min.value);
@@ -72,19 +84,19 @@ function updateRangeLabel(slider) {
 }
 
 function numberWithSpaces(x) {
-  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
 }
 
 function updateTrackRange(slider) {
-  const trackRangeElem = slider.querySelector('.range-slider__track-range');
+  const trackRangeElem = slider.querySelector(".range-slider__track-range");
   const thumbs = getThumbs(slider);
 
   const minThumbLeft = convertThumbValueToLeftPos(thumbs.min.value, slider);
   const maxThumbLeft = convertThumbValueToLeftPos(thumbs.max.value, slider);
 
-  trackRangeElem.style.left = minThumbLeft + 'px';
+  trackRangeElem.style.left = minThumbLeft + "px";
   trackRangeElem.style.width =
-    maxThumbLeft - minThumbLeft + thumbWidth / 2 + 'px';
+    maxThumbLeft - minThumbLeft + thumbWidth / 2 + "px";
 }
 
 function updateThumbCondition(thumb, left, slider) {
@@ -92,7 +104,7 @@ function updateThumbCondition(thumb, left, slider) {
   updateThumbValueAttribute(thumb, left, slider);
 }
 
-function initThumbsPos(slider) {
+function setThumbsPos(slider) {
   const thumbs = getThumbs(slider);
 
   setThumbLeftPos(
@@ -136,8 +148,8 @@ function getRangeValueLimits(slider) {
 }
 
 function getThumbs(slider) {
-  const minThumb = slider.querySelector('.range-slider__thumb-min');
-  const maxThumb = slider.querySelector('.range-slider__thumb-max');
+  const minThumb = slider.querySelector(".range-slider__thumb-min");
+  const maxThumb = slider.querySelector(".range-slider__thumb-max");
 
   const minThumbValue = getThumbValue(minThumb);
   const maxThumbValue = getThumbValue(maxThumb);
@@ -153,7 +165,7 @@ function getThumbValue(thumb) {
 }
 
 function setThumbLeftPos(thumb, left) {
-  thumb.style.left = left + 'px';
+  thumb.style.left = left + "px";
 }
 
 function calcThumbLeftPos(event, slider) {
@@ -189,7 +201,7 @@ function getCursorRelPos(event, slider) {
 }
 
 function getRangeSliderTrack(slider) {
-  const track = slider.querySelector('.range-slider__track');
+  const track = slider.querySelector(".range-slider__track");
   const trackPos = getElementAbsPos(track);
   const trackWidth = track.offsetWidth;
   return { pos: { left: trackPos.left, top: trackPos.top }, width: trackWidth };

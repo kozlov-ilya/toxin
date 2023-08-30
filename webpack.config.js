@@ -2,6 +2,7 @@ const path = require("path");
 const PugPlugin = require("pug-plugin");
 
 module.exports = {
+  devtool: "source-map",
   output: {
     clean: true,
     path: path.join(__dirname, "dist"),

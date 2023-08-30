@@ -1,5 +1,5 @@
-@use '../../scss/abstracts/functions' as f;
-@forward '../form-unit-header/form-unit-header';
+@use "../../scss/abstracts/functions" as f;
+@forward "../form-unit-header/form-unit-header";
 
 :root {
   --dropdown-slide-animation-length: 0.1s;
@@ -7,6 +7,7 @@
 
 .dropdown {
   position: relative;
+  height: fit-content;
 }
 
 .dropdown__header {
@@ -45,7 +46,7 @@
 }
 
 .dropdown__select::before {
-  content: '';
+  content: "";
   position: absolute;
   width: 7px;
   height: 7px;

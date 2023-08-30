@@ -14,6 +14,9 @@ mixin pagination(options)
 
   div(class=unitClassName)&attributes(attributes)
     .pagination__interface
-      ul.pagination__page-links(data-current-page=1)
+      ul.pagination__page-links(
+        data-current-page=1,
+        data-items-per-page=options.itemsPerPage
+      )
       .pagination__next-btn
     .pagination__label
