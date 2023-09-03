@@ -37,6 +37,10 @@
   display: grid;
   opacity: 0;
   transition: opacity 0.2s ease-in;
+
+  @media screen and (width < 1024px) {
+    display: none;
+  }
 }
 
 .card-room-slider-btn:before {
@@ -89,6 +93,7 @@
 }
 
 .card-room-slider__slide {
+  scroll-snap-align: center;
   min-width: 270px;
   max-height: 150px;
   overflow: hidden;

@@ -26,5 +26,5 @@ mixin comment(options)
       .comment__user-name= options.userName
       .comment__comment-date(data-date=options.commentDate)
     .comment__likes-container
-      +like-button({defaultValue: options.likesCount}).comment__likes.like-button_checked
+      +like-button({defaultValue: options.likesCount}).comment__likes
     .comment__comment-text= options.commentText

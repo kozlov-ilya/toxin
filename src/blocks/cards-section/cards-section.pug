@@ -36,7 +36,7 @@ mixin cards-section(options)
           +card-room-search({title: 'Найдём номера под ваши пожелания'})
           +card-registration({})
         .cards-section__column
-          +card-room-book({roomNumber:888, isLux: true, roomPrice: 9990, discount: 2179, servicePrice: 0, addPrice: 300})
+          +card-room-book({roomNumber:888, dateFrom: '2023-09-01', dateTo:'2023-09-07', isLux: true, roomPrice: 9990, discount: 2179, servicePrice: 0, addPrice: 300})
           +card-sign-in({})
         .cards-section__column
           +range-calendar({})

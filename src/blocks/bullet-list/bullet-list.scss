@@ -2,13 +2,7 @@
   max-width: 266px;
 }
 
-.bullet-list__heading {
-  font: var(--type-heading-h3);
-  text-transform: uppercase;
-}
-
 .bullet-list__list {
-  margin-top: 16px;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -22,7 +16,7 @@
 }
 
 .bullet-list__item::before {
-  content: '';
+  content: "";
   width: 10px;
   height: 10px;
   border-radius: 50%;

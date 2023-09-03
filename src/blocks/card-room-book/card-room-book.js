@@ -148,7 +148,6 @@ function handleMoreInfoUnhover(event) {
 function handleSubmit(event) {
   event.preventDefault();
   const cardForm = event.currentTarget;
-  console.log(getBookDates(cardForm));
 }
 
 bookCards.forEach((card) => {

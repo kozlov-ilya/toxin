@@ -3,7 +3,11 @@
   gap: 10px;
   padding-bottom: 17px;
   align-items: center;
-  border-bottom: 1px solid var(--color-dark-shade-10);
+  max-width: 280px;
+}
+
+.feature-box_underlined {
+  box-shadow: 0 1px 0 var(--color-dark-shade-10);
 }
 
 .feature-box__icon {

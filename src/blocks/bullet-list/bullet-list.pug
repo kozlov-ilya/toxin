@@ -13,7 +13,6 @@ mixin bullet-list(options)
     }
 
   div(class=unitClassName)&attributes(attributes)
-    .bullet-list__heading= options.heading
     .bullet-list__list
       each item in options.items
         .bullet-list__item!= item

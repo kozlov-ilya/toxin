@@ -1,7 +1,7 @@
-@use '../../scss/abstracts/functions' as f;
-@forward '../form-unit-header/form-unit-header.scss';
-@forward '../date-dropdown/date-dropdown.scss';
-@forward '../range-calendar/range-calendar.scss';
+@use "../../scss/abstracts/functions" as f;
+@forward "../form-unit-header/form-unit-header.scss";
+@forward "../date-dropdown/date-dropdown.scss";
+@forward "../range-calendar/range-calendar.scss";
 
 :root {
   --animation-length: 0.1s;
@@ -14,11 +14,14 @@
   gap: f.toRem(5);
   position: relative;
   z-index: 105;
+  container-type: inline-size;
 }
 
-@media screen and (width < 600px) {
-  .date-range-picker {
-    max-width: 100%;
+.date-range-picker_responsive {
+  max-width: 100%;
+
+  .field {
+    width: 100%;
   }
 }
 
@@ -57,16 +60,11 @@
   display: flex;
   justify-content: space-between;
   gap: 10px;
-}
 
-// @media screen and (width < 600px) {
-//   .date-range-picker__selects {
-//     width: 100%;
-//     display: flex;
-//     justify-content: space-between;
-//     gap: 10px;
-//   }
-// }
+  @container (width < 300px) {
+    flex-direction: column;
+  }
+}
 
 .date-range-picker__select-item {
   display: flex;

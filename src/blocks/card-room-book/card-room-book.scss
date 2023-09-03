@@ -1,8 +1,12 @@
-@forward '../card/card';
-@forward '../date-range-picker/date-range-picker';
-@forward '../dropdown-guests/dropdown-guests';
-@forward '../button/button';
-@forward '../room-label/room-label';
+@forward "../card/card";
+@forward "../date-range-picker/date-range-picker";
+@forward "../dropdown-guests/dropdown-guests";
+@forward "../button/button";
+@forward "../room-label/room-label";
+
+.card-room-book_size_responsive {
+  max-width: 100%;
+}
 
 .card-room-book__form {
   margin-top: 20px;
@@ -31,7 +35,7 @@
 
 .price-info__item_detailed {
   display: grid;
-  grid-template-columns: calc(214 / 320 * 100%) auto 1fr;
+  grid-template-columns: min(214px, 60%) auto 1fr;
 }
 
 .price-info__item-more-info {
@@ -92,7 +96,7 @@
 }
 
 .total-price__line::before {
-  content: '';
+  content: "";
   width: 100%;
   height: 2px;
   border-bottom: 1px dashed var(--color-dark-shade-25);
