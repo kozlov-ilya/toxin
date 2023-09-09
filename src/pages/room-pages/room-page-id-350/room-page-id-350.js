@@ -1,7 +1,11 @@
-import "../../blocks/header/header";
-import "../../blocks/footer/footer";
-import "../../blocks/comment/comment";
-import "../../blocks/card-room-book/card-room-book";
+import "../../../blocks/header/header";
+import "../../../blocks/footer/footer";
+import "../../../blocks/comment/comment";
+import "../../../blocks/card-room-book/card-room-book";
+
+import { setCounters } from "../../../blocks/dropdown-guests/dropdown-guests";
+import { updateDatePickerDropdowns } from "../../../blocks/date-range-picker/date-range-picker";
+import { updateCalendarDates } from "../../../blocks/range-calendar/range-calendar";
 
 const page = document.querySelector(".page");
 const header = document.querySelector(".header");
@@ -114,4 +118,24 @@ function updateCommentsCountLabel() {
     comments.length,
     commentWordForms
   )}`;
+}
+
+loadFilterDataFromLocalStorage();
+
+function loadFilterDataFromLocalStorage() {
+  const roomSearchData = JSON.parse(
+    localStorage.getItem("room-search-form-data")
+  );
+  const dateRangePicker = document.querySelector(".date-range-picker");
+  const calendar = dateRangePicker.querySelector(".range-calendar");
+  const guestsDropdown = document.querySelector(".dropdown-guests");
+
+  updateCalendarDates(
+    calendar,
+    roomSearchData.dates.from,
+    roomSearchData.dates.to
+  );
+  updateDatePickerDropdowns(dateRangePicker);
+
+  setCounters(guestsDropdown, roomSearchData.guests);
 }

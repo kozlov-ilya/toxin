@@ -33,7 +33,7 @@ function resetDateDropdowns(datePicker) {
   setDatePickerDateToAttributes(datePicker, "");
 }
 
-function updateDatePickerDropdowns(datePicker) {
+export function updateDatePickerDropdowns(datePicker) {
   const calendar = datePicker.querySelector(".range-calendar");
   const dropdownFrom = datePicker.querySelector(
     ".date-range-picker__date-dropdown-from"

@@ -1,9 +1,10 @@
-@use '../../scss/abstracts/functions' as f;
+@use "../../scss/abstracts/functions" as f;
 
-@forward '_focused/field_focused.scss';
-@forward '_hovered/field_hovered.scss';
-@forward '_always-hovered/field_always-hovered.scss';
-@forward './_size/index';
+@forward "_focused/field_focused.scss";
+@forward "_hovered/field_hovered.scss";
+@forward "_always-hovered/field_always-hovered.scss";
+@forward "_state/field_state_error.scss";
+@forward "./_size/index";
 
 .field {
   min-height: f.toRem(44);

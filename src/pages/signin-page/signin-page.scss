@@ -1,0 +1,31 @@
+@forward "../../scss/main.scss";
+@forward "../../blocks/header/header";
+@forward "../../blocks/footer/footer";
+@forward "../../blocks/card-sign-in/card-sign-in";
+
+.page_scroll_lock {
+  overflow: hidden;
+}
+
+@media screen and (width < 1024px) {
+  /* Hide scrollbar */
+  .page::-webkit-scrollbar {
+    display: none;
+  }
+  .page {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+}
+
+.main {
+  padding: 163px 20px;
+  background-image: url("./assets/signin-page-hero.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.main__signin-card {
+  margin: 0 auto;
+}

@@ -1,14 +1,42 @@
+import moment from "moment";
+
 import "../../blocks/header/header";
 import "../../blocks/footer/footer";
 import "../../blocks/card-room-search/card-room-search";
+import {
+  validateForm,
+  getFormData,
+} from "../../blocks/card-room-search/card-room-search";
 
 const page = document.querySelector(".page");
 const header = document.querySelector(".header");
 const burgerButton = header.querySelector(".burger-button");
 
+burgerButton.addEventListener("click", handleBurgerButtonClick);
+
 function handleBurgerButtonClick(event) {
   /* Prevent page scrolling */
   page.classList.toggle("page_scroll_lock");
+}
+
+window.addEventListener("resize", (event) => {
+  updateSearchCard();
+});
+
+updateSearchCard();
+
+function updateSearchCard() {
+  const match = window.matchMedia("(max-width: 599px)");
+  const searchCards = page.querySelectorAll(".card-room-search");
+  if (match.matches) {
+    searchCards.forEach((card) => {
+      makeSearchCardResponsive(card);
+    });
+  } else {
+    searchCards.forEach((card) => {
+      makeSearchCardStatic(card);
+    });
+  }
 }
 
 function makeSearchCardResponsive(card) {
@@ -49,24 +77,26 @@ function makeSearchCardStatic(card) {
   });
 }
 
-burgerButton.addEventListener("click", handleBurgerButtonClick);
+setSearchFormSubmitHandlers();
 
-window.addEventListener("resize", (event) => {
-  updateSearchCard();
-});
+function setSearchFormSubmitHandlers() {
+  const searchFormElem = document.querySelector(".card-room-search__form");
 
-updateSearchCard();
+  searchFormElem.addEventListener("submit", handleSearchFormSubmit);
 
-function updateSearchCard() {
-  const match = window.matchMedia("(max-width: 599px)");
-  const searchCards = page.querySelectorAll(".card-room-search");
-  if (match.matches) {
-    searchCards.forEach((card) => {
-      makeSearchCardResponsive(card);
-    });
-  } else {
-    searchCards.forEach((card) => {
-      makeSearchCardStatic(card);
-    });
+  function handleSearchFormSubmit(event) {
+    event.preventDefault();
+
+    const form = event.currentTarget;
+
+    if (!validateForm(form)) {
+      return;
+    }
+
+    const formData = getFormData(form);
+
+    localStorage.setItem("room-search-form-data", JSON.stringify(formData));
+
+    window.location.href = "search-page.html";
   }
 }

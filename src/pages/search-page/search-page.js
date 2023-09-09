@@ -1,3 +1,5 @@
+import moment from "moment";
+
 import "../../blocks/header/header";
 import "../../blocks/footer/footer";
 import "../../blocks/filter-date-dropdown/filter-date-dropdown";
@@ -9,7 +11,16 @@ import "../../blocks/dropdown-features/dropdown-features";
 import "../../blocks/expandable-checkbox-list/expandable-checkbox-list";
 import "../../blocks/card-room/card-room";
 import "../../blocks/pagination/pagination";
+
 import { updateSlider } from "../../blocks/range-slider/range-slider";
+import {
+  setFilterDateDropdownDates,
+  getDropdownDateAttributes,
+} from "../../blocks/filter-date-dropdown/filter-date-dropdown";
+import {
+  setCounters,
+  getCounters,
+} from "../../blocks/dropdown-guests/dropdown-guests";
 import {
   setTotalItemsCount,
   updatePagination,
@@ -39,6 +50,25 @@ function initSearchPage() {
 
   arrangeRoomsIntoPages();
   showCurrentRoomPage();
+}
+
+loadRoomSearchDataFromLocalStorage();
+
+function loadRoomSearchDataFromLocalStorage() {
+  const roomSearchData = JSON.parse(
+    localStorage.getItem("room-search-form-data")
+  );
+
+  const filterDateDropdown = document.querySelector(".filter-date-dropdown");
+  const guestsDropdown = document.querySelector(".dropdown-guests");
+
+  setFilterDateDropdownDates(
+    filterDateDropdown,
+    roomSearchData.dates.from,
+    roomSearchData.dates.to
+  );
+
+  setCounters(guestsDropdown, roomSearchData.guests);
 }
 
 function setRoomPageChangeObserver() {
@@ -280,4 +310,29 @@ function updateRoomFiltersMenu() {
       .querySelector(".range-slider")
       .classList.remove("range-slider_size_responsive");
   }
+}
+
+page.addEventListener("click", hadleRoomCardClick);
+
+function hadleRoomCardClick(event) {
+  if (
+    !event.target.closest(".card-room") ||
+    event.target.closest(".card-room-slider-btn")
+  ) {
+    return;
+  }
+
+  const filtersData = getFiltersData();
+
+  localStorage.setItem("room-search-form-data", JSON.stringify(filtersData));
+}
+
+function getFiltersData() {
+  const filterDateDropdown = document.querySelector(".filter-date-dropdown");
+  const guestsDropdown = document.querySelector(".dropdown-guests");
+
+  const dates = getDropdownDateAttributes(filterDateDropdown);
+  const guests = Object.fromEntries(getCounters(guestsDropdown));
+
+  return { dates, guests };
 }

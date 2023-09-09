@@ -32,9 +32,11 @@ function handleRangeSliderThumbPickup(event) {
   function dragThumb(event) {
     let thumbLeftPos = calcThumbLeftPos(event, slider);
     updateThumbCondition(curThumb, thumbLeftPos, slider);
+
     if (isThumbsSwitchNeeded(slider)) {
       switchThumbs(slider);
     }
+
     updateTrackRange(slider);
     updateRangeLabel(slider);
   }

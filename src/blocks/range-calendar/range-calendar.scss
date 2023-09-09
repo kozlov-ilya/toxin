@@ -55,19 +55,22 @@
 }
 
 .day-unit-btn {
-  cursor: pointer;
   background: transparent;
   border: none;
   border-radius: 50%;
   color: var(--color-dark-shade-50);
   position: relative;
   z-index: 2;
-}
 
-.day-unit-btn:hover {
-  background: var(--gradient-bg-primary);
-  color: #fff;
-  font-weight: 700;
+  &[data-valid-date="true"] {
+    cursor: pointer;
+  }
+
+  &[data-valid-date="true"]:hover {
+    background: var(--gradient-bg-primary);
+    color: #fff;
+    font-weight: 700;
+  }
 }
 
 .day-unit-btn_color_secondary {

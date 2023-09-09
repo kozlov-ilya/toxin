@@ -1,0 +1,102 @@
+include ../../../blocks/header/header
+include ../../../blocks/footer/footer
+include ../../../blocks/layout/layout
+include ../../../blocks/feature-box/feature-box
+include ../../../blocks/comment/comment
+include ../../../blocks/bullet-list/bullet-list
+include ../../../blocks/card-room-book/card-room-book
+
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+
+    script(src=require("./room-page-id-450.js"), defer="defer")
+    link(rel="stylesheet", href=require("./room-page-id-450.scss"))
+    link(rel="icon", href=require("./assets/img/gorilla.svg"))
+    title Ape++
+  body.page
+    +header({registrationPageLink: '../registration-page.html'})
+    main.main
+      .main__content
+        .main__room-gallery.room-gallery
+          .room-gallery__table.room-gallery-table
+            .room-gallery-table__column.room-gallery-table__column_primary
+              img.room-gallery-table__img(
+                src=require("./assets/img/room-id-450_1.png"),
+                alt="room"
+              )
+            .room-gallery-table__column
+              .room-gallery-table__row
+                img.room-gallery-table__img(
+                  src=require("./assets/img/room-id-450_2.png"),
+                  alt="room"
+                )
+              .room-gallery-table__row
+                img.room-gallery-table__img(
+                  src=require("./assets/img/room-id-450_3.png"),
+                  alt="room"
+                )
+          .room-gallery__slider.room-gallery-slider
+            .room-gallery-slider__line
+              .room-gallery-slider__slide
+                img.room-gallery-slider__img(
+                  src=require("./assets/img/room-id-450_1.png"),
+                  alt="room"
+                )
+              .room-gallery-slider__slide
+                img.room-gallery-slider__img(
+                  src=require("./assets/img/room-id-450_2.png"),
+                  alt="room"
+                )
+              .room-gallery-slider__slide
+                img.room-gallery-slider__img(
+                  src=require("./assets/img/room-id-450_3.png"),
+                  alt="room"
+                )
+        +layout({})
+          .main__room-info.room-info
+            .room-info__column
+              .room-info__row
+                .room-info__feature-boxes
+                  .room-info__feature-boxes-header
+                    .room-info__feature-boxes-title.room-info-title= "Сведения о номере"
+                  .room-info__feature-boxes-body
+                    +feature-box({iconSrc: './assets/insert_emoticon.svg', iconWidth: 40, iconHight: 40, title: 'Комфорт', description: 'Шумопоглощающие стены'}).feature-box_underlined
+                    +feature-box({iconSrc: './assets/location_city.svg', iconWidth: 36, iconHight: 38, title: 'Удобство', description: 'Окно в каждой из спален'}).feature-box_underlined
+                    +feature-box({iconSrc: './assets/fire.svg', iconWidth: 34, iconHight: 43, title: 'Уют', description: 'Номер оснащён камином'})
+                .room-info__reviews.room-reviews
+                  .room-reviews__heading
+                    .room-reviews__title.room-info-title= "Впечатления от номера"
+                  .room-reviews__body
+                    .room-reviews__chart
+                      img(
+                        src=require("./assets/img/pie-chart.svg"),
+                        alt="reviews chart",
+                        draggable="false"
+                      )
+                    .room-reviews__chart-label-list
+                      .room-reviews__chart-label(data-value="5")= "Великолепно"
+                      .room-reviews__chart-label(data-value="4")= "Хорошо"
+                      .room-reviews__chart-label(data-value="3")= "Удовлетворительно"
+                      .room-reviews__chart-label(data-value="2")= "Разочарован"
+              .room-info__row
+                .room-info__comments
+                  .room-info__comments-header
+                    .room-info__comments-title.room-info-title= "Отзывы посетителей номера"
+                    .room-info__comments-count-label
+                  .room-info__comments-body
+                    +comment({avatarSrc: './assets/papich-pixel.jpg', avatarWidth: 68, avatarHeight: 48, userName: 'Виталий Цаль', commentDate: '20.07.2023', likesCount: '12', commentText: 'Просто королевский завтрак! Твикс с хлебом и фантой — то, что я люблю! Стены, действительно, шумоподавляющие. Выкрикивал "НЫА" во время критов — никто не жаловался из соседей.'})
+                    +comment({avatarSrc: './assets/me-smol.jpg', avatarWidth: 68, avatarHeight: 48, userName: 'Козлов Илья', commentDate: '03.09.2023', likesCount: '0', commentText: 'Хочется отметить отличный сайт по поиску номеров! Думаю, работы над ним было проделано много, хоть и недочеты присутствуют! Автору сайта удачи, остальным - соболезную(тоже удачи)...'})
+              .room-info__row
+                .room-info__room-rules
+                  .room-info__room-rules-title.room-info-title= "Правила"
+                  +bullet-list({items: ['Нельзя с питомцами', 'Без вечеринок и мероприятий', 'Время прибытия — после 13:00, а выезд до 12:00']}).room-info__room-rules-list
+                .room-info__cancellation
+                  .room-info__cancellation-title.room-info-title= "Отмена"
+                  .room-info__cancellation-text= "Бесплатная отмена в течение 48 ч. После этого при отмене не позднее чем за 5 дн. до прибытия вы получите полный возврат за вычетом сбора за услуги."
+            .room-info__column
+              +card-room-book({roomNumber:450, dateFrom: '', dateTo:'', isLux: true, roomPrice: 5300, discount: 0, servicePrice: 0, addPrice: 0})
+    +footer({})

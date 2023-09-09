@@ -95,7 +95,8 @@ mixin header(options)
                   )= item.name
           .header__actions
             +button({text: 'Зарегистрироваться', mods: ['type_cta', 'bg_filled', 'size_shrinked']}).header__signup-button(
-              type="button"
+              type="button",
+              onclick=`location.href='${options.registrationPageLink}'`
             )
             +button({text: 'войти', mods: ['type_cta', 'bg_ghost', 'size_shrinked']}).header__signin-button(
               type="button"

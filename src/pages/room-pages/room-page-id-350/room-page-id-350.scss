@@ -1,11 +1,11 @@
-@forward "../../scss/main.scss";
-@forward "../../blocks/header/header";
-@forward "../../blocks/footer/footer";
-@forward "../../blocks/layout/layout";
-@forward "../../blocks/feature-box/feature-box";
-@forward "../../blocks/comment/comment";
-@forward "../../blocks/bullet-list/bullet-list";
-@forward "../../blocks/card-room-book/card-room-book";
+@forward "../../../scss/main.scss";
+@forward "../../../blocks/header/header";
+@forward "../../../blocks/footer/footer";
+@forward "../../../blocks/layout/layout";
+@forward "../../../blocks/feature-box/feature-box";
+@forward "../../../blocks/comment/comment";
+@forward "../../../blocks/bullet-list/bullet-list";
+@forward "../../../blocks/card-room-book/card-room-book";
 
 .page_scroll_lock {
   overflow: hidden;

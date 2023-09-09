@@ -12,10 +12,6 @@ function getSlideId(slider) {
   return parseInt(slider.dataset.slideId);
 }
 
-function getSlidesCount(slider) {
-  return parseInt(slider.dataset.slidesCount);
-}
-
 function updatePagination(slider) {
   const paginationItems = slider.querySelectorAll(
     ".card-room-slider__pagination-item"
@@ -29,20 +25,14 @@ function updatePagination(slider) {
   );
 }
 
-function updateSlideIdAttribute(slider, up) {
-  let slideId = getSlideId(slider);
-  const slidesCount = getSlidesCount(slider);
-  if (up) {
-    slideId = slideId < slidesCount ? slideId + 1 : slideId;
-  } else {
-    slideId = slideId > 1 ? slideId - 1 : slideId;
-  }
+function setSlideIdAttribute(slider, slideId) {
   slider.dataset.slideId = slideId;
 }
 
 function isSliderSnapped(slider) {
   const sliderLine = slider.querySelector(".card-room-slider__line");
   const divisionReminder = sliderLine.scrollLeft % getSlideWidth(slider);
+
   return divisionReminder < 5 || divisionReminder > getSlideWidth(slider) - 5;
 }
 
@@ -56,27 +46,93 @@ function scrollSliderLeft(slider) {
   sliderLine.scrollLeft -= getSlideWidth(slider);
 }
 
+roomCards.forEach((roomCard) => {
+  const slider = roomCard.querySelector(".card-room-slider");
+  const sliderLine = roomCard.querySelector(".card-room-slider__line");
+
+  roomCard.addEventListener("click", handleSliderBtnClick);
+
+  roomCard.addEventListener("click", handleCardRoomSlideClick);
+
+  roomCard.addEventListener("mouseenter", handleRoomCardHover);
+  roomCard.addEventListener("mouseleave", handleRoomCardUnhover);
+
+  sliderLine.addEventListener("scroll", handleSliderScroll);
+
+  updatePagination(slider);
+});
+
 function handleSliderBtnClick(event) {
   if (event.target.closest(".card-room-slider-btn")) {
     const roomCard = event.currentTarget;
     const slider = roomCard.querySelector(".card-room-slider");
     const sliderBtn = event.target.closest(".card-room-slider-btn");
+
     if (isSliderSnapped(slider)) {
       if (sliderBtn.classList.contains("card-room-slider__next-btn")) {
         scrollSliderRight(slider);
-        updateSlideIdAttribute(slider, true);
+        // updateSlideIdAttribute(slider, true);
       } else {
         scrollSliderLeft(slider);
-        updateSlideIdAttribute(slider, false);
+        // updateSlideIdAttribute(slider, false);
       }
+      const slideId = calcSlideId(slider);
 
+      setSlideIdAttribute(slider, slideId);
       updatePagination(slider);
     }
   }
 }
 
-roomCards.forEach((roomCard) => {
+function handleSliderScroll(event) {
+  const slider = event.target.closest(".card-room-slider");
+
+  if (isSliderSnapped(slider)) {
+    const slideId = calcSlideId(slider);
+
+    setSlideIdAttribute(slider, slideId);
+    updatePagination(slider);
+  }
+}
+
+function calcSlideId(slider) {
+  const sliderLine = slider.querySelector(".card-room-slider__line");
+  const slideId = Math.round(sliderLine.scrollLeft / getSlideWidth(slider)) + 1;
+
+  return slideId;
+}
+
+function handleRoomCardHover(event) {
+  const roomCard = event.currentTarget;
   const slider = roomCard.querySelector(".card-room-slider");
-  roomCard.addEventListener("click", handleSliderBtnClick);
-  updatePagination(slider);
-});
+
+  showSliderButtons(slider);
+
+  function showSliderButtons(slider) {
+    slider.querySelectorAll(".card-room-slider-btn").forEach((button) => {
+      button.classList.add("card-room-slider-btn_show");
+    });
+  }
+}
+
+function handleRoomCardUnhover(event) {
+  const roomCard = event.currentTarget;
+  const slider = roomCard.querySelector(".card-room-slider");
+
+  showSliderButtons(slider);
+
+  function showSliderButtons(slider) {
+    slider.querySelectorAll(".card-room-slider-btn").forEach((button) => {
+      button.classList.remove("card-room-slider-btn_show");
+    });
+  }
+}
+
+function handleCardRoomSlideClick(event) {
+  const roomCard = event.currentTarget;
+
+  if (event.target.closest(".card-room-slider__slide")) {
+    const pageLink = roomCard.querySelector(".card-room__page-link").href;
+    window.open(pageLink);
+  }
+}

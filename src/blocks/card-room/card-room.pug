@@ -43,3 +43,4 @@ mixin card-room(options)
         .card-room__reviews
           span.card-room__reviews-value= `${options.reviewsTotal}`
           | Отзывов
+    a.card-room__page-link(href=options.pageLink, target="_blank")

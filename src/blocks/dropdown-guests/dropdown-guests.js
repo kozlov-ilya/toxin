@@ -117,8 +117,25 @@ dropdowns.forEach((dropdown) => {
 
 export function getCounters(dropdown) {
   let countersMap = new Map();
+
   dropdown.querySelectorAll(".counter").forEach((counter) => {
     countersMap.set(counter.dataset.name, counter.dataset.value);
   });
+
   return countersMap;
+}
+
+export function setCounters(dropdown, counters) {
+  const counterElems = Array.from(dropdown.querySelectorAll(".counter"));
+
+  for (const counter in counters) {
+    c.updateValue(
+      counterElems.find((counterElem) => {
+        return counterElem.dataset.name === counter;
+      }),
+      counters[counter]
+    );
+  }
+
+  updateDropdown(dropdown);
 }

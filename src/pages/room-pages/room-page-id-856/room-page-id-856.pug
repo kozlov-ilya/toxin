@@ -1,10 +1,10 @@
-include ../../blocks/header/header
-include ../../blocks/footer/footer
-include ../../blocks/layout/layout
-include ../../blocks/feature-box/feature-box
-include ../../blocks/comment/comment
-include ../../blocks/bullet-list/bullet-list
-include ../../blocks/card-room-book/card-room-book
+include ../../../blocks/header/header
+include ../../../blocks/footer/footer
+include ../../../blocks/layout/layout
+include ../../../blocks/feature-box/feature-box
+include ../../../blocks/comment/comment
+include ../../../blocks/bullet-list/bullet-list
+include ../../../blocks/card-room-book/card-room-book
 
 doctype html
 html(lang="en")
@@ -13,47 +13,47 @@ html(lang="en")
     meta(http-equiv="X-UA-Compatible", content="IE=edge")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
 
-    script(src=require("./room-page.js"), defer="defer")
-    link(rel="stylesheet", href=require("./room-page.scss"))
+    script(src=require("./room-page-id-856.js"), defer="defer")
+    link(rel="stylesheet", href=require("./room-page-id-856.scss"))
     link(rel="icon", href=require("./assets/img/gorilla.svg"))
     title Ape++
   body.page
-    +header({})
+    +header({registrationPageLink: '../registration-page.html'})
     main.main
       .main__content
         .main__room-gallery.room-gallery
           .room-gallery__table.room-gallery-table
             .room-gallery-table__column.room-gallery-table__column_primary
               img.room-gallery-table__img(
-                src=require("./assets/room_1_1.png"),
+                src=require("./assets/img/room-id-856_1.png"),
                 alt="room"
               )
             .room-gallery-table__column
               .room-gallery-table__row
                 img.room-gallery-table__img(
-                  src=require("./assets/room_1_2.png"),
+                  src=require("./assets/img/room-id-856_2.png"),
                   alt="room"
                 )
               .room-gallery-table__row
                 img.room-gallery-table__img(
-                  src=require("./assets/room_1_3.png"),
+                  src=require("./assets/img/room-id-856_3.png"),
                   alt="room"
                 )
           .room-gallery__slider.room-gallery-slider
             .room-gallery-slider__line
               .room-gallery-slider__slide
                 img.room-gallery-slider__img(
-                  src=require("./assets/room_1_1.png"),
+                  src=require("./assets/img/room-id-856_1.png"),
                   alt="room"
                 )
               .room-gallery-slider__slide
                 img.room-gallery-slider__img(
-                  src=require("./assets/room_1_2.png"),
+                  src=require("./assets/img/room-id-856_2.png"),
                   alt="room"
                 )
               .room-gallery-slider__slide
                 img.room-gallery-slider__img(
-                  src=require("./assets/room_1_3.png"),
+                  src=require("./assets/img/room-id-856_3.png"),
                   alt="room"
                 )
         +layout({})
@@ -73,7 +73,7 @@ html(lang="en")
                   .room-reviews__body
                     .room-reviews__chart
                       img(
-                        src=require("./assets/pie-chart.svg"),
+                        src=require("./assets/img/pie-chart.svg"),
                         alt="reviews chart",
                         draggable="false"
                       )
@@ -89,7 +89,7 @@ html(lang="en")
                     .room-info__comments-count-label
                   .room-info__comments-body
                     +comment({avatarSrc: './assets/papich-pixel.jpg', avatarWidth: 68, avatarHeight: 48, userName: 'Виталий Цаль', commentDate: '20.07.2023', likesCount: '12', commentText: 'Просто королевский завтрак! Твикс с хлебом и фантой — то, что я люблю! Стены, действительно, шумоподавляющие. Выкрикивал "НЫА" во время критов — никто не жаловался из соседей.'})
-                    +comment({avatarSrc: './assets/me-smol.jpg', avatarWidth: 68, avatarHeight: 48, userName: 'Козлов Илья', commentDate: '03.09.2023', likesCount: '0', commentText: 'Хочется отметить отличный сайт по поиску отелей! Думаю, работы над ним было проделано много, хоть и небольшие недочеты присутствуют! Автору сайта удачи, остальным - соболезную..'})
+                    +comment({avatarSrc: './assets/me-smol.jpg', avatarWidth: 68, avatarHeight: 48, userName: 'Козлов Илья', commentDate: '03.09.2023', likesCount: '0', commentText: 'Хочется отметить отличный сайт по поиску номеров! Думаю, работы над ним было проделано много, хоть и недочеты присутствуют! Автору сайта удачи, остальным - соболезную(тоже удачи)...'})
               .room-info__row
                 .room-info__room-rules
                   .room-info__room-rules-title.room-info-title= "Правила"
@@ -98,5 +98,5 @@ html(lang="en")
                   .room-info__cancellation-title.room-info-title= "Отмена"
                   .room-info__cancellation-text= "Бесплатная отмена в течение 48 ч. После этого при отмене не позднее чем за 5 дн. до прибытия вы получите полный возврат за вычетом сбора за услуги."
             .room-info__column
-              +card-room-book({roomNumber:888, dateFrom: '2023-09-01', dateTo:'2023-09-07', isLux: true, roomPrice: 9990, discount: 2179, servicePrice: 0, addPrice: 300})
+              +card-room-book({roomNumber:856, dateFrom: '', dateTo:'', isLux: true, roomPrice: 7300, discount: 0, servicePrice: 0, addPrice: 0})
     +footer({})

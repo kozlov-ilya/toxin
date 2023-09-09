@@ -1,0 +1,8 @@
+.field.field_state_error {
+  border: 1px solid #fb5c56;
+  color: #fb5c56;
+
+  &::before {
+    border-color: #fb5c56;
+  }
+}
