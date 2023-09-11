@@ -18,7 +18,7 @@ html(lang="en")
     link(rel="icon", href=require("./assets/img/gorilla.svg"))
     title Ape++
   body.page
-    +header({registrationPageLink: '../registration-page.html'})
+    +header({registrationPageLink: '../registration-page.html', signinPageLink: '../signin-page.html', homePageLink: '../landing-page.html'})
     main.main
       .main__content
         .main__room-gallery.room-gallery
@@ -88,8 +88,13 @@ html(lang="en")
                     .room-info__comments-title.room-info-title= "Отзывы посетителей номера"
                     .room-info__comments-count-label
                   .room-info__comments-body
+                    - let i = 1;
+                    while i < 19/2
+                      +comment({avatarSrc: './assets/papich-pixel.jpg', avatarWidth: 68, avatarHeight: 48, userName: 'Виталий Цаль', commentDate: '20.07.2023', likesCount: '12', commentText: 'Просто королевский завтрак! Твикс с хлебом и фантой — то, что я люблю! Стены, действительно, шумоподавляющие. Выкрикивал "НЫА" во время критов — никто не жаловался из соседей.'})
+                      +comment({avatarSrc: './assets/me-smol.jpg', avatarWidth: 68, avatarHeight: 48, userName: 'Козлов Илья', commentDate: '03.09.2023', likesCount: '0', commentText: 'Хочется отметить отличный сайт по поиску номеров! Думаю, работы над ним было проделано много, хоть и недочеты присутствуют! Автору сайта удачи, остальным - соболезную(тоже удачи)...'})
+                      - i++;
                     +comment({avatarSrc: './assets/papich-pixel.jpg', avatarWidth: 68, avatarHeight: 48, userName: 'Виталий Цаль', commentDate: '20.07.2023', likesCount: '12', commentText: 'Просто королевский завтрак! Твикс с хлебом и фантой — то, что я люблю! Стены, действительно, шумоподавляющие. Выкрикивал "НЫА" во время критов — никто не жаловался из соседей.'})
-                    +comment({avatarSrc: './assets/me-smol.jpg', avatarWidth: 68, avatarHeight: 48, userName: 'Козлов Илья', commentDate: '03.09.2023', likesCount: '0', commentText: 'Хочется отметить отличный сайт по поиску номеров! Думаю, работы над ним было проделано много, хоть и недочеты присутствуют! Автору сайта удачи, остальным - соболезную(тоже удачи)...'})
+                  .room-info__comments-more-btn!= "Еще отзывы"
               .room-info__row
                 .room-info__room-rules
                   .room-info__room-rules-title.room-info-title= "Правила"
@@ -99,4 +104,4 @@ html(lang="en")
                   .room-info__cancellation-text= "Бесплатная отмена в течение 48 ч. После этого при отмене не позднее чем за 5 дн. до прибытия вы получите полный возврат за вычетом сбора за услуги."
             .room-info__column
               +card-room-book({roomNumber:856, dateFrom: '', dateTo:'', isLux: true, roomPrice: 7300, discount: 0, servicePrice: 0, addPrice: 0})
-    +footer({})
+    +footer({homePageLink: '../landing-page.html'})

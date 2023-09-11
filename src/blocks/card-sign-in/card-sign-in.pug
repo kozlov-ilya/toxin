@@ -36,5 +36,6 @@ mixin card-sign-in(options)
     .card-sign-in__sign-up-box
       .card-sign-in__sign-up-label= "Нет аккаунта на Toxin?"
       +button({text: 'создать', mods: ['type_cta', 'bg_ghost']}).card-sign-in__sign-up-btn(
-        type="button"
+        type="button",
+        onclick=`location.href='${options.registrationPageLink}'`
       )

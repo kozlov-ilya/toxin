@@ -93,10 +93,11 @@
 
 .footer__navigation-link {
   color: var(--color-dark-shade-50);
+  cursor: pointer;
 }
 
 .footer__navigation-link:hover {
-  color: #000;
+  color: var(--color-dark-shade-100);
 }
 
 .footer__subscription-box {
@@ -194,4 +195,5 @@
 
 .footer__social-link {
   display: block;
+  cursor: pointer;
 }

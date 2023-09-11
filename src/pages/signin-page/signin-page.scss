@@ -24,6 +24,10 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+
+  @media screen and (width < 600px) {
+    padding: 163px 0;
+  }
 }
 
 .main__signin-card {

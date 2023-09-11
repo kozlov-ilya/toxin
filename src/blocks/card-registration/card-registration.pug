@@ -21,17 +21,17 @@ mixin card-registration(options)
     }
 
   +card({})(class=unitClassName)&attributes(attributes)
-    .card-registration__title= 'Регистрация аккаунта'
-    form.card-registration__form(action='')
+    .card-registration__title= "Регистрация аккаунта"
+    form.card-registration__form(action="")
       .card-registration__personal-info.personal-info
         +text-field({}).field_size_l(
-          type='text',
-          placeholder='Имя',
+          type="text",
+          placeholder="Имя",
           required
         )
         +text-field({}).field_size_l(
-          type='text',
-          placeholder='Фамилия',
+          type="text",
+          placeholder="Фамилия",
           required
         )
         .personal-info__sex
@@ -39,26 +39,27 @@ mixin card-registration(options)
           +radio-button({label: 'Женщина', name: 'gender', value: 'female'})
       .card-registration__birth-date
         +form-unit-header({title: 'дата рождения', subtitle:''})
-        +masked-text-field({})(placeholder='ДД.ММ.ГГГГ', required)
+        +masked-text-field({})(placeholder="ДД.ММ.ГГГГ", required)
       .card-registration__authorization-data
         +form-unit-header({title: 'данные для входа в сервис', subtitle:''})
         .card-registration__authorization-data-body
           +text-field({}).field_size_l(
-            type='email',
-            placeholder='Email',
+            type="email",
+            placeholder="Email",
             required
           )
           +text-field({}).field_size_l(
-            type='password',
-            placeholder='Пароль',
+            type="password",
+            placeholder="Пароль",
             required
           )
           +toggle({label: 'Получать спецпредложения', name: 'specialOffers', value: 'yes', isChecked: false})
       +button({text: 'Зарегистрироваться', mods: ['type_cta', 'bg_filled', 'cta-primary']}).card-registration__signup-btn(
-        type='submit'
+        type="submit"
       )
     .card-registration__login-box
-      .card-registration__login-label= 'Уже есть аккаунт на Toxin'
+      .card-registration__login-label= "Уже есть аккаунт на Toxin"
       +button({text: 'войти', mods: ['type_cta', 'bg_ghost']}).card-registration__login-btn(
-        type='button'
+        type="button",
+        onclick=`location.href='${options.signinPageLink}'`
       )

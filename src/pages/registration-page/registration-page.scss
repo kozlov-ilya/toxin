@@ -1,7 +1,7 @@
-@forward '../../scss/main.scss';
-@forward '../../blocks/header/header';
-@forward '../../blocks/footer/footer';
-@forward '../../blocks/card-registration/card-registration';
+@forward "../../scss/main.scss";
+@forward "../../blocks/header/header";
+@forward "../../blocks/footer/footer";
+@forward "../../blocks/card-registration/card-registration";
 
 .page_scroll_lock {
   overflow: hidden;
@@ -20,10 +20,14 @@
 
 .main {
   padding: 19px 20px;
-  background-image: url('./assets/registration-page-hero.png');
+  background-image: url("./assets/registration-page-hero.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+
+  @media screen and (width < 600px) {
+    padding: 0;
+  }
 }
 
 .main__registration-card {

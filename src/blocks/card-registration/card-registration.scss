@@ -1,17 +1,21 @@
-@forward '../card/card';
-@forward '../field/field';
-@forward '../text-field/text-field';
-@forward '../radio-button/radio-button';
-@forward '../form-unit-header/form-unit-header';
-@forward '../masked-text-field/masked-text-field';
-@forward '../toggle/toggle';
-@forward '../button/button';
+@forward "../card/card";
+@forward "../field/field";
+@forward "../text-field/text-field";
+@forward "../radio-button/radio-button";
+@forward "../form-unit-header/form-unit-header";
+@forward "../masked-text-field/masked-text-field";
+@forward "../toggle/toggle";
+@forward "../button/button";
 
 .card-registration_size_responsive {
   width: 100%;
   max-width: 100%;
 
   .field {
+    width: 100%;
+  }
+
+  .card-registration__login-btn {
     width: 100%;
   }
 }
@@ -66,6 +70,8 @@
   justify-content: space-between;
   align-items: center;
   margin-top: 30px;
+  flex-wrap: wrap;
+  row-gap: 10px;
 }
 
 .card-registration__login-label {

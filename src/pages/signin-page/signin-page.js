@@ -13,33 +13,33 @@ function handleBurgerButtonClick(event) {
   page.classList.toggle("page_scroll_lock");
 }
 
-updateRegistrationCard();
+updateSigninCard();
 
 window.addEventListener("resize", (event) => {
-  updateRegistrationCard();
+  updateSigninCard();
 });
 
-function updateRegistrationCard() {
+function updateSigninCard() {
   const match = window.matchMedia("(max-width: 599px)");
-  const registrationCard = page.querySelector(".card-registration");
+  const signinCard = page.querySelector(".card-sign-in");
 
   if (match.matches) {
-    makeRegistrationCardResponsive(registrationCard);
+    makeSigninCardResponsive(signinCard);
   } else {
-    makeRegistrationCardStatic(registrationCard);
+    makeSigninCardStatic(signinCard);
   }
 
-  function makeRegistrationCardResponsive(registrationCard) {
-    registrationCard.classList.add("card-registration_size_responsive");
-    registrationCard
-      .querySelector(".card-registration__signup-btn")
+  function makeSigninCardResponsive(signinCard) {
+    signinCard.classList.add("card-sign-in_responsive");
+    signinCard
+      .querySelector(".card-sign-in__sign-in-btn")
       .classList.add("button_size_expanded");
   }
 
-  function makeRegistrationCardStatic(registrationCard) {
-    registrationCard.classList.remove("card-registration_size_responsive");
-    registrationCard
-      .querySelector(".card-registration__signup-btn")
+  function makeSigninCardStatic(signinCard) {
+    signinCard.classList.remove("card-sign-in_responsive");
+    signinCard
+      .querySelector(".card-sign-in__sign-in-btn")
       .classList.remove("button_size_expanded");
   }
 }

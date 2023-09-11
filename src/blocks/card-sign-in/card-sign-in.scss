@@ -3,7 +3,17 @@
 @forward "../text-field/text-field";
 @forward "../button/button";
 
-.card-sign-in {
+.card-sign-in_responsive {
+  width: 100%;
+  max-width: 100%;
+
+  .field {
+    width: 100%;
+  }
+
+  .card-sign-in__sign-up-btn {
+    width: 100%;
+  }
 }
 
 .card-sign-in__title {
@@ -29,6 +39,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  row-gap: 10px;
 }
 
 .card-sign-in__sign-up-label {

@@ -34,7 +34,7 @@ mixin footer(options)
   footer(class=unitClassName)&attributes(attributes)
     .footer__body
       .footer__info
-        +logo-full({}).footer__logo
+        +logo-full({homePageLink: options.homePageLink}).footer__logo
         .footer__description= "Бронирование номеров в лучшем отеле 2019 года по версии ассоциации «Отельные взгляды»"
       .footer__navigation
         each column in footerNav
@@ -42,7 +42,11 @@ mixin footer(options)
             .footer__navigation-header= column.header
             .footer__navigation-items
               each item in column.items
-                a.footer__navigation-link(href="#")= item
+                a.footer__navigation-link(
+                  role="link",
+                  aria-disabled="true",
+                  title="Ссылка"
+                )= item
       .footer__subscription-box
         .footer__subscription-header= "Подписка"
         .footer__subscription-description= "Получайте специальные предложения и новости сервиса"
@@ -52,9 +56,21 @@ mixin footer(options)
       +logo-full({}).footer__copyright-bar-logo
       .footer__copyright= "Copyright © 2018 Toxin отель. Все права защищены."
       .footer__socials
-        a.footer__social-link(href="#")
+        a.footer__social-link(
+          role="link",
+          aria-disabled="true",
+          title="Ссылка"
+        )
           img(src=require("./assets/twitter-icon.svg"), alt="twitter")
-        a.footer__social-link(href="#") 
+        a.footer__social-link(
+          role="link",
+          aria-disabled="true",
+          title="Ссылка"
+        )
           img(src=require("./assets/facebook-icon.svg"), alt="twitter")
-        a.footer__social-link(href="")
+        a.footer__social-link(
+          role="link",
+          aria-disabled="true",
+          title="Ссылка"
+        )
           img(src=require("./assets/inst-icon.svg"), alt="twitter")

@@ -139,3 +139,80 @@ function loadFilterDataFromLocalStorage() {
 
   setCounters(guestsDropdown, roomSearchData.guests);
 }
+
+initCommentsSection();
+
+function initCommentsSection() {
+  const commentElem = document.querySelector(".room-info__comments");
+  const comments = Array.from(commentElem.querySelectorAll(".comment"));
+  const commentsCountTotal = comments.length;
+
+  if (commentsCountTotal == 0) {
+    const lastShownCommentIndex = -1;
+
+    commentElem.dataset.commentsCountTotal = commentsCountTotal;
+    commentElem.dataset.lastShownCommentIndex = lastShownCommentIndex;
+
+    updateCommentsCountLabel();
+
+    return;
+  } else if (commentsCountTotal < 2) {
+    comments[0].classList.add("comment_show");
+
+    const lastShownCommentIndex = 0;
+
+    commentElem.dataset.commentsCountTotal = commentsCountTotal;
+    commentElem.dataset.lastShownCommentIndex = lastShownCommentIndex;
+
+    updateCommentsCountLabel();
+
+    return;
+  }
+
+  comments[0].classList.add("comment_show");
+  comments[1].classList.add("comment_show");
+
+  const lastShownCommentIndex = 1;
+
+  commentElem.dataset.commentsCountTotal = commentsCountTotal;
+  commentElem.dataset.lastShownCommentIndex = lastShownCommentIndex;
+
+  updateCommentsCountLabel();
+}
+
+setMoreCommentBtnHandlers();
+
+function setMoreCommentBtnHandlers() {
+  const moreCommentBtn = document.querySelector(
+    ".room-info__comments-more-btn"
+  );
+
+  moreCommentBtn.addEventListener("click", showMoreComments);
+}
+
+function showMoreComments() {
+  const commentElem = document.querySelector(".room-info__comments");
+  const comments = Array.from(commentElem.querySelectorAll(".comment"));
+  const commentsCountTotal = parseInt(commentElem.dataset.commentsCountTotal);
+  const lastShownCommentIndex = parseInt(
+    commentElem.dataset.lastShownCommentIndex
+  );
+
+  const leftComments = commentsCountTotal - lastShownCommentIndex - 1;
+
+  if (leftComments < 1) {
+    return;
+  } else if (leftComments < 2) {
+    comments[lastShownCommentIndex + 1].classList.add("comment_show");
+    comments[1].classList.add("comment_show");
+
+    commentElem.dataset.lastShownCommentIndex = lastShownCommentIndex + 1;
+
+    return;
+  }
+
+  comments[lastShownCommentIndex + 1].classList.add("comment_show");
+  comments[lastShownCommentIndex + 2].classList.add("comment_show");
+
+  commentElem.dataset.lastShownCommentIndex = lastShownCommentIndex + 2;
+}

@@ -67,7 +67,7 @@ mixin header(options)
 
   header(class=unitClassName)&attributes(attributes)
     .header__content
-      +logo-full({}).header__logo
+      +logo-full({homePageLink: options.homePageLink}).header__logo
       .header__menu
         .header__overlay
         .header__menu-content
@@ -86,11 +86,17 @@ mixin header(options)
                   ul.nav-item__list
                     each link in item.children
                       li.nav-item__list-item
-                        a.nav-item__list-link(href="#")= link.name
+                        a.nav-item__list-link(
+                          role="link",
+                          aria-disabled="true",
+                          title="Ссылка"
+                        )= link.name
               else
                 .header__nav-item.nav-item.nav-item_expandable_no
                   a.nav-item__link.nav-item__hover-type_bold(
-                    href="#",
+                    role="link",
+                    aria-disabled="true",
+                    title="Ссылка",
                     data-title=item.name
                   )= item.name
           .header__actions
@@ -99,7 +105,8 @@ mixin header(options)
               onclick=`location.href='${options.registrationPageLink}'`
             )
             +button({text: 'войти', mods: ['type_cta', 'bg_ghost', 'size_shrinked']}).header__signin-button(
-              type="button"
+              type="button",
+              onclick=`location.href='${options.signinPageLink}'`
             )
       .header__burger-menu-button.burger-button
         svg.burger-button__burger(viewBox="0 0 100 100", width="30px")
