@@ -22911,7 +22911,7 @@ function setSearchFormSubmitHandlers() {
 
     localStorage.setItem("room-search-form-data", JSON.stringify(formData));
 
-    window.location.href = "search-page.html";
+    window.location.href = "./pages/search-page.html";
   }
 }
 
