@@ -23206,7 +23206,7 @@ function isFormDataValid(signupCard) {
 
 function handleSubmit(event) {
   event.preventDefault();
-  window.location.href = "landing-page.html";
+  window.location.href = "../index.html";
 }
 
 signupCards.forEach((signupCard) => {
@@ -23711,7 +23711,7 @@ const signinCards = document.querySelectorAll(".card-sign-in");
 
 function handleSubmit(event) {
   event.preventDefault();
-  window.location.href = "landing-page.html";
+  window.location.href = "../index.html";
 }
 
 signinCards.forEach((signinCard) => {
