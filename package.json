@@ -5,8 +5,11 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack --mode development",
-    "bem": "css-to-bem-file-structure ./src/blocks/bem.scss ./src/blocks scss"
+    "bem": "css-to-bem-file-structure ./src/blocks/bem.scss ./src/blocks scss",
+    "predeploy": "npm run dev",
+    "deploy": "gh-pages -d dist"
   },
+  "homepage": "https://kozlov-ilya.github.io/toxin/",
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -15,6 +18,7 @@
     "cleave.js": "^1.6.0",
     "css-loader": "^6.7.3",
     "css-to-bem-file-structure": "^0.0.5",
+    "gh-pages": "^6.0.0",
     "moment": "^2.29.4",
     "pug-plugin": "^4.9.7",
     "sass": "^1.62.0",

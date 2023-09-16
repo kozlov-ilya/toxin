@@ -1616,7 +1616,7 @@ function isFormDataValid(signupCard) {
 
 function handleSubmit(event) {
   event.preventDefault();
-  window.location.href = "landing-page.html";
+  window.location.href = "../index.html";
 }
 
 signupCards.forEach((signupCard) => {

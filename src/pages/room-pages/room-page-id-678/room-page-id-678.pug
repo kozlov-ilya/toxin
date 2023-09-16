@@ -18,7 +18,7 @@ html(lang="en")
     link(rel="icon", href=require("./assets/img/gorilla.svg"))
     title Ape++
   body.page
-    +header({registrationPageLink: '../registration-page.html', signinPageLink: '../signin-page.html', homePageLink: '../landing-page.html'})
+    +header({registrationPageLink: '../registration-page.html', signinPageLink: '../signin-page.html', homePageLink: '../../index.html'})
     main.main
       .main__content
         .main__room-gallery.room-gallery
@@ -104,4 +104,4 @@ html(lang="en")
                   .room-info__cancellation-text= "Бесплатная отмена в течение 48 ч. После этого при отмене не позднее чем за 5 дн. до прибытия вы получите полный возврат за вычетом сбора за услуги."
             .room-info__column
               +card-room-book({roomNumber:678, dateFrom: '', dateTo:'', isLux: true, roomPrice: 5500, discount: 0, servicePrice: 0, addPrice: 0})
-    +footer({homePageLink: '../landing-page.html'})
+    +footer({homePageLink: '../../index.html'})

@@ -41,7 +41,7 @@ html(lang="en")
     link(rel="icon", href=require("./assets/img/gorilla.svg"))
     title Ape++
   body.page
-    +header({registrationPageLink: './registration-page.html', signinPageLink: './signin-page.html', homePageLink: 'landing-page.html'})
+    +header({registrationPageLink: './registration-page.html', signinPageLink: './signin-page.html', homePageLink: '../index.html'})
     main.main
       .main__content
         .rooms-filter
@@ -92,4 +92,4 @@ html(lang="en")
               +card-room(room)
           .rooms__footer
             +pagination({itemsPerPage: 12})
-    +footer({homePageLink: 'landing-page.html'})
+    +footer({homePageLink: '../index.html'})

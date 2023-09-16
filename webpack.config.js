@@ -11,7 +11,7 @@ module.exports = {
   entry: {
     // define Pug files here
     "pages/gui-page": "./src/pages/gui-page/gui-page.pug",
-    "pages/landing-page": "./src/pages/landing-page/landing-page.pug",
+    index: "./src/pages/landing-page/landing-page.pug",
     "pages/search-page": "./src/pages/search-page/search-page.pug",
     "pages/registration-page":
       "./src/pages/registration-page/registration-page.pug",
